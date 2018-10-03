@@ -1,0 +1,138 @@
+<!--Left Menu==================-->
+<!--Left Menu==================-->
+<ul class="nav nav-list">
+  <li class="active">
+    <!-- module/dashboard -->
+    <a href="<?php echo base_url(); ?>"> 
+      <i class="menu-icon fa fa-tachometer"></i>
+      <span class="menu-text"> Dashboard </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+
+  <li class="">
+    <a href="<?php echo base_url(); ?>CustomerEntry">
+      <i class="menu-icon fa fa-user-plus"></i>
+      <span class="menu-text"> Customer Entry </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+
+  <li class="">
+    <a href="<?php echo base_url(); ?>module/SalesModule">
+      <i class="menu-icon fa fa-usd"></i>
+      <span class="menu-text"> Order Entry </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+
+  <li class="">
+    <a href="<?php echo base_url(); ?>module/SalesModule">
+      <i class="menu-icon fa fa-usd"></i>
+      <span class="menu-text"> L / C  Entry </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+
+
+  <li class="">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-clipboard"></i>
+      <span class="menu-text"> Accounts</span>
+
+      <b class="arrow fa fa-angle-down"></b>
+    </a>
+
+    <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="">
+        <a href="<?php echo base_url(); ?>product">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Collection Entry 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>product">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Office Payment Entry 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>product">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Payments Entry
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>product">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Other Income Entry 
+        </a>
+        <b class="arrow"></b>
+      </li>
+    </ul>
+  </li>
+
+  <li class="">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-calendar-check-o"></i>
+      <span class="menu-text"> Reports</span>
+
+      <b class="arrow fa fa-angle-down"></b>
+    </a>
+
+    <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="">
+        <a href="<?php echo base_url(); ?>product">
+          <i class="menu-icon fa fa-caret-right"></i>
+          L / C List
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>product">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Customer List Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>product">
+          <i class="menu-icon fa fa-caret-right"></i>
+          L / C Wise Order Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>product">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Customer Order Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>product">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Delivered Order Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+    </ul>
+  </li>
+
+  <li class="">
+    <a href="<?php echo base_url(); ?>Adminlogin/logout">
+      <i class="menu-icon fa fa-sign-out"></i>
+      <span class="menu-text"> Logout </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+</ul>
+<!--End Left Menu==================-->
+
