@@ -11,7 +11,7 @@
   </li>
 
   <li class="">
-    <a href="<?php echo base_url(); ?>CustomerEntry">
+    <a href="<?php echo base_url(); ?>customer/insert">
       <i class="menu-icon fa fa-user-plus"></i>
       <span class="menu-text"> Customer Entry </span>
     </a>
@@ -19,7 +19,7 @@
   </li>
 
   <li class="">
-    <a href="<?php echo base_url(); ?>module/SalesModule">
+    <a href="<?php echo base_url(); ?>order/insert">
       <i class="menu-icon fa fa-usd"></i>
       <span class="menu-text"> Order Entry </span>
     </a>
@@ -27,7 +27,7 @@
   </li>
 
   <li class="">
-    <a href="<?php echo base_url(); ?>module/SalesModule">
+    <a href="<?php echo base_url(); ?>lc/insert">
       <i class="menu-icon fa fa-usd"></i>
       <span class="menu-text"> L / C  Entry </span>
     </a>

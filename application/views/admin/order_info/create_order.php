@@ -1,7 +1,6 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <form id="CusOrderForm" method="post" action="<?= base_url('customer/store'); ?>">  
 
       <!--============Customer Information============ -->
       <!--============Customer Information============ -->
@@ -27,6 +26,14 @@
 
               <div class="col-sm-4">
                 <div class="form-group">
+                  <label class="col-sm-5 control-label no-padding-left" for="ord_car_model">Select Customer</label>
+                  <div class="col-sm-7">
+                    <select class="form-control" style="height: 30px; border-radius: 5px;">
+                      <option>Please Select a Customer</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-5 control-label no-padding-left" for="cus_code"> Customer  Code </label>
                   <div class="col-sm-7">
                     <input type="text" id="cus_code" name="cus_code" placeholder="Customer Code" class="form-control" readonly />
@@ -39,28 +46,14 @@
                     <input type="text" id="cus_name" name="cus_name" placeholder="Customer Name" class="form-control" />
                   </div>
                 </div>
-                
-                <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="cus_contact_no"> Contact No </label>
-                  <div class="col-sm-7">
-                    <input type="text" id="cus_contact_no" name="cus_contact_no" placeholder="Contact No" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="cus_contact_no"> Alt. Contact No </label>
-                  <div class="col-sm-7">
-                    <input type="text" id="cus_contact_no" name="cus_contact_no" placeholder="Alt. Contact No" class="form-control" />
-                  </div>
-                </div>
               </div>
 
 
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="cus_entry_date"> Entry Date </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="cus_contact_no"> Contact No </label>
                   <div class="col-sm-8">
-                    <input type="text" id="cus_entry_date" name="cus_entry_date" placeholder="Entry Date" class="form-control" />
+                    <input type="text" id="cus_contact_no" name="cus_contact_no" placeholder="Contact No" class="form-control" />
                   </div>
                 </div>
 
@@ -84,10 +77,10 @@
         </div>
       </div>
 
-
-
       <!--============Order Information============ -->
       <!--============Order Information============ -->
+    <form id="OrderForm" method="post" action="order/store"> 
+
       <div class="widget-box">
         <div class="widget-header">
           <h4 class="widget-title">Order Information</h4>
@@ -106,13 +99,15 @@
           <div class="widget-main">
 
             <div class="row">
-              <div class="col-sm-2"></div>
+              <div class="col-sm-2">
+                <input type="hidden" name="cus_id">
+              </div>
 
               <div class="col-sm-4">
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> L / C No </label>
                   <div class="col-sm-8">
-                    <select class="form-control">
+                    <select class="form-control" style="height: 30px; border-radius: 5px;">
                       <option>Please Select a L / C No</option>
                     </select>
                   </div>

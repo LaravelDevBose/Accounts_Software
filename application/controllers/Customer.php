@@ -1,4 +1,7 @@
 <?php 
+
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Customer extends CI_Controller
 {
 
@@ -28,7 +31,7 @@ class Customer extends CI_Controller
 
 
 	/*=======================*/
-	public function insert_customer_info()
+	public function store_customer_info()
 	{
 		$this->form_validation->set_rules('details', 'About Us ', 'required|trim');
 

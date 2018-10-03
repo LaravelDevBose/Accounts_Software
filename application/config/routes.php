@@ -19,9 +19,27 @@ $route['admin_login'] 		= 	"Adminlogin/admin_login_data_check";
 // =====================Admin Panel================
 
 
-/*========Create Customer=========*/
-$route['CustomerEntry'] 		= 	"Customer";
-$route['insertCustomer'] 		= 	"Customer/insert_customer_info";
+/*========Customer Route List=========*/
+$route['customer/insert'] 		= 	"Customer";
+$route['customer/store'] 		= 	"Customer/store_customer_info";
+$route['customer/edit/(:any)']	=	'Customer/edit_customer_info';
+$route['customer/update/(:any)']	=	'Customer/update_customer_info';
+$route['customer/delete/(:any)']	=	'Customer/delete_customer_info';
+
+/*========Order CRUD Route list=========*/
+$route['order/insert'] 		= 	"Order";
+$route['order/store'] 		= 	"Order/store_order_info";
+$route['order/edit/(:any)']	=	'Order/edit_order_info';
+$route['order/update/(:any)']	=	'Order/update_order_info';
+$route['order/delete/(:any)']	=	'Order/delete_order_info';
+
+/*========L/C CRUD Route list=========*/
+$route['lc/insert'] 		= 	"LC_controller";
+$route['lc/store'] 		= 	"LC_controller/store_lc_info";
+$route['lc/edit/(:any)']	=	'LC_controller/edit_lc_info';
+$route['lc/update/(:any)']	=	'LC_controller/update_lc_info';
+$route['lc/delete/(:any)']	=	'LC_controller/delete_lc_info';
+
 
 
 
