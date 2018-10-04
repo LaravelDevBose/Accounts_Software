@@ -17,6 +17,13 @@
     </a>
     <b class="arrow"></b>
   </li>
+  <li class="<?= ($this->uri->uri_string()== 'customers')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>customers">
+      <i class="menu-icon fa fa-user"></i>
+      <span class="menu-text"> Customer List </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
 
   <li class="<?= ($this->uri->uri_string()== 'order/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>order/insert">
@@ -25,6 +32,14 @@
     </a>
     <b class="arrow"></b>
   </li>
+  <li class="<?= ($this->uri->uri_string()== 'order/list')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>order/list">
+      <i class="menu-icon fa fa-usd"></i>
+      <span class="menu-text"> Order List </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+
 
   <li class="<?= ($this->uri->uri_string()== 'lc/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>lc/insert">

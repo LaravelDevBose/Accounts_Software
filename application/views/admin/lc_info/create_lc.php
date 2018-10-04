@@ -24,20 +24,49 @@
             <div class="row">
               <div class="col-sm-2"></div>
 
-              <div class="col-sm-7">
+              <div class="col-sm-4">
                 
                 <div class="form-group">
-                  <label class="col-sm-2 control-label no-padding-left" for="lc_no"> L/C No. </label>
-                  <div class="col-sm-5">
+                  <label class="col-sm-4 control-label no-padding-left" for="lc_no">L/C No.:<span class="text-bold text-danger">*</span></label>
+                  <div class="col-sm-8">
                     <input type="text" id="lc_no" name="lc_no" placeholder="L/C Number" class="form-control" />
                   </div>
-                  <div class="col-sm-2">
-                    <button type="button" id="lc_submit" class="btn btn-primary btn-sm" style="height: 27px;     padding: 1px 30px;">Submit</button>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="lc_note">Note: </label>
+                  <div class="col-sm-8">
+                    <textarea id="lc_note" required name="lc_note" placeholder="Short Note" class="form-control" ></textarea>
                   </div>
+                </div>
+              </div>
 
+              <div class="col-sm-4">
+
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="bank_name">Bank Name:<span class="text-bold text-danger">*</span> </label>
+                  <div class="col-sm-8">
+                    <input type="text" id="bank_name"  name="bank_name" required placeholder="Bank Name" class="form-control"  />
+                  </div>
                 </div>
 
+
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="lc_date"> Date:<span class="text-bold text-danger">*</span> </label>
+                  <div class="col-sm-8">
+                     <input class="form-control date-picker" required id="lc_date" name="lc_date" type="text" value="<?php echo date('Y-m-d'); ?>"  data-date-format="yyyy-mm-dd" />
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> </label>
+                  <div class="col-sm-8">
+                    <button type="Submit" id="lc_submit" style="height: 27px; padding-top: 0px; float: right; " class="btn btn-primary cus_submit">Submit</button>
+                  </div>
+                </div>
+
+
               </div>
+
             </div>
           </div>
         </div>
@@ -65,10 +94,11 @@
             </th>
             <th>SL No</th>
             <th>L/C Number</th>
+            <th>Bank Name</th>
+            <th>Date</th>
+            <th>Note</th>
             <th>Action</th>
-            <th style="display:none;"></th>
-            <th style="display:none;"></th>
-            <th style="display:none;"></th>
+            
           </tr>
         </thead>
 
@@ -81,6 +111,12 @@
 
             <td><?= $i++; ?></td>
             <td><?= $data->lc_no; ?></td>
+            <td><?= $data->bank_name; ?></td>
+            <td><?php 
+                  $date = new DateTime($data->lc_date);
+                  echo date_format($date, 'd M Y'); 
+                ?></td>
+            <td><?= $data->lc_note; ?></td>
             <td>
                 <div class="hidden-sm hidden-xs action-buttons">
                     <a class="green linka fancybox fancybox.ajax" href="<?= base_url();?>lc/edit/<?= $data->id; ?>" >
@@ -92,12 +128,7 @@
                 </div>
             </td>
 
-            <td style="display:none;" class="hidden-480">
-              <span class="label label-sm label-info arrowed arrowed-righ"><?php //echo $row->ProductCategory_Name; ?></span>
-            </td>
             
-            <td style="display:none;"></td>
-            <td style="display:none;"></td>
           </tr>
           <?php endforeach; endif; ?>
         </tbody>

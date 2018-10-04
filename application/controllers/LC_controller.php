@@ -53,11 +53,14 @@ class LC_controller extends CI_Controller
 	public function update_lc_info($id=Null)
 	{
 		$this->form_validation->set_rules('lc_no', 'L/C Number', 'required|trim');
+		$this->form_validation->set_rules('bank_name', 'Bank Name', 'required|trim');
+		$this->form_validation->set_rules('lc_date', 'L/C Date', 'required|trim');
 
 		if($this->form_validation->run() == FALSE){
-			$data['warning']="L/C Number is Required";
-			$this->session->set_flashdata($data);
-			redirect('lc/insert');
+			$data['title'] = 'L/C Information';  
+			$data['content'] = 'lc_info/create_lc'; 
+			$data['lc_data'] = $this->LC_model->get_all_lc_info();  
+			$this->load->view('admin/adminMaster', $data);
 		}else{
 			if($this->LC_model->update_lc_data($id)){
 				$data['success']="L/C Number Update Succesfully";

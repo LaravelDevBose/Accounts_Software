@@ -20,14 +20,16 @@ $route['admin_login'] 		= 	"Adminlogin/admin_login_data_check";
 
 
 /*========Customer Route List=========*/
-$route['customer/insert'] 		= 	"Customer";
+$route['customers'] 		= 	"Customer/index";
+$route['customer/insert'] 		= 	"Customer/insert_customer";
 $route['customer/store'] 		= 	"Customer/store_customer_info";
-$route['customer/edit/(:any)']	=	'Customer/edit_customer_info';
-$route['customer/update/(:any)']	=	'Customer/update_customer_info';
-$route['customer/delete/(:any)']	=	'Customer/delete_customer_info';
+$route['customer/edit/(:any)']	=	'Customer/edit_customer_info/$1';
+$route['customer/update/(:any)']	=	'Customer/update_customer_info/$1';
+$route['customer/delete/(:any)']	=	'Customer/delete_customer_info/$1';
 
 /*========Order CRUD Route list=========*/
-$route['order/insert'] 		= 	"Order";
+$route['order/list'] 		= 	"Order/index";
+$route['order/insert'] 		= 	"Order/insert_order_info";
 $route['order/store'] 		= 	"Order/store_order_info";
 $route['order/edit/(:any)']	=	'Order/edit_order_info/$1';
 $route['order/update/(:any)']	=	'Order/update_order_info/$1';

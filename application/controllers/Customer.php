@@ -14,9 +14,19 @@ class Customer extends CI_Controller
 			redirect('Adminlogin/?logged_in_first');
 		}
 	}
+	public function index($value='')
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			$data['title'] = 'Customer Information List';  
+			$data['content'] = 'customer_info/customer_list';
+		}
+	}
 
-	/*==========Admin Login Check==========*/
-	public function index()
+	/*==========Insert Customer Info==========*/
+	public function insert_customer()
 	{
 		if (!$this->Admin_model->is_admin_loged_in()) 
 		{

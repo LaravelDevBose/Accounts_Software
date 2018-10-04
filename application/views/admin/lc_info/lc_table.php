@@ -6,22 +6,25 @@
 
   <td><?= $i++; ?></td>
   <td><?= $data->lc_no; ?></td>
+  <td><?= $data->bank_name; ?></td>
+  <td>
+    <?php 
+      $date = new DateTime($data->lc_date);
+      echo date_format($date, 'd M Y'); 
+    ?>
+  </td>
+  <td><?= $data->lc_note; ?></td>
   <td>
       <div class="hidden-sm hidden-xs action-buttons">
-          <a class="green" href="" title="Eidt">
+          <a class="green linka fancybox fancybox.ajax" href="<?= base_url();?>lc/edit/<?= $data->id; ?>" >
             <i class="ace-icon fa fa-pencil bigger-130"></i>
           </a>
-          <a class="red" href="#" onclick="deleted()">
+          <a class="red" href="<?= base_url(); ?>lc/delete/<?= $data->id?>" onclick="confirm('Are You Sure Went to Delete This! ')">
             <i class="ace-icon fa fa-trash-o bigger-130"></i>
           </a>
       </div>
   </td>
 
-  <td style="display:none;" class="hidden-480">
-    <span class="label label-sm label-info arrowed arrowed-righ"><?php //echo $row->ProductCategory_Name; ?></span>
-  </td>
   
-  <td style="display:none;"></td>
-  <td style="display:none;"></td>
 </tr>
 <?php endforeach; endif; ?>

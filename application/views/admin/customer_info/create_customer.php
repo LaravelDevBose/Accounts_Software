@@ -60,7 +60,8 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="cus_entry_date"> Entry Date:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                     <input class="form-control date-picker" required id="cus_entry_date" name="cus_entry_date" type="text" value="<?php echo date('Y-m-d'); ?>" name="cus_entry_date" type="text" data-date-format="yyyy-mm-dd" />
+                     <input class="form-control date-picker" required id="cus_entry_date" name="cus_entry_date" type="text" value="<?php echo date('Y-m-d'); ?>" 
+                      data-date-format="yyyy-mm-dd" />
 
                     
                   </div>

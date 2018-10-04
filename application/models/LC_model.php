@@ -18,6 +18,9 @@ class LC_model extends CI_Model
 	{
 		$attr = array(
 			'lc_no' =>$this->input->post('lc_no'),
+			'bank_name' =>$this->input->post('bank_name'),
+			'lc_date' =>$this->input->post('lc_date'),
+			'lc_note' =>$this->input->post('lc_note'),
 			'status'=>'a'
 		);
 
@@ -41,7 +44,10 @@ class LC_model extends CI_Model
 	public function update_lc_data($id= null)
 	{
 		$attr = array(
-			'lc_no' 		=> 	$this->input->post('lc_no')
+			'lc_no' 		=> 	$this->input->post('lc_no'),
+			'bank_name' =>$this->input->post('bank_name'),
+			'lc_date' =>$this->input->post('lc_date'),
+			'lc_note' =>$this->input->post('lc_note')
 		);
 
 		$this->db->where('id', $id);
