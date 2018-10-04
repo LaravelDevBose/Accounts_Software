@@ -29,16 +29,17 @@ $route['customer/delete/(:any)']	=	'Customer/delete_customer_info';
 /*========Order CRUD Route list=========*/
 $route['order/insert'] 		= 	"Order";
 $route['order/store'] 		= 	"Order/store_order_info";
-$route['order/edit/(:any)']	=	'Order/edit_order_info';
-$route['order/update/(:any)']	=	'Order/update_order_info';
-$route['order/delete/(:any)']	=	'Order/delete_order_info';
+$route['order/edit/(:any)']	=	'Order/edit_order_info/$1';
+$route['order/update/(:any)']	=	'Order/update_order_info/$1';
+$route['order/delete/(:any)']	=	'Order/delete_order_info/$1';
+$route['find/customer/(:any)']	=	'Customer/find_customer_info/$1';
 
 /*========L/C CRUD Route list=========*/
 $route['lc/insert'] 		= 	"LC_controller";
 $route['lc/store'] 		= 	"LC_controller/store_lc_info";
-$route['lc/edit/(:any)']	=	'LC_controller/edit_lc_info';
-$route['lc/update/(:any)']	=	'LC_controller/update_lc_info';
-$route['lc/delete/(:any)']	=	'LC_controller/delete_lc_info';
+$route['lc/edit/(:any)']	=	'LC_controller/edit_lc_info/$1';
+$route['lc/update/(:any)']	=	'LC_controller/update_lc_info/$1';
+$route['lc/delete/(:any)']	=	'LC_controller/delete_lc_info/$1';
 
 
 

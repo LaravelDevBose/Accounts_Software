@@ -806,7 +806,7 @@
         });
       
       });
-    </script>
+    </script> 
     
     
     <!-- inline scripts related to this page -->
@@ -1017,6 +1017,7 @@
 
 </script>
 
+
 <script type="text/javascript">
   $(document).ajaxStart(function(){ 
     $('#loader').show();
@@ -1024,5 +1025,7 @@
      $('#loader').hide();
   });
 </script>
+
+
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!--Left Menu==================-->
 <!--Left Menu==================-->
 <ul class="nav nav-list">
-  <li class="active">
+  <li class="<?= ($this->uri->uri_string()== 'Admindashboard')?'active': ' ' ?>">
     <!-- module/dashboard -->
     <a href="<?php echo base_url(); ?>"> 
       <i class="menu-icon fa fa-tachometer"></i>
@@ -10,7 +10,7 @@
     <b class="arrow"></b>
   </li>
 
-  <li class="">
+  <li class="<?= ($this->uri->uri_string()== 'customer/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>customer/insert">
       <i class="menu-icon fa fa-user-plus"></i>
       <span class="menu-text"> Customer Entry </span>
@@ -18,7 +18,7 @@
     <b class="arrow"></b>
   </li>
 
-  <li class="">
+  <li class="<?= ($this->uri->uri_string()== 'order/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>order/insert">
       <i class="menu-icon fa fa-usd"></i>
       <span class="menu-text"> Order Entry </span>
@@ -26,7 +26,7 @@
     <b class="arrow"></b>
   </li>
 
-  <li class="">
+  <li class="<?= ($this->uri->uri_string()== 'lc/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>lc/insert">
       <i class="menu-icon fa fa-usd"></i>
       <span class="menu-text"> L / C  Entry </span>

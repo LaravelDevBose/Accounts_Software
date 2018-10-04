@@ -1,5 +1,9 @@
 <?php $this->load->view('admin/partials/header_css_js') ?>
 <?php $this->load->view('admin/partials/header_navigation') ?>
+
+
+
+
   <div class="main-container ace-save-state" id="main-container">
       <script type="text/javascript">
         try{ace.settings.loadState('main-container')}catch(e){}
@@ -67,10 +71,11 @@
 
           <div class="page-content">
 
+            
             <div id="loader" hidden style="position: fixed; z-index: 1000; margin: auto; height: 100%; width: 100%; background:rgba(255, 255, 255, 0.72);;">
-              <img src="<?php echo base_url(); ?>assets/loader.gif" style="top: 30%; left: 50%; opacity: 1; position: fixed;">
+            <img src="<?php echo base_url(); ?>libs/Backend/assets/loader.gif" style="top: 30%; left: 50%; opacity: 1; position: fixed;">
             </div>
-
+            <?php $this->load->view('admin/error_success_msg');?>
               <?php 
                   if (isset($content)) :
                       $this->load->view('admin/'.$content, TRUE);

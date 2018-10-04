@@ -9,8 +9,7 @@ class Adminlogin extends CI_Controller
 		$this->load->model('Admin_model');
 		if ($this->Admin_model->is_admin_loged_in()) 
 		{
-			$data['content'] = 'dashboard/home';  
-			$this->load->view('admin/adminMaster', $data);
+			redirect('Admindashboard');
 		}
 		else{
 			$this->load->view('login_page');

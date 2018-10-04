@@ -63,5 +63,6 @@
     <![endif]-->
     
     <script src="<?php echo base_url(); ?>libs/BackEnd/assets/js/jquery-2.1.4.min.js"></script>
+    <script src="<?php echo base_url();?>libs/BackEnd/sweetAlert_script/sweetalert.min.js"></script>
 
   </head>

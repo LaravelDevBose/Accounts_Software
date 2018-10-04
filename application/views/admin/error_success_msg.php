@@ -51,10 +51,7 @@
 
     <?php endif; ?>
 
-
-
-
-    <!-- Error Message -->
+<!-- Error Message -->
     <?php
       if($this->session->flashdata('errorMsg')) :
     ?>
@@ -62,6 +59,36 @@
             swal({
                   text: "<?php echo $this->session->flashdata('errorMsg'); ?>",
                   icon: "error",
+                  buttons: false,
+                  timer: 1500,
+                });
+        </script>
+    <?php endif; ?>
+
+
+    <!-- Error Message -->
+    <?php
+      if($this->session->flashdata('error')) :
+    ?>
+      <script type="text/javascript">
+            swal({
+                  text: "<?php echo $this->session->flashdata('error'); ?>",
+                  icon: "error",
+                  buttons: false,
+                  timer: 1500,
+                });
+        </script>
+    <?php endif; ?>
+
+
+
+    <?php
+      if($this->session->flashdata('warning')) :
+    ?>
+      <script type="text/javascript">
+            swal({
+                  text: "<?php echo $this->session->flashdata('warning'); ?>",
+                  icon: "warning",
                   buttons: false,
                   timer: 1500,
                 });
