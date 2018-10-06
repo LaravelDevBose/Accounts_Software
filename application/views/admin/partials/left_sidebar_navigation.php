@@ -104,14 +104,14 @@
 
     <ul class="submenu">
       <li class="">
-        <a href="<?php echo base_url(); ?>product">
+        <a href="<?php echo base_url(); ?>report/lc">
           <i class="menu-icon fa fa-caret-right"></i>
           L / C List
         </a>
         <b class="arrow"></b>
       </li>
       <li class="">
-        <a href="<?php echo base_url(); ?>product">
+        <a href="<?php echo base_url(); ?>report/customer">
           <i class="menu-icon fa fa-caret-right"></i>
           Customer List Report 
         </a>

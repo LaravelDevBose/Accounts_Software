@@ -44,6 +44,9 @@ $route['lc/update/(:any)']	=	'LC_controller/update_lc_info/$1';
 $route['lc/delete/(:any)']	=	'LC_controller/delete_lc_info/$1';
 
 
+/*========== Report Route List ==========*/
+$route['report/lc']		= 'Report/view_lc_report'; 
+$route['report/customer']		= 'Report/view_customer_report'; 
 
 
 /*========Create Admin=========*/

@@ -14,7 +14,7 @@ class Customer extends CI_Controller
 			redirect('Adminlogin/?logged_in_first');
 		}
 	}
-	public function index($value='')
+	public function index()
 	{
 		if (!$this->Admin_model->is_admin_loged_in()) 
 		{
