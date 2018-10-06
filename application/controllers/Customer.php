@@ -22,6 +22,8 @@ class Customer extends CI_Controller
 		}else{
 			$data['title'] = 'Customer Information List';  
 			$data['content'] = 'customer_info/customer_list';
+			$data['customers'] = $this->Customer_model->find_all_customer_info();
+			$this->load->view('admin/adminMaster', $data);
 		}
 	}
 
@@ -111,31 +113,6 @@ class Customer extends CI_Controller
 		}
 	}
 
-
-
-	/*=======================*/
-	public function update_about_data_check($id = null)
-	{
-		$this->form_validation->set_rules('details', 'About Us ', 'required|trim');
-
-		if($this->form_validation->run() == FALSE)
-		{
-			$data['content'] = 'customer_info/create_customer';   
-			$this->load->view('admin/adminMaster', $data);
-		}
-		else{
-			if($this->About_model->edit_about_data_update($id)) :
-					$data['message']="Update Successfully!";
-					$this->session->set_flashdata($data);
-					redirect('CustomerEntry');
-			else:
-				$data['message2']="Update Unsuccessfully!";
-				$this->session->set_flashdata($data);
-				redirect('CustomerEntry');
-			endif;	
-		}
-	}
-
 	/*======== find customer info in ajax request ============*/
 	public function find_customer_info($id = null)
 	{
@@ -146,7 +123,66 @@ class Customer extends CI_Controller
 		}
 	}
 
+	/*========  Edit Customer info page=============*/
 
+	public function edit_customer_info($id=Null)
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			$data['title'] = 'Edit Customer Information';  
+			$data['content'] = 'customer_info/edit_customer';
+			$data['customer'] = $this->Customer_model->customer_by_id($id);
+			$this->load->view('admin/adminMaster', $data);
+		}
+	}
+
+	/*========== Update Customer Info ============*/
+	public function update_customer_info($id=Null)
+	{
+		$this->form_validation->set_rules('cus_code', 'Customer Code ', 'required|trim');
+		$this->form_validation->set_rules('cus_name', 'Customer Name ', 'required|trim');
+		$this->form_validation->set_rules('cus_contact_no', 'Contact Number ', 'required|trim');
+		$this->form_validation->set_rules('cus_entry_date', 'Entry Date', 'required|trim');
+		$this->form_validation->set_rules('cus_address', 'Customer Address', 'required|trim');
+
+
+		if($this->form_validation->run() == FALSE)
+		{  
+			$data['title'] = 'Edit Customer Information';  
+			$data['content'] = 'customer_info/edit_customer';
+			$data['customer'] = $this->Customer_model->customer_by_id($id);
+			$this->load->view('admin/adminMaster', $data);
+		}
+		else{
+			if($this->Customer_model->update_customer_info($id)){
+				
+				$data['success']="Customer info Update Successfully!";
+				$this->session->set_flashdata($data);
+				redirect('customers');
+
+			}else{
+				$data['error']="Customer  info Update Unsuccessfully!";
+				$this->session->set_flashdata($data);
+				redirect('customers');
+			}
+		}
+	}
+
+	/*========== Delete Customer Info ===========*/
+	public function delete_customer_info($id=Null)
+	{
+		if($this->Customer_model->delete_customer_info($id)){
+			$data['success']="Customer info Delete Successfully!";
+			$this->session->set_flashdata($data);
+			redirect('customers');
+		}else{
+			$data['error']="Customer info Delete Unsuccessfully!";
+			$this->session->set_flashdata($data);
+			redirect('customers');
+		}
+	}
 
 
 }

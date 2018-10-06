@@ -45,4 +45,41 @@ class Customer_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*========== Update Customer Info ===========*/
+	public function update_customer_info($id=Null)
+	{
+		$attr = array(
+			'cus_code'	=>$this->input->post('cus_code'),
+			'cus_name'	=>$this->input->post('cus_name'),
+			'cus_contact_no'	=>$this->input->post('cus_contact_no'),
+			'alt_contact_no'	=>$this->input->post('alt_contact_no'),
+			'cus_entry_date'	=>$this->input->post('cus_entry_date'),
+			'cus_email'	=>$this->input->post('cus_email'),
+			'cus_address'	=>$this->input->post('cus_address')
+		);
+
+		$this->db->where('id', $id);
+		$qu = $this->db->update('customers', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
+	/*======= Delete customr info ========*/
+	public function delete_customer_info($id=Null)
+	{
+		$attr = array('cus_status'=>'d');
+		$this->db->where('id', $id);
+		$qu = $this->db->update('customers', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
 }

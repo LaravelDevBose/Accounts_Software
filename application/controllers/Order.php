@@ -122,9 +122,8 @@ class Order extends CI_Controller
 			$this->load->view('admin/adminMaster', $data);
 
 		}else{
-			$cus_id = $this->input->post('cus_id');
 			
-			if($this->Order_model->update_order_info($cus_id)){
+			if($this->Order_model->update_order_info($id)){
 
 				$data['success']="Update Successfully!";
 				$this->session->set_flashdata($data);

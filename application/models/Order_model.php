@@ -67,7 +67,8 @@ class Order_model extends CI_Model
 
 	/*======== Update Order Info =========*/
 	public function update_order_info($id=Null)
-	{
+	{	
+		
 		$attr = array(
 			'cus_id'	=>$this->input->post('cus_id'),
 			'ord_lc_no'	=>$this->input->post('ord_lc_no'),

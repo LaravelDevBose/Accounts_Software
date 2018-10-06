@@ -45,7 +45,7 @@
                     </thead>
 
                     <tbody id="tBody">
-                        <?php $i=1; if($orders && isset($orders)): foreach($orders as $order):?>
+                        <?php  $i=1; if($orders && isset($orders)): foreach($orders as $order):?>
                       <tr>
                         <td><?= $i++ ?></td>
                         <td><?= $order->cus_name ?></td>
