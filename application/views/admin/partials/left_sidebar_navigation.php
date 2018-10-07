@@ -101,6 +101,36 @@
 
   <li class="">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-user"></i>
+      <span class="menu-text"> Employee</span>
+
+      <b class="arrow fa fa-angle-down"></b>
+    </a>
+
+    <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="">
+        <a href="<?php echo base_url(); ?>employee/insert">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Add Employee
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>employees">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Employee List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
+    </ul>
+  </li>
+
+
+  <li class="">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-print"></i>
       <span class="menu-text"> Reports</span>
 
@@ -150,7 +180,7 @@
 
   <li class="">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-      <i class="menu-icon fa fa-user"></i>
+      <i class="menu-icon fa fa-user-secret"></i>
       <span class="menu-text"> Admin</span>
 
       <b class="arrow fa fa-angle-down"></b>

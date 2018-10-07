@@ -1,3 +1,10 @@
+
+<?php if(!$admin || !isset($admin)){
+    $data['warning'] ='No data Found!';
+    $this->session->set_flashdata($data);
+    redirect('listAdmin');
+}?>
+
 <div class="row">
   <div class="col-xs-12">
     <form enctype="multipart/form-data" method="post" action="<?php echo base_url()?>AdminUpdate/<?php echo $admin->admin_id; ?>">  

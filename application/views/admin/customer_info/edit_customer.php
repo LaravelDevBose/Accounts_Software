@@ -1,3 +1,8 @@
+<?php if(!$customer || !isset($customer)){
+    $data['warning'] ='No data Found!';
+    $this->session->set_flashdata($data);
+    redirect('customers');
+}?>
 
 <div class="row">
   <div class="col-xs-12">

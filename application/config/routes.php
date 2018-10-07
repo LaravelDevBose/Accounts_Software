@@ -52,6 +52,18 @@ $route['ie_head/update/(:any)']	=	'IE_head/update_ie_head_info/$1';
 $route['ie_head/delete/(:any)']	=	'IE_head/delete_ie_head_info/$1';
 
 
+/*========== Account Route List =========*/
+
+/*========== Employee Route List ========*/
+$route['employees']				='Employee/index';
+$route['employee/insert']		='Employee/insert_employee_info';
+$route['employee/store']		='Employee/store_employee_info';
+$route['employee/view/(:any)']	='Employee/view_employee_info/$1';
+$route['employee/edit/(:any)']	='Employee/edit_employee_info/$1';
+$route['employee/update/(:any)']='Employee/update_employee_info/$1';
+$route['employee/delete/(:any)']='Employee/delete_employee_info/$1';
+
+
 /*========== Report Route List ==========*/
 $route['report/lc']				= 'Report/view_lc_report'; 
 $route['report/customer']		= 'Report/view_customer_report'; 

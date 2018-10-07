@@ -97,6 +97,10 @@ class Order extends CI_Controller
 				$data['customer_info'] = $this->Customer_model->customer_by_id($result->cus_id);
 				$data['order'] = $result;
 				$this->load->view('admin/adminMaster', $data);
+			}else{
+				$data['warning'] ='No data Found!';
+			    $this->session->set_flashdata($data);
+			    redirect('order/list');
 			}
 		}
 	}
