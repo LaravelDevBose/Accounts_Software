@@ -21,7 +21,11 @@ class LC_model extends CI_Model
 			'bank_name' =>$this->input->post('bank_name'),
 			'lc_date' =>$this->input->post('lc_date'),
 			'lc_note' =>$this->input->post('lc_note'),
-			'status'=>'a'
+			'status'=>'a',
+			'created_by' =>$this->session->userdata('name'),
+			'updated_by'  =>$this->session->userdata('name'),
+			'created_at' =>date('Y-m-d'),
+			'updated_at' =>date('Y-m-d')
 		);
 
 		$result = $this->db->insert('tbl_lcs', $attr);
@@ -47,7 +51,9 @@ class LC_model extends CI_Model
 			'lc_no' 		=> 	$this->input->post('lc_no'),
 			'bank_name' =>$this->input->post('bank_name'),
 			'lc_date' =>$this->input->post('lc_date'),
-			'lc_note' =>$this->input->post('lc_note')
+			'lc_note' =>$this->input->post('lc_note'),
+			'updated_by'  =>$this->session->userdata('name'),
+			'updated_at' =>date('Y-m-d'),
 		);
 
 		$this->db->where('id', $id);

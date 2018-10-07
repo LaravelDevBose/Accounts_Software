@@ -25,7 +25,11 @@ class Customer_model extends CI_Model
 			'cus_entry_date'	=>$this->input->post('cus_entry_date'),
 			'cus_email'	=>$this->input->post('cus_email'),
 			'cus_address'	=>$this->input->post('cus_address'),
-			'cus_status'	=>'a'
+			'cus_status'	=>'a',
+			'created_by' =>$this->session->userdata('name'),
+			'updated_by'  =>$this->session->userdata('name'),
+			'created_at' =>date('Y-m-d'),
+			'updated_at' =>date('Y-m-d')
 		);
 
 		$result = $this->db->insert('customers', $attr);
@@ -56,7 +60,9 @@ class Customer_model extends CI_Model
 			'alt_contact_no'	=>$this->input->post('alt_contact_no'),
 			'cus_entry_date'	=>$this->input->post('cus_entry_date'),
 			'cus_email'	=>$this->input->post('cus_email'),
-			'cus_address'	=>$this->input->post('cus_address')
+			'cus_address'	=>$this->input->post('cus_address'),
+			'updated_by'  =>$this->session->userdata('name'),
+			'updated_at' =>date('Y-m-d'),
 		);
 
 		$this->db->where('id', $id);

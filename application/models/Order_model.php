@@ -60,7 +60,11 @@ class Order_model extends CI_Model
 				'ord_mileage'	=>$this->input->post('ord_mileage'),
 				'ord_budget_range'	=>$this->input->post('ord_budget_range'),
 				'order_status'	=>$status,
-				'status'	=>'a'
+				'status'	=>'a',
+				'created_by' =>$this->session->userdata('name'),
+				'updated_by'  =>$this->session->userdata('name'),
+				'created_at' =>date('Y-m-d'),
+				'updated_at' =>date('Y-m-d')
 			);
 
 			$result = $this->db->insert('orders', $attr);
@@ -104,6 +108,8 @@ class Order_model extends CI_Model
 			'ord_mileage'	=>$this->input->post('ord_mileage'),
 			'ord_budget_range'	=>$this->input->post('ord_budget_range'),
 			'order_status'	=> $status,
+			'updated_by'  =>$this->session->userdata('name'),
+			'updated_at' =>date('Y-m-d')
 		);
 
 		$this->db->where('id', $id);
