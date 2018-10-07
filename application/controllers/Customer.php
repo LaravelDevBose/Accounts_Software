@@ -80,10 +80,10 @@ class Customer extends CI_Controller
 		$this->form_validation->set_rules('cus_contact_no', 'Contact Number ', 'required|trim');
 		$this->form_validation->set_rules('cus_entry_date', 'Entry Date', 'required|trim');
 		$this->form_validation->set_rules('cus_address', 'Customer Address', 'required|trim');
-		$this->form_validation->set_rules('ord_lc_no', 'L/C No', 'required|trim');
-		$this->form_validation->set_rules('ord_car_model', 'Car Model', 'required|trim');
-		$this->form_validation->set_rules('ord_engine_no', 'Engine Number', 'required|trim');
-		$this->form_validation->set_rules('ord_chassis_no', 'Chassis No', 'required|trim');
+		// $this->form_validation->set_rules('ord_lc_no', 'L/C No', 'required|trim');
+		// $this->form_validation->set_rules('ord_car_model', 'Car Model', 'required|trim');
+		// $this->form_validation->set_rules('ord_engine_no', 'Engine Number', 'required|trim');
+		// $this->form_validation->set_rules('ord_chassis_no', 'Chassis No', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Order No ', 'required|trim');
 
 

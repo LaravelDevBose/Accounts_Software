@@ -16,7 +16,7 @@ class Order extends CI_Controller
 
 	/*==========Order Page show ==========*/
 	public function index()
-	{
+	{ 
 		if (!$this->Admin_model->is_admin_loged_in()) 
 		{
 			redirect('Adminlogin/?logged_in_first');
@@ -49,10 +49,10 @@ class Order extends CI_Controller
 	public function store_order_info()
 	{
 		$this->form_validation->set_rules('cus_id', 'Select Customer', 'required|trim');
-		$this->form_validation->set_rules('ord_lc_no', 'L/c Number ', 'required|trim');
-		$this->form_validation->set_rules('ord_car_model', 'Model Number ', 'required|trim');
-		$this->form_validation->set_rules('ord_engine_no', 'Engine Number', 'required|trim');
-		$this->form_validation->set_rules('ord_chassis_no', 'Chassis No', 'required|trim');
+		// $this->form_validation->set_rules('ord_lc_no', 'L/c Number ', 'required|trim');
+		// $this->form_validation->set_rules('ord_car_model', 'Model Number ', 'required|trim');
+		// $this->form_validation->set_rules('ord_engine_no', 'Engine Number', 'required|trim');
+		// $this->form_validation->set_rules('ord_chassis_no', 'Chassis No', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Order No', 'required|trim');
 
 		if($this->form_validation->run() == FALSE){

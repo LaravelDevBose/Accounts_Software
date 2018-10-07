@@ -56,7 +56,7 @@ class Admin_model extends CI_Model
 		$attr = array(
 			'admin_username' 	=> $this->input->post('user_name'), 
 			'admin_email' 		=> $this->input->post('email'), 
-			'admin_phone' 		=> $this->input->post('minimum_characters'), 
+			'admin_phone' 		=> $this->input->post('phone_no'), 
 			'admin_address' 	=> $this->input->post('address'), 
 			'admin_image' 		=> $filename,
 			'admin_password' 	=> $pass, 
@@ -65,10 +65,10 @@ class Admin_model extends CI_Model
 		$insert = $this->db->insert('create_admin', $attr);
 		$adminID = $this->db->insert_id();
 
-		$attr2 = array(
-			'ac_admin_id' 	=> $adminID
-		);
-		$insert2 = $this->db->insert('tbl_access', $attr2);
+		// $attr2 = array(
+		// 	'ac_admin_id' 	=> $adminID
+		// );
+		// $insert2 = $this->db->insert('tbl_access', $attr2);
 
 		if($insert)
 		{
@@ -104,7 +104,7 @@ class Admin_model extends CI_Model
 		$qu = $this->db->get_where('create_admin', $attr);
 		
 		if ( $qu->num_rows() == 1) {
-			return $qu->result();
+			return $qu->row();
 		}else {
 			return FALSE;
 		}
@@ -120,7 +120,7 @@ class Admin_model extends CI_Model
 		$attr = array(
 			'admin_username' 	=> $this->input->post('user_name'), 
 			'admin_email' 		=> $this->input->post('email'), 
-			'admin_phone' 		=> $this->input->post('minimum_characters'), 
+			'admin_phone' 		=> $this->input->post('phone_no'), 
 			'admin_address' 	=> $this->input->post('address'),
 		);
 		
@@ -143,7 +143,7 @@ class Admin_model extends CI_Model
 		$attr = array(
 			'admin_username' 	=> $this->input->post('user_name'), 
 			'admin_email' 		=> $this->input->post('email'), 
-			'admin_phone' 		=> $this->input->post('minimum_characters'), 
+			'admin_phone' 		=> $this->input->post('phone_no'), 
 			'admin_address' 	=> $this->input->post('address'), 
 			'admin_image' 		=> $filename,
 		);

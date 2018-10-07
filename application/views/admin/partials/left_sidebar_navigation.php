@@ -19,7 +19,7 @@
   </li>
   <li class="<?= ($this->uri->uri_string()== 'customers')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>customers">
-      <i class="menu-icon fa fa-user"></i>
+      <i class="menu-icon fa fa-users"></i>
       <span class="menu-text"> Customer List </span>
     </a>
     <b class="arrow"></b>
@@ -27,14 +27,14 @@
 
   <li class="<?= ($this->uri->uri_string()== 'order/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>order/insert">
-      <i class="menu-icon fa fa-usd"></i>
+      <i class="menu-icon fa fa-shopping-bag"></i>
       <span class="menu-text"> Order Entry </span>
     </a>
     <b class="arrow"></b>
   </li>
   <li class="<?= ($this->uri->uri_string()== 'order/list')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>order/list">
-      <i class="menu-icon fa fa-usd"></i>
+      <i class="menu-icon fa fa-shopping-cart"></i>
       <span class="menu-text"> Order List </span>
     </a>
     <b class="arrow"></b>
@@ -49,6 +49,13 @@
     <b class="arrow"></b>
   </li>
 
+  <li class="<?= ($this->uri->uri_string()== 'ie_head/insert')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>ie_head/insert">
+      <i class="menu-icon fa fa-usd"></i>
+      <span class="menu-text"> IE Head </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
 
   <li class="">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
@@ -94,7 +101,7 @@
 
   <li class="">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-      <i class="menu-icon fa fa-calendar-check-o"></i>
+      <i class="menu-icon fa fa-print"></i>
       <span class="menu-text"> Reports</span>
 
       <b class="arrow fa fa-angle-down"></b>
@@ -118,7 +125,7 @@
         <b class="arrow"></b>
       </li>
       <li class="">
-        <a href="<?php echo base_url(); ?>product">
+        <a href="<?php echo base_url(); ?>report/lc/order">
           <i class="menu-icon fa fa-caret-right"></i>
           L / C Wise Order Report 
         </a>
@@ -140,6 +147,37 @@
       </li>
     </ul>
   </li>
+
+  <li class="">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-user"></i>
+      <span class="menu-text"> Admin</span>
+
+      <b class="arrow fa fa-angle-down"></b>
+    </a>
+
+    <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="">
+        <a href="<?php echo base_url(); ?>createAdmin">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Add Admin
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>listAdmin">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Admin List
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
+    </ul>
+  </li>
+
+
 
   <li class="">
     <a href="<?php echo base_url(); ?>Adminlogin/logout">

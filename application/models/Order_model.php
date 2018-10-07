@@ -8,12 +8,28 @@ class Order_model extends CI_Model
 	/*======== get all order info =========*/
 	public function get_order_info()
 	{	
+		$this->db->select('orders.*, customers.cus_name');
+		$this->db->from('orders');
+		$this->db->join('customers', 'orders.cus_id = customers.id' );
+		$this->db->where('orders.status !=', 'd')->order_by('id', 'desc');
+		$result = $this->db->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+	/*====== find order by lc_no ======*/
+	public function lc_wise_order($lc_no=Null)
+	{
 		$this->db->select('orders.*, customers.cus_name, tbl_lcs.lc_no');
 		$this->db->from('orders');
 		$this->db->join('customers', 'orders.cus_id = customers.id' );
 		$this->db->join('tbl_lcs', 'orders.ord_lc_no = tbl_lcs.id' );
-		$this->db->where('orders.status', 'a')->order_by('id', 'desc');
-		$result = $this->db->get()->result();
+		$this->db->where('orders.ord_lc_no', $lc_no)->where('orders.status', 'a');
+		$result = $this->db->order_by('id', 'desc')->get()->result();
 
 		if($result){
 			return $result;
@@ -24,7 +40,9 @@ class Order_model extends CI_Model
 
 	/*====== store order data ======*/
 	public function store_order_info($cus_id = Null)
-	{
+	{	
+		$status = $this->check_order_status();
+
 		if(!is_null($cus_id)){
 			$attr = array(
 				'cus_id'	=>$cus_id,
@@ -41,6 +59,7 @@ class Order_model extends CI_Model
 				'ord_year'	=>$this->input->post('ord_year'),
 				'ord_mileage'	=>$this->input->post('ord_mileage'),
 				'ord_budget_range'	=>$this->input->post('ord_budget_range'),
+				'order_status'	=>$status,
 				'status'	=>'a'
 			);
 
@@ -68,7 +87,7 @@ class Order_model extends CI_Model
 	/*======== Update Order Info =========*/
 	public function update_order_info($id=Null)
 	{	
-		
+		$status = $this->check_order_status();
 		$attr = array(
 			'cus_id'	=>$this->input->post('cus_id'),
 			'ord_lc_no'	=>$this->input->post('ord_lc_no'),
@@ -84,6 +103,7 @@ class Order_model extends CI_Model
 			'ord_year'	=>$this->input->post('ord_year'),
 			'ord_mileage'	=>$this->input->post('ord_mileage'),
 			'ord_budget_range'	=>$this->input->post('ord_budget_range'),
+			'order_status'	=> $status,
 		);
 
 		$this->db->where('id', $id);
@@ -93,6 +113,17 @@ class Order_model extends CI_Model
 			return TRUE;
 		}else {
 			return FALSE;
+		}
+	}
+
+	/*======= Check order Status =======*/
+	public function check_order_status()
+	{	$lc_no = $this->input->post('ord_lc_no');
+		$chassis_no = $this->input->post('ord_chassis_no');
+		if($lc_no && $chassis_no){
+			return 'a';
+		}else{
+			return 'p';
 		}
 	}
 
@@ -110,4 +141,5 @@ class Order_model extends CI_Model
 			return FALSE;
 		}
 	}
+
 }

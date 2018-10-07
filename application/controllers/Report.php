@@ -43,4 +43,25 @@ class Report extends CI_Controller
 		$data['customers'] = $this->Customer_model->find_all_customer_info();
 		$this->load->view('admin/adminMaster', $data);
 	}
+
+	/*======= View Lc Wise Order Report ========*/
+	public function view_lc_wise_order_report()
+	{
+		$data['title'] = 'Lc Wise Order Report';  
+		$data['content'] = 'report/lc_order_report_view';
+		$data['lc_data'] = $this->LC_model->get_all_lc_info();
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*======= find order by L/C Number ========*/
+	public function find_order_by_lc($lc_num=Null)
+	{
+		if($result = $this->Order_model->lc_wise_order($lc_num)){
+
+			$data['orders'] = $result;
+			$this->load->view('admin/report/order_table',$data);
+		}else{
+			echo 0;
+		}
+	}
 }

@@ -32,10 +32,10 @@ class Admincreate extends CI_Controller
 	/*======================Add Admin Page======================*/
 	public function addAdminPage()
 	{
-		$data['admin'] = 'active';
+		$data['title'] = 'Add Admin Information';
 		$data['add_admin'] = 'active';
 
-		$data['content'] = 'createAdmin/addAdmin';  
+		$data['content'] = 'createAdmin/addAdmin';   
 		$this->load->view('admin/adminMaster', $data);
 	}
 
@@ -47,7 +47,7 @@ class Admincreate extends CI_Controller
 	public function add_admin_data_check()
 	{
 		$this->form_validation->set_rules('user_name', 'User Name', 'required|trim|min_length[3]|is_unique[create_admin.admin_username]');
-		$this->form_validation->set_rules('minimum_characters', 'Phone', 'required|trim|min_length[11]');
+		$this->form_validation->set_rules('phone_no', 'Phone', 'required|trim|min_length[11]');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|min_length[10]|valid_email');	
 		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]');
 		$this->form_validation->set_rules('repeat_password', 'Repeat Password', 'required|trim|min_length[6]|matches[password]');
@@ -134,11 +134,9 @@ class Admincreate extends CI_Controller
 	/*======================List Admin Page======================*/
 	public function listOfAdmin()
 	{
-		$data['admin'] = 'active';
-		$data['list_admin'] = 'active';
-
+		$data['title'] = 'Admin Information List';
 		$data['content'] = 'createAdmin/listAdmin'; 
-		$data['FatchAdminData'] = $this->Admin_model->fatch_all_data();
+		$data['admins'] = $this->Admin_model->fatch_all_data();
 		$this->load->view('admin/adminMaster', $data);
 	}
 
@@ -150,11 +148,9 @@ class Admincreate extends CI_Controller
 	/*==============View Admin Edit Page With Data==============*/
 	public function edit_admin($id = null)
 	{
-		$data['admin'] = 'active';
-		$data['edit_admin'] = 'active';
-
+		$data['title'] = 'Edit Admin Information';
 		if ($this->Admin_model->edit_admin($id)) {
-			$data['editData'] = $this->Admin_model->edit_admin($id);
+			$data['admin'] = $this->Admin_model->edit_admin($id);
 		}
 		$data['content'] = 'createAdmin/editAdmin';
 		$this->load->view('admin/adminMaster', $data);
@@ -169,12 +165,13 @@ class Admincreate extends CI_Controller
 	public function edit_admin_data_check($id = null)
 	{
 		$this->form_validation->set_rules('user_name', 'User Name', 'required|trim|min_length[3]');
-		$this->form_validation->set_rules('minimum_characters', 'Phone', 'required|trim|min_length[11]');
+		$this->form_validation->set_rules('phone_no', 'Phone', 'required|trim|min_length[11]');
 
 
 		if($this->form_validation->run() == FALSE)
-		{
-			$data['editData'] = $this->Admin_model->edit_admin($id);
+		{	
+			$data['title'] = 'Edit Admin Information';
+			$data['admin'] = $this->Admin_model->edit_admin($id);
 			$data['content'] = 'createAdmin/editAdmin'; 
 			$this->load->view('admin/adminMaster', $data);
 		}

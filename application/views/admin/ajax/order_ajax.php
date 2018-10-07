@@ -51,7 +51,7 @@
 	/*======== Check Select Custome or not ===========*/
 	$('#order_submit').on('click', function(){
 		var cus_id  = $('input[name="cus_id"]').val();
-		var ord_lc_no = $('#ord_lc_no').val();
+		// var ord_lc_no = $('#ord_lc_no').val();
 		if(cus_id == ' ' || cus_id.length < 1){
 			$('#cus_info').css('border', '1px solid red');
 			swal({
@@ -62,15 +62,7 @@
                 });
 			return false;
 		} 
-		else if(ord_lc_no ==0 || ord_lc_no.langth == 0){
-	      swal({
-	          text: "Pleass Select a L/C Number",
-	          icon: "warning",
-	          buttons: false,
-	          timer: 1500,
-	        });
-	      return false;
-	    }else{
+		else{
 	      return true;
 	    }
 

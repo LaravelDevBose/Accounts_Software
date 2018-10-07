@@ -110,7 +110,7 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_lc_no"> L / C No: <span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <select class="form-control" required  id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
+                    <select class="form-control"  id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
                       <option value="0">Please Select a L / C No</option>
                       <?php if($lc_data && isset($lc_data)): foreach($lc_data as $data):?>
                         <option value="<?= $data->id; ?>"><?= $data->lc_no; ?></option>
@@ -122,7 +122,7 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> Car Model: <span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <input type="text" id="ord_car_model" required name="ord_car_model" placeholder="Car Model" class="form-control" />
+                    <input type="text" id="ord_car_model"  name="ord_car_model" placeholder="Car Model" class="form-control" />
                   </div>
                 </div>
 
@@ -136,14 +136,14 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <input type="text" id="ord_engine_no" required name="ord_engine_no" placeholder="Engine No" class="form-control" />
+                    <input type="text" id="ord_engine_no"  name="ord_engine_no" placeholder="Engine No" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_chassis_no"> Chassis No: <span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <input type="text" id="ord_chassis_no" required name="ord_chassis_no" placeholder="Chassis No" class="form-control" />
+                    <input type="text" id="ord_chassis_no"  name="ord_chassis_no" placeholder="Chassis No" class="form-control" />
                   </div>
                 </div>
 

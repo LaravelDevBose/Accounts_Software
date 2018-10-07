@@ -115,7 +115,7 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_lc_no"> L / C No: <span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <select class="form-control" required id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
+                    <select class="form-control"  id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
                       <option value="0">Please Select a L / C No</option>
                       <?php if($lc_data && isset($lc_data)): foreach($lc_data as $data):?>
                         <option value="<?= $data->id; ?>"><?= $data->lc_no; ?></option>
@@ -127,7 +127,7 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> Car Model: <span class="text-bold text-danger">*</span></label>
                   <div class="col-sm-8">
-                    <input type="text" id="ord_car_model" name="ord_car_model" required placeholder="Car Model" class="form-control" />
+                    <input type="text" id="ord_car_model" name="ord_car_model"  placeholder="Car Model" class="form-control" />
                   </div>
                 </div>
 
@@ -234,19 +234,3 @@
   </div>  
 </div>
 
-<script>
-  $('.cus_submit').on('click', function(){
-    var ord_lc_no = $('#ord_lc_no').val();
-    if(ord_lc_no ==0 || ord_lc_no.langth == 0){
-      swal({
-          text: "Pleass Select a L/C Number",
-          icon: "warning",
-          buttons: false,
-          timer: 1500,
-        });
-      return false;
-    }else{
-      return true;
-    }
-  });
-</script>
