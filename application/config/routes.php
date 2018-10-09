@@ -68,6 +68,13 @@ $route['payment/edit/(:any)'] 		= 'Account/payment_entry_edit/$1';
 $route['payment/update/(:any)'] 	= 'Account/payment_entry_update/$1';
 $route['payment/delete/(:any)'] 	= 'Account/delete_payment_data/$1';
 
+//Other Income Entry Route List
+$route['account/other_income']		='Account/other_income_page';
+$route['other_income/store']		= 'Account/other_income_store';
+$route['other_income/edit/(:any)'] 	= 'Account/other_income_edit/$1';
+$route['other_income/update/(:any)']= 'Account/other_income_update/$1';
+$route['other_income/delete/(:any)']= 'Account/delete_other_income/$1';
+
 /*========== Employee Route List ========*/
 $route['employees']				='Employee/index';
 $route['employee/insert']		='Employee/insert_employee_info';

@@ -38,8 +38,21 @@ class Account_model extends CI_Model
 		}
 	}
 
+	/*********** Other Income Method List *************/
+	public function get_all_income_data()
+	{
+		$this->db->select('accounts.*, ie_heads.head_title');
+		$this->db->from('accounts');
+		$this->db->join('ie_heads','accounts.ie_head = ie_heads.id');
+		$this->db->where('accounts.account_type','other_income')->where('accounts.status', 'a');
+		$result = $this->db->order_by('id', 'desc')->get()->result();
 
-	
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
 
 	/************ Same for all **************/
 	/************ Same for all **************/

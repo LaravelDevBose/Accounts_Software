@@ -213,4 +213,99 @@ class Account extends CI_Controller
 			redirect('account/payment');
 		}
 	}
+
+	/********** Other Income Method List ****************/
+	/********** Other Income Method List ****************/
+	/********** Other Income Method List ****************/
+
+	public function other_income_page()
+	{
+		$data['title'] = 'Other Income Entry';
+		$data['content'] = 'accounts/other_income_entry';
+		$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
+		$data['incomes'] = $this->Account_model->get_all_income_data();
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*===== Store Other Income Data =======*/
+	public function other_income_store()
+	{	
+		// print_r($this->input->post()); die();
+
+		$this->form_validation->set_rules('ie_head', 'IE Head ', 'required|trim');
+		$this->form_validation->set_rules('date', 'Date', 'required|trim');
+		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
+
+		if($this->form_validation->run() == FALSE){
+		 	$data['title'] = 'Other Income Entry';
+			$data['content'] = 'accounts/other_income_entry';
+			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
+			$data['incomes'] = $this->Account_model->get_all_income_data();
+			$this->load->view('admin/adminMaster', $data);
+		}else{
+
+		 	if($this->Account_model->store_account_data()){
+		 		$data['incomes'] = $this->Account_model->get_all_income_data();
+		 		$this->load->view('admin/accounts/other_income_tbl', $data);
+		 	}else{
+		 		echo 0;
+		 	}
+		}
+	}
+
+
+	/*======= Edit Other Income page =======*/
+	public function other_income_edit($id=Null)
+	{
+		if($result = $this->Account_model->get_data_by_id($id)){
+			$data['entry'] = $result;
+			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
+			$this->load->view('admin/accounts/edit_other_income', $data);
+		}else{
+			$data['error']="No Data Found...!";
+			$this->session->set_flashdata($data);
+			redirect('account/other_income');
+		}
+	}
+
+	/*====== Update Other Income Date =========*/
+	public function other_income_update($id=Null)
+	{
+		$this->form_validation->set_rules('ie_head', 'IE Head ', 'required|trim');
+		$this->form_validation->set_rules('date', 'Date', 'required|trim');
+		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
+
+		if($this->form_validation->run() == FALSE){
+		 	$data['title'] = 'Other Income Entry';
+			$data['content'] = 'accounts/other_income_entry';
+			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
+			$data['incomes'] = $this->Account_model->get_all_income_data();
+			$this->load->view('admin/adminMaster', $data);
+		}else{
+
+		 	if($this->Account_model->update_account_data($id)){
+		 		$data['success']="Update SuccessFully";
+				$this->session->set_flashdata($data);
+				redirect('account/other_income');
+		 	}else{	
+		 		$data['error']="Update UnSuccessfull";
+				$this->session->set_flashdata($data);
+				redirect('account/other_income');
+		 	}
+		}
+	}
+
+	/*======== delete _data=====*/
+	public function delete_other_income($id=Null)
+	{
+		if($this->Account_model->delete_data($id)){
+			$data['success']="Delete SuccessFully";
+			$this->session->set_flashdata($data);
+			redirect('account/other_income');
+		}else{
+			$data['error']="Delete UnSuccessfull";
+			$this->session->set_flashdata($data);
+			redirect('account/payment');
+		}
+	}
 }

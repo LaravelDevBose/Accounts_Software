@@ -1,4 +1,4 @@
-<?php $i=1; if($payments && isset($payments)): foreach($payments as $data):?>
+<?php $i=1; if($incomes && isset($incomes)): foreach($incomes as $data):?>
   <tr>
     <td class="center" style="display:none;"> </td>
 
@@ -14,10 +14,10 @@
     <td><?= $data->description; ?></td>
     <td>
         <div class="hidden-sm hidden-xs action-buttons">
-            <a class="green linka fancybox fancybox.ajax" href="<?= base_url();?>payment/edit/<?= $data->id; ?>" >
+            <a class="green linka fancybox fancybox.ajax" href="<?= base_url();?>other_income/edit/<?= $data->id; ?>" >
               <i class="ace-icon fa fa-pencil bigger-130"></i>
             </a>
-            <a class="red" href="<?= base_url(); ?>payment/delete/<?= $data->id?>" onclick="confirm('Are You Sure Went to Delete This! ')">
+            <a class="red" href="<?= base_url(); ?>other_income/delete/<?= $data->id?>" onclick="confirm('Are You Sure Went to Delete This! ')">
               <i class="ace-icon fa fa-trash-o bigger-130"></i>
             </a>
         </div>

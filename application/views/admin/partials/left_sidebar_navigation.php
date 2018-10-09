@@ -89,8 +89,8 @@
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="">
-        <a href="<?php echo base_url(); ?>">
+      <li class="<?= ($this->uri->uri_string()== 'account/other_income')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>account/other_income">
           <i class="menu-icon fa fa-caret-right"></i>
           Other Income Entry 
         </a>
