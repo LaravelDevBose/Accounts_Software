@@ -76,21 +76,21 @@
         <b class="arrow"></b>
       </li>
       <li class="">
-        <a href="<?php echo base_url(); ?>product">
+        <a href="<?php echo base_url(); ?>">
           <i class="menu-icon fa fa-caret-right"></i>
           Office Payment Entry 
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="">
-        <a href="<?php echo base_url(); ?>product">
+      <li class="<?= ($this->uri->uri_string()== 'account/payment')?'active': ' ' ?>" ">
+        <a href="<?php echo base_url(); ?>account/payment">
           <i class="menu-icon fa fa-caret-right"></i>
           Payments Entry
         </a>
         <b class="arrow"></b>
       </li>
       <li class="">
-        <a href="<?php echo base_url(); ?>product">
+        <a href="<?php echo base_url(); ?>">
           <i class="menu-icon fa fa-caret-right"></i>
           Other Income Entry 
         </a>

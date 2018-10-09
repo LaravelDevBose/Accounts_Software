@@ -21,9 +21,32 @@ class Account_model extends CI_Model
 			return FALSE;
 		}
 	}
+	/******** Payment Entry Method List **********/
 
-	/*====== Store Collection Entry Data =======*/
-	public function store_collection_data()
+	public function get_all_payment_data()
+	{
+		$this->db->select('accounts.*, ie_heads.head_title');
+		$this->db->from('accounts');
+		$this->db->join('ie_heads','accounts.ie_head = ie_heads.id');
+		$this->db->where('accounts.account_type','payment')->where('accounts.status', 'a');
+		$result = $this->db->order_by('id', 'desc')->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+
+	
+
+	/************ Same for all **************/
+	/************ Same for all **************/
+	/************ Same for all **************/
+
+	/*====== Store Account Entry Data =======*/
+	public function store_account_data()
 	{
 		$attr = array(
 			'enty_type'		=>$this->input->post('enty_type'),
@@ -43,15 +66,10 @@ class Account_model extends CI_Model
 		if($res){return TRUE; }else{ return FALSE; }
 	}
 
-	/*======= get collention by id ======*/
-	public function get_collection_by_id($id=Null)
-	{
-		$res = $this->db->where('id', $id)->get('accounts')->row();
-		if($res){ return $res; }else{ return FALSE; }
-	}
+	
 
 	/*====== Store Collection Entry Data =======*/
-	public function update_collection_data($id = Null)
+	public function update_account_data($id = Null)
 	{
 		$attr = array(
 			'ie_head'		=>$this->input->post('ie_head'),
@@ -65,6 +83,14 @@ class Account_model extends CI_Model
 		$this->db->where('id', $id);
 		$res = $this->db->update('accounts', $attr);
 		if($this->db->affected_rows()){return TRUE; }else{ return FALSE; }
+	}
+
+
+	/*======= get Acounts data by id ======*/
+	public function get_data_by_id($id=Null)
+	{
+		$res = $this->db->where('id', $id)->get('accounts')->row();
+		if($res){ return $res; }else{ return FALSE; }
 	}
 
 	/*====== Delete Accounts table Data =======*/

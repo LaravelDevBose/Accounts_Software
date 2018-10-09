@@ -52,7 +52,7 @@ class Account extends CI_Controller
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 
-		 	if($this->Account_model->store_collection_data()){
+		 	if($this->Account_model->store_account_data()){
 		 		$data['c_entys'] = $this->Account_model->get_all_collection_data();
 		 		$this->load->view('admin/accounts/collection_tbl', $data);
 		 	}else{
@@ -65,7 +65,7 @@ class Account extends CI_Controller
 	/*======= Edit Collection page =======*/
 	public function collection_entry_edit($id=Null)
 	{
-		if($result = $this->Account_model->get_collection_by_id($id)){
+		if($result = $this->Account_model->get_data_by_id($id)){
 			$data['entry'] = $result;
 			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
 			$this->load->view('admin/accounts/edit_collection', $data);
@@ -91,7 +91,7 @@ class Account extends CI_Controller
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 
-		 	if($this->Account_model->update_collection_data($id)){
+		 	if($this->Account_model->update_account_data($id)){
 		 		$data['success']="Update SuccessFully";
 				$this->session->set_flashdata($data);
 				redirect('account/collection');
@@ -114,6 +114,103 @@ class Account extends CI_Controller
 			$data['error']="Delete UnSuccessfull";
 			$this->session->set_flashdata($data);
 			redirect('account/collection');
+		}
+	}
+
+
+
+	/********** Payment Entry Method List ****************/
+	/********** Payment Entry Method List ****************/
+	/********** Payment Entry Method List ****************/
+
+	public function payment_entry_page()
+	{
+		$data['title'] = 'Payment Entry';
+		$data['content'] = 'accounts/payment_entry';
+		$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
+		$data['payments'] = $this->Account_model->get_all_payment_data();
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*===== Store Payment Entry Data =======*/
+	public function payment_entry_store()
+	{	
+		// print_r($this->input->post()); die();
+
+		$this->form_validation->set_rules('ie_head', 'IE Head ', 'required|trim');
+		$this->form_validation->set_rules('date', 'Date', 'required|trim');
+		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
+
+		if($this->form_validation->run() == FALSE){
+		 	$data['title'] = 'Payment Entry';
+			$data['content'] = 'accounts/payment_entry';
+			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
+			$data['payments'] = $this->Account_model->get_all_payment_data();
+			$this->load->view('admin/adminMaster', $data);
+		}else{
+
+		 	if($this->Account_model->store_account_data()){
+		 		$data['payments'] = $this->Account_model->get_all_payment_data();
+		 		$this->load->view('admin/accounts/payment_tbl', $data);
+		 	}else{
+		 		echo 0;
+		 	}
+		}
+	}
+
+
+	/*======= Edit Payment page =======*/
+	public function payment_entry_edit($id=Null)
+	{
+		if($result = $this->Account_model->get_data_by_id($id)){
+			$data['entry'] = $result;
+			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
+			$this->load->view('admin/accounts/edit_payment', $data);
+		}else{
+			$data['error']="No Data Found...!";
+			$this->session->set_flashdata($data);
+			redirect('account/payment');
+		}
+	}
+
+	/*====== Update Payment Date =========*/
+	public function payment_entry_update($id=Null)
+	{
+		$this->form_validation->set_rules('ie_head', 'IE Head ', 'required|trim');
+		$this->form_validation->set_rules('date', 'Date', 'required|trim');
+		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
+
+		if($this->form_validation->run() == FALSE){
+		 	$data['title'] = 'Payment Entry';
+			$data['content'] = 'accounts/payment_entry';
+			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
+			$data['payments'] = $this->Account_model->get_all_payment_data();
+			$this->load->view('admin/adminMaster', $data);
+		}else{
+
+		 	if($this->Account_model->update_account_data($id)){
+		 		$data['success']="Update SuccessFully";
+				$this->session->set_flashdata($data);
+				redirect('account/payment');
+		 	}else{	
+		 		$data['error']="Update UnSuccessfull";
+				$this->session->set_flashdata($data);
+				redirect('account/payment');
+		 	}
+		}
+	}
+
+	/*======== delete _data=====*/
+	public function delete_payment_data($id=Null)
+	{
+		if($this->Account_model->delete_data($id)){
+			$data['success']="Delete SuccessFully";
+			$this->session->set_flashdata($data);
+			redirect('account/payment');
+		}else{
+			$data['error']="Delete UnSuccessfull";
+			$this->session->set_flashdata($data);
+			redirect('account/payment');
 		}
 	}
 }

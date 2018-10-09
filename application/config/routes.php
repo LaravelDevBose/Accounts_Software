@@ -55,11 +55,18 @@ $route['ie_head/delete/(:any)']	=	'IE_head/delete_ie_head_info/$1';
 /*========== Account Route List =========*/
 
 //Collection Entry Route List
-$route['account/collection'] 			= 'Account/collection_entry_page';
-$route['account/collection/store'] 		= 'Account/collection_entry_store';
-$route['collection/edit/(:any)'] 		= 'Account/collection_entry_edit/$1';
-$route['collection/update/(:any)'] 		= 'Account/collection_entry_update/$1';
-$route['collection/delete/(:any)'] 		= 'Account/delete_collection_data/$1';
+$route['account/collection'] 		= 'Account/collection_entry_page';
+$route['account/collection/store'] 	= 'Account/collection_entry_store';
+$route['collection/edit/(:any)'] 	= 'Account/collection_entry_edit/$1';
+$route['collection/update/(:any)'] 	= 'Account/collection_entry_update/$1';
+$route['collection/delete/(:any)'] 	= 'Account/delete_collection_data/$1';
+
+//Payment Entry Route list
+$route['account/payment']			= 'Account/payment_entry_page';
+$route['account/payment/store']		= 'Account/payment_entry_store';
+$route['payment/edit/(:any)'] 		= 'Account/payment_entry_edit/$1';
+$route['payment/update/(:any)'] 	= 'Account/payment_entry_update/$1';
+$route['payment/delete/(:any)'] 	= 'Account/delete_payment_data/$1';
 
 /*========== Employee Route List ========*/
 $route['employees']				='Employee/index';
