@@ -54,6 +54,13 @@ $route['ie_head/delete/(:any)']	=	'IE_head/delete_ie_head_info/$1';
 
 /*========== Account Route List =========*/
 
+//Collection Entry Route List
+$route['account/collection'] 			= 'Account/collection_entry_page';
+$route['account/collection/store'] 		= 'Account/collection_entry_store';
+$route['collection/edit/(:any)'] 		= 'Account/collection_entry_edit/$1';
+$route['collection/update/(:any)'] 		= 'Account/collection_entry_update/$1';
+$route['collection/delete/(:any)'] 		= 'Account/delete_collection_data/$1';
+
 /*========== Employee Route List ========*/
 $route['employees']				='Employee/index';
 $route['employee/insert']		='Employee/insert_employee_info';

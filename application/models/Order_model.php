@@ -124,13 +124,32 @@ class Order_model extends CI_Model
 
 	/*======= Check order Status =======*/
 	public function check_order_status()
-	{	$lc_no = $this->input->post('ord_lc_no');
+	{	
+		$order_status = $this->input->post('order_status');
+		$lc_no = $this->input->post('ord_lc_no');
 		$chassis_no = $this->input->post('ord_chassis_no');
-		if($lc_no && $chassis_no){
-			return 'a';
+
+
+		if($order_status && isset($order_status)){ //check is request for store or Update
+			if($order_status == 'c'){ //check order already complete or not
+				return 'c';
+			}else{
+				if($lc_no && $chassis_no){  //check lc and chase has or not
+					return 'a';
+				}else{
+					return 'p';
+				}
+			}
 		}else{
-			return 'p';
+			if($lc_no && $chassis_no){ //check lc and chase has or not
+				return 'a';
+			}else{
+				return 'p';
+			}
 		}
+
+		
+		
 	}
 
 	/*======= delete order Info =========*/

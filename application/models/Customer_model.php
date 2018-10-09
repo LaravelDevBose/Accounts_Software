@@ -42,7 +42,7 @@ class Customer_model extends CI_Model
 	{
 		if(!is_null($id)){
 
-			$result = $this->db->where('id', $id)->where('cus_status', 'a')->get('customers')->row();
+			$result = $this->db->where('id', $id)->get('customers')->row();
 			if($result){ return $result; }else{ return FALSE; }
 
 		}else{

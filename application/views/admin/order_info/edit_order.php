@@ -94,7 +94,7 @@
             </a>
 
             <a href="#" data-action="close">
-              <i class="ace-icon fa fa-times"></i>
+              <i class="ace-icon fa fa-times"></i> 
             </a>
           </div>
         </div>
@@ -105,6 +105,7 @@
             <div class="row">
               <div class="col-sm-2">
                 <input type="hidden" name="cus_id" value="<?= $customer_info->id; ?>">
+                <input type="hidden" name="order_status" value="<?= $order->order_status; ?>">
               </div>
 
               <div class="col-sm-4">
