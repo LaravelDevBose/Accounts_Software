@@ -178,10 +178,11 @@ class Order_model extends CI_Model
 
 	/*====== find order L/C Number ========*/
 	public function find_lc_number($order_id=Null)
-	{
+	{	
+
 		$this->db->select('tbl_lcs.lc_no')->from('orders');
 		$this->db->join('tbl_lcs', 'orders.ord_lc_no = tbl_lcs.id');
-		$res = $this->db->where('order_status', 'a')->get()->row();
+		$res = $this->db->where('orders.id', $order_id)->where('orders.order_status', 'a')->get()->row();
 
 		if($res){ return $res; }else{ return FALSE; }
 	}
@@ -192,7 +193,7 @@ class Order_model extends CI_Model
 		$order_info = $this->db->where('id', $order_id)->get('orders')->row();
 
 		if($order_info){
-			$paid_amount = $this->db->select_sum('amount')->get('collections')->row();
+			$paid_amount = $this->db->select_sum('amount')->where('order_no', $order_id)->where('status', 'a')->get('collections')->row();
 			
 			$total_paid = $paid_amount->amount + $order_info->ord_advance;
 			$due_amount = $order_info->ord_budget_range - $total_paid;
@@ -200,7 +201,13 @@ class Order_model extends CI_Model
 		}else{
 			return FALSE;
 		}
-		
+	}
 
+	/*======= collection page order id and chassis no ========*/
+	public function get_all_order_for_collection($cus_id=Null)
+	{
+		$res = $this->db->select('id,ord_chassis_no')->where('cus_id', $cus_id)->get('orders')->result();
+
+		if($res){return $res;}else{return FALSE; }
 	}
 }

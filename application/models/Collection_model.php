@@ -6,7 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Collection_model extends CI_Model
 {
 	/*======= get All Collection Entry Data =========*/
-	public function get_all_collection_data()
+	public function get_all_collection_data() 
 	{
 		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
 		$this->db->from('collections');
@@ -51,7 +51,9 @@ class Collection_model extends CI_Model
 	public function update_collection_data($id = Null)
 	{
 		$attr = array(
-			'ie_head'		=>$this->input->post('ie_head'),
+			'cus_id'		=>$this->input->post('cus_id'),
+			'order_no'	=>$this->input->post('order_no'),
+			'lc_no'		=>$this->input->post('lc_no'),
 			'date'			=>$this->input->post('date'),
 			'amount'		=>$this->input->post('amount'),
 			'description'	=>$this->input->post('description'),
@@ -67,8 +69,10 @@ class Collection_model extends CI_Model
 
 	/*======= get Acounts data by id ======*/
 	public function get_collection_by_id($id=Null)
-	{
-		$res = $this->db->where('id', $id)->get('collections')->row();
+	{	
+		$this->db->select('collections.*, customers.cus_name')->from('collections');
+		$this->db->join('customers', 'collections.cus_id = customers.id');
+		$res = $this->db->where('collections.id', $id)->get()->row();
 		if($res){ return $res; }else{ return FALSE; }
 	}
 

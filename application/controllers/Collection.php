@@ -66,9 +66,11 @@ class Collection extends CI_Controller
 	/*======= Edit Collection page =======*/
 	public function collection_entry_edit($id=Null)
 	{
-		if($result = $this->Account_model->get_collection_by_id($id)){
-			$data['entry'] = $result;
-			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
+		if($result = $this->Collection_model->get_collection_by_id($id)){
+			$data['collection'] = $result;
+			$data['customers'] = $this->Customer_model->find_all_customer_info();
+			$data['orders'] = $this->Order_model->get_all_order_for_collection($result->cus_id);
+			$data['due_amount'] = $this->Order_model->find_due_amount($result->order_no);
 			$this->load->view('admin/accounts/edit_collection', $data);
 		}else{
 			$data['error']="No Data Found...!";
@@ -95,7 +97,7 @@ class Collection extends CI_Controller
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 
-		 	if($this->Account_model->update_collection_data($id)){
+		 	if($this->Collection_model->update_collection_data($id)){
 		 		$data['success']="Update SuccessFully";
 				$this->session->set_flashdata($data);
 				redirect('collections');
@@ -110,7 +112,7 @@ class Collection extends CI_Controller
 	/*======== delete _data=====*/
 	public function delete_collection_data($id=Null)
 	{
-		if($this->Account_model->delete_collection_data($id)){
+		if($this->Collection_model->delete_collection_data($id)){
 			$data['success']="Delete SuccessFully";
 			$this->session->set_flashdata($data);
 			redirect('collections');

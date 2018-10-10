@@ -9,7 +9,7 @@
           <h4 class="widget-title">Add New Collection</h4>
           <div class="widget-toolbar">
             <a href="#" data-action="collapse">
-              <i class="ace-icon fa fa-chevron-up"></i>
+              <i class="ace-icon fa fa-chevron-up"></i> 
             </a>
 
             <a href="#" data-action="close">
