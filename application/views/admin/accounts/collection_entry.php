@@ -23,17 +23,17 @@
             
             <form id="collection_entry" >
               <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-1">
                   <input type="hidden" name="enty_type" value="1">
                   <input type="hidden" name="account_type" value="c_enty">
                   <input type="hidden" name="status" value="a">
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                   
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="ie_head">IE Head:<span class="text-bold text-danger">*</span></label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-5 control-label no-padding-left" for="ie_head">Account Name:<span class="text-bold text-danger">*</span></label>
+                    <div class="col-sm-7">
                       <select class="form-control select-chosen" id="ie_head" name="ie_head" style="height: 30px; border-radius: 5px;">
                         <option value=" ">Select a head</option>
                         <?php if($ie_heads && isset($ie_heads)):  foreach($ie_heads as $head):?>
@@ -43,9 +43,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="description">Note: </label>
-                    <div class="col-sm-8">
-                      <textarea id="description" name="description" placeholder="Short Note" class="form-control" ></textarea>
+                    <label class="col-sm-5 control-label no-padding-left" for="description">Description: </label>
+                    <div class="col-sm-7">
+                      <textarea id="description" name="description" placeholder="Short Description" class="form-control" ></textarea>
                     </div>
                   </div>
                 </div>
