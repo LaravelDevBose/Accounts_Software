@@ -43,14 +43,14 @@
                 <div class="form-group">
                   <label class="col-sm-5 control-label no-padding-left" for="cus_contact_no"> Contact No:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-7">
-                    <input type="text" id="cus_contact_no" name="cus_contact_no" required placeholder="Contact No" class="form-control" />
+                    <input type="number" id="cus_contact_no" name="cus_contact_no" required placeholder="Contact No" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="alt_contact_no"> Alt. Contact No:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-5 control-label no-padding-left" for="alt_contact_no"> Alt. Contact No:</label>
                   <div class="col-sm-7">
-                    <input type="text" id="alt_contact_no" name="alt_contact_no" placeholder="Alt. Contact No" class="form-control" />
+                    <input type="number" id="alt_contact_no" name="alt_contact_no" placeholder="Alt. Contact No" class="form-control" />
                   </div>
                 </div>
               </div>
@@ -68,9 +68,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="cus_email"> E-mail:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="cus_email"> E-mail:</label>
                   <div class="col-sm-8">
-                    <input type="text" id="cus_email" name="cus_email" placeholder="E-mail" class="form-control" />
+                    <input type="email" id="cus_email" name="cus_email" placeholder="E-mail" class="form-control" />
                   </div>
                 </div>
                 
@@ -113,9 +113,9 @@
 
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_lc_no"> L / C No: <span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_lc_no"> L / C No:  </label>
                   <div class="col-sm-8">
-                    <select class="form-control"  id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
+                    <select class="chosen-select "  id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
                       <option value="0">Please Select a L / C No</option>
                       <?php if($lc_data && isset($lc_data)): foreach($lc_data as $data):?>
                         <option value="<?= $data->id; ?>"><?= $data->lc_no; ?></option>
@@ -125,28 +125,28 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> Car Model: <span class="text-bold text-danger">*</span></label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> Car Model: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_car_model" name="ord_car_model"  placeholder="Car Model" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_color"> Color: <span class="text-bold text-danger">*</span></label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_color"> Color: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_color" name="ord_color" placeholder="Color" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No: <span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_engine_no" name="ord_engine_no" placeholder="Engine No" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_chassis_no"> Chassis No:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_chassis_no"> Chassis No: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_chassis_no" name="ord_chassis_no" placeholder="Chassis No" class="form-control" />
                   </div>
@@ -155,13 +155,13 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="order_no"> Order No:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <input type="text" id="order_no" name="order_no" placeholder="Order No" class="form-control" />
+                    <input type="text" id="order_no" name="order_no" required placeholder="Order No" class="form-control" />
                   </div>
                 </div>
 
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_other_tirm"> Other Tirm:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_other_tirm"> Other Tirm: </label>
                   <div class="col-sm-8">
                     <textarea id="ord_other_tirm" name="ord_other_tirm" placeholder="Other Tirm" class="form-control" ></textarea>
                   </div>
@@ -172,7 +172,7 @@
 
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_make"> Make:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_make"> Make: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_make" name="ord_make_model" placeholder="Make" class="form-control" />
                   </div>
@@ -180,7 +180,7 @@
 
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_grade"> 
-                  Grade:<span class="text-bold text-danger">*</span> </label>
+                  Grade: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_grade" name="ord_grade" placeholder="Grade" class="form-control" />
                   </div>
@@ -188,7 +188,7 @@
 
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_type"> 
-                  Type:<span class="text-bold text-danger">*</span> </label>
+                  Type: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_type" name="ord_type" placeholder="Type" class="form-control" />
                   </div>
@@ -196,14 +196,14 @@
 
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_year"> 
-                  Year:<span class="text-bold text-danger">*</span> </label>
+                  Year:</label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_year" name="ord_year" placeholder="Year" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_mileage"> Mileage:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_mileage"> Mileage: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_mileage" name="ord_mileage" placeholder="Mileage" class="form-control" />
                   </div>
@@ -212,9 +212,16 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> Budget Range:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <input type="text" id="ord_budget_range" name="ord_budget_range" placeholder="Budget Range" class="form-control" />
+                    <input type="number" id="ord_budget_range" required name="ord_budget_range" placeholder="Budget Range" class="form-control" />
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_advance"> Advance:<span class="text-bold text-danger">*</span> </label>
+                  <div class="col-sm-8">
+                    <input type="number" id="ord_advance" required name="ord_advance" placeholder="Order Advance" class="form-control" />
+                  </div>
+                </div>
+
                 <div class="form-group"><div class="col-sm-12" style="height: 10px;"></div></div>
 
                 <div class="form-group" style="margin-top: 10px;">

@@ -6,21 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Account_model extends CI_Model
 {
 
-	/*======= get All Collection Entry Data =========*/
-	public function get_all_collection_data()
-	{
-		$this->db->select('accounts.*, ie_heads.head_title');
-		$this->db->from('accounts');
-		$this->db->join('ie_heads','accounts.ie_head = ie_heads.id');
-		$this->db->where('accounts.account_type','c_enty')->where('accounts.status', 'a');
-		$result = $this->db->order_by('id', 'desc')->get()->result();
-
-		if($result){
-			return $result;
-		}else{
-			return FALSE;
-		}
-	}
+	
 	/******** Payment Entry Method List **********/
 
 	public function get_all_payment_data()

@@ -59,6 +59,7 @@ class Order_model extends CI_Model
 				'ord_year'	=>$this->input->post('ord_year'),
 				'ord_mileage'	=>$this->input->post('ord_mileage'),
 				'ord_budget_range'	=>$this->input->post('ord_budget_range'),
+				'ord_advance'	=>$this->input->post('ord_advance'),
 				'order_status'	=>$status,
 				'status'	=>'a',
 				'created_by' =>$this->session->userdata('name'),
@@ -167,4 +168,39 @@ class Order_model extends CI_Model
 		}
 	}
 
+	/*====== find order and Chassis number by customer id ======*/
+	public function find_order_by_customer($cus_id=Null)
+	{
+		$res = $this->db->select('id,ord_chassis_no')->where('cus_id', $cus_id)->where('order_status','a')->order_by('id', 'desc')->get('orders')->result();
+
+		if($res){ return $res; }else{ return FALSE;}
+	}
+
+	/*====== find order L/C Number ========*/
+	public function find_lc_number($order_id=Null)
+	{
+		$this->db->select('tbl_lcs.lc_no')->from('orders');
+		$this->db->join('tbl_lcs', 'orders.ord_lc_no = tbl_lcs.id');
+		$res = $this->db->where('order_status', 'a')->get()->row();
+
+		if($res){ return $res; }else{ return FALSE; }
+	}
+
+	/*======= find Due Amount ==========*/
+	public function find_due_amount($order_id=Null)
+	{
+		$order_info = $this->db->where('id', $order_id)->get('orders')->row();
+
+		if($order_info){
+			$paid_amount = $this->db->select_sum('amount')->get('collections')->row();
+			
+			$total_paid = $paid_amount->amount + $order_info->ord_advance;
+			$due_amount = $order_info->ord_budget_range - $total_paid;
+			return $due_amount;
+		}else{
+			return FALSE;
+		}
+		
+
+	}
 }

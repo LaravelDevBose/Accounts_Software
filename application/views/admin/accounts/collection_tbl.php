@@ -1,9 +1,8 @@
-<?php $i=1; if($c_entys && isset($c_entys)): foreach($c_entys as $data):?>
+<?php  if($collections && isset($collections)): foreach($collections as $data):?>
   <tr>
-    <td class="center" style="display:none;"> </td>
-
-    <td><?= $i++; ?></td>
-    <td><?= $data->head_title; ?></td>
+    <td class="center"><?= ucfirst($data->cus_name) ?></td>
+    <td><?= $data->ord_chassis_no; ?></td>
+    <td><?= $data->lc_no; ?></td>
     <td>
       <?php 
         $date = new DateTime($data->date);
@@ -23,4 +22,4 @@
         </div>
     </td>
   </tr>
-<?php endforeach; endif; ?>
+  <?php endforeach; endif; ?>

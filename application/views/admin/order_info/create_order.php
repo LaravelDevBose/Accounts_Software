@@ -1,9 +1,6 @@
 
 <div class="row">
   <div class="col-xs-12">
-
-      <!--============Customer Information============ -->
-      <!--============Customer Information============ -->
       <div class="widget-box">
         <div class="widget-header">
           <h4 class="widget-title">Customer Information</h4>
@@ -28,7 +25,7 @@
                 <div class="form-group">
                   <label class="col-sm-5 control-label no-padding-left" for="ord_car_model">Select Customer</label>
                   <div class="col-sm-7">
-                    <select class="form-control select-chosen" id="cus_info" style="height: 30px; border-radius: 5px;">
+                    <select class="chosen-select form-control" id="cus_info" style="height: 30px; border-radius: 5px;">
                       <option value=" ">Select a Customer</option>
                       <?php if($customers && isset($customers)):  foreach($customers as $customer):?>
                         <option value="<?= $customer->id; ?>"><?= $customer->cus_code.'-'.ucfirst($customer->cus_name); ?></option>
@@ -108,7 +105,7 @@
 
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_lc_no"> L / C No: <span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_lc_no"> L / C No:  </label>
                   <div class="col-sm-8">
                     <select class="form-control"  id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
                       <option value="0">Please Select a L / C No</option>
@@ -120,7 +117,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> Car Model: <span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> Car Model:  </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_car_model"  name="ord_car_model" placeholder="Car Model" class="form-control" />
                   </div>
@@ -134,14 +131,14 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_engine_no"  name="ord_engine_no" placeholder="Engine No" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_chassis_no"> Chassis No: <span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_chassis_no"> Chassis No: </label>
                   <div class="col-sm-8">
                     <input type="text" id="ord_chassis_no"  name="ord_chassis_no" placeholder="Chassis No" class="form-control" />
                   </div>
@@ -205,11 +202,18 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> Budget Range: </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> Budget Range:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <input type="text" id="ord_budget_range" name="ord_budget_range" placeholder="Budget Range" class="form-control" />
+                    <input type="number" id="ord_budget_range" name="ord_budget_range" placeholder="Budget Range" class="form-control" />
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_advance"> Advance:<span class="text-bold text-danger">*</span> </label>
+                  <div class="col-sm-8">
+                    <input type="number" id="ord_advance" required name="ord_advance" placeholder="Order Advance" class="form-control" />
+                  </div>
+                </div>
+
                 <div class="form-group"><div class="col-sm-12" style="height: 10px;"></div></div>
 
                 <div class="form-group" style="margin-top: 10px;">

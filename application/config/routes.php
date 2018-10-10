@@ -55,11 +55,13 @@ $route['ie_head/delete/(:any)']	=	'IE_head/delete_ie_head_info/$1';
 /*========== Account Route List =========*/
 
 //Collection Entry Route List
-$route['account/collection'] 		= 'Account/collection_entry_page';
-$route['account/collection/store'] 	= 'Account/collection_entry_store';
-$route['collection/edit/(:any)'] 	= 'Account/collection_entry_edit/$1';
-$route['collection/update/(:any)'] 	= 'Account/collection_entry_update/$1';
-$route['collection/delete/(:any)'] 	= 'Account/delete_collection_data/$1';
+$route['collections'] 				= 'Collection/collection_entry_page';
+$route['collection/store'] 			= 'Collection/collection_entry_store';
+$route['collection/edit/(:any)'] 	= 'Collection/collection_entry_edit/$1';
+$route['collection/update/(:any)'] 	= 'Collection/collection_entry_update/$1';
+$route['collection/delete/(:any)'] 	= 'Collection/delete_collection_data/$1';
+$route['find/chassis_no/(:any)']	= 'Collection/find_order_info/$1';
+$route['find/lc/due_amount/(:any)'] = 'Collection/find_lc_due_amount/$1';
 
 //Payment Entry Route list
 $route['account/payment']			= 'Account/payment_entry_page';

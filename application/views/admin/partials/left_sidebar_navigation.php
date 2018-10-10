@@ -68,8 +68,8 @@
     <b class="arrow"></b>
 
     <ul class="submenu">
-      <li class="<?= ($this->uri->uri_string()== 'account/collection')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>account/collection">
+      <li class="<?= ($this->uri->uri_string()== 'collections')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>collections">
           <i class="menu-icon fa fa-caret-right"></i>
           Collection Entry 
         </a>
