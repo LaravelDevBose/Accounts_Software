@@ -184,6 +184,21 @@
         <b class="arrow"></b>
       </li>
 
+      <li class="<?= ($this->uri->uri_string()== 'report/customer_wise/collection')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/customer_wise/collection">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Customer Wise Collection Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'report/car_wise/collection')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/car_wise/collection">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Car Wise Collection Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+
     </ul>
   </li>
 

@@ -76,7 +76,48 @@ class Report extends CI_Controller
 
 	public function find_date_wise_collection()
 	{
-		if($res = $this->Collection_model->find_collection_data()){
+		if($res = $this->Collection_model->find_collection_date_wise()){
+			$data['collections'] = $res;
+			$this->load->view('admin/report/collection_report_tbl', $data);
+		}else{
+			echo 0;
+		}
+	}
+
+	/*======== Customer wise Colletion Report ========*/
+	public function customer_wise_collection()
+	{
+		$data['title'] = 'Collection Report';  
+		$data['content'] = 'report/cus_wise_collection';
+		$data['customers'] = $this->Customer_model->find_all_customer_info();
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*======= find collection by customer ========*/
+	public function find_collection_by_cus($cus_id=Null)
+	{
+		if($res = $this->Collection_model->collection_by_customer($cus_id)){
+			$data['collections'] = $res;
+			$this->load->view('admin/report/collection_report_tbl', $data);
+		}else{
+			echo 0;
+		}
+	}
+
+
+	/*======= car Chassis Number wise Collection REport Page =======*/
+	public function car_wise_collection_view()
+	{
+		$data['title'] = 'Collection Report';  
+		$data['content'] = 'report/car_wise_collection';
+		$data['orders'] = $this->Order_model->get_order_chassis_number();
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*======= find colection order Wise ==========*/
+	public function find_collection_order_wise($order_id=Null)
+	{
+		if($res = $this->Collection_model->order_wise_collection($order_id)){
 			$data['collections'] = $res;
 			$this->load->view('admin/report/collection_report_tbl', $data);
 		}else{

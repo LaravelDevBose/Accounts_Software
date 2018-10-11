@@ -89,11 +89,11 @@ class Collection_model extends CI_Model
 	}
 
 	/*======== find collection data=========*/
-	public function find_collection_data()
+	public function find_collection_date_wise()
 	{
 		$date_from = $this->input->post('date_from');
 		$date_to = $this->input->post('date_to');
-		
+
 		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
 		$this->db->from('collections');
 		$this->db->join('customers','collections.cus_id = customers.id');
@@ -109,4 +109,44 @@ class Collection_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*======== find collection by cunstomer =======*/
+
+	public function collection_by_customer($cus_id)
+	{
+		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
+		$this->db->from('collections');
+		$this->db->join('customers','collections.cus_id = customers.id');
+		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id');
+		$this->db->join('orders','collections.order_no = orders.id');
+		$this->db->where('collections.cus_id', $cus_id)->where('collections.status', 'a');
+		$result = $this->db->order_by('date', 'asc')->get()->result();
+
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+	/*========= order wise collection report Data  ==========*/
+	public function order_wise_collection($ord_id=Null)
+	{
+		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
+		$this->db->from('collections');
+		$this->db->join('customers','collections.cus_id = customers.id');
+		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id');
+		$this->db->join('orders','collections.order_no = orders.id');
+		$this->db->where('collections.order_no', $ord_id)->where('collections.status', 'a');
+		$result = $this->db->order_by('date', 'asc')->get()->result();
+
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
 }

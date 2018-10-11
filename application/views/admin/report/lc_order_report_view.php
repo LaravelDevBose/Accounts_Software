@@ -29,7 +29,7 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_lc_no"> L / C No: <span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <select class="form-control" required  id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
+                    <select class="chosen-select form-control" required  id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
                       <option value="0">Please Select a L / C No</option>
                       <?php if($lc_data && isset($lc_data)): foreach($lc_data as $data):?>
                         <option value="<?= $data->id; ?>"><?= $data->lc_no; ?></option>

@@ -1,5 +1,6 @@
 <script>
- 
+
+
 	/*======= find the Chassis Number =======*/
 	$('#cus_id').on('change', function(e){
 		var cus_id = e.target.value;
@@ -208,9 +209,9 @@
 	        dataType: 'html',
 	        data: $('#collection_entry').serialize(),
 	        success: function(data) {
+	        	$('#tBody').empty();
 
 	        	if(data != 0){
-	        		$('#tBody').empty();
 	        		$('#tBody').html(data);
 	        		
 	        	}else{
@@ -250,8 +251,51 @@
 				dataType:'html',
 				data:{date_from:date_from, date_to:date_to},
 				success:function(data){
+					$('#tBody').empty();
+
 					if(data != 0){
-						$('#tBody').empty();
+	        			$('#tBody').html(data);
+					}else{
+						
+						swal({
+			              text: "No Data Found..!",
+			              icon: "info",
+			              buttons: false,
+			              timer: 1500,
+			            });
+					}
+				},error:function(error){
+					console.log(error);
+	         		swal({
+	                    text: "Searching Unsuccessfull..! Some Error Found",
+	                    icon: "error",
+	                    buttons: true,
+	                    timer: 2500,
+	                });
+				}
+			});
+		}else{
+			swal({
+              text: "Pleass Select Date",
+              icon: "warning",
+              buttons: false,
+              timer: 1500,
+            });
+		}
+	});
+
+	$('#cus_search').on('click', function(){
+		var cus_id = $('#customer_id').val();
+
+		if(cus_id >= 1){
+			$.ajax({
+				url:'<?= base_url(); ?>find/collection/customer/'+cus_id,
+				type:'POST',
+				dataType:'html', 
+				success:function(data){
+					$('#tBody').empty();
+
+					if(data != 0){
 	        			$('#tBody').html(data);
 					}else{
 						swal({
@@ -264,7 +308,49 @@
 				},error:function(error){
 					console.log(error);
 	         		swal({
-	                    text: "Store Unsuccessfull..! Some Error Found",
+	                    text: "Searching Unsuccessfull..! Some Error Found",
+	                    icon: "error",
+	                    buttons: true,
+	                    timer: 2500,
+	                });
+				}
+			});
+		}else{
+			swal({
+              text: "Pleass Select Date",
+              icon: "warning",
+              buttons: false,
+              timer: 1500,
+            });
+		}
+	});
+
+	/*====== Chassis Number Wise collection =========*/
+	$('#order_search').on('click', function(){
+		var order_id = $('#order_id').val();
+
+		if(order_id >= 1){
+			$.ajax({
+				url:'<?= base_url(); ?>find/collection/order_wise/'+order_id,
+				type:'POST',
+				dataType:'html', 
+				success:function(data){
+					$('#tBody').empty();
+
+					if(data != 0){
+	        			$('#tBody').html(data);
+					}else{
+						swal({
+			              text: "No Data Found..!",
+			              icon: "info",
+			              buttons: false,
+			              timer: 1500,
+			            });
+					}
+				},error:function(error){
+					console.log(error);
+	         		swal({
+	                    text: "Searching Unsuccessfull..! Some Error Found",
 	                    icon: "error",
 	                    buttons: true,
 	                    timer: 2500,

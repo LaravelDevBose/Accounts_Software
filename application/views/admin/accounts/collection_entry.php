@@ -32,7 +32,7 @@
                   <div class="form-group">
                     <label class="col-sm-5 control-label no-padding-left" for="cus_id">Customer Name:<span class="text-bold text-danger">*</span></label>
                     <div class="col-sm-7">
-                      <select class="form-control select-chosen" id="cus_id" required name="cus_id" style="height: 30px; border-radius: 5px;">
+                      <select class="form-control chosen-select " id="cus_id" required name="cus_id" style="height: 30px; border-radius: 5px;">
                         <option value=" ">Select a Customer</option>
                         <?php if($customers && isset($customers)):  foreach($customers as $customer):?>
                           <option value="<?= $customer->id; ?>"><?= $customer->cus_code.'-'.ucfirst($customer->cus_name); ?></option>
@@ -43,7 +43,7 @@
                   <div class="form-group">
                     <label class="col-sm-5 control-label no-padding-left" for="order_no">Chassis No:<span class="text-bold text-danger">*</span></label>
                     <div class="col-sm-7">
-                      <select class="form-control select-chosen" id="order_no" required name="order_no" style="height: 30px; border-radius: 5px;">
+                      <select class="form-control chosen-select " id="order_no" required name="order_no" style="height: 30px; border-radius: 5px;">
                         <option value=" ">Select a Chassis No</option>
                         
                       </select>

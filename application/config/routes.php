@@ -94,6 +94,11 @@ $route['report/lc/order']		= 'Report/view_lc_wise_order_report';
 $route['find/order/(:any)']		= 'Report/find_order_by_lc/$1'; 
 $route['report/collection']		= 'Report/view_collection_report';
 $route['find/collection/by_date'] = 'Report/find_date_wise_collection';
+$route['report/customer_wise/collection'] = 'Report/customer_wise_collection';
+$route['find/collection/customer/(:any)'] = 'Report/find_collection_by_cus/$1';
+$route['report/car_wise/collection'] = 'Report/car_wise_collection_view';
+$route['find/collection/order_wise/(:any)'] = 'Report/find_collection_order_wise/$1';
+
 
 /*========Create Admin=========*/
 $route['createAdmin'] 			=	"Admincreate/addAdminPage";

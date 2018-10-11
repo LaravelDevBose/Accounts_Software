@@ -210,4 +210,14 @@ class Order_model extends CI_Model
 
 		if($res){return $res;}else{return FALSE; }
 	}
+
+	/*====== get all order number and chassis number =======*/
+	public function get_order_chassis_number()
+	{
+		$res = $this->db->select('id,ord_chassis_no')->where('ord_chassis_no !=', Null)->order_by('id','desc')->get('orders')->result();
+
+		if($res){return $res;}else{return FALSE; }
+	}
+
+	
 }
