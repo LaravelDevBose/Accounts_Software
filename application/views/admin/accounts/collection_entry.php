@@ -52,6 +52,7 @@
                   <div class="form-group">
                     <label class="col-sm-5 control-label no-padding-left" for="lc_no">L/C No: </label>
                     <div class="col-sm-7">
+                      <input type="hidden" name="lc_id" id="lc_id">
                       <input type="number" id="lc_no" required name="lc_no" readonly class="form-control" placeholder="L/C Number" /> 
                     </div>
                   </div>
@@ -107,7 +108,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="widget-box">
-      <div class="widget-header">
+      <div class="widget-header"> 
         <h4 class="widget-title">Collection Information List</h4>
         <div class="widget-toolbar">
           <a href="#" data-action="collapse">
@@ -170,3 +171,6 @@
 </div>
 
 <?php $this->load->view('admin/ajax/collection_ajax');?>
+<script>
+ 
+</script>

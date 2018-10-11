@@ -11,7 +11,7 @@ class Collection_model extends CI_Model
 		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
 		$this->db->from('collections');
 		$this->db->join('customers','collections.cus_id = customers.id');
-		$this->db->join('tbl_lcs','collections.lc_no = tbl_lcs.lc_no');
+		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id');
 		$this->db->join('orders','collections.order_no = orders.id');
 		$this->db->where('collections.status', 'a');
 		$result = $this->db->order_by('id', 'desc')->get()->result();
@@ -29,7 +29,7 @@ class Collection_model extends CI_Model
 		$attr = array(
 			'cus_id'		=>$this->input->post('cus_id'),
 			'order_no'	=>$this->input->post('order_no'),
-			'lc_no'		=>$this->input->post('lc_no'),
+			'lc_id'		=>$this->input->post('lc_id'),
 			'date'			=>$this->input->post('date'),
 			'amount'		=>$this->input->post('amount'),
 			'description'	=>$this->input->post('description'),
@@ -53,7 +53,7 @@ class Collection_model extends CI_Model
 		$attr = array(
 			'cus_id'		=>$this->input->post('cus_id'),
 			'order_no'	=>$this->input->post('order_no'),
-			'lc_no'		=>$this->input->post('lc_no'),
+			'lc_id'		=>$this->input->post('lc_id'),
 			'date'			=>$this->input->post('date'),
 			'amount'		=>$this->input->post('amount'),
 			'description'	=>$this->input->post('description'),
@@ -70,8 +70,9 @@ class Collection_model extends CI_Model
 	/*======= get Acounts data by id ======*/
 	public function get_collection_by_id($id=Null)
 	{	
-		$this->db->select('collections.*, customers.cus_name')->from('collections');
+		$this->db->select('collections.*, customers.cus_name,tbl_lcs.lc_no')->from('collections');
 		$this->db->join('customers', 'collections.cus_id = customers.id');
+		$this->db->join('tbl_lcs', 'collections.lc_id = tbl_lcs.id');
 		$res = $this->db->where('collections.id', $id)->get()->row();
 		if($res){ return $res; }else{ return FALSE; }
 	}
@@ -85,5 +86,27 @@ class Collection_model extends CI_Model
 		$this->db->update('collections', $attr);
 
 		if($this->db->affected_rows()){ return TRUE;}else{return FALSE; }
+	}
+
+	/*======== find collection data=========*/
+	public function find_collection_data()
+	{
+		$date_from = $this->input->post('date_from');
+		$date_to = $this->input->post('date_to');
+		
+		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
+		$this->db->from('collections');
+		$this->db->join('customers','collections.cus_id = customers.id');
+		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id');
+		$this->db->join('orders','collections.order_no = orders.id');
+		$this->db->where('collections.date >=', $date_from)->where('collections.date <=', $date_to);
+		$result = $this->db->where('collections.status', 'a')->order_by('date', 'asc')->get()->result();
+
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
 	}
 }

@@ -44,6 +44,7 @@
             <div class="form-group">
               <label class="col-sm-5 control-label no-padding-left" for="e_lc_no">L/C No: </label>
               <div class="col-sm-7">
+                <input type="hidden" name="lc_id" id="e_lc_id" value="<?= $collection->lc_id; ?>">
                 <input type="number" id="e_lc_no" required name="lc_no" value="<?= $collection->lc_no; ?>" readonly class="form-control" placeholder="L/C Number" /> 
               </div>
             </div>

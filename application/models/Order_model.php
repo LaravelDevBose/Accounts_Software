@@ -180,7 +180,7 @@ class Order_model extends CI_Model
 	public function find_lc_number($order_id=Null)
 	{	
 
-		$this->db->select('tbl_lcs.lc_no')->from('orders');
+		$this->db->select('tbl_lcs.id, tbl_lcs.lc_no')->from('orders');
 		$this->db->join('tbl_lcs', 'orders.ord_lc_no = tbl_lcs.id');
 		$res = $this->db->where('orders.id', $order_id)->where('orders.order_status', 'a')->get()->row();
 

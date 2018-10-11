@@ -8,6 +8,11 @@
 
     /*== hide last action colume======*/
     // $('.action').css('display', 'none');
+
+    $('#dynamic-table_length').css('display', 'none');
+    $('#dynamic-table_filter').css('display', 'none');
+    $('#dynamic-table_info').css('display', 'none');
+    $('#dynamic-table_paginate').css('display', 'none');
     
     /*----  Get all html in data_table div ---*/
     var print_contents = $('#data_table').html();

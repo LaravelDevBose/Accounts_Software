@@ -92,7 +92,8 @@ $route['report/lc']				= 'Report/view_lc_report';
 $route['report/customer']		= 'Report/view_customer_report'; 
 $route['report/lc/order']		= 'Report/view_lc_wise_order_report';
 $route['find/order/(:any)']		= 'Report/find_order_by_lc/$1'; 
-
+$route['report/collection']		= 'Report/view_collection_report';
+$route['find/collection/by_date'] = 'Report/find_date_wise_collection';
 
 /*========Create Admin=========*/
 $route['createAdmin'] 			=	"Admincreate/addAdminPage";

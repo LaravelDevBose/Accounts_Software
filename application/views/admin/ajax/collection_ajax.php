@@ -1,5 +1,5 @@
 <script>
-
+ 
 	/*======= find the Chassis Number =======*/
 	$('#cus_id').on('change', function(e){
 		var cus_id = e.target.value;
@@ -62,10 +62,12 @@
 					console.log(data);
 
 					$('#lc_no').val('');
+					$('#lc_id').val('');
 					$('#due_amount').html('00.0');
 
 					if(data != 0){
 						
+						$('#lc_id').val(data.lc_id);
 						$('#lc_no').val(data.lc_no);
 						$('#due_amount').html(data.due_amount);
 					}else{
@@ -108,6 +110,7 @@
 				success:function(data){
 					$('#e_order_no').empty();
 					$('#e_lc_no').val('');
+					$('#e_lc_id').val('');
 					$('#e_due_amount').html('00.0');
 
 					if(data != 0){
@@ -159,10 +162,12 @@
 					console.log(data);
 
 					$('#e_lc_no').val('');
+					$('#e_lc_id').val('');
 					$('#e_due_amount').html('00.0');
 
 					if(data != 0){
 						$('#e_lc_no').val(data.lc_no);
+						$('#e_lc_id').val(data.lc_id);
 						$('#e_due_amount').html(data.due_amount);
 					}else{
 						swal({
@@ -203,6 +208,7 @@
 	        dataType: 'html',
 	        data: $('#collection_entry').serialize(),
 	        success: function(data) {
+
 	        	if(data != 0){
 	        		$('#tBody').empty();
 	        		$('#tBody').html(data);
@@ -228,5 +234,50 @@
 	    });
 	});
 
-	
+	/********************************************/
+	/********************************************/
+	/********************************************/
+	/******************** Collection Report ************************/
+
+	$('#collection_search').on('click', function(){
+		var date_from = $('#date_from').val();
+		var date_to = $('#date_to').val();
+
+		if(date_from != '' && date_to !=''){
+			$.ajax({
+				url:'<?= base_url(); ?>find/collection/by_date',
+				type:'POST',
+				dataType:'html',
+				data:{date_from:date_from, date_to:date_to},
+				success:function(data){
+					if(data != 0){
+						$('#tBody').empty();
+	        			$('#tBody').html(data);
+					}else{
+						swal({
+			              text: "No Data Found..!",
+			              icon: "info",
+			              buttons: false,
+			              timer: 1500,
+			            });
+					}
+				},error:function(error){
+					console.log(error);
+	         		swal({
+	                    text: "Store Unsuccessfull..! Some Error Found",
+	                    icon: "error",
+	                    buttons: true,
+	                    timer: 2500,
+	                });
+				}
+			});
+		}else{
+			swal({
+              text: "Pleass Select Date",
+              icon: "warning",
+              buttons: false,
+              timer: 1500,
+            });
+		}
+	});
 </script>

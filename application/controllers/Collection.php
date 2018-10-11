@@ -139,6 +139,7 @@ class Collection extends CI_Controller
 		if($lc_no = $this->Order_model->find_lc_number($order_id)){
 
 			if($amount = $this->Order_model->find_due_amount($order_id)){
+				$data['lc_id'] = $lc_no->id;
 				$data['lc_no'] = $lc_no->lc_no;
 				$data['due_amount'] = number_format($amount,2);
 

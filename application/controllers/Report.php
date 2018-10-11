@@ -64,4 +64,23 @@ class Report extends CI_Controller
 			echo 0;
 		}
 	}
+
+	/*======== View Collection Report Page ========*/
+	public function view_collection_report()
+	{	
+
+		$data['title'] = 'Collection Report';  
+		$data['content'] = 'report/collection_report_view';
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	public function find_date_wise_collection()
+	{
+		if($res = $this->Collection_model->find_collection_data()){
+			$data['collections'] = $res;
+			$this->load->view('admin/report/collection_report_tbl', $data);
+		}else{
+			echo 0;
+		}
+	}
 }

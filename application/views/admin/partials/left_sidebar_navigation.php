@@ -140,21 +140,21 @@
     <b class="arrow"></b>
 
     <ul class="submenu">
-      <li class="">
+      <li class="<?= ($this->uri->uri_string()== 'report/lc')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/lc">
           <i class="menu-icon fa fa-caret-right"></i>
           L / C List
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="">
+      <li class="<?= ($this->uri->uri_string()== 'report/customer')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/customer">
           <i class="menu-icon fa fa-caret-right"></i>
           Customer List Report 
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="">
+      <li class="<?= ($this->uri->uri_string()== 'report/lc/order')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/lc/order">
           <i class="menu-icon fa fa-caret-right"></i>
           L / C Wise Order Report 
@@ -162,19 +162,28 @@
         <b class="arrow"></b>
       </li>
       <li class="">
-        <a href="<?php echo base_url(); ?>product">
+        <a href="<?php echo base_url(); ?>">
           <i class="menu-icon fa fa-caret-right"></i>
           Customer Order Report 
         </a>
         <b class="arrow"></b>
       </li>
       <li class="">
-        <a href="<?php echo base_url(); ?>product">
+        <a href="<?php echo base_url(); ?>">
           <i class="menu-icon fa fa-caret-right"></i>
           Delivered Order Report 
         </a>
         <b class="arrow"></b>
       </li>
+
+      <li class="<?= ($this->uri->uri_string()== 'report/collection')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/collection">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Collection Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+
     </ul>
   </li>
 
