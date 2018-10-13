@@ -13,15 +13,6 @@
   <td><?= $order->ord_car_model.' | '.$order->ord_engine_no?> </td>
   <td><?= $order->ord_chassis_no; ?></td>
   <td><?= $order->order_no; ?></td>
-  <td>
-    <?php if($order->order_status == 'c'): ?>
-    <span class="label " style="background: green;">Delevired</span>
-    <?php elseif($order->order_status == 'a'): ?>
-    <span class="label " style="background: #36a2ec;">Active</span>
-    <?php else: ?>
-    <span class="label " style="background: #ec880a;">Panding</span>
-    <?php endif;?>
-  </td>
   <td><?= number_format($order->ord_budget_range,2); ?></td>
   <?php 
     $paid_amount = $this->Order_model->find_paid_amount($order->id);  
@@ -34,7 +25,7 @@
 
 <?php endforeach; endif; ?>
 <tr style="background-color: #E7F2F8;">
-  <td colspan="5" style="border: 0;"></td>
+  <td colspan="4" style="border: 0;"></td>
   <th>Sub Total</th>
   <td><?= number_format($total_budget,2) ?></td>
   <td><?= number_format($total_paid,2) ?></td>

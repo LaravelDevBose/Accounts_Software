@@ -24,7 +24,7 @@
      window.print();
 
     /*------- After print bake the main page------*/
+    location.reload();
     $('body').html(orginal_content);
-
   }
 </script>

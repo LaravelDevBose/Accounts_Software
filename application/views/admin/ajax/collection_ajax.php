@@ -13,12 +13,15 @@
 					$('#order_no').empty();
 					$('#lc_no').val('');
 					$('#due_amount').html('00.0');
-
+					
 					if(data != 0){
 						$('#order_no').append('<option value="0">Select a Chassis No</option>');
 						$.each(data, function(key, val){
+							console.log(val.id);
 							$('#order_no').append('<option value="'+val.id+'">'+val.ord_chassis_no+'</option>');
+
 						});
+						$('#order_no').trigger('chosen:update');
 					}else{
 						swal({
 			              text: "No Data Found..!",

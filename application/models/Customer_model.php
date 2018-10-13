@@ -7,7 +7,7 @@ class Customer_model extends CI_Model
 {
 	public function find_all_customer_info(){
 		
-		 $result = $this->db->where('cus_status', 'a')->get('customers')->result();
+		 $result = $this->db->where('cus_status', 'a')->order_by('id', 'desc')->get('customers')->result();
 		 if($result){
 		 	return $result;
 		 }else{

@@ -85,7 +85,7 @@
           </div><!-- /.page-content -->
         </div>
       </div><!-- /.main-content -->
-
+      <div style="display: none;"> <table id="dynamic-table" ></table> </div> <!-- ignor the error -->
       
 
       <!-- Footer -->

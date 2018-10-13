@@ -12,10 +12,6 @@
 
         <div class="widget-body">
           <div class="widget-main">
-
-            <div class="clearfix">
-              <div class="pull-right tableTools-container"></div>
-            </div>
             <div id="data_table">
               <div class="table-header" >
                 L/C Information List

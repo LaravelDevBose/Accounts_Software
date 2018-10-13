@@ -31,7 +31,17 @@
 
             <li class="light-blue dropdown-modal">
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                <img class="nav-user-photo" src="<?php echo base_url(); ?>libs/logo_image/user.png" alt="Jason's Photo" />
+                <?php 
+
+                  $admin_image = base_url().'libs/logo_image/user.png'; 
+                    if($this->session->userdata('image') && !is_null($this->session->userdata('image'))){
+                      $admin_image = base_url().'libs/upload_pic/admin_pic/'.$this->session->userdata('image');
+                        if(!@getimagesize($admin_image)){
+                          $admin_image = base_url().'libs/logo_image/user.png';
+                        }
+                    }
+                ?>
+                <img class="nav-user-photo" src="<?php echo $admin_image; ?>" alt="Jason's Photo" />
                 <span class="user-info">
                   <small>Welcome,</small>
                   <?php echo $this->session->userdata('name'); ?>

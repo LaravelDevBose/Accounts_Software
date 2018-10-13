@@ -50,15 +50,15 @@
             <div class="table-header">
               Car Wise Collection Report
             </div>
-            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+            <table  class="table table-striped table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Customer Name</th>
                   <th>Chassis No</th>
                   <th>L/C No</th>
                   <th>Date</th>
-                  <th>Amount</th>
                   <th>Description</th>
+                  <th>Amount</th>
                 </tr>
               </thead>
 

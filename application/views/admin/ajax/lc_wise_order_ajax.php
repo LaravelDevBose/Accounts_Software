@@ -1,8 +1,8 @@
 <script>
-	$('#ord_lc_no').on('change', function(e){
+	$('#lc_search').on('click', function(e){
 
-		var lc_no = e.target.value;
-
+		var lc_no = $('#ord_lc_no').val();
+		$('#tBody').empty();
 		if(lc_no != 0){
 
 			$.ajax({
@@ -11,7 +11,7 @@
 				dataType:'html',
 				success:function(data){
 
-					$('#tBody').empty();
+					
 					if(data != 0){
 
 						$('#tBody').html(data);
@@ -36,7 +36,6 @@
 				}
 			});
 		}else{
-			$('#tBody').empty();
 			swal({
                   text: "Pleass Select a L/C First",
                   icon: "warning",

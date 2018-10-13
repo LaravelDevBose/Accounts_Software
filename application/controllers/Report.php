@@ -124,4 +124,43 @@ class Report extends CI_Controller
 			echo 0;
 		}
 	}
+
+	/*====== Customer Order Report Page =======*/
+	public function view_customer_order_report()
+	{
+		$data['title'] = 'Customer Order Report';  
+		$data['content'] = 'report/customer_order_report';
+		$data['customers'] = $this->Customer_model->find_all_customer_info();
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*====== Find Customer Order Details =========*/
+	public function customer_wise_order_report($cus_id=Null)
+	{
+		if($res = $this->Order_model->order_report_by_customer($cus_id)){
+			$data['orders'] = $res;
+			$this->load->view('admin/report/order_table', $data);
+		}else{
+			echo 0;
+		}
+	}
+
+	/*======= delivery order report page ========*/
+	public function delivery_order_view()
+	{
+		$data['title'] = 'Customer Order Report';  
+		$data['content'] = 'report/delivery_order_report';
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*======== date wise delivery order ========*/
+	public function date_wise_delivery_order()
+	{
+		if($res = $this->Order_model->order_report_date_wise()){
+			$data['orders'] = $res;
+			$this->load->view('admin/report/delivery_order_tbl', $data);
+		}else{
+			echo 0;
+		}
+	}
 }

@@ -57,7 +57,7 @@
     <b class="arrow"></b>
   </li>
 
-  <li class="">
+  <li class="<?= (strpos($this->uri->uri_string(), 'collections') !== false)?'active open':((strpos($this->uri->uri_string(), 'account') !== false)? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-clipboard"></i>
       <span class="menu-text"> Accounts</span>
@@ -129,7 +129,7 @@
   </li>
 
 
-  <li class="">
+  <li class="<?= (strpos($this->uri->uri_string(), 'report') !== false)?'active open': ' ' ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-print"></i>
       <span class="menu-text"> Reports</span>
@@ -161,15 +161,15 @@
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="">
-        <a href="<?php echo base_url(); ?>">
+      <li class="<?= ($this->uri->uri_string()== 'report/customer_order')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/customer_order">
           <i class="menu-icon fa fa-caret-right"></i>
           Customer Order Report 
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="">
-        <a href="<?php echo base_url(); ?>">
+      <li class="<?= ($this->uri->uri_string()== 'report/delivery_order')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/delivery_order">
           <i class="menu-icon fa fa-caret-right"></i>
           Delivered Order Report 
         </a>
@@ -187,14 +187,14 @@
       <li class="<?= ($this->uri->uri_string()== 'report/customer_wise/collection')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/customer_wise/collection">
           <i class="menu-icon fa fa-caret-right"></i>
-          Customer Wise Collection Report 
+          Customer Collection Report 
         </a>
         <b class="arrow"></b>
       </li>
       <li class="<?= ($this->uri->uri_string()== 'report/car_wise/collection')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/car_wise/collection">
           <i class="menu-icon fa fa-caret-right"></i>
-          Car Wise Collection Report 
+          Car Collection Report 
         </a>
         <b class="arrow"></b>
       </li>

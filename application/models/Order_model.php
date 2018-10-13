@@ -168,10 +168,28 @@ class Order_model extends CI_Model
 		}
 	}
 
+	/*======= Deliver order Car ========*/
+	public function delivery_order($id=Null)
+	{
+		$attr = array(
+			'order_status'=>'c',
+			'delivery_date' =>$this->input->post('delivery_date')
+		);
+
+		$this->db->where('id', $id);
+		$qu = $this->db->update('orders', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
 	/*====== find order and Chassis number by customer id ======*/
 	public function find_order_by_customer($cus_id=Null)
 	{
-		$res = $this->db->select('id,ord_chassis_no')->where('cus_id', $cus_id)->where('order_status','a')->order_by('id', 'desc')->get('orders')->result();
+		$res = $this->db->select('id, ord_chassis_no')->where('cus_id', $cus_id)->where('order_status','a')->order_by('id', 'desc')->get('orders')->result(); 
 
 		if($res){ return $res; }else{ return FALSE;}
 	}
@@ -203,6 +221,23 @@ class Order_model extends CI_Model
 		}
 	}
 
+	/*======= find Due Amount ==========*/
+	public function find_paid_amount($order_id=Null)
+	{
+		$order_info = $this->db->where('id', $order_id)->get('orders')->row();
+
+		if($order_info){
+			$paid_amount = $this->db->select_sum('amount')->where('order_no', $order_id)->where('status', 'a')->get('collections')->row();
+			
+			$total_paid = $paid_amount->amount + $order_info->ord_advance;
+			
+			return $total_paid;
+		}else{
+			return FALSE;
+		}
+	}
+
+
 	/*======= collection page order id and chassis no ========*/
 	public function get_all_order_for_collection($cus_id=Null)
 	{
@@ -219,5 +254,41 @@ class Order_model extends CI_Model
 		if($res){return $res;}else{return FALSE; }
 	}
 
+	/*======== Order report by customer  =========*/
+	public function order_report_by_customer($cus_id)
+	{	
+		$this->db->select('orders.*, customers.cus_name');
+		$this->db->from('orders');
+		$this->db->join('customers', 'orders.cus_id = customers.id' );
+		$this->db->where('orders.status !=', 'd')->where('orders.cus_id', $cus_id);
+		$result = $this->db->order_by('id', 'desc')->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
 	
+
+	/*===== Date wise delivery order Report =========*/
+
+	public function order_report_date_wise()
+	{	
+		$date_from = $this->input->post('date_from');
+		$date_to = $this->input->post('date_to');
+
+		$this->db->select('orders.*, customers.cus_name');
+		$this->db->from('orders');
+		$this->db->join('customers', 'orders.cus_id = customers.id' );
+		$this->db->where('orders.delivery_date >=', $date_from)->where('orders.delivery_date <=', $date_to);
+		$this->db->where('orders.status !=', 'd')->order_by('orders.delivery_date', 'desc');
+		$result = $this->db->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
 }

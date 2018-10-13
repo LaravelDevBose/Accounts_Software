@@ -127,7 +127,7 @@ class Collection extends CI_Controller
 	public function find_order_info($cus_id=Null)
 	{
 		if($result = $this->Order_model->find_order_by_customer($cus_id)){
-			echo json_encode($result);
+			echo json_encode($result); 
 		}else{
 			echo 0;
 		}

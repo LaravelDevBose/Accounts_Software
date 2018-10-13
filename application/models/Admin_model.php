@@ -17,15 +17,16 @@ class Admin_model extends CI_Model
 			'admin_password' => $pass, 
 		);
 
-		$res = $this->db->get_where('create_admin', $attr);
+		$res = $this->db->get_where('create_admin', $attr)->row();
 		// echo "<pre>";
 		// var_dump($res); return;
 
-		if($res->num_rows() == 1)
+		if($res)
 		{
 			$attr = array(
-				'id' => $res->row(0)->admin_id, 
-				'name' => $name
+				'id' => $res->admin_id, 
+				'name' => $name,
+				'image' => $res->admin_image
 			);
 			$this->session->set_userdata($attr);
 			return TRUE;

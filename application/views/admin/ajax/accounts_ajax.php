@@ -10,10 +10,10 @@
 	        dataType: 'html',
 	        data: $('#payment_entry').serialize(),
 	        success: function(data) {
+	        	
+	        	$('#tBody').empty();
 	        	if(data != 0){
-	        		$('#tBody').empty();
 	        		$('#tBody').html(data)
-	        		
 	        	}else{
 	        		swal({
                         text: "Store Unsuccessfull..!",

@@ -32,8 +32,11 @@ $route['order/list'] 			= 	"Order/index";
 $route['order/insert'] 			= 	"Order/insert_order_info";
 $route['order/store'] 			= 	"Order/store_order_info";
 $route['order/edit/(:any)']		=	'Order/edit_order_info/$1';
+$route['order/view/(:any)']		=	'Order/view_order_info/$1';
 $route['order/update/(:any)']	=	'Order/update_order_info/$1';
 $route['order/delete/(:any)']	=	'Order/delete_order_info/$1';
+$route['order/delivery/show/(:any)']	=	'Order/show_order_deliery_info/$1';
+$route['order/deliver/(:any)']	=	'Order/order_delivery/$1';
 $route['find/customer/(:any)']	=	'Customer/find_customer_info/$1';
 
 /*========L/C CRUD Route list=========*/
@@ -98,6 +101,11 @@ $route['report/customer_wise/collection'] = 'Report/customer_wise_collection';
 $route['find/collection/customer/(:any)'] = 'Report/find_collection_by_cus/$1';
 $route['report/car_wise/collection'] = 'Report/car_wise_collection_view';
 $route['find/collection/order_wise/(:any)'] = 'Report/find_collection_order_wise/$1';
+$route['report/customer_order']	= 'Report/view_customer_order_report';
+$route['find/customer_order/(:any)']	= 'Report/customer_wise_order_report/$1';
+$route['report/delivery_order']		= 'Report/delivery_order_view';
+$route['find/delivery_order']	= 'Report/date_wise_delivery_order';
+
 
 
 /*========Create Admin=========*/

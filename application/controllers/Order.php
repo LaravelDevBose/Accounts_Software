@@ -105,14 +105,28 @@ class Order extends CI_Controller
 		}
 	}
 
+	/*======== view Order Information =======*/
+	public function view_order_info($id=Null)
+	{
+		if($res = $this->Order_model->order_info_by_id($id)){
+			$data['title']	= 'View Order Details';
+			$data['content'] = 'order_info/view_order';
+			$data['customer'] = $this->Customer_model->customer_by_id($res->cus_id);
+			$data['paid_amount'] = $this->Order_model->find_paid_amount($id);
+			$data['order'] = $res;
+
+			$this->load->view('admin/adminMaster', $data);
+		}else{
+			$data['error']="No Data Find..!";
+			$this->session->set_flashdata($data);
+			redirect('order/list');
+		}
+	}
 	/*========= Order Data Update =======*/
 	public function update_order_info($id = Null)
 	{
 		$this->form_validation->set_rules('cus_id', 'Select Customer', 'required|trim');
-		$this->form_validation->set_rules('ord_lc_no', 'L/c Number ', 'required|trim');
 		$this->form_validation->set_rules('ord_car_model', 'Model Number ', 'required|trim');
-		$this->form_validation->set_rules('ord_engine_no', 'Engine Number', 'required|trim');
-		$this->form_validation->set_rules('ord_chassis_no', 'Chassis No', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Order No', 'required|trim');
 
 		if($this->form_validation->run() == FALSE){
@@ -153,6 +167,39 @@ class Order extends CI_Controller
 		}else{
 
 			$data['error']="Delete Unsuccessfully!";
+			$this->session->set_flashdata($data);
+			redirect('order/list');
+		}
+	}
+
+	/*======== order delivery status change =======*/
+	public function order_delivery($id=Null)
+	{
+		if($this->Order_model->delivery_order($id)){
+
+			$data['success']="Deliver Successfully!";
+			$this->session->set_flashdata($data);
+			redirect('order/list');
+
+		}else{
+
+			$data['error']="Deliver Unsuccessfully!";
+			$this->session->set_flashdata($data);
+			redirect('order/list');
+		}
+	}
+
+	/*==== Delivery Time order info Show ======*/
+	public function show_order_deliery_info($id=Null)
+	{
+		if($res = $this->Order_model->order_info_by_id($id)){
+			$data['customer'] = $this->Customer_model->customer_by_id($res->cus_id);
+			$data['paid_amount'] = $this->Order_model->find_paid_amount($id);
+			$data['order'] = $res;
+
+			$this->load->view('admin/order_info/delivery_order', $data);
+		}else{
+			$data['error']="No Data Find..!";
 			$this->session->set_flashdata($data);
 			redirect('order/list');
 		}

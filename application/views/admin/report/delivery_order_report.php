@@ -2,7 +2,7 @@
   <div class="col-xs-12">
     <div class="widget-box">
       <div class="widget-header"> 
-        <h4 class="widget-title">Collection Report List</h4>
+        <h4 class="widget-title">Delivery Order Report List</h4>
         <div class="widget-toolbar">
 
           <button type="button" onclick="print_data()" class="btn btn-sm btn-info pull-right"><i class="ace-icon fa fa-print"  ></i> Print</button>
@@ -40,7 +40,7 @@
                       <div class="col-md-3">
                         <div class="form-group" >
                           <div class="col-sm-8">
-                            <button type="button" id="collection_search" style="height: 27px; padding-top: 0px; float: left; " class="btn btn-primary ">Search</button>
+                            <button type="button" id="dilevery_search" style="height: 27px; padding-top: 0px; float: left; " class="btn btn-primary ">Search</button>
                           </div>
                         </div>
                       </div>
@@ -53,17 +53,19 @@
           <br>
           <div id="data_table">
             <div class="table-header">
-              Collection Report List
+              Delivery Order Report List
             </div>
-            <table  class="table table-striped table-bordered table-hover">
+            <table class="table table-striped table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Customer Name</th>
-                  <th>Chassis No</th>
                   <th>L/C No</th>
-                  <th>Date</th>
-                  <th>Description</th>
-                  <th>Amount</th>
+                  <th>Model | Engine No</th>
+                  <th>Chassis No</th>
+                  <th>Order No</th>
+                  <th>Budget Price</th>
+                  <th class="success">Paid Price</th>
+                  <th class="danger">Due Price</th>
                 </tr>
               </thead>
 
@@ -79,4 +81,4 @@
 </div>
 
 
-<?php $this->load->view('admin/ajax/collection_ajax');?>
+<?php $this->load->view('admin/ajax/dilevery_order_ajax');?>
