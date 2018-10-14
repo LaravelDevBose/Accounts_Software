@@ -9,35 +9,63 @@
     </a>
     <b class="arrow"></b>
   </li>
+  
+  <li class="<?= (strpos($this->uri->uri_string(), 'customers') !== false)?'active open':(($this->uri->uri_string()== 'customer/insert')? 'active open': '') ?>">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-clipboard"></i>
+      <span class="menu-text"> Customer</span>
 
-  <li class="<?= ($this->uri->uri_string()== 'customer/insert')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>customer/insert">
-      <i class="menu-icon fa fa-user-plus"></i>
-      <span class="menu-text"> Customer Entry </span>
+      <b class="arrow fa fa-angle-down"></b>
     </a>
-    <b class="arrow"></b>
-  </li>
-  <li class="<?= ($this->uri->uri_string()== 'customers')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>customers">
-      <i class="menu-icon fa fa-users"></i>
-      <span class="menu-text"> Customer List </span>
-    </a>
-    <b class="arrow"></b>
-  </li>
 
-  <li class="<?= ($this->uri->uri_string()== 'order/insert')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>order/insert">
-      <i class="menu-icon fa fa-shopping-bag"></i>
-      <span class="menu-text"> Order Entry </span>
-    </a>
     <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="<?= ($this->uri->uri_string()== 'customer/insert')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>customer/insert">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Customer Entry
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'customers')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>customers">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Customer List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
+    </ul>
   </li>
-  <li class="<?= ($this->uri->uri_string()== 'order/list')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>order/list">
-      <i class="menu-icon fa fa-shopping-cart"></i>
-      <span class="menu-text"> Order List </span>
+  
+  <li class="<?= ($this->uri->uri_string()== 'order/list')?'active open':((strpos($this->uri->uri_string(), 'order') !== false)? 'active open': '') ?>">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-clipboard"></i>
+      <span class="menu-text"> Order</span>
+
+      <b class="arrow fa fa-angle-down"></b>
     </a>
+
     <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="<?= ($this->uri->uri_string()== 'order/insert')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>order/insert">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Order Entry
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'order/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>order/list">
+          <i class="menu-icon fa fa-caret-right"></i>
+           Order List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
+    </ul>
   </li>
 
 
@@ -52,7 +80,7 @@
   <li class="<?= ($this->uri->uri_string()== 'ie_head/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>ie_head/insert">
       <i class="menu-icon fa fa-usd"></i>
-      <span class="menu-text"> IE Head </span>
+      <span class="menu-text"> Expense Head </span>
     </a>
     <b class="arrow"></b>
   </li>

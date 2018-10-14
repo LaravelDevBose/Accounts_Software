@@ -58,7 +58,7 @@
   <div class="col-xs-12">
     <div class="widget-box">
       <div class="widget-header">
-        <h4 class="widget-title">IE Head Information List</h4>
+        <h4 class="widget-title">Income Expense Head Information List</h4>
         <div class="widget-toolbar">
           <a href="#" data-action="collapse">
             <i class="ace-icon fa fa-chevron-up"></i>

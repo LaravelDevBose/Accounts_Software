@@ -1,6 +1,6 @@
 <div class="widget-box" style="width:500px;">
         <div class="widget-header">
-          <h4 class="widget-title">Update IE Head Information</h4>
+          <h4 class="widget-title">Update Expense Head Information</h4>
         </div>
 
         <div class="widget-body">
