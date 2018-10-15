@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2018 at 01:04 PM
+-- Generation Time: Oct 15, 2018 at 09:10 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -220,6 +220,35 @@ INSERT INTO `ie_heads` (`id`, `head_title`, `status`, `created_by`, `updated_by`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `months`
+--
+
+CREATE TABLE `months` (
+  `id` int(3) UNSIGNED NOT NULL,
+  `month_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `months`
+--
+
+INSERT INTO `months` (`id`, `month_name`) VALUES
+(1, 'January'),
+(2, 'February'),
+(3, 'March'),
+(4, 'April'),
+(5, 'May'),
+(6, 'June'),
+(7, 'July'),
+(8, 'August'),
+(9, 'September'),
+(10, 'October'),
+(11, 'November'),
+(12, 'December');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -261,6 +290,70 @@ INSERT INTO `orders` (`id`, `cus_id`, `ord_lc_no`, `ord_car_model`, `ord_color`,
 (8, 4, 3, 'eer', 'Red', '1255874', 'C0005', 'dsfsdf', '', '', '', 'sdfsdf', 'sdfsdf', 'sdf', 100000, 10000, 'c', '2018-10-12 18:00:00', 'a', 'admin', 'admin', '2018-10-09 18:00:00', '2018-10-09 18:00:00'),
 (9, 5, 0, 'Primo', 'black', '', '', 'O-123654', 'Good Quality', '', 'A', 'Classic', '2014', '50000', 500000, 10000, 'p', '2018-10-13 09:40:00', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00'),
 (10, 5, 4, 'X-corola', 'Brown', '6528', '859746513', 'C-0015', '', 'good', 'B', 'Good', '2008', '100000', 2000000, 50000, 'a', '2018-10-13 09:43:08', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `salaries`
+--
+
+CREATE TABLE `salaries` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `emp_id` int(20) NOT NULL,
+  `month_id` int(20) NOT NULL,
+  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `payment_amount` int(10) NOT NULL,
+  `due_amount` int(10) DEFAULT NULL,
+  `status` char(5) DEFAULT NULL,
+  `created_by` varchar(200) DEFAULT NULL,
+  `updated_by` varchar(200) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `salaries`
+--
+
+INSERT INTO `salaries` (`id`, `emp_id`, `month_id`, `date`, `payment_amount`, `due_amount`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 2, 4, '2018-10-14 18:00:00', 5000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
+(2, 2, 4, '2018-10-14 18:00:00', 5000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
+(3, 1, 4, '2018-10-09 18:00:00', 4000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
+(4, 2, 4, '2018-10-14 18:00:00', 1000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
+(5, 2, 4, '2018-10-14 18:00:00', 500, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
+(6, 1, 4, '2018-10-12 18:00:00', 5000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
+(7, 1, 4, '2018-10-14 18:00:00', 5000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
+(8, 2, 4, '2018-10-14 18:00:00', 3500, 0, 'd', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
+(9, 2, 4, '2018-10-01 18:00:00', 3500, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sallay_months`
+--
+
+CREATE TABLE `sallay_months` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `year` int(5) NOT NULL,
+  `month_id` int(3) NOT NULL,
+  `note` text,
+  `status` char(5) DEFAULT NULL,
+  `created_by` varchar(150) DEFAULT NULL,
+  `updated_by` varchar(150) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sallay_months`
+--
+
+INSERT INTO `sallay_months` (`id`, `year`, `month_id`, `note`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 2018, 10, 'note', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
+(2, 2018, 11, '', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
+(3, 2018, 12, '', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
+(4, 2018, 10, 'note', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
+(5, 2018, 7, 'note', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -332,9 +425,27 @@ ALTER TABLE `ie_heads`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `months`
+--
+ALTER TABLE `months`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `salaries`
+--
+ALTER TABLE `salaries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sallay_months`
+--
+ALTER TABLE `sallay_months`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -384,10 +495,28 @@ ALTER TABLE `ie_heads`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `months`
+--
+ALTER TABLE `months`
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `salaries`
+--
+ALTER TABLE `salaries`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `sallay_months`
+--
+ALTER TABLE `sallay_months`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_lcs`
