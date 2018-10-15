@@ -127,7 +127,7 @@
     </ul>
   </li>
 
-  <li class="">
+  <li class="<?= (strpos($this->uri->uri_string(), 'employees') !== false)?'active open':((strpos($this->uri->uri_string(), 'employee') !== false)? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-user"></i>
       <span class="menu-text"> Employee</span>
@@ -138,17 +138,31 @@
     <b class="arrow"></b>
 
     <ul class="submenu">
-      <li class="">
+      <li class="<?= ($this->uri->uri_string()== 'employee/insert')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>employee/insert">
           <i class="menu-icon fa fa-caret-right"></i>
           Add Employee
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="">
+      <li class="<?= ($this->uri->uri_string()== 'employees')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>employees">
           <i class="menu-icon fa fa-caret-right"></i>
           Employee List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'employee/month')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>employee/month">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Add Month 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'employee/salary')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>employee/salary">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Salary Payment 
         </a>
         <b class="arrow"></b>
       </li>
@@ -171,7 +185,7 @@
       <li class="<?= ($this->uri->uri_string()== 'report/lc')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/lc">
           <i class="menu-icon fa fa-caret-right"></i>
-          L / C List
+          L/C List
         </a>
         <b class="arrow"></b>
       </li>
@@ -185,7 +199,7 @@
       <li class="<?= ($this->uri->uri_string()== 'report/lc/order')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/lc/order">
           <i class="menu-icon fa fa-caret-right"></i>
-          L / C Wise Order Report 
+          L/C Wise Order Report 
         </a>
         <b class="arrow"></b>
       </li>
@@ -226,6 +240,23 @@
         </a>
         <b class="arrow"></b>
       </li>
+      
+      <li class="<?= ($this->uri->uri_string()== 'report/salary/date_to_date')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/salary/date_to_date">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Date To Date Salary Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+
+      <li class="<?= ($this->uri->uri_string()== 'report/salary/empl')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/salary/empl">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Employee Salary Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+
 
     </ul>
   </li>
@@ -258,7 +289,13 @@
       
     </ul>
   </li>
-
+  <li style="display: none;" class="<?= ($this->uri->uri_string()== 'setting/insert')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>setting/insert">
+      <i class="menu-icon fa fa-usd"></i>
+      <span class="menu-text"> Setting </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
 
 
   <li class="">

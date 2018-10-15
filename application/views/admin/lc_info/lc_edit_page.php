@@ -70,5 +70,10 @@
 			return true; 
 		}
 	});
-</script>
+
+    $('.date-picker').datepicker({
+          autoclose: true,
+          todayHighlight: true
+        })
+  </script>
 

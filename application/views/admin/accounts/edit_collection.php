@@ -1,3 +1,5 @@
+
+
 <div class="widget-box" style="width: 400px;">
   <div class="widget-header">
     <h4 class="widget-title">Edit Collection Information</h4>
@@ -84,3 +86,9 @@
   </div>
 </div>
 <?php $this->load->view('admin/ajax/collection_ajax');?>
+<script>
+    $('.date-picker').datepicker({
+          autoclose: true,
+          todayHighlight: true
+        })
+  </script>
