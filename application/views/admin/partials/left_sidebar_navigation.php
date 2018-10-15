@@ -289,7 +289,7 @@
       
     </ul>
   </li>
-  <li class="<?= ($this->uri->uri_string()== 'setting/insert')?'active': ' ' ?>">
+  <li style="display: none;" class="<?= ($this->uri->uri_string()== 'setting/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>setting/insert">
       <i class="menu-icon fa fa-usd"></i>
       <span class="menu-text"> Setting </span>
