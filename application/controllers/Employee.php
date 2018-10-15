@@ -136,4 +136,97 @@ class Employee extends CI_Controller
 		$data['employee'] = $this->Employee_model->employee_by_id($id);
 		$this->load->view('admin/employee/view_employee', $data);
 	}
+
+	/*========== Sallary Month Insert Page==============*/
+	public function month_insert_Page()
+	{
+		$data['title'] = "Add Sallary Month";
+		$data['content'] = 'employee/month/month_insert_Page';
+		$data['month_names'] = $this->SallaryMonth_model->all_month_name();
+		$data['sallary_months'] = $this->SallaryMonth_model->get_all_sallay_month();
+
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*======= sallary Month store ==========*/
+	public function store_sallary_month()
+	{
+		$this->form_validation->set_rules('year', 'Year', 'required|trim');
+		$this->form_validation->set_rules('month_id', 'Month Name', 'required|trim');
+
+		if($this->form_validation->run() == FAlSE){
+			echo 0;
+		}else{
+			if($this->SallaryMonth_model->sallary_month_store()){
+				$data['sallary_months'] = $this->SallaryMonth_model->get_all_sallay_month();
+				$this->load->view('admin/employee/month/sallary_month_tbl',$data);
+			}else{
+				echo 0;
+			}
+		}
+	}
+
+	/*====== Edit Sallary Month Data ========*/
+	public function edit_sallary_month($id=Null)
+	{
+		if($res = $this->SallaryMonth_model->sallary_month_by_id($id)){
+			$data['sallary_month'] = $res;
+			$data['month_names'] = $this->SallaryMonth_model->all_month_name();
+			$this->load->view('admin/employee/month/edit_sallary_month', $data);
+		}else{
+			$data['error'] = 'No Data Found..!';
+			$this->session->set_flashdata($data);
+			redirect('employee/month');
+		}
+	}
+
+	/*======== Update Sallary Informaion ======*/
+	public function update_sallary_month($id=Null)
+	{
+		$this->form_validation->set_rules('year', 'Year', 'required|trim');
+		$this->form_validation->set_rules('month_id', 'Month Name', 'required|trim');
+
+		if($this->form_validation->run() == FAlSE){
+			$data['title'] = "Add Sallary Month";
+			$data['content'] = 'employee/month/month_insert_Page';
+			$data['month_names'] = $this->SallaryMonth_model->all_month_name();
+			$data['sallary_months'] = $this->SallaryMonth_model->get_all_sallay_month();
+
+			$this->load->view('admin/adminMaster', $data);
+		}else{
+			if($this->SallaryMonth_model->sallary_month_update($id)){
+				$data['success'] = 'Update Successfully..!';
+				$this->session->set_flashdata($data);
+				redirect('employee/month');
+			}else{
+				$data['error'] = 'Update UnSuccessfully..!';
+				$this->session->set_flashdata($data);
+				redirect('employee/month');
+			}
+		}
+	}
+
+	/*======== delete sallary month data ==========*/
+	public function delete_sallary_month($id=Null)
+	{
+		if( $this->SallaryMonth_model->sallary_month_delete($id)){
+			$data['success'] = 'Delete Successfully';
+			$this->session->set_flashdata($data);
+			redirect('employee/month');
+		}else{
+			$data['error'] = 'Delete UnSuccessfully';
+			$this->session->set_flashdata($data);
+			redirect('employee/month');
+		}
+	}
+
+	/*======== get employee salary details=======*/
+	public function get_employee_salary($emp_id=Null)
+	{
+		if($res = $this->Employee_model->employee_by_id($emp_id)){
+			echo json_encode($res->emp_sallary);
+		}else{
+			echo 0;
+		}
+	}
 }
