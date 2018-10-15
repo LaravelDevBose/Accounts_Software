@@ -91,3 +91,4 @@
       <!-- Footer -->
       <?php $this->load->view('admin/partials/footer'); ?>
       <?php $this->load->view('admin/ajax/print_data'); ?>
+      

@@ -163,4 +163,46 @@ class Report extends CI_Controller
 			echo 0;
 		}
 	}
+
+	/*====== date to date Salary View ==========*/
+	public function salary_date_to_date_report()
+	{
+		$data['title'] = 'Salary Report';
+		$data['content'] = 'report/date_to_date_salary';
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*======== find Salary in Date To date ==============*/
+	public function find_salary_date_to_date()
+	{
+		$date_from = $this->input->post('date_from');
+		$date_to = $this->input->post('date_to');
+
+		if($res = $this->Salary_model->salary_date_to_date($date_from, $date_to)){
+			$data['salaries'] = $res;
+			$this->load->view('admin/report/salary_report_tbl', $data);
+		}else{
+			echo 0;
+		}
+	}
+
+	/*======= employee wise salary report ========*/
+	public function employee_wise_salary()
+	{
+		$data['title'] = 'Salary Report';
+		$data['content'] = 'report/employee_salary';
+		$data['employees'] = $this->Employee_model->find_all_employee_info();
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*======== find employee wise Salary =========*/
+	public function find_employee_wise_salary($emp_id=Null)
+	{
+		if($res = $this->Salary_model->find_employee_salary($emp_id)){
+			$data['salaries'] = $res;
+			$this->load->view('admin/report/salary_report_tbl', $data);
+		}else{
+			echo 0;
+		}
+	}
 }

@@ -90,6 +90,23 @@ $route['employee/update/(:any)']='Employee/update_employee_info/$1';
 $route['employee/delete/(:any)']='Employee/delete_employee_info/$1';
 
 
+$route['employee/month']		='Employee/month_insert_Page';
+$route['month/store']			='Employee/store_sallary_month';
+$route['month/edit/(:any)']		='Employee/edit_sallary_month/$1';
+$route['month/update/(:any)']	='Employee/update_sallary_month/$1';
+$route['month/delete/(:any)']	='Employee/delete_sallary_month/$1';
+
+$route['employee/salary']		= 'Salary/salary_payment_page';
+$route['salary/store']			= 'Salary/salary_payment_store';
+$route['store/paid_salary/check'] = 'Salary/check_payable_amount';
+$route['get/salary_range/(:any)'] = 'Employee/get_employee_salary/$1';
+$route['salary/edit/(:any)']	= 'Salary/salary_payment_edit/$1';
+$route['salary/update/(:any)']	= 'Salary/salary_payment_update/$1';
+$route['salary/delete/(:any)']	= 'Salary/salary_payment_delete/$1';
+
+
+
+
 /*========== Report Route List ==========*/
 $route['report/lc']				= 'Report/view_lc_report'; 
 $route['report/customer']		= 'Report/view_customer_report'; 
@@ -106,7 +123,13 @@ $route['find/customer_order/(:any)']	= 'Report/customer_wise_order_report/$1';
 $route['report/delivery_order']		= 'Report/delivery_order_view';
 $route['find/delivery_order']	= 'Report/date_wise_delivery_order';
 
+$route['report/salary/date_to_date'] = 'Report/salary_date_to_date_report';
+$route['find/salary/date_to_date'] = 'Report/find_salary_date_to_date';
+$route['report/salary/empl'] = 'Report/employee_wise_salary';
+$route['find/salary/employee/(:any)'] = 'Report/find_employee_wise_salary/$1';
 
+/*======== Setting Route List ===========*/
+$route['setting/insert']	= 'Setting/view_setting_page';
 
 /*========Create Admin=========*/
 $route['createAdmin'] 			=	"Admincreate/addAdminPage";

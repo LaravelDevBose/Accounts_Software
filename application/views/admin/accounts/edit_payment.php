@@ -53,3 +53,11 @@
     </div>
   </div>
 </div>
+<script>
+    
+    
+    $('.date-picker').datepicker({
+          autoclose: true,
+          todayHighlight: true
+        })
+  </script>
