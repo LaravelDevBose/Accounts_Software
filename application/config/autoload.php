@@ -134,5 +134,5 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array('Admin_model','Customer_model','Order_model','LC_model','IE_head_model',
 							'Employee_model','Account_model','Collection_model','SallaryMonth_model',
-							'Salary_model'
+							'Salary_model','Supplier_model','Payment_model'
 							);

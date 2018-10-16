@@ -174,7 +174,15 @@ class Order extends CI_Controller
 
 	/*======== order delivery status change =======*/
 	public function order_delivery($id=Null)
-	{
+	{	
+		$res = $this->Order_model->order_info_by_id($id);
+		if($res->ord_lc_no == '' || $res->ord_chassis_no == ''){
+
+			$data['error']="Order Lc Number and Chassis Number not added add First..!";
+			$this->session->set_flashdata($data);
+			redirect('order/list');
+		}
+
 		if($this->Order_model->delivery_order($id)){
 
 			$data['success']="Deliver Successfully!";

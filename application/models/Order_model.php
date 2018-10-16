@@ -21,6 +21,18 @@ class Order_model extends CI_Model
 		}
 	}
 
+	public function get_active_order_info()
+	{	
+		$result = $this->db->where('orders.status !=', 'd')->where('orders.order_status !=', 'p')->order_by('id', 'desc')->get('orders')->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+
 	/*====== find order by lc_no ======*/
 	public function lc_wise_order($lc_no=Null)
 	{

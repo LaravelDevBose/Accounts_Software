@@ -205,4 +205,27 @@ class Report extends CI_Controller
 			echo 0;
 		}
 	}
+
+	/*====== Final report View ======*/
+	public function car_full_report()
+	{
+		$data['title'] = 'Car Full Report';
+		$data['content'] = 'report/full_report';
+		$data['orders'] = $this->Order_model->get_active_order_info();
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	/*======= Order Wise Report View ========*/
+	public function find_full_deatils_report($order_id=Null)
+	{
+		if($order_info = $this->Order_model->order_info_by_id($order_id)){
+			$data['customer'] = $this->Customer_model->customer_by_id($order_info->cus_id);
+			$data['collections'] = $this->Collection_model->order_wise_collection($order_id);
+			$data['payments'] = $this->Payment_model->order_wise_payment($order_id);
+			$data['order'] = $order_info;
+			$this->load->view('admin/report/report_view', $data);
+		}else{
+			echo 0;
+		}
+	}
 }

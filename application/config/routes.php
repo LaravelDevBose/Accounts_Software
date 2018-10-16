@@ -27,6 +27,13 @@ $route['customer/edit/(:any)']		=	'Customer/edit_customer_info/$1';
 $route['customer/update/(:any)']	=	'Customer/update_customer_info/$1';
 $route['customer/delete/(:any)']	=	'Customer/delete_customer_info/$1';
 
+/*========Supplier Route List=========*/
+$route['supplier/insert'] 			= 	"Supplier/insert_supplier";
+$route['supplier/store'] 			= 	"Supplier/store_supplier_info";
+$route['supplier/edit/(:any)']		=	'Supplier/edit_supplier_info/$1';
+$route['supplier/update/(:any)']	=	'Supplier/update_supplier_info/$1';
+$route['supplier/delete/(:any)']	=	'Supplier/delete_supplier_info/$1';
+
 /*========Order CRUD Route list=========*/
 $route['order/list'] 			= 	"Order/index";
 $route['order/insert'] 			= 	"Order/insert_order_info";
@@ -66,12 +73,22 @@ $route['collection/delete/(:any)'] 	= 'Collection/delete_collection_data/$1';
 $route['find/chassis_no/(:any)']	= 'Collection/find_order_info/$1';
 $route['find/lc/due_amount/(:any)'] = 'Collection/find_lc_due_amount/$1';
 
+
+$route['payment'] 					= 'Payment/payment_entry_page';
+$route['payment/store'] 			= 'Payment/payment_entry_store';
+$route['payment/edit/(:any)'] 		= 'Payment/payment_entry_edit/$1';
+$route['payment/update/(:any)'] 	= 'Payment/payment_entry_update/$1';
+$route['payment/delete/(:any)'] 	= 'Payment/delete_payment_data/$1';
+$route['find/chassis_no/(:any)']	= 'Payment/find_order_info/$1';
+$route['find/payment/lc/(:any)'] 	= 'Payment/find_payment_lc/$1';
+
+
 //Payment Entry Route list
-$route['account/payment']			= 'Account/payment_entry_page';
-$route['account/payment/store']		= 'Account/payment_entry_store';
-$route['payment/edit/(:any)'] 		= 'Account/payment_entry_edit/$1';
-$route['payment/update/(:any)'] 	= 'Account/payment_entry_update/$1';
-$route['payment/delete/(:any)'] 	= 'Account/delete_payment_data/$1';
+// $route['account/payment']			= 'Account/payment_entry_page';
+// $route['account/payment/store']		= 'Account/payment_entry_store';
+// $route['payment/edit/(:any)'] 		= 'Account/payment_entry_edit/$1';
+// $route['payment/update/(:any)'] 	= 'Account/payment_entry_update/$1';
+// $route['payment/delete/(:any)'] 	= 'Account/delete_payment_data/$1';
 
 //Other Income Entry Route List
 $route['account/other_income']		='Account/other_income_page';
@@ -128,8 +145,11 @@ $route['find/salary/date_to_date'] = 'Report/find_salary_date_to_date';
 $route['report/salary/empl'] = 'Report/employee_wise_salary';
 $route['find/salary/employee/(:any)'] = 'Report/find_employee_wise_salary/$1';
 
+$route['report/full_report'] = 'Report/car_full_report';
+$route['find/full_report/(:any)'] = 'Report/find_full_deatils_report/$1';
 /*======== Setting Route List ===========*/
 $route['setting/insert']	= 'Setting/view_setting_page';
+$route['company_info']		= 'Setting/store_or_update_conpany_info';
 
 /*========Create Admin=========*/
 $route['createAdmin'] 			=	"Admincreate/addAdminPage";

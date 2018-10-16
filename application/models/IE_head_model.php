@@ -12,12 +12,19 @@ class IE_head_model extends CI_Model
 		if($result){ return $result; }else{ return FALSE;  }
 	}
 
+	public function get_all_head_info($type)
+	{
+		$result= $this->db->where('head_type',$type)->where('status', 'a')->order_by('id', 'desc')->get('ie_heads')->result();
+		if($result){ return $result; }else{ return FALSE;  }
+	}
+
 
 	/*========= Store Function ==========*/
 	public function store_ie_head_info()
 	{
 		$attr = array(
 			'head_title' =>$this->input->post('head_title'),
+			'head_type' =>$this->input->post('head_type'),
 			'created_by' =>$this->session->userdata('name'),
 			'updated_by'  =>$this->session->userdata('name'),
 			'created_at' =>date('Y-m-d'),
@@ -46,6 +53,7 @@ class IE_head_model extends CI_Model
 	{
 		$attr = array(
 			'head_title' =>$this->input->post('head_title'),
+			'head_type' =>$this->input->post('head_type'),
 			'updated_by'  =>$this->session->userdata('name'),
 			'updated_at' =>date('Y-m-d'),
 		);

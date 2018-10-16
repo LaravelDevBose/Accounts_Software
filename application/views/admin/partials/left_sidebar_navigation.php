@@ -12,7 +12,7 @@
   
   <li class="<?= (strpos($this->uri->uri_string(), 'customers') !== false)?'active open':(($this->uri->uri_string()== 'customer/insert')? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-      <i class="menu-icon fa fa-clipboard"></i>
+      <i class="menu-icon fa fa-user"></i>
       <span class="menu-text"> Customer</span>
 
       <b class="arrow fa fa-angle-down"></b>
@@ -38,10 +38,17 @@
       
     </ul>
   </li>
-  
+  <li class="<?= ($this->uri->uri_string()== 'supplier/insert')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>supplier/insert">
+      <i class="menu-icon fa fa-usd"></i>
+      <span class="menu-text">Suppliers </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+
   <li class="<?= ($this->uri->uri_string()== 'order/list')?'active open':((strpos($this->uri->uri_string(), 'order') !== false)? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-      <i class="menu-icon fa fa-clipboard"></i>
+      <i class="menu-icon fa fa-shopping-bag"></i>
       <span class="menu-text"> Order</span>
 
       <b class="arrow fa fa-angle-down"></b>
@@ -85,7 +92,7 @@
     <b class="arrow"></b>
   </li>
 
-  <li class="<?= (strpos($this->uri->uri_string(), 'collections') !== false)?'active open':((strpos($this->uri->uri_string(), 'account') !== false)? 'active open': '') ?>">
+  <li class="<?= (strpos($this->uri->uri_string(), 'collections') !== false)?'active open':((strpos($this->uri->uri_string(), 'payment') !== false)? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-clipboard"></i>
       <span class="menu-text"> Accounts</span>
@@ -103,6 +110,14 @@
         </a>
         <b class="arrow"></b>
       </li>
+      <li class="<?= ($this->uri->uri_string()== 'payment')?'active': ' ' ?>" ">
+        <a href="<?php echo base_url(); ?>payment">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Payments Entry
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
       <li class="">
         <a href="<?php echo base_url(); ?>">
           <i class="menu-icon fa fa-caret-right"></i>
@@ -110,13 +125,7 @@
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="<?= ($this->uri->uri_string()== 'account/payment')?'active': ' ' ?>" ">
-        <a href="<?php echo base_url(); ?>account/payment">
-          <i class="menu-icon fa fa-caret-right"></i>
-          Payments Entry
-        </a>
-        <b class="arrow"></b>
-      </li>
+      
       <li class="<?= ($this->uri->uri_string()== 'account/other_income')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>account/other_income">
           <i class="menu-icon fa fa-caret-right"></i>
@@ -129,7 +138,7 @@
 
   <li class="<?= (strpos($this->uri->uri_string(), 'employees') !== false)?'active open':((strpos($this->uri->uri_string(), 'employee') !== false)? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-      <i class="menu-icon fa fa-user"></i>
+      <i class="menu-icon fa fa-users"></i>
       <span class="menu-text"> Employee</span>
 
       <b class="arrow fa fa-angle-down"></b>
@@ -240,7 +249,14 @@
         </a>
         <b class="arrow"></b>
       </li>
-      
+      <li class="<?= ($this->uri->uri_string()== 'report/full_report')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/full_report">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Car Full Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+
       <li class="<?= ($this->uri->uri_string()== 'report/salary/date_to_date')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/salary/date_to_date">
           <i class="menu-icon fa fa-caret-right"></i>
@@ -289,7 +305,7 @@
       
     </ul>
   </li>
-  <li style="display: none;" class="<?= ($this->uri->uri_string()== 'setting/insert')?'active': ' ' ?>">
+  <li  class="<?= ($this->uri->uri_string()== 'setting/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>setting/insert">
       <i class="menu-icon fa fa-usd"></i>
       <span class="menu-text"> Setting </span>

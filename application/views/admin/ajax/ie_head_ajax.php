@@ -2,19 +2,21 @@
   
   $('#head_submit').on('click', function(){
      var  head_title = $('#head_title').val();
+     var  head_type = $('#head_type').val();
 
     if(head_title != ' '&& head_title.length >0 ){
         $.ajax({
             url:'<?= base_url();?>ie_head/store',
             type:'POST',
             dataType:'html',
-            data: {head_title:head_title},
+            data: {head_title:head_title,head_type:head_type},
             success:function(data){
 
                 if(data != 0){
                    $('#tBody').empty();
                    $('#tBody').html(data);
                    $('#head_title').val('');
+                   $('#head_type').val('');
                   
                 }else{
                     swal({

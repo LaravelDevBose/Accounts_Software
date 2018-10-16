@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2018 at 09:10 AM
+-- Generation Time: Oct 16, 2018 at 01:29 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -54,7 +54,7 @@ INSERT INTO `accounts` (`id`, `enty_type`, `ie_head`, `account_type`, `date`, `a
 (4, 1, 1, 'other_income', '2018-10-01 18:00:00', 5000, 'demo update', 'd', 'admin', 'admin', '2018-10-08 18:00:00', '2018-10-08 18:00:00'),
 (5, 0, 1, 'payment', '2018-10-08 18:00:00', 1000000, 'fdgdfg', 'a', 'admin', 'admin', '2018-10-10 18:00:00', '2018-10-10 18:00:00'),
 (6, 0, 3, 'payment', '2018-10-10 18:00:00', 5000, 'okk', 'a', 'admin', 'admin', '2018-10-10 18:00:00', '2018-10-10 18:00:00'),
-(7, 0, 4, 'payment', '2018-10-04 18:00:00', 500, 'arup', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00');
+(7, 0, 3, 'payment', '2018-10-04 18:00:00', 500, 'arup', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-14 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,8 @@ INSERT INTO `collections` (`id`, `cus_id`, `order_no`, `lc_id`, `date`, `amount`
 (13, 1, 3, 3, '2018-10-10 18:00:00', 2000, '', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:13:34', '2018-10-11 04:13:34'),
 (14, 4, 8, 3, '2018-10-10 18:00:00', 5000, 'ok', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:21:55', '2018-10-10 18:00:00'),
 (15, 5, 10, 4, '2018-10-12 18:00:00', 60000, 'check', 'receive', 'a', 'admin', 'admin', '2018-10-13 10:02:27', '2018-10-12 18:00:00'),
-(16, 5, 10, 4, '2018-10-10 18:00:00', 900000, 'cash', 'receive', 'a', 'admin', 'admin', '2018-10-13 10:03:24', '2018-10-13 10:03:24');
+(16, 5, 10, 4, '2018-10-10 18:00:00', 900000, 'cash', 'receive', 'a', 'admin', 'admin', '2018-10-13 10:03:24', '2018-10-13 10:03:24'),
+(17, 5, 10, 4, '2018-10-15 18:00:00', 200, '22', 'receive', 'a', 'admin', 'admin', '2018-10-16 11:06:08', '2018-10-16 11:06:08');
 
 -- --------------------------------------------------------
 
@@ -200,6 +201,7 @@ INSERT INTO `employees` (`id`, `emp_name`, `emp_dob`, `emp_nid`, `emp_phone`, `e
 CREATE TABLE `ie_heads` (
   `id` int(20) UNSIGNED NOT NULL,
   `head_title` varchar(250) NOT NULL,
+  `head_type` varchar(1) NOT NULL,
   `status` char(5) DEFAULT 'a',
   `created_by` varchar(200) DEFAULT NULL,
   `updated_by` varchar(200) DEFAULT NULL,
@@ -211,11 +213,13 @@ CREATE TABLE `ie_heads` (
 -- Dumping data for table `ie_heads`
 --
 
-INSERT INTO `ie_heads` (`id`, `head_title`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Office Rent', 'a', 'admin', 'admin', '2018-10-06 18:00:00', '2018-10-06 18:00:00'),
-(2, 'Color', 'd', 'admin', 'admin', '2018-10-06 18:00:00', '2018-10-06 18:00:00'),
-(3, 'Current bill', 'a', 'admin', 'admin', '2018-10-08 18:00:00', '2018-10-08 18:00:00'),
-(4, 'Snacks ', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00');
+INSERT INTO `ie_heads` (`id`, `head_title`, `head_type`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Office Rent', 'O', 'a', 'admin', 'admin', '2018-10-06 18:00:00', '2018-10-06 18:00:00'),
+(2, 'LC Opening', 'C', 'a', 'admin', 'admin', '2018-10-06 18:00:00', '2018-10-06 18:00:00'),
+(3, 'Car Maintenance ', 'C', 'a', 'admin', 'admin', '2018-10-08 18:00:00', '2018-10-08 18:00:00'),
+(4, 'Snacks ', 'O', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00'),
+(5, 'Godoun', 'C', 'a', 'admin', 'admin', '2018-10-15 18:00:00', '2018-10-15 18:00:00'),
+(6, 'okkk', 'C', 'd', 'admin', 'admin', '2018-10-15 18:00:00', '2018-10-15 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -294,6 +298,38 @@ INSERT INTO `orders` (`id`, `cus_id`, `ord_lc_no`, `ord_car_model`, `ord_color`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `payment_code` varchar(100) NOT NULL,
+  `payment_type` char(5) NOT NULL,
+  `supplier_id` int(20) NOT NULL,
+  `order_id` int(20) NOT NULL,
+  `lc_id` int(20) NOT NULL,
+  `head_id` int(20) NOT NULL,
+  `payment_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `payment_amount` int(10) NOT NULL,
+  `note` varchar(200) DEFAULT NULL,
+  `status` char(5) DEFAULT NULL,
+  `created_by` varchar(150) DEFAULT NULL,
+  `updated_by` varchar(150) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `payment_code`, `payment_type`, `supplier_id`, `order_id`, `lc_id`, `head_id`, `payment_date`, `payment_amount`, `note`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'CP-00001', 'CP', 1, 10, 4, 4, '2018-10-15 18:00:00', 10000, 'cash', 'a', 'admin', 'admin', '2018-10-16 09:42:16', '2018-10-16 09:42:16'),
+(2, 'CP-00002', 'CP', 1, 3, 3, 4, '2018-10-09 18:00:00', 15454, 'okkk', 'a', 'admin', 'admin', '2018-10-16 09:44:59', '2018-10-16 09:44:59');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `salaries`
 --
 
@@ -354,6 +390,52 @@ INSERT INTO `sallay_months` (`id`, `year`, `month_id`, `note`, `status`, `create
 (3, 2018, 12, '', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
 (4, 2018, 10, 'note', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
 (5, 2018, 7, 'note', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting`
+--
+
+CREATE TABLE `setting` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `field_name` varchar(200) DEFAULT NULL,
+  `value` text,
+  `created_by` varchar(200) DEFAULT NULL,
+  `updated_by` varchar(200) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suppliers`
+--
+
+CREATE TABLE `suppliers` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `sup_code` varchar(100) NOT NULL,
+  `sup_name` varchar(255) NOT NULL,
+  `sup_phone` varchar(255) DEFAULT NULL,
+  `sup_email` varchar(150) DEFAULT NULL,
+  `sup_ent_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `sup_ref` varchar(150) DEFAULT NULL,
+  `sup_address` text,
+  `status` char(5) DEFAULT 'a',
+  `created_by` varchar(200) DEFAULT NULL,
+  `updated_by` varchar(200) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `sup_code`, `sup_name`, `sup_phone`, `sup_email`, `sup_ent_date`, `sup_ref`, `sup_address`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'S00001', 'arup', '01731909035', 'arup@gmail.com', '2018-10-09 18:00:00', 'na', 'mirpur 10', 'a', 'admin', 'admin', '2018-10-15 18:00:00', '2018-10-15 18:00:00'),
+(2, 'S00002', 'joy', '1111111', '', '2018-10-15 18:00:00', 'no', 'dhaka', 'a', 'admin', 'admin', '2018-10-15 18:00:00', '2018-10-15 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -437,6 +519,12 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `salaries`
 --
 ALTER TABLE `salaries`
@@ -446,6 +534,18 @@ ALTER TABLE `salaries`
 -- Indexes for table `sallay_months`
 --
 ALTER TABLE `sallay_months`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `setting`
+--
+ALTER TABLE `setting`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -468,7 +568,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `create_admin`
@@ -492,7 +592,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `ie_heads`
 --
 ALTER TABLE `ie_heads`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `months`
@@ -507,6 +607,12 @@ ALTER TABLE `orders`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `salaries`
 --
 ALTER TABLE `salaries`
@@ -517,6 +623,18 @@ ALTER TABLE `salaries`
 --
 ALTER TABLE `sallay_months`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `setting`
+--
+ALTER TABLE `setting`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_lcs`
