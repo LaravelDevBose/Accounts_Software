@@ -9,13 +9,13 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	
 
-	// 'username' => 'root',
-	// 'password' => '',
-	// 'database' => 'accounts_soft',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'accounts_soft',
 	
-	'username' => 'greentechin6ustr_Knight_coder',
-	'password' => 'KnightC0der',
-	'database' => 'greentechin6ustr_maven',
+	// 'username' => 'greentechin6ustr_Knight_coder',
+	// 'password' => 'KnightC0der',
+	// 'database' => 'greentechin6ustr_maven',
 
 
 	'dbdriver' => 'mysqli',
