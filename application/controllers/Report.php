@@ -228,4 +228,66 @@ class Report extends CI_Controller
 			echo 0;
 		}
 	}
+
+
+	/*======= Date wise payment report page ==========*/
+	public function payment_report_page()
+	{
+		$data['title'] = 'Date Wise Payment Report';
+		$data['content'] = 'report/payment_report';
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	public function find_date_to_date_payment()
+	{
+		$date_from = $this->input->post('date_from');
+		$date_to = $this->input->post('date_to');
+
+		if($res = $this->Payment_model->payment_date_to_date($date_from, $date_to)){
+			$data['payments'] = $res;
+			$this->load->view('admin/report/payment_report_tbl', $data);
+		}else{
+			echo 0;
+		}
+	}
+
+	/*=========== supplier payment report page ===========*/
+	public function supplier_payment_report_page()
+	{
+		$data['title'] = 'Supplier Payment Report';
+		$data['content'] = 'report/supplier_payment_report';
+		$data['suppliers'] = $this->Supplier_model->find_all_supplier_info();
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	public function find_supplier_payment($sup_id = Null)
+	{
+		if($res = $this->Payment_model->supplier_payment_report($sup_id)){
+			$data['payments'] = $res;
+			$this->load->view('admin/report/payment_report_tbl', $data);
+		}else{
+			echo 0;
+		}
+	}
+
+	/*=========== Office Payment Report Page ===========*/
+	public function office_payment_report_page()
+	{
+		$data['title'] = 'Office Payment Report';
+		$data['content'] = 'report/office_payment_report';
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+	public function find_office_payment()
+	{
+		$date_from = $this->input->post('date_from');
+		$date_to = $this->input->post('date_to');
+
+		if($res = $this->Payment_model->office_payment_date_to_date($date_from, $date_to)){
+			$data['payments'] = $res;
+			$this->load->view('admin/report/office_payment_report_tbl', $data);
+		}else{
+			echo 0;
+		}
+	}
 }

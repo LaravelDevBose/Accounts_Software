@@ -25,12 +25,12 @@ class Payment extends CI_Controller
 		}
 	}
 
-	/*======== Collention Entry View Page ========*/
+	/*======== Payment Entry View Page ========*/
 	public function payment_entry_page()
 	{
-		$data['title'] = 'Collection Entry';
+		$data['title'] = 'Payment Entry';
 		$data['content'] = 'accounts/payment_entry';
-		$payment = $this->db->order_by('id', 'desc')->limit(1)->get('payments')->row();
+		$payment = $this->db->order_by('id', 'desc')->where('payment_type', 'CP')->limit(1)->get('payments')->row();
 			if(is_null($payment)|| !isset($payment)){
 				$pay_code = 'CP-00001';
 			}else{
@@ -88,65 +88,69 @@ class Payment extends CI_Controller
 	}
 
 
-	/*======= Edit Collection page =======*/
-	public function collection_entry_edit($id=Null)
+	/*======= Edit Payment page =======*/
+	public function payment_entry_edit($id=Null)
 	{
-		if($result = $this->Collection_model->get_collection_by_id($id)){
-			$data['collection'] = $result;
-			$data['customers'] = $this->Customer_model->find_all_customer_info();
-			$data['orders'] = $this->Order_model->get_all_order_for_collection($result->cus_id);
-			$data['due_amount'] = $this->Order_model->find_due_amount($result->order_no);
-			$this->load->view('admin/accounts/edit_collection', $data);
+		if($result = $this->Payment_model->get_payment_by_id($id)){
+			$data['payment'] = $result;
+			$data['suppliers'] = $this->Supplier_model->find_all_supplier_info();
+			$data['orders'] = $this->Order_model->get_active_order_info();
+			$data['heads'] = $this->IE_head_model->get_all_head_info('O');
+			$this->load->view('admin/accounts/edit_payment', $data);
 		}else{
 			$data['error']="No Data Found...!";
 			$this->session->set_flashdata($data);
-			redirect('collections');
+			redirect('office_payment');
 		}
 	}
 
-	/*====== Update Collection Date =========*/
-	public function collection_entry_update($id=Null)
+	/*====== Update payment Data =========*/
+	public function payment_entry_update($id=Null)
 	{
-		$this->form_validation->set_rules('cus_id', 'Customer ', 'required|trim');
-		$this->form_validation->set_rules('order_no', 'Chassis Number ', 'required|trim');
+		$this->form_validation->set_rules('supplier_id', 'Supplier ', 'required|trim');
+		$this->form_validation->set_rules('order_id', 'Chassis Number ', 'required|trim');
 		$this->form_validation->set_rules('lc_no', 'L/C Number ', 'required|trim');
-		$this->form_validation->set_rules('date', 'Date', 'required|trim');
-		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
-		$this->form_validation->set_rules('description', 'Description', 'trim');
+		$this->form_validation->set_rules('payment_date', 'Date', 'required|trim');
+		$this->form_validation->set_rules('payment_amount', 'Amount', 'required|trim');
+		$this->form_validation->set_rules('head_id', 'Expense Head', 'trim');
 
 		if($this->form_validation->run() == FALSE){
-		 	$data['title'] = 'Collection Entry';
-			$data['content'] = 'accounts/collection_entry';
-			$data['customers'] = $this->Customer_model->find_all_customer_info();
-			$data['collections'] = $this->Collection_model->get_all_collection_data();
+		 	$data['title'] = 'Payment Entry';
+			$data['content'] = 'accounts/edit_payment';
+			$data['suppliers'] = $this->Supplier_model->find_all_supplier_info();
+			$data['orders'] = $this->Order_model->get_active_order_info();
+			$data['payments'] = $this->Payment_model->get_all_car_payment_data();
+			$data['heads'] = $this->IE_head_model->get_all_head_info('C');
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 
-		 	if($this->Collection_model->update_collection_data($id)){
+		 	if($this->Payment_model->update_payment_data($id)){
 		 		$data['success']="Update SuccessFully";
 				$this->session->set_flashdata($data);
-				redirect('collections');
+				redirect('payment');
 		 	}else{	
 		 		$data['error']="Update UnSuccessfull";
 				$this->session->set_flashdata($data);
-				redirect('collections');
+				redirect('payment');
 		 	}
 		}
 	}
 
 	/*======== delete _data=====*/
-	public function delete_collection_data($id=Null)
+	public function delete_payment_data($id=Null)
 	{
-		if($this->Collection_model->delete_collection_data($id)){
+		if($this->Payment_model->delete_payment_data($id)){
 			$data['success']="Delete SuccessFully";
 			$this->session->set_flashdata($data);
-			redirect('collections');
+			redirect('payment');
 		}else{
 			$data['error']="Delete UnSuccessfull";
 			$this->session->set_flashdata($data);
-			redirect('account/collection');
+			redirect('payment');
 		}
 	}
+
+
 
 	/*========== find order info and chassis info =======*/
 	public function find_order_info($cus_id=Null)
@@ -171,4 +175,118 @@ class Payment extends CI_Controller
 	}
 
 	
+
+	/*======== Office Payment Entry View Page ========*/
+	public function office_payment_entry_page()
+	{
+		$data['title'] = 'Office Payment Entry';
+		$data['content'] = 'accounts/office_payment_entry';
+		$payment = $this->db->order_by('id', 'desc')->where('payment_type', 'OP')->limit(1)->get('payments')->row();
+			if(is_null($payment)|| !isset($payment)){
+				$pay_code = 'OP-00001';
+			}else{
+
+				$num = substr($payment->payment_code, 3, strlen($payment->payment_code));
+
+				// var_dump($num); die();
+				if($num < 9):
+					$num+=1;
+					$pay_code = 'OP-0000'.$num;
+				elseif($num < 99):
+					$num+=1;
+					$pay_code = 'OP-000'.$num;
+				elseif($num < 999):
+					$num+=1;
+					$pay_code = 'OP-00'.$num;
+				elseif($num<9999):
+					$num+=1;
+					$pay_code = 'OP-0'.$num;
+				else:
+					$num+=1;
+					$pay_code = 'OP-'.$num;
+				endif;
+			}
+
+		$data['code'] = $pay_code;
+		$data['payments'] = $this->Payment_model->get_all_office_payment_data();
+		$data['heads'] = $this->IE_head_model->get_all_head_info('O');
+		$this->load->view('admin/adminMaster', $data); 
+	}
+
+	/*===== Store Office Payment Entry Data =======*/
+	public function office_payment_store()
+	{	
+		$this->form_validation->set_rules('payment_date', 'Date', 'required|trim');
+		$this->form_validation->set_rules('payment_amount', 'Amount', 'required|trim');
+		$this->form_validation->set_rules('head_id', 'Expense Head', 'trim');
+
+		if($this->form_validation->run() == FALSE){
+		 	echo 2;
+		}else{
+
+		 	if($this->Payment_model->store_payment_data()){
+		 		$data['payments'] = $this->Payment_model->get_all_office_payment_data();
+		 		$this->load->view('admin/accounts/office_payment_tbl', $data);
+		 	}else{
+		 		echo 0;
+		 	}
+		}
+	}
+
+
+	/*======= Edit Office Payment page =======*/
+	public function office_payment_edit($id=Null)
+	{
+		if($result = $this->Payment_model->get_payment_by_id($id)){
+			$data['payment'] = $result;
+			$data['heads'] = $this->IE_head_model->get_all_head_info('O');
+			$this->load->view('admin/accounts/edit_office_payment', $data);
+		}else{
+			$data['error']="No Data Found...!";
+			$this->session->set_flashdata($data);
+			redirect('office_payment');
+		}
+	}
+
+	/*====== Update Office Payment Date =========*/
+	public function office_payment_update($id=Null)
+	{
+		$this->form_validation->set_rules('payment_date', 'Date', 'required|trim');
+		$this->form_validation->set_rules('payment_amount', 'Amount', 'required|trim');
+		$this->form_validation->set_rules('head_id', 'Expense Head', 'trim');
+
+		if($this->form_validation->run() == FALSE){
+		 	$data['title'] = 'Office Payment Entry';
+			$data['content'] = 'accounts/office_payment_entry';
+			$data['payments'] = $this->Payment_model->get_all_office_payment_data();
+			$data['heads'] = $this->IE_head_model->get_all_head_info('O');
+			$this->load->view('admin/adminMaster', $data);
+		}else{
+
+		 	if($this->Payment_model->update_payment_data($id)){
+		 		$data['success']="Update SuccessFully";
+				$this->session->set_flashdata($data);
+				redirect('office_payment');
+		 	}else{	
+		 		$data['error']="Update UnSuccessfull";
+				$this->session->set_flashdata($data);
+				redirect('office_payment');
+		 	}
+		}
+	}
+
+	/*======== delete _data=====*/
+	public function office_payment_delete($id=Null)
+	{
+		if($this->Payment_model->delete_payment_data($id)){
+			$data['success']="Delete SuccessFully";
+			$this->session->set_flashdata($data);
+			redirect('office_payment');
+		}else{
+			$data['error']="Delete UnSuccessfull";
+			$this->session->set_flashdata($data);
+			redirect('office_payment');
+		}
+	}
+
 }

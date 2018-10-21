@@ -99,9 +99,9 @@
                   
                 </th>
                 <th>SL No</th>
+                <th>Date</th>
                 <th>L/C Number</th>
                 <th>Bank Name</th>
-                <th>Date</th>
                 <th>Note</th>
                 <th>Action</th>
                 
@@ -116,12 +116,13 @@
                 </td>
 
                 <td><?= $i++; ?></td>
-                <td><?= $data->lc_no; ?></td>
-                <td><?= $data->bank_name; ?></td>
                 <td><?php 
                       $date = new DateTime($data->lc_date);
                       echo date_format($date, 'd M Y'); 
                     ?></td>
+                <td><?= $data->lc_no; ?></td>
+                <td><?= $data->bank_name; ?></td>
+                
                 <td><?= $data->lc_note; ?></td>
                 <td>
                     <div class="hidden-sm hidden-xs action-buttons">

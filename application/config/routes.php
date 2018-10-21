@@ -83,6 +83,13 @@ $route['find/chassis_no/(:any)']	= 'Payment/find_order_info/$1';
 $route['find/payment/lc/(:any)'] 	= 'Payment/find_payment_lc/$1';
 
 
+$route['office_payment']			= 'Payment/office_payment_entry_page';
+$route['office_payment/store']		= 'Payment/office_payment_store';
+$route['office_payment/edit/(:any)']		= 'Payment/office_payment_edit/$1';
+$route['office_payment/update/(:any)']		= 'Payment/office_payment_update/$1';
+$route['office_payment/delete/(:any)']		= 'Payment/office_payment_delete/$1';
+
+
 //Payment Entry Route list
 // $route['account/payment']			= 'Account/payment_entry_page';
 // $route['account/payment/store']		= 'Account/payment_entry_store';
@@ -147,6 +154,27 @@ $route['find/salary/employee/(:any)'] = 'Report/find_employee_wise_salary/$1';
 
 $route['report/full_report'] = 'Report/car_full_report';
 $route['find/full_report/(:any)'] = 'Report/find_full_deatils_report/$1';
+
+$route['report/date_wise_payment'] = 'Report/payment_report_page';
+$route['find/date_wise_payment/report'] = 'Report/find_date_to_date_payment';
+
+$route['report/supplier_payment'] = 'Report/supplier_payment_report_page';
+$route['find/supplier_payment/report/(:any)'] = 'Report/find_supplier_payment/$1';
+
+$route['report/office_payment'] = 'Report/office_payment_report_page';
+$route['find/office_payment/report'] = 'Report/find_office_payment';
+
+
+
+
+
+
+
+
+
+
+
+
 /*======== Setting Route List ===========*/
 $route['setting/insert']	= 'Setting/view_setting_page';
 $route['company_info']		= 'Setting/store_or_update_conpany_info';

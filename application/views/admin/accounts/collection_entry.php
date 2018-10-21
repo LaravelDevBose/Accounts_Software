@@ -126,10 +126,10 @@
           <table id="dynamic-table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
+                <th>Date</th>
                 <th>Customer Name</th>
                 <th>Chassis No</th>
                 <th>L/C No</th>
-                <th>Date</th>
                 <th>Amount</th>
                 <th>Description</th>
                 <th>Action</th>
@@ -139,15 +139,16 @@
             <tbody id="tBody">
                 <?php  if($collections && isset($collections)): foreach($collections as $data):?>
               <tr>
-                <td class="center"><?= ucfirst($data->cus_name) ?></td>
-                <td><?= $data->ord_chassis_no; ?></td>
-                <td><?= $data->lc_no; ?></td>
                 <td>
                   <?php 
                     $date = new DateTime($data->date);
                     echo date_format($date, 'd M Y'); 
                   ?> 
                 </td>
+                <td class="center"><?= ucfirst($data->cus_name) ?></td>
+                <td><?= $data->ord_chassis_no; ?></td>
+                <td><?= $data->lc_no; ?></td>
+                
                 <td><?= number_format($data->amount) ?></td>
                 <td><?= $data->description; ?></td>
                 <td>

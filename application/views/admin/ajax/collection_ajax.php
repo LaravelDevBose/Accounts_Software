@@ -320,7 +320,7 @@
 			});
 		}else{
 			swal({
-              text: "Pleass Select Date",
+              text: "Pleass Select Customer",
               icon: "warning",
               buttons: false,
               timer: 1500,

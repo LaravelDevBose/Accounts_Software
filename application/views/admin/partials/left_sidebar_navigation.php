@@ -110,7 +110,7 @@
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="<?= ($this->uri->uri_string()== 'payment')?'active': ' ' ?>" ">
+      <li class="<?= ($this->uri->uri_string()== 'payment')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>payment">
           <i class="menu-icon fa fa-caret-right"></i>
           Payments Entry
@@ -118,8 +118,8 @@
         <b class="arrow"></b>
       </li>
       
-      <li class="">
-        <a href="<?php echo base_url(); ?>">
+      <li class="<?= ($this->uri->uri_string()== 'office_payment')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>office_payment">
           <i class="menu-icon fa fa-caret-right"></i>
           Office Payment Entry 
         </a>
@@ -249,6 +249,29 @@
         </a>
         <b class="arrow"></b>
       </li>
+      <li class="<?= ($this->uri->uri_string()== 'report/date_wise_payment')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/date_wise_payment">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Date Wise Payment Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+
+      <li class="<?= ($this->uri->uri_string()== 'report/supplier_payment')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/supplier_payment">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Supplier Payment Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'report/office_payment')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/office_payment">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Office Payment Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+
       <li class="<?= ($this->uri->uri_string()== 'report/full_report')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/full_report">
           <i class="menu-icon fa fa-caret-right"></i>
