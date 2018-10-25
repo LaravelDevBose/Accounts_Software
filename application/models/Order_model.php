@@ -92,9 +92,17 @@ class Order_model extends CI_Model
 	public function order_info_by_id($id = null)
 	{
 		if(!is_null($id)){
+			$this->db->select('orders.*, customers.cus_code,customers.cus_name,customers.cus_contact_no, customers.cus_address');
+			$this->db->from('orders');
+			$this->db->join('customers', 'orders.cus_id = customers.id' );
+			$this->db->where('orders.id', $id)->where('orders.status !=', 'd');
+			$result = $this->db->get()->row();
 
-			$result = $this->db->where('id', $id)->where('status', 'a')->get('orders')->row();
-			if($result){ return $result; }else{ return FALSE; }
+			if($result){
+				return $result;
+			}else{
+				return FALSE;
+			}
 
 		}else{
 			return FALSE;
@@ -122,7 +130,7 @@ class Order_model extends CI_Model
 			'ord_budget_range'	=>$this->input->post('ord_budget_range'),
 			'order_status'	=> $status,
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d')
+			'updated_at' =>date('Y-m-d H:i:s')
 		);
 
 		$this->db->where('id', $id);
@@ -170,6 +178,30 @@ class Order_model extends CI_Model
 	{	
 		$attr= array('status'=>'d');
 		
+		$this->db->where('id', $id);
+		$qu = $this->db->update('orders', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
+	/*========== Order Purchess Info Update =========*/
+	public function order_purchase_info_update($pus_id=Null)
+	{
+		$attr = array(
+			'pus_id' => $pus_id,
+			'ord_lc_no'=>$this->input->post('puc_lc_id'),
+			'ord_engine_no'=>$this->input->post('puc_engine_no'),
+			'ord_chassis_no'=>$this->input->post('puc_chassis_no'),
+			'order_status'=>'a',
+			'updated_by'  =>$this->session->userdata('name'),
+			'updated_at' =>date('Y-m-d H:i:s')
+		);
+
+		$id = $this->input->post('order_id');
 		$this->db->where('id', $id);
 		$qu = $this->db->update('orders', $attr);
 		

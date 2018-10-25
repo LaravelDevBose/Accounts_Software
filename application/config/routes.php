@@ -27,13 +27,6 @@ $route['customer/edit/(:any)']		=	'Customer/edit_customer_info/$1';
 $route['customer/update/(:any)']	=	'Customer/update_customer_info/$1';
 $route['customer/delete/(:any)']	=	'Customer/delete_customer_info/$1';
 
-/*========Supplier Route List=========*/
-$route['supplier/insert'] 			= 	"Supplier/insert_supplier";
-$route['supplier/store'] 			= 	"Supplier/store_supplier_info";
-$route['supplier/edit/(:any)']		=	'Supplier/edit_supplier_info/$1';
-$route['supplier/update/(:any)']	=	'Supplier/update_supplier_info/$1';
-$route['supplier/delete/(:any)']	=	'Supplier/delete_supplier_info/$1';
-
 /*========Order CRUD Route list=========*/
 $route['order/list'] 			= 	"Order/index";
 $route['order/insert'] 			= 	"Order/insert_order_info";
@@ -45,6 +38,28 @@ $route['order/delete/(:any)']	=	'Order/delete_order_info/$1';
 $route['order/delivery/show/(:any)']	=	'Order/show_order_deliery_info/$1';
 $route['order/deliver/(:any)']	=	'Order/order_delivery/$1';
 $route['find/customer/(:any)']	=	'Customer/find_customer_info/$1';
+
+/*========Supplier Route List=========*/
+$route['supplier/insert'] 			= 	"Supplier/insert_supplier";
+$route['supplier/store'] 			= 	"Supplier/store_supplier_info";
+$route['supplier/edit/(:any)']		=	'Supplier/edit_supplier_info/$1';
+$route['supplier/update/(:any)']	=	'Supplier/update_supplier_info/$1';
+$route['supplier/delete/(:any)']	=	'Supplier/delete_supplier_info/$1';
+$route['find/supplier/(:any)']		=	'Supplier/find_supplier_info/$1';
+
+
+/*========purchase CRUD Route list=========*/
+$route['purchase/list'] 			= 	"Purchase/index";
+$route['purchase/insert'] 			= 	"Purchase/insert_purchase_info";
+$route['purchase/insert/(:any)'] 	= 	"Purchase/insert_purchase_info/$1";
+// $route['purchase/order/insert'] 	= 	"Purchase/insert_purchase_info";
+$route['purchase/store'] 			= 	"Purchase/store_purchase_info";
+$route['purchase/edit/(:any)']		=	'Purchase/edit_purchase_info/$1';
+$route['purchase/view/(:any)']		=	'Purchase/view_purchase_info/$1';
+$route['purchase/update/(:any)']	=	'Purchase/update_purchase_info/$1';
+$route['purchase/delete/(:any)']	=	'Purchase/delete_purchase_info/$1';
+
+
 
 /*========L/C CRUD Route list=========*/
 $route['lc/insert'] 		= 	"LC_controller";
@@ -177,7 +192,7 @@ $route['find/office_payment/report'] = 'Report/find_office_payment';
 
 /*======== Setting Route List ===========*/
 $route['setting/insert']	= 'Setting/view_setting_page';
-$route['company_info']		= 'Setting/store_or_update_conpany_info';
+$route['company_info/store']		= 'Setting/store_or_update_conpany_info';
 
 /*========Create Admin=========*/
 $route['createAdmin'] 			=	"Admincreate/addAdminPage";

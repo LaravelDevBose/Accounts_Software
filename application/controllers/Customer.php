@@ -87,7 +87,7 @@ class Customer extends CI_Controller
 		$this->form_validation->set_rules('order_no', 'Order No ', 'required|trim');
 
 
-		if($this->form_validation->run() == FALSE)
+		if($this->form_validation->run() == FALSE) 
 		{  
 			$data['title'] = 'Customer & Order Information'; 
 			$data['content'] = 'customer_info/create_customer';   

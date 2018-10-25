@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Accounts Software || <?php if(isset($title)): echo $title." || "; endif; ?> Accounts Software</title>
+    <title>Maven Autos || <?php if(isset($title)): echo $title; endif; ?></title>
 
     <meta name="description" content="Static &amp; Dynamic Tables" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -45,6 +45,19 @@
     
     <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/style.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/ace-skins.min.css" />
+    
+     <style type="text/css">
+    @media  print {
+      html, body {
+          height: auto;
+          font-size: 10px; /*changing to 10pt has no impact*/
+      }
+      th{
+        font-size: 10px;
+        font-weight: 300;
+      }
+  }
+  </style>
 
     <!--[if lte IE 9]>
       <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/ace-ie.min.css" />

@@ -13,7 +13,10 @@
         <div class="widget-body">
           <div class="widget-main">
             <div id="data_table">
-              <div class="table-header" >
+              <div id="header" style="display: none;">
+              <?php $this->load->view('admin/partials/print_header');?>
+            </div>
+              <div id="table-header" class="table-header" >
                 L/C Information List
               </div>
             

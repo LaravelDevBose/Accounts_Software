@@ -76,10 +76,18 @@
       <div class="col-md-10">
         <!-- Header Logo -->
         <div class="col-md-12 header">
-          <img src="<?php echo base_url(); ?>libs/logo_image/acc.png" class="img img-responsive center-block">
+          <?php 
+              $logo = $this->Setting_model->get_company_info('logo'); 
+              $image = base_url().$logo;  
+                if(!file_exists($image) && !getimagesize($image) ){ 
+                    $image =base_url().'libs/logo_image/acc.png';
+                  }
+            ?>
+          
+          <img src="<?php echo base_url().'libs/logo_image/maven.jpg'; ?>" class="img img-responsive center-block">
         </div>
-
-
+        
+      
         <div class="col-md-3 section3">
           <div class="col-md-12 section12">
           <a href="<?php echo base_url(); ?>Adminlogin/logout">

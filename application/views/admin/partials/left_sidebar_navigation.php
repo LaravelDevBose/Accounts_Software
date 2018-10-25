@@ -12,7 +12,7 @@
   
   <li class="<?= (strpos($this->uri->uri_string(), 'customers') !== false)?'active open':(($this->uri->uri_string()== 'customer/insert')? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-      <i class="menu-icon fa fa-user"></i>
+      <i class="menu-icon fa fa-user-plus"></i>
       <span class="menu-text"> Customer</span>
 
       <b class="arrow fa fa-angle-down"></b>
@@ -38,14 +38,7 @@
       
     </ul>
   </li>
-  <li class="<?= ($this->uri->uri_string()== 'supplier/insert')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>supplier/insert">
-      <i class="menu-icon fa fa-usd"></i>
-      <span class="menu-text">Suppliers </span>
-    </a>
-    <b class="arrow"></b>
-  </li>
-
+  
   <li class="<?= ($this->uri->uri_string()== 'order/list')?'active open':((strpos($this->uri->uri_string(), 'order') !== false)? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-shopping-bag"></i>
@@ -75,23 +68,42 @@
     </ul>
   </li>
 
-
-  <li class="<?= ($this->uri->uri_string()== 'lc/insert')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>lc/insert">
-      <i class="menu-icon fa fa-usd"></i>
-      <span class="menu-text"> L / C  Entry </span>
+  <li class="<?= ($this->uri->uri_string()== 'supplier/insert')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>supplier/insert">
+      <i class="menu-icon fa fa-user"></i>
+      <span class="menu-text">Suppliers </span>
     </a>
     <b class="arrow"></b>
   </li>
 
-  <li class="<?= ($this->uri->uri_string()== 'ie_head/insert')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>ie_head/insert">
-      <i class="menu-icon fa fa-usd"></i>
-      <span class="menu-text"> Expense Head </span>
-    </a>
-    <b class="arrow"></b>
-  </li>
+  <li class="<?= ($this->uri->uri_string()== 'purchase/list')?'active open':((strpos($this->uri->uri_string(), 'purchase') !== false)? 'active open': '') ?>">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-cart-arrow-down"></i>
+      <span class="menu-text"> Purchase</span>
 
+      <b class="arrow fa fa-angle-down"></b>
+    </a>
+
+    <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="<?= ($this->uri->uri_string()== 'purchase/insert')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>purchase/insert">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Purchase Entry
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'purchase/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>purchase/list">
+          <i class="menu-icon fa fa-caret-right"></i>
+           Purchase List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
+    </ul>
+  </li>
   <li class="<?= (strpos($this->uri->uri_string(), 'collections') !== false)?'active open':((strpos($this->uri->uri_string(), 'payment') !== false)? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-clipboard"></i>
@@ -135,52 +147,7 @@
       </li>
     </ul>
   </li>
-
-  <li class="<?= (strpos($this->uri->uri_string(), 'employees') !== false)?'active open':((strpos($this->uri->uri_string(), 'employee') !== false)? 'active open': '') ?>">
-    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-      <i class="menu-icon fa fa-users"></i>
-      <span class="menu-text"> Employee</span>
-
-      <b class="arrow fa fa-angle-down"></b>
-    </a>
-
-    <b class="arrow"></b>
-
-    <ul class="submenu">
-      <li class="<?= ($this->uri->uri_string()== 'employee/insert')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>employee/insert">
-          <i class="menu-icon fa fa-caret-right"></i>
-          Add Employee
-        </a>
-        <b class="arrow"></b>
-      </li>
-      <li class="<?= ($this->uri->uri_string()== 'employees')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>employees">
-          <i class="menu-icon fa fa-caret-right"></i>
-          Employee List 
-        </a>
-        <b class="arrow"></b>
-      </li>
-      <li class="<?= ($this->uri->uri_string()== 'employee/month')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>employee/month">
-          <i class="menu-icon fa fa-caret-right"></i>
-          Add Month 
-        </a>
-        <b class="arrow"></b>
-      </li>
-      <li class="<?= ($this->uri->uri_string()== 'employee/salary')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>employee/salary">
-          <i class="menu-icon fa fa-caret-right"></i>
-          Salary Payment 
-        </a>
-        <b class="arrow"></b>
-      </li>
-      
-    </ul>
-  </li>
-
-
-  <li class="<?= (strpos($this->uri->uri_string(), 'report') !== false)?'active open': ' ' ?>">
+   <li class="<?= (strpos($this->uri->uri_string(), 'report') !== false)?'active open': ' ' ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-print"></i>
       <span class="menu-text"> Reports</span>
@@ -299,7 +266,63 @@
 
     </ul>
   </li>
+  <li class="<?= (strpos($this->uri->uri_string(), 'employees') !== false)?'active open':((strpos($this->uri->uri_string(), 'employee') !== false)? 'active open': '') ?>">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-users"></i>
+      <span class="menu-text"> Employee</span>
 
+      <b class="arrow fa fa-angle-down"></b>
+    </a>
+
+    <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="<?= ($this->uri->uri_string()== 'employee/insert')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>employee/insert">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Add Employee
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'employees')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>employees">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Employee List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'employee/month')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>employee/month">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Add Month 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'employee/salary')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>employee/salary">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Salary Payment 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
+    </ul>
+  </li>
+  <li class="<?= ($this->uri->uri_string()== 'lc/insert')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>lc/insert">
+      <i class="menu-icon fa fa-usd"></i>
+      <span class="menu-text"> L / C  Entry </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+
+  <li class="<?= ($this->uri->uri_string()== 'ie_head/insert')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>ie_head/insert">
+      <i class="menu-icon fa fa-money"></i>
+      <span class="menu-text"> Expense Head </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
   <li class="">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-user-secret"></i>

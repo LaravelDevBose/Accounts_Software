@@ -46,14 +46,61 @@
             </div>
           </div>
           <br>
-          <div id="data_table">
+          <div id="data_table" class="row">
+            <div id="header" style="display: none;">
+              <?php $this->load->view('admin/partials/print_header');?>
+            </div>
+            <div id="rBody">
+              
+            </div>
 
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> 
 </div>
 
 
-<?php $this->load->view('admin/ajax/payment_ajax');?>
+<script>
+  $('#report_search').on('click', function(){
+    var order_id = $('#order_id').val();
+
+    if(order_id >= 1){
+      $.ajax({
+        url:'<?= base_url(); ?>find/full_report/'+order_id,
+        type:'POST',
+        dataType:'html', 
+        success:function(data){
+          $('#rBody').empty();
+
+          if(data != 0){
+                $('#rBody').html(data);
+          }else{
+            swal({
+                    text: "No Data Found..!",
+                    icon: "info",
+                    buttons: false,
+                    timer: 1500,
+                  });
+          }
+        },error:function(error){
+          console.log(error);
+              swal({
+                      text: "Searching Unsuccessfull..! Some Error Found",
+                      icon: "error",
+                      buttons: true,
+                      timer: 2500,
+                  });
+        }
+      });
+    }else{
+      swal({
+              text: "Pleass Select Chassis No First",
+              icon: "warning",
+              buttons: false,
+              timer: 1500,
+            });
+    }
+  });
+</script>

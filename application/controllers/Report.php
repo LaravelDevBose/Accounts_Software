@@ -87,7 +87,7 @@ class Report extends CI_Controller
 	/*======== Customer wise Colletion Report ========*/
 	public function customer_wise_collection()
 	{
-		$data['title'] = 'Collection Report';  
+		$data['title'] = 'Customer Collection Report';  
 		$data['content'] = 'report/cus_wise_collection';
 		$data['customers'] = $this->Customer_model->find_all_customer_info();
 		$this->load->view('admin/adminMaster', $data);
@@ -108,7 +108,7 @@ class Report extends CI_Controller
 	/*======= car Chassis Number wise Collection REport Page =======*/
 	public function car_wise_collection_view()
 	{
-		$data['title'] = 'Collection Report';  
+		$data['title'] = 'Car Wise Collection Report';  
 		$data['content'] = 'report/car_wise_collection';
 		$data['orders'] = $this->Order_model->get_order_chassis_number();
 		$this->load->view('admin/adminMaster', $data);

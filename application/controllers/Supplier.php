@@ -161,4 +161,14 @@ class Supplier extends CI_Controller
 	}
 
 
+	/*========== find Supplier Information ==========*/
+	public function find_supplier_info($sup_id=Null)
+	{
+		if($data = $this->Supplier_model->supplier_by_id($sup_id)){
+			echo json_encode($data);
+		}else{
+			echo 0;
+		}
+	}
+
 }

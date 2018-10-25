@@ -25,8 +25,7 @@
                   <thead>
                     <tr>
                      
-                      <th>Customer Code</th>
-                      <th>Customer Name</th>
+                      <th colspan="2">Customer Info</th>
                       <th>Contact No.</th>
                       <th>Email Address</th>
                       <th>Entry Date</th>
@@ -39,8 +38,9 @@
                   <tbody id="tBody">
                       <?php  if($customers && isset($customers)): foreach($customers as $customer):?>
                     <tr>
-                      <td><?= $customer->cus_code ?></td>
-                      <td><?= $customer->cus_name ?></td>
+                      <?php  $image = base_url().$customer->cus_image;  if(!file_exists($image) && !getimagesize($image) ){ $image =base_url().'libs/upload_pic/no.png';} ?>
+                      <td><img src="<?= $image ?>" alt="" style="height: 40px; width: 40px; border: 1px solid #ddd;"></td>
+                      <td><?= $customer->cus_code.'-'.$customer->cus_name ?></td>
                       <td><?= $customer->cus_contact_no.'<br>'.$customer->alt_contact_no ?></td>
                       <td><?= $customer->cus_email ?> </td>
                       <td>

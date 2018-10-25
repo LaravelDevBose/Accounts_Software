@@ -12,10 +12,17 @@
         </button>
 
         <div class="navbar-header pull-left">
-          <a href="<?php echo base_url(); ?>" class="navbar-brand">
+          <a href="<?php echo base_url(); ?>" class="navbar-brand" style="padding-bottom: 5px; padding-top: 5px;">
             <small>
-              <i class="fa fa-leaf"></i>
-              <!--Enterprise Resource Planning--> Accounts Software <span style="color:#000;font-weight:700;letter-spacing:1px;font-size:16px;"> <?php //echo $this->session->userdata('Brunch_name'); ?> </span>
+              <?php 
+                $logo = $this->Setting_model->get_company_info('logo'); 
+                $image = base_url().$logo;  
+                  if(!file_exists($image) && !getimagesize($image) ){ 
+                      $image =base_url().'libs/upload_pic/no.png';
+                    }
+              ?>
+              <img src="<?= $image ?>" alt="" style="height: 30px; width: 30px;" >
+               Maven Auto 
             </small>
           </a>
         </div>

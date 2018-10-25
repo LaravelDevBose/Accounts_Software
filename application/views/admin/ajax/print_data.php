@@ -13,7 +13,9 @@
     $('#dynamic-table_filter').css('display', 'none');
     $('#dynamic-table_info').css('display', 'none');
     $('#dynamic-table_paginate').css('display', 'none');
+    $('#table-header').css('display', 'none');
     
+    $('#header').css('display', 'block');
     /*----  Get all html in data_table div ---*/
     var print_contents = $('#data_table').html();
 

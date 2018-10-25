@@ -29,23 +29,33 @@ class Setting extends CI_Controller
 	{
 		$data['title'] = 'Company Setting';
 		$data['content'] = 'setting/setting_page';
+		$data['logo'] = $this->Setting_model->get_company_info('logo');
+		$data['cmp_name'] = $this->Setting_model->get_company_info('cmp_name');
+		$data['cmp_adds'] = $this->Setting_model->get_company_info('cmp_adds');
+		$data['cmp_phn'] = $this->Setting_model->get_company_info('cmp_phn');
+		$data['cmp_eml'] = $this->Setting_model->get_company_info('cmp_eml');
 		$this->load->view('admin/adminMaster', $data);
 	}
 
 	/*store or Update Company Info*/
 
 	public function store_or_update_conpany_info()
-	{
-		if($res = $this->Setting_model->data_store_and_update()){
-			// $data['success'] = 'Company Infomation Update SuccessFullY';
-			$data['success'] = 'This System is In Processing';
+	{	
 
+		
+		if($res = $this->Setting_model->data_store_or_update()){
+			$data['success'] = 'Company All Infomation Update SuccessFullY';
 			$this->session->set_flashdata($data);
 			redirect('setting/insert');
 		}else{
-			$data['error'] = 'Company Infomation Update UnSuccessFull';
+			$data['error'] = 'Company All Infomation Update UnSuccessFull';
 			$this->session->set_flashdata($data);
 			redirect('setting/insert');
 		}
 	}
+
+
+
+
+	
 }
