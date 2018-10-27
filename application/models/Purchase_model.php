@@ -21,6 +21,19 @@ class Purchase_model extends CI_Model
 		}
 	}
 
+	/*=========== Un Order Car List ===============*/
+	public function unOrder_car_list()
+	{
+		$this->db->select('id,puc_chassis_no,order_id')->where('order_id','0')->where('car_status','0');
+		$result = $this->db->where('purchase.status !=', 'd')->order_by('id', 'desc')->get('purchase')->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
 	/*====== store order data ======*/
 	public function store_purchase_info($total_price = Null)
 	{	
@@ -41,7 +54,7 @@ class Purchase_model extends CI_Model
 			'puc_mileage'	=>$this->input->post('puc_mileage'),
 			'puc_other_tirm'=>$this->input->post('puc_other_tirm'),
 			'total_price'	=>$total_price,
-			'car_status'	=>'1',
+			'car_status'	=>'0',
 			'status'	=>'a',
 			'created_by' =>$this->session->userdata('name'),
 			'updated_by'  =>$this->session->userdata('name'),
@@ -209,7 +222,65 @@ class Purchase_model extends CI_Model
 		}
 	}
 
+	public function undelivery_purchase_car()
+	{
+		$this->db->select('purchase.*, suppliers.sup_name');
+		$this->db->from('purchase');
+		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
+		$this->db->where('purchase.status !=', 'd')->where('car_status', '0');
+		$result = $this->db->order_by('id', 'desc')->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function car_transport_change($pus_id = Null, $trans_id=Null)
+	{
+		$attr = array('transport_id'=>$trans_id);
+
+		$this->db->where('id', $pus_id);
+		$qu = $this->db->update('purchase', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
 	
 
-	
+	/*============= car delivery order change ===========*/
+	public function update_car_dliv_status($order_id=Null)
+	{
+		$attr = array('car_status'=>'1');
+
+		$this->db->where('order_id', $order_id);
+		$this->db->update('purchase', $attr);
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
+	/*========== Update Order And Customer Info in Purchase ==========*/
+	public function update_order_info_in_purchase($pus_id = Null, $order_id=Null, $cus_id = Null)
+	{
+		$attr = array(
+			'customer_id'=>$cus_id,
+			'order_id'=>$order_id
+		);
+
+		$this->db->where('id', $pus_id);
+		$this->db->update('purchase', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
 }

@@ -66,6 +66,7 @@ class Customer extends CI_Controller
 			
 			$data['cus_code'] = $cus_code;
 			$data['lc_data'] = $this->LC_model->get_all_lc_info();
+			$data['cars'] = $this->Purchase_model->unOrder_car_list();
 			$this->load->view('admin/adminMaster', $data);
 		}	
 	}
@@ -95,7 +96,11 @@ class Customer extends CI_Controller
 		}
 		else{
 			if($cus_id = $this->Customer_model->store_customer_info()){
-				if($this->Order_model->store_order_info($cus_id)){
+				if($order_id = $this->Order_model->store_order_info($cus_id)){
+
+					$pus_id = $this->input->post('pus_id');
+					$this->Purchase_model->update_order_info_in_purchase($pus_id,$order_id,$cus_id);
+
 					$data['success']="Save Successfully!";
 					$this->session->set_flashdata($data);
 					redirect('customer/insert');

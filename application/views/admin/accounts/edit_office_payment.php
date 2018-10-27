@@ -68,8 +68,20 @@
 </div>
 <?php $this->load->view('admin/ajax/collection_ajax');?>
 <script>
-    $('.date-picker').datepicker({
+  $( document ).ready(function() {
+    var config = {
+           '.chosen-select'           : {},
+           '.chosen-select-deselect'  : {allow_single_deselect:true},
+           '.chosen-select-no-single' : {disable_search_threshold:10},
+           '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+           '.chosen-select-width'     : {width:"95%"}
+      }
+      for (var selector in config) {
+        $(selector).chosen(config[selector]);
+      }
+      $('.date-picker').datepicker({
           autoclose: true,
           todayHighlight: true
         })
+    });
   </script>

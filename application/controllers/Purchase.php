@@ -225,6 +225,17 @@ class Purchase extends CI_Controller
 		}
 	}
 
+
+	/*========== Find Car Info ========*/
+	public function find_car_info($pus_id=Null)
+	{
+		if($res = $this->Purchase_model->purchase_info_by_id($pus_id)){
+			
+			echo json_encode($res);
+		}else{
+			echo 0;
+		}
+	}
 	
 
 }

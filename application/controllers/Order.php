@@ -41,6 +41,7 @@ class Order extends CI_Controller
 			$data['content'] = 'order_info/create_order';
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
 			$data['lc_data'] = $this->LC_model->get_all_lc_info();
+			$data['cars'] = $this->Purchase_model->unOrder_car_list();
 			$this->load->view('admin/adminMaster', $data);
 		}	
 	}
@@ -49,10 +50,6 @@ class Order extends CI_Controller
 	public function store_order_info()
 	{
 		$this->form_validation->set_rules('cus_id', 'Select Customer', 'required|trim');
-		// $this->form_validation->set_rules('ord_lc_no', 'L/c Number ', 'required|trim');
-		// $this->form_validation->set_rules('ord_car_model', 'Model Number ', 'required|trim');
-		// $this->form_validation->set_rules('ord_engine_no', 'Engine Number', 'required|trim');
-		// $this->form_validation->set_rules('ord_chassis_no', 'Chassis No', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Order No', 'required|trim');
 
 		if($this->form_validation->run() == FALSE){
@@ -65,8 +62,11 @@ class Order extends CI_Controller
 		}else{
 			$cus_id = $this->input->post('cus_id');
 			
-			if($this->Order_model->store_order_info($cus_id)){
+			if($order_id = $this->Order_model->store_order_info($cus_id)){
 
+				$pus_id = $this->input->post('pus_id');
+				$this->Purchase_model->update_order_info_in_purchase($pus_id,$order_id,$cus_id);
+					
 				$data['success']="Save Successfully!";
 				$this->session->set_flashdata($data);
 				redirect('order/insert');
@@ -96,6 +96,7 @@ class Order extends CI_Controller
 				$data['lc_data'] = $this->LC_model->get_all_lc_info();
 				$data['customer_info'] = $this->Customer_model->customer_by_id($result->cus_id);
 				$data['order'] = $result;
+				$data['cars'] = $this->Purchase_model->unOrder_car_list();
 				$this->load->view('admin/adminMaster', $data);
 			}else{
 				$data['warning'] ='No data Found!';
@@ -185,6 +186,7 @@ class Order extends CI_Controller
 
 		if($this->Order_model->delivery_order($id)){
 
+			$this->Purchase_model->update_car_dliv_status($id);
 			$data['success']="Deliver Successfully!";
 			$this->session->set_flashdata($data);
 			redirect('order/list');

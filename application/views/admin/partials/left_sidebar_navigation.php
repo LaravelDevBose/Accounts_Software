@@ -104,6 +104,36 @@
       
     </ul>
   </li>
+
+  <li class="<?= (strpos($this->uri->uri_string(), 'transport') !== false)? 'active open': '' ?>">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-car"></i>
+      <span class="menu-text"> Car Transport</span>
+
+      <b class="arrow fa fa-angle-down"></b>
+    </a>
+
+    <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="<?= ($this->uri->uri_string()== 'transport/status')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>transport/status">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Transport Entry
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'transport/head')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>transport/head">
+          <i class="menu-icon fa fa-caret-right"></i>
+           Transport Head 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
+    </ul>
+  </li>
+
   <li class="<?= (strpos($this->uri->uri_string(), 'collections') !== false)?'active open':((strpos($this->uri->uri_string(), 'payment') !== false)? 'active open': '') ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-clipboard"></i>

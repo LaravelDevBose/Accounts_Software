@@ -120,6 +120,7 @@
                     </select>
                   </div>
                 </div>
+                
 
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> Car Model: <span class="text-bold text-danger">*</span> </label>
@@ -134,20 +135,28 @@
                     <input type="text" id="ord_color" name="ord_color" value="<?= $order->ord_color ?>" placeholder="Color" class="form-control" />
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="pus_id"> Chassis No: </label>
+                  <div class="col-sm-8">
+                    <select class="chosen-select" id="pus_id" name="pus_id" style="height: 30px; border-radius: 5px;">
+                      <option value="0">Please Select a Chassis No</option>
+                      <?php if($cars && isset($cars)): foreach($cars as $data):?>
+                        <option value="<?= $data->id; ?>" <?= ($order->pus_id == $data->id)?'selected':'' ?> ><?= $data->puc_chassis_no; ?></option>
+                      <?php endforeach; endif;?>
+                    </select>
 
+                    <input type="hidden" id="ord_chassis_no" name="ord_chassis_no" value="<?= $order->ord_chassis_no ?>" class="form-control" />
+                  </div>
+                </div>
+                
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <input type="text" id="ord_engine_no"  name="ord_engine_no" value="<?= $order->ord_engine_no ?>" placeholder="Engine No" class="form-control" />
+                    <input type="text" id="ord_engine_no"  name="ord_engine_no" value="<?= $order->ord_engine_no ?>" readonly placeholder="Engine No" class="form-control" />
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_chassis_no"> Chassis No: <span class="text-bold text-danger">*</span> </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_chassis_no"  name="ord_chassis_no" value="<?= $order->ord_chassis_no ?>" placeholder="Chassis No" class="form-control" />
-                  </div>
-                </div>
+                
 
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="order_no"> Order No: <span class="text-bold text-danger">*</span> </label>
@@ -232,3 +241,40 @@
 </div>
 
 <?php $this->load->view('admin/ajax/order_ajax');?>
+<script>
+$('#pus_id').change(function(e){
+        var pus_id = e.target.value;
+        
+        $('#ord_chassis_no').val('');
+        $('#ord_engine_no').val('');
+
+        if(pus_id > 0 && pus_id !=''){
+          $.ajax({
+            url:'<?= base_url();?>find/car_info/'+pus_id,
+            type:'POST',
+            dataType:'Json',
+            success:function(data){
+              if(data !=0){
+                $('#ord_chassis_no').val(data.puc_chassis_no);
+                $('#ord_engine_no').val(data.puc_engine_no);
+              }else{
+                swal({
+                    text: "No Data Found",
+                    icon: "info",
+                    buttons: false,
+                    timer: 1500,
+                });
+              }
+            },error:function(error){
+              console.log(error);
+            }
+          });
+        }
+    });
+
+
+
+
+
+
+</script>

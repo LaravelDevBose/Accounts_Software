@@ -156,18 +156,27 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No: </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="pus_id"> Chassis No: </label>
                   <div class="col-sm-8">
-                    <input type="text" id="ord_engine_no" name="ord_engine_no" placeholder="Engine No" class="form-control" />
+                    <select class="chosen-select "  id="pus_id" name="pus_id" style="height: 30px; border-radius: 5px;">
+                      <option value="0">Please Select a Chassis No</option>
+                      <?php if($cars && isset($cars)): foreach($cars as $data):?>
+                        <option value="<?= $data->id; ?>"><?= $data->puc_chassis_no; ?></option>
+                      <?php endforeach; endif;?>
+                    </select>
+
+                    <input type="hidden" id="ord_chassis_no" name="ord_chassis_no" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_chassis_no"> Chassis No: </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No: </label>
                   <div class="col-sm-8">
-                    <input type="text" id="ord_chassis_no" name="ord_chassis_no" placeholder="Chassis No" class="form-control" />
+                    <input type="text" id="ord_engine_no" readonly name="ord_engine_no" placeholder="Engine No" class="form-control" />
                   </div>
                 </div>
+
+                
 
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="order_no"> Order No:<span class="text-bold text-danger">*</span> </label>
@@ -261,5 +270,56 @@
   <table id="dynamic-table"  >
 </table>
 </div>
+
+<script>
+  $('#pus_id').change(function(e){
+      var pus_id = e.target.value;
+
+      $('#ord_car_model').val('');
+      $('#ord_color').val('');
+      $('#ord_chassis_no').val('');
+      $('#ord_engine_no').val('');
+      $('#ord_other_tirm').val('');
+      $('#ord_make').val('');
+      $('#ord_grade').val('');
+      $('#ord_type').val('');
+      $('#ord_year').val('');
+      $('#ord_mileage').val('');
+      
+
+      if(pus_id > 0 && pus_id !=''){
+        $.ajax({
+          url:'<?= base_url();?>find/car_info/'+pus_id,
+          type:'POST',
+          dataType:'Json',
+          success:function(data){
+            if(data !=0){
+              $('#ord_car_model').val(data.puc_car_model);
+              $('#ord_color').val(data.puc_color);
+              $('#ord_chassis_no').val(data.puc_chassis_no);
+              $('#ord_engine_no').val(data.puc_engine_no);
+              $('#ord_other_tirm').val(data.puc_other_tirm);
+              $('#ord_make').val(data.puc_make);
+              $('#ord_grade').val(data.puc_grade);
+              $('#ord_type').val(data.puc_type);
+              $('#ord_year').val(data.puc_year);
+              $('#ord_mileage').val(data.puc_mileage);
+            }else{
+              swal({
+                  text: "No Data Found",
+                  icon: "info",
+                  buttons: false,
+                  timer: 1500,
+              });
+            }
+          },error:function(error){
+            console.log(error);
+          }
+        });
+      }
+  });
+  </script>
+
+
 
 

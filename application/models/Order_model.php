@@ -61,6 +61,7 @@ class Order_model extends CI_Model
 				'ord_lc_no'	=>$this->input->post('ord_lc_no'),
 				'ord_car_model'	=>$this->input->post('ord_car_model'),
 				'ord_color'	=>$this->input->post('ord_color'),
+				'pus_id'	=>$this->input->post('pus_id'),
 				'ord_engine_no'	=>$this->input->post('ord_engine_no'),
 				'ord_chassis_no'	=>$this->input->post('ord_chassis_no'),
 				'order_no'	=>$this->input->post('order_no'),
@@ -81,8 +82,8 @@ class Order_model extends CI_Model
 			);
 
 			$result = $this->db->insert('orders', $attr);
-			
-			if($result): return True; else: return FALSE; endif;
+			$order_id = $this->db->insert_id();
+			if($result): return $order_id; else: return FALSE; endif;
 
 		}else{
 			return FALSE; 
@@ -147,22 +148,22 @@ class Order_model extends CI_Model
 	public function check_order_status()
 	{	
 		$order_status = $this->input->post('order_status');
-		$lc_no = $this->input->post('ord_lc_no');
 		$chassis_no = $this->input->post('ord_chassis_no');
+		$engine_no = $this->input->post('ord_engine_no');
 
 
 		if($order_status && isset($order_status)){ //check is request for store or Update
 			if($order_status == 'c'){ //check order already complete or not
 				return 'c';
 			}else{
-				if($lc_no && $chassis_no){  //check lc and chase has or not
+				if($engine_no && $chassis_no){  //check lc and chase has or not
 					return 'a';
 				}else{
 					return 'p';
 				}
 			}
 		}else{
-			if($lc_no && $chassis_no){ //check lc and chase has or not
+			if($engine_no && $chassis_no){ //check lc and chase has or not
 				return 'a';
 			}else{
 				return 'p';

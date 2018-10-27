@@ -58,7 +58,19 @@ $route['purchase/edit/(:any)']		=	'Purchase/edit_purchase_info/$1';
 $route['purchase/view/(:any)']		=	'Purchase/view_purchase_info/$1';
 $route['purchase/update/(:any)']	=	'Purchase/update_purchase_info/$1';
 $route['purchase/delete/(:any)']	=	'Purchase/delete_purchase_info/$1';
+$route['find/car_info/(:any)']		= 	'Purchase/find_car_info/$1';
 
+
+/*======= Car Location Traking =======*/
+$route['transport/status'] 			= 'Transport/transport_car_status_view';
+$route['trans/status/chnage/(:any)']= 'Transport/transport_car_status_change_page/$1';
+$route['trans/status/update']		= 'Transport/transport_car_status_update';
+
+$route['transport/head']			= 'Transport/transport_head_view';
+$route['trans/head/store'] 			= 'Transport/transport_head_store';
+$route['trans/head/edit/(:any)'] 	= 'Transport/transport_head_edit/$1';
+$route['trans/head/update/(:any)'] 	= 'Transport/transport_head_update/$1';
+$route['trans/head/delete/(:any)'] 	= 'Transport/transport_head_delete/$1';
 
 
 /*========L/C CRUD Route list=========*/
