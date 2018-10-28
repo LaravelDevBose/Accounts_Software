@@ -15,8 +15,7 @@
                 </div>
                 <div class="widget-main">
                     <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5">
+                        <div class="col-md-6" style="width: 50%; float: left;">
                             <div class="row" style="padding: 15px;">
                                 <div class="col-xs-12 label label-lg label-info arrowed-in arrowed-right">
                                     <b>Car Details Info</b>
@@ -115,10 +114,10 @@
 
                                     <div class="profile-info-value">
                                         <span class="editable" id="about">
-                                            <?php if($order->order_status == 'a'): ?>
-                                              <span class="label " style="background: #36a2ec;">Active</span>
+                                            <?php if($purchase->car_status == 1): ?>
+                                              <span class="label " style="background: #36a2ec;">Deliver</span>
                                               <?php else: ?>
-                                              <span class="label " style="background: #ec880a;">Panding</span>
+                                              <span class="label " style="background: #ec880a;">Un Deliver</span>
                                               <?php endif;?>
                                         </span>
                                     </div>
@@ -126,12 +125,12 @@
                                 
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6" style="width: 50%; float: right;">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row" style="padding: 15px;">
                                         <div class="col-xs-12 label label-lg label-success arrowed-in arrowed-right">
-                                            <b>Customer Info</b>
+                                            <b>Supplier Info</b>
                                         </div>
                                     </div>
                                     <div class="profile-user-info profile-user-info-striped">
@@ -139,15 +138,15 @@
                                             <div class="profile-info-name"> Name:</div>
 
                                             <div class="profile-info-value">
-                                                <span class="editable" id="username"><?= $customer->cus_name; ?></span>
+                                                <span class="editable" id="username"><?= $supplier->sup_name; ?></span>
                                             </div>
                                         </div>
 
                                         <div class="profile-info-row">
-                                            <div class="profile-info-name">Customer Id:</div>
+                                            <div class="profile-info-name">supplier Id:</div>
 
                                             <div class="profile-info-value">
-                                                <span class="editable" id="city"><?= $customer->cus_code; ?></span>
+                                                <span class="editable" id="city"><?= $supplier->sup_code; ?></span>
                                             </div>
                                         </div>
 
@@ -155,15 +154,7 @@
                                             <div class="profile-info-name"> Contact No: </div>
 
                                             <div class="profile-info-value">
-                                                <span class="editable" id="age"><?= $customer->cus_contact_no; ?></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Alt. Contact No: </div>
-
-                                            <div class="profile-info-value">
-                                                <span class="editable" id="signup"><?= $customer->alt_contact_no; ?></span>
+                                                <span class="editable" id="age"><?= $supplier->sup_phone; ?></span>
                                             </div>
                                         </div>
 
@@ -171,7 +162,7 @@
                                             <div class="profile-info-name"> E-mail: </div>
 
                                             <div class="profile-info-value">
-                                                <span class="editable" id="login"><?= $customer->cus_email; ?></span>
+                                                <span class="editable" id="login"><?= $supplier->sup_email; ?></span>
                                             </div>
                                         </div>
 
@@ -179,55 +170,14 @@
                                             <div class="profile-info-name"> Address: </div>
 
                                             <div class="profile-info-value">
-                                                <span class="editable" id="about"><?= $customer->cus_address; ?></span>
+                                                <span class="editable" id="about"><?= $supplier->sup_address; ?></span>
                                             </div>
                                         </div>
                                     </div>
                                     
                                 </div>
 
-                                <div class="col-md-12">
-                                    <div class="row" style="padding: 15px;">
-                                        <div class="col-xs-12 label label-lg label-warning arrowed-in arrowed-right">
-                                            <b>Payment Info</b>
-                                        </div>
-                                    </div>
-                                    <div class="profile-user-info profile-user-info-striped">
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Budget Price: </div>
-
-                                            <div class="profile-info-value">
-                                                <span class="editable" id="username"><?= number_format($order->ord_budget_range,2); ?></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Advance: </div>
-
-                                            <div class="profile-info-value">
-                                                <span class="editable" id="city"><?= number_format($order->ord_advance,2); ?></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-info-row">
-                                            <div class="profile-info-name"> Paid Amount: </div>
-
-                                            <div class="profile-info-value">
-                                                <span class="editable" id="age"><?= number_format($paid_amount,2); ?></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-info-row" >
-                                            <div class="profile-info-name" style="background-color: #d89696a3;"> Due Amount: </div>
-
-                                            <div class="profile-info-value">
-                                                <span class="editable" id="signup"><?= number_format($order->ord_budget_range-$paid_amount,2); ?></span>
-                                            </div>
-                                        </div>
-
-                                        
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
