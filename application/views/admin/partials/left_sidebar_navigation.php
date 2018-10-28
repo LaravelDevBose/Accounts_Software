@@ -60,7 +60,21 @@
       <li class="<?= ($this->uri->uri_string()== 'order/list')?'active': ' ' ?>">
         <a href="<?php echo base_url();?>order/list">
           <i class="menu-icon fa fa-caret-right"></i>
-           Order List 
+           All Order List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'order/pending/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>order/pending/list">
+          <i class="menu-icon fa fa-caret-right"></i>
+           Order Pending List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'order/onprocess/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>order/onprocess/list">
+          <i class="menu-icon fa fa-caret-right"></i>
+           Order On-Process List 
         </a>
         <b class="arrow"></b>
       </li>

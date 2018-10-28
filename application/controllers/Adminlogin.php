@@ -44,8 +44,8 @@ class Adminlogin extends CI_Controller
 				redirect('admindashboard');
 			}
 			else{
-				$data['error_login'] = 'Invalid User Name or Password';
-				$this->load->view('login_page', $data);
+				$data['login_error'] = 'Invalid User Name or Password';
+				$this->load->view('login_page', $data); 
 			}
 		}
 	}

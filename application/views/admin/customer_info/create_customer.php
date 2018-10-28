@@ -62,7 +62,7 @@
                 <div class="form-group">
                   <label class="col-sm-5 control-label no-padding-left" for="cus_fb"> Facebook Id:</label>
                   <div class="col-sm-7">
-                    <input type="text" id="cus_fb" name="cus_fb" required placeholder="Facebook Id Url" class="form-control" />
+                    <input type="text" id="cus_fb" name="cus_fb" placeholder="Facebook Id Url" class="form-control" />
                   </div>
                 </div>
               </div>

@@ -29,6 +29,9 @@ $route['customer/delete/(:any)']	=	'Customer/delete_customer_info/$1';
 
 /*========Order CRUD Route list=========*/
 $route['order/list'] 			= 	"Order/index";
+$route['order/pending/list'] 	= 	"Order/order_pending_list";
+$route['order/onprocess/list'] 	= 	"Order/order_onprocess_list";
+
 $route['order/insert'] 			= 	"Order/insert_order_info";
 $route['order/store'] 			= 	"Order/store_order_info";
 $route['order/edit/(:any)']		=	'Order/edit_order_info/$1';

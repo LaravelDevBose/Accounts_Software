@@ -28,6 +28,33 @@ class Order extends CI_Controller
 		}	
 	}
 
+	/*========= Order Pending List==========*/
+	public function order_pending_list()
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			$data['title'] = 'Order Pending Information List';  
+			$data['content'] = 'order_info/order_pending_list';
+			$data['orders']	= $this->Order_model->get_order_pending_info();
+			$this->load->view('admin/adminMaster', $data);
+		}
+	}
+
+	/*========= Order On Process List==========*/
+	public function order_onprocess_list()
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			$data['title'] = 'Order On Procces List';  
+			$data['content'] = 'order_info/order_onprocess_list';
+			$data['orders']	= $this->Order_model->get_order_onprocess_info();
+			$this->load->view('admin/adminMaster', $data);
+		}
+	}
 
 
 	/*==========Order insert Page show ==========*/

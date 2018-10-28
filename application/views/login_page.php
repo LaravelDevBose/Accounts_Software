@@ -50,7 +50,14 @@
                         <b>Enter Your User Name & Password</b>
                       </h5>
                       <div class="space-6"></div>
-                      <?php $this->load->view('admin/error_success_msg'); ?>
+                      <?php
+                        if(isset($login_error) && $login_error) :
+                      ?>
+                        <div class="alert alert-danger alert-styled-left alert-arrow-left alert-bordered">
+                            <button type="button" style="color: red;" class="close" data-dismiss="alert">
+                            <span>&times;</span><span class="sr-only">Close</span></button><?php echo $login_error; ?>
+                        </div>
+                      <?php endif; ?>
 
                       <form method="post" action="<?php echo base_url();?>admin_login">
                         <fieldset>

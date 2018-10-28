@@ -12,12 +12,19 @@ class Admin_model extends CI_Model
 		$name 	= $this->input->post('username');
 		$pass 	= md5($this->input->post('password'));
 
-		$attr = array(
-			'admin_username' => $name, 
-			'admin_password' => $pass, 
-		);
+		 $this->db->select('*');
+		 $this->db->from("create_admin");
+		 $this->db->where("admin_username like binary",$name);
+		 $this->db->where("admin_password like binary",$pass);
+		 $res = $this->db->get()->row();
 
-		$res = $this->db->get_where('create_admin', $attr)->row();
+
+		// $attr = array(
+		// 	'admin_username' => $name, 
+		// 	'admin_password' => $pass, 
+		// );
+
+		// $res = $this->db->get_where('create_admin', $attr)->row();
 		// echo "<pre>";
 		// var_dump($res); return;
 

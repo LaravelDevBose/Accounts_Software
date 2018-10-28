@@ -21,6 +21,36 @@ class Order_model extends CI_Model
 		}
 	}
 
+	public function get_order_pending_info()
+	{	
+		$this->db->select('orders.*, customers.cus_name');
+		$this->db->from('orders');
+		$this->db->join('customers', 'orders.cus_id = customers.id' );
+		$this->db->where('orders.order_status','p')->where('orders.status !=', 'd')->order_by('id', 'desc');
+		$result = $this->db->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function get_order_onprocess_info()
+	{	
+		$this->db->select('orders.*, customers.cus_name');
+		$this->db->from('orders');
+		$this->db->join('customers', 'orders.cus_id = customers.id' );
+		$this->db->where('orders.order_status','a')->where('orders.status !=', 'd')->order_by('id', 'desc');
+		$result = $this->db->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
 	public function get_active_order_info()
 	{	
 		$result = $this->db->where('orders.status !=', 'd')->where('orders.order_status !=', 'p')->order_by('id', 'desc')->get('orders')->result();
