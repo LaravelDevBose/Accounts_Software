@@ -3,7 +3,7 @@
     <div class="col-xs-10">
         <div class="widget-box">
             <div class="widget-header">
-                <h4 class="widget-title">Order Details Information</h4>
+                <h4 class="widget-title">Purchase Car Full Information</h4>
                 <div class="widget-toolbar">
                     <button type="button" onclick="print_data()" class="btn btn-sm btn-info pull-right"><i class="ace-icon fa fa-print"  ></i> Print</button>
                 </div>
@@ -11,7 +11,7 @@
 
             <div class="widget-body" id="data_table">
                 <div id="header" style="display: none;">
-                    <?php $this->load->view('admin/partials/print_header');?>
+                  <?php $this->load->view('admin/partials/print_header');?>
                 </div>
                 <div class="widget-main">
                     <div class="row">
@@ -19,25 +19,40 @@
                         <div class="col-md-5">
                             <div class="row" style="padding: 15px;">
                                 <div class="col-xs-12 label label-lg label-info arrowed-in arrowed-right">
-                                    <b>Order Info</b>
+                                    <b>Car Details Info</b>
                                 </div>
                             </div>
                             <div class="profile-user-info profile-user-info-striped">
                                 <div class="profile-info-row">
-                                    <div class="profile-info-name"> Order No: </div>
+                                    <div class="profile-info-name"> Chassis No </div>
 
                                     <div class="profile-info-value">
-                                        <span class="editable" id="username"><?= $order->order_no; ?></span>
+                                        <span class="editable" id="age"><?= $purchase->puc_chassis_no ?></span>
                                     </div>
                                 </div>
 
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Engine No: </div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable" id="signup"><?= $purchase->puc_engine_no ?></span>
+                                    </div>
+                                </div>
+
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Car Model: </div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable" id="login"><?= $purchase->puc_car_model ?></span>
+                                    </div>
+                                </div>
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> L/C No: </div>
 
                                     <div class="profile-info-value">
                                         <?php 
-                                          $lc_no = ''; $bank_name = ''; if($order->ord_lc_no != 0 && $order->ord_lc_no !=  ''){
-                                            $lc_info = $this->LC_model->lc_data_by_id($order->ord_lc_no);
+                                          $lc_no = ''; $bank_name = ''; if($purchase->puc_lc_id != 0 && $purchase->puc_lc_id !=  ''){
+                                            $lc_info = $this->LC_model->lc_data_by_id($purchase->puc_lc_id);
                                             $lc_no = $lc_info->lc_no;
                                             $bank_name = $lc_info->bank_name.'-';
                                           }
@@ -47,86 +62,60 @@
                                 </div>
 
                                 <div class="profile-info-row">
-                                    <div class="profile-info-name"> Chassis No </div>
-
-                                    <div class="profile-info-value">
-                                        <span class="editable" id="age"><?= $order->ord_chassis_no ?></span>
-                                    </div>
-                                </div>
-
-                                <div class="profile-info-row">
-                                    <div class="profile-info-name"> Engine No: </div>
-
-                                    <div class="profile-info-value">
-                                        <span class="editable" id="signup"><?= $order->ord_engine_no ?></span>
-                                    </div>
-                                </div>
-
-                                <div class="profile-info-row">
-                                    <div class="profile-info-name"> Car Model: </div>
-
-                                    <div class="profile-info-value">
-                                        <span class="editable" id="login"><?= $order->ord_car_model ?></span>
-                                    </div>
-                                </div>
-
-                                <div class="profile-info-row">
                                     <div class="profile-info-name"> Color: </div>
 
                                     <div class="profile-info-value">
-                                        <span class="editable" id="about"><?= $order->ord_color ?></span>
+                                        <span class="editable" id="about"><?= $purchase->puc_color ?></span>
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> Make: </div>
 
                                     <div class="profile-info-value">
-                                        <span class="editable" id="about"><?= $order->ord_make_model ?></span>
+                                        <span class="editable" id="about"><?= $purchase->puc_make ?></span>
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> Grade: </div>
 
                                     <div class="profile-info-value">
-                                        <span class="editable" id="about"><?= $order->ord_grade ?></span>
+                                        <span class="editable" id="about"><?= $purchase->puc_grade ?></span>
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> Type: </div>
 
                                     <div class="profile-info-value">
-                                        <span class="editable" id="about"><?= $order->ord_type ?></span>
+                                        <span class="editable" id="about"><?= $purchase->puc_type ?></span>
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> Year: </div>
 
                                     <div class="profile-info-value">
-                                        <span class="editable" id="about"><?= $order->ord_year ?></span>
+                                        <span class="editable" id="about"><?= $purchase->puc_year ?></span>
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> Mileage: </div>
 
                                     <div class="profile-info-value">
-                                        <span class="editable" id="about"><?= $order->ord_mileage ?></span>
+                                        <span class="editable" id="about"><?= $purchase->puc_mileage ?></span>
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> Other Tirm: </div>
 
                                     <div class="profile-info-value">
-                                        <span class="editable" id="about"><?= $order->ord_other_tirm ?></span>
+                                        <span class="editable" id="about"><?= $purchase->puc_other_tirm ?></span>
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
-                                    <div class="profile-info-name"> Order Status: </div>
+                                    <div class="profile-info-name"> purchase Status: </div>
 
                                     <div class="profile-info-value">
                                         <span class="editable" id="about">
-                                            <?php if($order->order_status == 'c'): ?>
-                                              <span class="label " style="background: green;">Delevired</span>  Date: <?php  $date = new DateTime($order->delivery_date); echo date_format($date, 'd M Y'); ?>
-                                              <?php elseif($order->order_status == 'a'): ?>
+                                            <?php if($order->order_status == 'a'): ?>
                                               <span class="label " style="background: #36a2ec;">Active</span>
                                               <?php else: ?>
                                               <span class="label " style="background: #ec880a;">Panding</span>

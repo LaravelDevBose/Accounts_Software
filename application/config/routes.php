@@ -52,7 +52,6 @@ $route['find/supplier/(:any)']		=	'Supplier/find_supplier_info/$1';
 $route['purchase/list'] 			= 	"Purchase/index";
 $route['purchase/insert'] 			= 	"Purchase/insert_purchase_info";
 $route['purchase/insert/(:any)'] 	= 	"Purchase/insert_purchase_info/$1";
-// $route['purchase/order/insert'] 	= 	"Purchase/insert_purchase_info";
 $route['purchase/store'] 			= 	"Purchase/store_purchase_info";
 $route['purchase/edit/(:any)']		=	'Purchase/edit_purchase_info/$1';
 $route['purchase/view/(:any)']		=	'Purchase/view_purchase_info/$1';

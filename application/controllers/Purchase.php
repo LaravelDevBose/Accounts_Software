@@ -128,27 +128,26 @@ class Purchase extends CI_Controller
 				$this->load->view('admin/adminMaster', $data);
 			}else{
 				$data['warning'] ='No data Found!';
-			    $this->session->set_flashdata($data);
-			    redirect('order/list');
+			    $this->session->set_flashdata($data); 
+			    redirect('purchase/list');
 			}
 		}
 	}
 
 	/*======== view Order Information =======*/
-	public function view_order_info($id=Null)
+	public function view_purchase_info($id=Null)
 	{
-		if($res = $this->Purchase_model->order_info_by_id($id)){
-			$data['title']	= 'View Order Details';
-			$data['content'] = 'order_info/view_order';
-			$data['customer'] = $this->Customer_model->customer_by_id($res->cus_id);
-			$data['paid_amount'] = $this->Purchase_model->find_paid_amount($id);
-			$data['order'] = $res;
+		if($res = $this->Purchase_model->purchase_info_by_id($id)){
+			$data['title']	= 'View Purchase Car Details';
+			$data['content'] = 'purchase/view_purchase';
+			$data['supplier'] = $this->Supplier_model->supplier_by_id($res->supplier_id);
+			$data['purchase'] = $res;
 
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 			$data['error']="No Data Find..!";
 			$this->session->set_flashdata($data);
-			redirect('order/list');
+			redirect('purchase/list');
 		}
 	}
 	/*========= Order Data Update =======*/

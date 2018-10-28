@@ -11,7 +11,7 @@ class Purchase_model extends CI_Model
 		$this->db->select('purchase.*, suppliers.sup_name');
 		$this->db->from('purchase');
 		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
-		$this->db->where('purchase.status !=', 'd')->order_by('id', 'desc');
+		$this->db->where('purchase.status', 'a')->order_by('id', 'desc');
 		$result = $this->db->get()->result();
 
 		if($result){
@@ -25,7 +25,7 @@ class Purchase_model extends CI_Model
 	public function unOrder_car_list()
 	{
 		$this->db->select('id,puc_chassis_no,order_id')->where('order_id','0')->where('car_status','0');
-		$result = $this->db->where('purchase.status !=', 'd')->order_by('id', 'desc')->get('purchase')->result();
+		$result = $this->db->where('purchase.status', 'a')->order_by('id', 'desc')->get('purchase')->result();
 
 		if($result){
 			return $result;
@@ -267,14 +267,34 @@ class Purchase_model extends CI_Model
 	}
 
 	/*========== Update Order And Customer Info in Purchase ==========*/
-	public function update_order_info_in_purchase($pus_id = Null, $order_id=Null, $cus_id = Null)
+	public function update_order_info_in_purchase($pus_id = Null, $order_id=Null, $cus_id = Null , $status= Null)
 	{
 		$attr = array(
 			'customer_id'=>$cus_id,
-			'order_id'=>$order_id
+			'order_id'=>$order_id,
+			'car_status'=>$status
 		);
 
 		$this->db->where('id', $pus_id);
+		$this->db->update('purchase', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
+	/*========== Update Order And Customer Info in Purchase when Order Edit ==========*/
+	public function update_order_edit_info_in_purchase($order_id=Null, $cus_id = Null)
+	{
+		$attr = array(
+			'customer_id'=>0,
+			'order_id'=>0,
+			'car_status'=>0
+		);
+
+		$this->db->where('order_id', $order_id)->where('customer_id', $cus_id);
 		$this->db->update('purchase', $attr);
 		
 		if ( $this->db->affected_rows()) {

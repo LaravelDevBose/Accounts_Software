@@ -143,6 +143,9 @@
                       <?php if($cars && isset($cars)): foreach($cars as $data):?>
                         <option value="<?= $data->id; ?>" <?= ($order->pus_id == $data->id)?'selected':'' ?> ><?= $data->puc_chassis_no; ?></option>
                       <?php endforeach; endif;?>
+                      <?php if(!is_null($order->pus_id) && $order->pus_id):?>
+                      <option value="<?= $order->pus_id ?>" selected><?=$order->ord_chassis_no ?></option>
+                      <?php endif; ?>
                     </select>
 
                     <input type="hidden" id="ord_chassis_no" name="ord_chassis_no" value="<?= $order->ord_chassis_no ?>" class="form-control" />

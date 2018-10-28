@@ -125,7 +125,9 @@ class Order extends CI_Controller
 	}
 	/*========= Order Data Update =======*/
 	public function update_order_info($id = Null)
-	{
+	{	
+		
+
 		$this->form_validation->set_rules('cus_id', 'Select Customer', 'required|trim');
 		$this->form_validation->set_rules('ord_car_model', 'Model Number ', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Order No', 'required|trim');
@@ -144,6 +146,13 @@ class Order extends CI_Controller
 			
 			if($this->Order_model->update_order_info($id)){
 
+				$pus_id = $this->input->post('pus_id');
+				$cus_id = $this->input->post('cus_id');
+				if($pus_id != 0){
+					$this->Purchase_model->update_order_info_in_purchase($pus_id,$id,$cus_id,0);
+				}else{
+					$this->Purchase_model->update_order_edit_info_in_purchase($id,$cus_id);
+				}
 				$data['success']="Update Successfully!";
 				$this->session->set_flashdata($data);
 				redirect('order/list');

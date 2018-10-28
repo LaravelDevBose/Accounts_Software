@@ -119,6 +119,7 @@ class Order_model extends CI_Model
 			'ord_lc_no'	=>$this->input->post('ord_lc_no'),
 			'ord_car_model'	=>$this->input->post('ord_car_model'),
 			'ord_color'	=>$this->input->post('ord_color'),
+			'pus_id'	=>$this->input->post('pus_id'),
 			'ord_engine_no'	=>$this->input->post('ord_engine_no'),
 			'ord_chassis_no'	=>$this->input->post('ord_chassis_no'),
 			'order_no'	=>$this->input->post('order_no'),
@@ -153,7 +154,7 @@ class Order_model extends CI_Model
 
 
 		if($order_status && isset($order_status)){ //check is request for store or Update
-			if($order_status == 'c'){ //check order already complete or not
+			if($order_status == 'c' && $chassis_no && $engine_no){ //check order already complete or not
 				return 'c';
 			}else{
 				if($engine_no && $chassis_no){  //check lc and chase has or not

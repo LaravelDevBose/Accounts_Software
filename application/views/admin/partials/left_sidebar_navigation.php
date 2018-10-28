@@ -338,21 +338,7 @@
       
     </ul>
   </li>
-  <li class="<?= ($this->uri->uri_string()== 'lc/insert')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>lc/insert">
-      <i class="menu-icon fa fa-usd"></i>
-      <span class="menu-text"> L / C  Entry </span>
-    </a>
-    <b class="arrow"></b>
-  </li>
-
-  <li class="<?= ($this->uri->uri_string()== 'ie_head/insert')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>ie_head/insert">
-      <i class="menu-icon fa fa-money"></i>
-      <span class="menu-text"> Expense Head </span>
-    </a>
-    <b class="arrow"></b>
-  </li>
+  
   <li class="">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-user-secret"></i>
@@ -381,13 +367,44 @@
       
     </ul>
   </li>
-  <li  class="<?= ($this->uri->uri_string()== 'setting/insert')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>setting/insert">
-      <i class="menu-icon fa fa-usd"></i>
-      <span class="menu-text"> Setting </span>
+
+  <li class="">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-cogs"></i>
+      <span class="menu-text"> Setting</span>
+
+      <b class="arrow fa fa-angle-down"></b>
     </a>
+
     <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="">
+        <a href="<?php echo base_url(); ?>lc/insert">
+          <i class="menu-icon fa fa-caret-right"></i>
+          L/C Entry
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>ie_head/insert">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Expense Head
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="">
+        <a href="<?php echo base_url(); ?>setting/insert">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Company Info
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
+    </ul>
   </li>
+
+
 
 
   <li class="">
