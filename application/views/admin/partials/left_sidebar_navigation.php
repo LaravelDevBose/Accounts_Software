@@ -118,6 +118,48 @@
       
     </ul>
   </li>
+  <li class="<?= (strpos($this->uri->uri_string(), 'check') !== false)? 'active open': '' ?>">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+      <i class="menu-icon fa fa-shopping-bag"></i>
+      <span class="menu-text"> Check</span>
+
+      <b class="arrow fa fa-angle-down"></b>
+    </a>
+
+    <b class="arrow"></b>
+
+    <ul class="submenu">
+      <li class="<?= ($this->uri->uri_string()== 'check/entry')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>check/entry">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Check Entry
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'order/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>order/list">
+          <i class="menu-icon fa fa-caret-right"></i>
+           All Order List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'order/pending/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>order/pending/list">
+          <i class="menu-icon fa fa-caret-right"></i>
+           Order Pending List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'order/onprocess/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>order/onprocess/list">
+          <i class="menu-icon fa fa-caret-right"></i>
+           Order On-Process List 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      
+    </ul>
+  </li>
 
   <li class="<?= (strpos($this->uri->uri_string(), 'transport') !== false)? 'active open': '' ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">

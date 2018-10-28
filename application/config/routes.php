@@ -62,6 +62,8 @@ $route['purchase/update/(:any)']	=	'Purchase/update_purchase_info/$1';
 $route['purchase/delete/(:any)']	=	'Purchase/delete_purchase_info/$1';
 $route['find/car_info/(:any)']		= 	'Purchase/find_car_info/$1';
 
+$route['check/entry'] 			=	'Check/check_entry_page';
+$route['check/store'] 			=	'Check/check_date_store';
 
 /*======= Car Location Traking =======*/
 $route['transport/status'] 			= 'Transport/transport_car_status_view';
