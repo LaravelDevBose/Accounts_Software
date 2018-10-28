@@ -13,7 +13,7 @@
             url:'<?= base_url();?>lc/store',
             type:'POST',
             dataType:'html',
-            data: {lc_no:lc_no,lc_note:lc_note,bank_name:bank_name,lc_date:lc_date},
+            data: $('#lc_form').serialize(),
             success:function(data){
 
                 if(data != 0){
@@ -23,6 +23,16 @@
                    $('#lc_note').val('');
                    $('#bank_name').val('');
                    $('#lc_date').val('');
+                   $('#branch_name').val('');
+                   $('#lc_amount').val('');
+                   $('#car_qty').val('');
+
+                   swal({
+                        text: "L/C Store Successfully",
+                        icon: "success",
+                        buttons: false,
+                        timer: 1500,
+                    });
                 }else{
                     swal({
                         text: "No Data Found",
@@ -31,17 +41,29 @@
                         timer: 1500,
                     });
                     $('#lc_no').val('');
-                     $('#lc_note').val('');
-                     $('#bank_name').val('');
-                     $('#lc_date').val('');
+                    $('#lc_note').val('');
+                    $('#bank_name').val('');
+                    $('#lc_date').val('');
+                    $('#branch_name').val('');
+                   $('#lc_amount').val('');
+                   $('#car_qty').val('');
                 }
             },
             error:function(error){
                 console.log(error);
                 $('#lc_no').val('');
-                 $('#lc_note').val('');
-                 $('#bank_name').val('');
-                 $('#lc_date').val('');
+                $('#lc_note').val('');
+                $('#bank_name').val('');
+                $('#lc_date').val('');
+                $('#branch_name').val('');
+                $('#lc_amount').val('');
+                $('#car_qty').val('');
+                swal({
+                    text: "Some Error Found",
+                    icon: "warning",
+                    buttons: false,
+                    timer: 1500,
+                });
             }
         });
     }else{

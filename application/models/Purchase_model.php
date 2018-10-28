@@ -267,11 +267,12 @@ class Purchase_model extends CI_Model
 	}
 
 	/*========== Update Order And Customer Info in Purchase ==========*/
-	public function update_order_info_in_purchase($pus_id = Null, $order_id=Null, $cus_id = Null , $status= Null)
+	public function update_order_info_in_purchase($pus_id = Null, $order_id=Null, $cus_id = Null ,$lc_no = Null, $status= Null)
 	{
 		$attr = array(
 			'customer_id'=>$cus_id,
 			'order_id'=>$order_id,
+			'puc_lc_id'=>$lc_no,
 			'car_status'=>$status
 		);
 
@@ -286,11 +287,12 @@ class Purchase_model extends CI_Model
 	}
 
 	/*========== Update Order And Customer Info in Purchase when Order Edit ==========*/
-	public function update_order_edit_info_in_purchase($order_id=Null, $cus_id = Null)
+	public function update_order_edit_info_in_purchase($order_id=Null, $cus_id = Null )
 	{
 		$attr = array(
 			'customer_id'=>0,
 			'order_id'=>0,
+			'puc_lc_id'=>0,
 			'car_status'=>0
 		);
 

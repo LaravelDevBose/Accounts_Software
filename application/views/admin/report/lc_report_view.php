@@ -25,26 +25,30 @@
                 <thead>
                   <tr>
                     <th>SL No</th>
-                    <th>L/C Number</th>
-                    <th>Bank Name</th>
                     <th>Date</th>
+                    <th>L/C Number</th>
+                    <th>Bank Name - Branch Name</th>
+                    <th>Car Qty</th>
+                    <th>L/C Amount</th>
                     <th>Note</th>
                   </tr>
                 </thead>
 
                 <tbody id="tBody">
                     <?php $i=1; if($lc_data && isset($lc_data)): foreach($lc_data as $data):?>
-                  <tr>
-                    <td><?= $i++; ?></td>
-                    <td><?= $data->lc_no; ?></td>
-                    <td><?= $data->bank_name; ?></td>
-                    <td><?php 
-                          $date = new DateTime($data->lc_date);
-                          echo date_format($date, 'd M Y'); 
-                        ?></td>
-                    <td><?= $data->lc_note; ?></td>
-                  </tr>
-                  <?php endforeach; endif; ?>
+              <tr>
+                <td><?= $i++ ?></td>
+                <td><?php 
+                      $date = new DateTime($data->lc_date);
+                      echo date_format($date, 'd M Y'); 
+                    ?></td>
+                <td><?= $data->lc_no; ?></td>
+                <td><?= $data->bank_name.'-'.$data->branch_name; ?></td>
+                <td><?= $data->car_qty; ?></td>
+                <td><?= $data->lc_note; ?></td>
+                <td><?= number_format($data->lc_amount,2); ?></td>
+              </tr>
+              <?php endforeach; endif; ?>
                 </tbody>
               </table>
             </div>

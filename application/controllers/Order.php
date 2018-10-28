@@ -92,7 +92,8 @@ class Order extends CI_Controller
 			if($order_id = $this->Order_model->store_order_info($cus_id)){
 
 				$pus_id = $this->input->post('pus_id');
-				$this->Purchase_model->update_order_info_in_purchase($pus_id,$order_id,$cus_id);
+				$lc_no = $this->input->post('ord_lc_no');
+				$this->Purchase_model->update_order_info_in_purchase($pus_id,$order_id,$cus_id,$lc_no,0);
 					
 				$data['success']="Save Successfully!";
 				$this->session->set_flashdata($data);
