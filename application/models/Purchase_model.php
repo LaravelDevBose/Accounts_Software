@@ -305,4 +305,41 @@ class Purchase_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+
+	/*========== Report ===========*/
+	/*========== Report ===========*/
+	/*========== Report ===========*/
+	/*========== Report ===========*/
+
+	/*========== Car Stock Report ==============*/
+	public function car_stock_report()
+	{
+		$this->db->select('purchase.*, suppliers.sup_name,customers.cus_name, orders.order_no, trans_heads.head_name');
+		$this->db->from('purchase');
+		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
+		$this->db->join('customers', 'purchase.customer_id = customers.id','left');
+		$this->db->join('orders', 'purchase.order_id = orders.id','left');
+		$this->db->join('transports', 'purchase.transport_id = transports.id','left');
+		$this->db->join('trans_heads', 'transports.trans_head_id = trans_heads.id','left');
+		$this->db->where('purchase.car_status','0')->where('purchase.status', 'a')->order_by('id', 'desc');
+		$result = $this->db->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+	/*========== Customer Wise Total Estimate Price =======*/
+	public function cus_wise_total_est_price($cus_id=Null)
+	{
+		$result = $this->db->select_sum('total_price')->where('customer_id', $cus_id)->where('status', 'a')->get('purchase')->row();
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
 }

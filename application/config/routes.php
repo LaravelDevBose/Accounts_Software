@@ -62,8 +62,15 @@ $route['purchase/update/(:any)']	=	'Purchase/update_purchase_info/$1';
 $route['purchase/delete/(:any)']	=	'Purchase/delete_purchase_info/$1';
 $route['find/car_info/(:any)']		= 	'Purchase/find_car_info/$1';
 
+$route['check/pending/list'] 	=	'Check/check_pendaing_date_list';
+$route['check/reminder/list'] 	=	'Check/check_reminder_date_list';
+$route['check/paid/list'] 		=	'Check/check_paid_date_list';
 $route['check/entry'] 			=	'Check/check_entry_page';
 $route['check/store'] 			=	'Check/check_date_store';
+$route['check/view/(:any)'] 	=	'Check/check_view_page/$1';
+$route['check/edit/(:any)'] 	=	'Check/check_edit_page/$1';
+$route['check/update/(:any)'] 	=	'Check/check_update_info/$1';
+$route['check/delete/(:any)'] 	=	'Check/check_delete_info/$1';
 
 /*======= Car Location Traking =======*/
 $route['transport/status'] 			= 'Transport/transport_car_status_view';
@@ -163,47 +170,51 @@ $route['salary/delete/(:any)']	= 'Salary/salary_payment_delete/$1';
 
 
 /*========== Report Route List ==========*/
-$route['report/lc']				= 'Report/view_lc_report'; 
-$route['report/customer']		= 'Report/view_customer_report'; 
-$route['report/lc/order']		= 'Report/view_lc_wise_order_report';
-$route['find/order/(:any)']		= 'Report/find_order_by_lc/$1'; 
-$route['report/collection']		= 'Report/view_collection_report';
-$route['find/collection/by_date'] = 'Report/find_date_wise_collection';
-$route['report/customer_wise/collection'] = 'Report/customer_wise_collection';
-$route['find/collection/customer/(:any)'] = 'Report/find_collection_by_cus/$1';
-$route['report/car_wise/collection'] = 'Report/car_wise_collection_view';
+$route['report/car/stock']					= 'Report/view_car_stock_report';
+
+$route['report/full_report'] 				= 'Report/car_full_report';
+$route['find/full_report/(:any)'] 			= 'Report/find_full_deatils_report/$1';
+
+$route['report/car_wise/collection'] 		= 'Report/car_wise_collection_view';
 $route['find/collection/order_wise/(:any)'] = 'Report/find_collection_order_wise/$1';
-$route['report/customer_order']	= 'Report/view_customer_order_report';
-$route['find/customer_order/(:any)']	= 'Report/customer_wise_order_report/$1';
-$route['report/delivery_order']		= 'Report/delivery_order_view';
-$route['find/delivery_order']	= 'Report/date_wise_delivery_order';
 
-$route['report/salary/date_to_date'] = 'Report/salary_date_to_date_report';
-$route['find/salary/date_to_date'] = 'Report/find_salary_date_to_date';
-$route['report/salary/empl'] = 'Report/employee_wise_salary';
-$route['find/salary/employee/(:any)'] = 'Report/find_employee_wise_salary/$1';
-
-$route['report/full_report'] = 'Report/car_full_report';
-$route['find/full_report/(:any)'] = 'Report/find_full_deatils_report/$1';
-
-$route['report/date_wise_payment'] = 'Report/payment_report_page';
-$route['find/date_wise_payment/report'] = 'Report/find_date_to_date_payment';
-
-$route['report/supplier_payment'] = 'Report/supplier_payment_report_page';
-$route['find/supplier_payment/report/(:any)'] = 'Report/find_supplier_payment/$1';
-
-$route['report/office_payment'] = 'Report/office_payment_report_page';
-$route['find/office_payment/report'] = 'Report/find_office_payment';
+$route['report/due']						= 'Report/view_full_due_report';
 
 
+$route['report/customer_order']				= 'Report/view_customer_order_report';
+$route['find/customer_order/(:any)']		= 'Report/customer_wise_order_report/$1';
+
+$route['report/delivery_order']				= 'Report/delivery_order_view';
+$route['find/delivery_order']				= 'Report/date_wise_delivery_order';
+
+$route['report/lc/order']					= 'Report/view_lc_wise_order_report';
+$route['find/order/(:any)']					= 'Report/find_order_by_lc/$1'; 
+
+$route['report/collection']					= 'Report/view_collection_report';
+$route['find/collection/by_date'] 			= 'Report/find_date_wise_collection';
+
+$route['report/customer_wise/collection'] 	= 'Report/customer_wise_collection';
+$route['find/collection/customer/(:any)'] 	= 'Report/find_collection_by_cus/$1';
 
 
+$route['report/date_wise_payment'] 			= 'Report/payment_report_page';
+$route['find/date_wise_payment/report'] 	= 'Report/find_date_to_date_payment';
+
+$route['report/supplier_payment'] 			= 'Report/supplier_payment_report_page';
+$route['find/supplier_payment/report/(:any)']= 'Report/find_supplier_payment/$1';
 
 
+$route['report/office_payment'] 			= 'Report/office_payment_report_page';
+$route['find/office_payment/report'] 		= 'Report/find_office_payment';
 
+$route['report/salary/date_to_date'] 		= 'Report/salary_date_to_date_report';
+$route['find/salary/date_to_date'] 			= 'Report/find_salary_date_to_date';
 
+$route['report/salary/empl'] 				= 'Report/employee_wise_salary';
+$route['find/salary/employee/(:any)'] 		= 'Report/find_employee_wise_salary/$1';
 
-
+$route['report/lc']							= 'Report/view_lc_report'; 
+$route['report/customer']					= 'Report/view_customer_report'; 
 
 
 /*======== Setting Route List ===========*/

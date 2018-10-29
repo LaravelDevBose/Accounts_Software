@@ -129,7 +129,7 @@
                                               <?php elseif($order->order_status == 'a'): ?>
                                               <span class="label " style="background: #36a2ec;">Active</span>
                                               <?php else: ?>
-                                              <span class="label " style="background: #ec880a;">Panding</span>
+                                              <span class="label " style="background: #ec880a;">Pending</span>
                                               <?php endif;?>
                                         </span>
                                     </div>

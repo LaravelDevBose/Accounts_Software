@@ -25,6 +25,48 @@ class Report extends CI_Controller
 			redirect('Admindashboard');
 		}
 	}
+	/*======== Car Stock Report ============*/
+	public function view_car_stock_report()
+	{
+		$data['title'] = 'Car Stock Report';  
+		$data['content'] = 'report/car_stock_report'; 
+		$data['cars'] = $this->Purchase_model->car_stock_report();  
+		$this->load->view('admin/adminMaster', $data);
+	}
+
+
+	/*========= View All Customer Due Report ==========*/
+	public function view_full_due_report()
+	{	
+		$i = 0; $reports = array();
+		$customers = $this->Customer_model->find_all_customer_info();
+		foreach ($customers as $customer) {
+
+			$total_order_adv = $this->Order_model->customer_total_order_and_advance($customer->id);
+			$total_deli = $this->Order_model->customer_wise_total_delivery($customer->id);
+			$total_coll = $this->Collection_model->cus_wise_total_collection($customer->id);
+			$est_price = $this->Purchase_model->cus_wise_total_est_price($customer->id);
+
+			$reports[$i]['id'] 	= $customer->id;
+			$reports[$i]['cus_name'] 	= $customer->cus_name;
+			$reports[$i]['cus_phone'] 	= $customer->cus_contact_no;
+			$reports[$i]['cus_address'] = $customer->cus_address;
+			$reports[$i]['total_order'] = $total_order_adv->total_order;
+			$reports[$i]['total_deli'] 	= $total_deli->total_deli;
+			$reports[$i]['total_rec'] 	= $total_coll->amount+$total_order_adv->total_advance;
+			$reports[$i]['total_pay']	= $est_price->total_price;
+			$reports[$i]['sub_total']	= $est_price->total_price - ($total_coll->amount+$total_order_adv->total_advance);
+
+			$i++;
+		}
+
+
+		$data['title'] = 'Customer Total Due Report';  
+		$data['content'] = 'report/customer_total_due_report'; 
+		$data['reports'] = $reports;
+		$this->load->view('admin/adminMaster', $data);
+	}
+
 
 	/*========= View L/C Report Data ======*/
 	public function view_lc_report()

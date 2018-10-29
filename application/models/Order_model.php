@@ -367,4 +367,32 @@ class Order_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*========= Customer Wist Total Advance and c total order Count =========*/
+	public function customer_total_order_and_advance($cus_id=Null)
+	{
+		$this->db->select('COUNT("id") as total_order')->select_sum('ord_advance','total_advance' );
+		$res = $this->db->where('cus_id', $cus_id)->where('status', 'a')->get('orders')->row();
+
+		if($res){
+			return $res;
+		}else{
+			return FALSE;
+		}
+
+	}
+
+	/*=========== Customer Wise Total Delivery =======*/
+
+	public function customer_wise_total_delivery($cus_id=Null)
+	{
+		$this->db->select('COUNT("id") as total_deli')->where('cus_id', $cus_id);
+		$res = $this->db->where('order_status', 'c')->where('status', 'a')->get('orders')->row();
+
+		if($res){
+			return $res;
+		}else{
+			return FALSE;
+		}
+	}
 }

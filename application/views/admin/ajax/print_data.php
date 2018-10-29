@@ -4,7 +4,7 @@
   function print_data(){
 
     /*------ Get Full Body html Code------*/
-    var orginal_content = $('body').html()
+    // var orginal_content = $('body').html()
 
     /*== hide last action colume======*/
     // $('.action').css('display', 'none');
@@ -27,6 +27,6 @@
 
     /*------- After print bake the main page------*/
     location.reload();
-    $('body').html(orginal_content);
+    // $('body').html(orginal_content);
   }
 </script>

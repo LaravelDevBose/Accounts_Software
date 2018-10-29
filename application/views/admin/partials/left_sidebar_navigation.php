@@ -136,24 +136,24 @@
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="<?= ($this->uri->uri_string()== 'order/list')?'active': ' ' ?>">
-        <a href="<?php echo base_url();?>order/list">
+      <li class="<?= ($this->uri->uri_string()== 'check/pending/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>check/pending/list">
           <i class="menu-icon fa fa-caret-right"></i>
-           All Order List 
+           Pending Check List 
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="<?= ($this->uri->uri_string()== 'order/pending/list')?'active': ' ' ?>">
-        <a href="<?php echo base_url();?>order/pending/list">
+      <li class="<?= ($this->uri->uri_string()== 'check/reminder/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>check/reminder/list">
           <i class="menu-icon fa fa-caret-right"></i>
-           Order Pending List 
+           Check Reminder List 
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="<?= ($this->uri->uri_string()== 'order/onprocess/list')?'active': ' ' ?>">
-        <a href="<?php echo base_url();?>order/onprocess/list">
+      <li class="<?= ($this->uri->uri_string()== 'check/paid/list')?'active': ' ' ?>">
+        <a href="<?php echo base_url();?>check/paid/list">
           <i class="menu-icon fa fa-caret-right"></i>
-           Order On-Process List 
+           Paid Check List
         </a>
         <b class="arrow"></b>
       </li>
@@ -244,24 +244,31 @@
     <b class="arrow"></b>
 
     <ul class="submenu">
-      <li class="<?= ($this->uri->uri_string()== 'report/lc')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>report/lc">
+      <li class="<?= ($this->uri->uri_string()== 'report/car/stock')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/car/stock">
           <i class="menu-icon fa fa-caret-right"></i>
-          L/C List
+          Car Stock Report
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="<?= ($this->uri->uri_string()== 'report/customer')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>report/customer">
+      <li class="<?= ($this->uri->uri_string()== 'report/full_report')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/full_report">
           <i class="menu-icon fa fa-caret-right"></i>
-          Customer List Report 
+          Car Full Report 
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="<?= ($this->uri->uri_string()== 'report/lc/order')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>report/lc/order">
+      <li class="<?= ($this->uri->uri_string()== 'report/car_wise/collection')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/car_wise/collection">
           <i class="menu-icon fa fa-caret-right"></i>
-          L/C Wise Order Report 
+          Car Collection Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'report/due')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/due">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Customer Due Report 
         </a>
         <b class="arrow"></b>
       </li>
@@ -276,6 +283,13 @@
         <a href="<?php echo base_url(); ?>report/delivery_order">
           <i class="menu-icon fa fa-caret-right"></i>
           Delivered Order Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'report/lc/order')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/lc/order">
+          <i class="menu-icon fa fa-caret-right"></i>
+          L/C Wise Order Report 
         </a>
         <b class="arrow"></b>
       </li>
@@ -295,13 +309,7 @@
         </a>
         <b class="arrow"></b>
       </li>
-      <li class="<?= ($this->uri->uri_string()== 'report/car_wise/collection')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>report/car_wise/collection">
-          <i class="menu-icon fa fa-caret-right"></i>
-          Car Collection Report 
-        </a>
-        <b class="arrow"></b>
-      </li>
+      
       <li class="<?= ($this->uri->uri_string()== 'report/date_wise_payment')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/date_wise_payment">
           <i class="menu-icon fa fa-caret-right"></i>
@@ -325,13 +333,7 @@
         <b class="arrow"></b>
       </li>
 
-      <li class="<?= ($this->uri->uri_string()== 'report/full_report')?'active': ' ' ?>">
-        <a href="<?php echo base_url(); ?>report/full_report">
-          <i class="menu-icon fa fa-caret-right"></i>
-          Car Full Report 
-        </a>
-        <b class="arrow"></b>
-      </li>
+      
 
       <li class="<?= ($this->uri->uri_string()== 'report/salary/date_to_date')?'active': ' ' ?>">
         <a href="<?php echo base_url(); ?>report/salary/date_to_date">
@@ -348,8 +350,21 @@
         </a>
         <b class="arrow"></b>
       </li>
-
-
+      <li class="<?= ($this->uri->uri_string()== 'report/lc')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/lc">
+          <i class="menu-icon fa fa-caret-right"></i>
+          L/C List
+        </a>
+        <b class="arrow"></b>
+      </li>
+      <li class="<?= ($this->uri->uri_string()== 'report/customer')?'active': ' ' ?>">
+        <a href="<?php echo base_url(); ?>report/customer">
+          <i class="menu-icon fa fa-caret-right"></i>
+          Customer List Report 
+        </a>
+        <b class="arrow"></b>
+      </li>
+    
     </ul>
   </li>
   <li class="<?= (strpos($this->uri->uri_string(), 'employees') !== false)?'active open':((strpos($this->uri->uri_string(), 'employee') !== false)? 'active open': '') ?>">
