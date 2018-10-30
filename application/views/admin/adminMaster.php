@@ -4,7 +4,7 @@
 
 
 
-  <div class="main-container ace-save-state" id="main-container">
+  <div class="main-container ace-save-state" id="main-container" style="padding-top: 55px;">
       <script type="text/javascript">
         try{ace.settings.loadState('main-container')}catch(e){}
       </script>
@@ -38,11 +38,13 @@
               <li>
                 <a href="#"><?php if(isset($title)): echo $title; endif; ?></a>
               </li>
+
             </ul>
+
           </div>
 
           <div class="page-content">
-
+            
             
             <div id="loader" hidden style="position: fixed; z-index: 1000; margin: auto; height: 100%; width: 100%; background:rgba(255, 255, 255, 0.72);;">
             <img src="<?php echo base_url(); ?>libs/Backend/assets/loader.gif" style="top: 30%; left: 50%; opacity: 1; position: fixed;">

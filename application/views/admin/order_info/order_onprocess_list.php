@@ -62,9 +62,9 @@
                                   <i class="ace-icon fa fa-truck bigger-130"></i>
                                 </a>
 
-                                <a style="color: #7e35de;" title="Purchase" href="<?= base_url();?>purchase/insert/<?= $order->id;?>" >
+                                <!-- <a style="color: #7e35de;" title="Purchase" href="<?= base_url();?>purchase/insert/<?= $order->id;?>" >
                                   <i class="ace-icon fa fa-cart-arrow-down bigger-130" ></i>
-                                </a>
+                                </a> -->
                                 <a style="color: #F89406;" title="View" href="<?= base_url();?>order/view/<?= $order->id;?>" >
                                   <i class="ace-icon fa fa-eye bigger-130" ></i>
                                 </a>

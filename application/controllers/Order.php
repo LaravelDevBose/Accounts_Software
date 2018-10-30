@@ -14,6 +14,8 @@ class Order extends CI_Controller
 		}
 	}
 
+	
+
 	/*==========Order Page show ==========*/
 	public function index()
 	{ 

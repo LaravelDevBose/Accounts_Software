@@ -169,12 +169,12 @@ class Customer extends CI_Controller
 				
 				$data['success']="Customer info Update Successfully!";
 				$this->session->set_flashdata($data);
-				redirect('customers');
+				redirect('customer');
 
 			}else{
 				$data['error']="Customer  info Update Unsuccessfully!";
 				$this->session->set_flashdata($data);
-				redirect('customers');
+				redirect('customer');
 			}
 		}
 	}
@@ -185,11 +185,11 @@ class Customer extends CI_Controller
 		if($this->Customer_model->delete_customer_info($id)){
 			$data['success']="Customer info Delete Successfully!";
 			$this->session->set_flashdata($data);
-			redirect('customers');
+			redirect('customer');
 		}else{
 			$data['error']="Customer info Delete Unsuccessfully!";
 			$this->session->set_flashdata($data);
-			redirect('customers');
+			redirect('customer');
 		}
 	}
 

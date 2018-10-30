@@ -56,7 +56,7 @@ class Purchase extends CI_Controller
 		
 		// $this->form_validation->set_rules('cus_id', 'Select Customer', 'required|trim');
 		$this->form_validation->set_rules('supplier_id', 'Select Supplier', 'required|trim');
-		$this->form_validation->set_rules('puc_lc_id', 'L/c Number ', 'required|trim');
+		
 		$this->form_validation->set_rules('puc_car_model', 'Model Number ', 'required|trim');
 		$this->form_validation->set_rules('puc_engine_no', 'Engine Number', 'required|trim');
 		$this->form_validation->set_rules('puc_chassis_no', 'Chassis No', 'required|trim');
@@ -155,7 +155,6 @@ class Purchase extends CI_Controller
 	{	
 		
 		$this->form_validation->set_rules('supplier_id', 'Select Supplier', 'required|trim');
-		$this->form_validation->set_rules('puc_lc_id', 'L/c Number ', 'required|trim');
 		$this->form_validation->set_rules('puc_car_model', 'Model Number ', 'required|trim');
 		$this->form_validation->set_rules('puc_engine_no', 'Engine Number', 'required|trim');
 		$this->form_validation->set_rules('puc_chassis_no', 'Chassis No', 'required|trim');

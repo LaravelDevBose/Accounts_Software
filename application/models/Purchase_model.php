@@ -177,7 +177,11 @@ class Purchase_model extends CI_Model
 			}
 		}
 
-		$head_id_array = array_column($all_price, 'head_id');
+		$head_id_array = array();
+		if($all_price){
+
+			$head_id_array = array_column($all_price, 'head_id');
+		}
 		
 
 		for ($i=1; $i<= count($head_ids); $i++) { 

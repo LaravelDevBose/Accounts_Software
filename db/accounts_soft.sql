@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2018 at 12:16 PM
+-- Generation Time: Oct 30, 2018 at 11:06 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -200,7 +200,7 @@ INSERT INTO `customers` (`id`, `cus_code`, `cus_name`, `cus_contact_no`, `alt_co
 (5, 'C00005', 'Otish Kumer', '0123456987', '1236459785', '2018-10-12 18:00:00', 'otish@gmail.com', 'Fani', NULL, NULL, NULL, 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00'),
 (6, 'C00006', 'Dipok', '0123456789', '0123456789', '2018-10-21 18:00:00', '', 'Mirpur 11', 'https://www.facebook.com/aajob.arup', 'libs/upload_pic/cus_image/8673857565bcfe6a9289ef.jpg', 'libs/upload_pic/cus_image/3986150175bcfe6ce243eb.jpg', 'a', 'admin', 'admin', '2018-10-22 18:00:00', '2018-10-23 18:00:00'),
 (7, 'C00006', 'Dipok', '0123456789', '0123456789', '2018-10-21 18:00:00', '', 'Mirpur 11', 'https://www.facebook.com/aajob.arup', 'libs/upload_pic/cus_image/13799468315bceecbd3c744.jpg', '0', 'a', 'admin', 'admin', '2018-10-22 18:00:00', '2018-10-22 18:00:00'),
-(8, 'C00007', 'new Customer', '111111111111111', '111111111111111111', '2018-10-26 18:00:00', 'c@gmail.com', 'mirpur 10', 'https://www.facebook.com/', 'libs/upload_pic/cus_image/1160783195bd448821937d.jpg', 'libs/upload_pic/cus_image/20247646295bd44882831bb.jpg', 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-26 18:00:00');
+(8, 'C00007', 'new Customer', '111111111111111', '111111111111111111', '2018-10-26 18:00:00', 'c@gmail.com', 'mirpur 10', 'https://www.facebook.com/', 'libs/upload_pic/cus_image/1160783195bd448821937d.jpg', 'libs/upload_pic/cus_image/12430492185bd829f232159.jpg', 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-29 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -422,7 +422,7 @@ INSERT INTO `purchase` (`id`, `supplier_id`, `customer_id`, `order_id`, `puc_lc_
 (2, 2, 0, 0, 4, 'dfasdfsf', 'dsfsdf', '34324324', '32423432423', 'gffgf', 'erer', 'erer', '2010', '10000000', 'fgdgdsg', 105, NULL, 0, 'd', 'admin', 'admin', '2018-10-24 18:00:00', '2018-10-25 09:37:01'),
 (3, 2, 1, 14, 4, 'dsfsdf', 'sdfsd', 'fsdf', 'sdfsd', 'sdfdsf', 'sdf', 'sdfsdf', 'sdfsdf', 'sdf', 'dsfsdf', 327567, 1, 1, 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-26 18:00:00'),
 (4, 1, 6, 11, 4, 'fgdfgd', 'fdgdfg', '32324', '234234', 'rer', 'erer', 'erer', '2010', '10000000', 'dfdf', 34720201, 3, 0, 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-26 18:00:00'),
-(5, 2, 0, 0, 3, 'fsdf', 'dfdf', '232323', '4442323', NULL, 'dsfsd', 'fdfdsf', 'dsfsd', 'fdsfdsf', 'fdsfsdf', 205000, 2, 0, 'a', 'admin', 'admin', '2018-10-24 18:00:00', '2018-10-24 18:00:00');
+(5, 2, 0, 0, 3, 'fsdf', 'dfdf', '232323', '4442323', '', 'dsfsd', 'fdfdsf', 'dsfsd', 'fdsfdsf', 'fdsfsdf', 205000, 2, 0, 'a', 'admin', 'admin', '2018-10-24 18:00:00', '2018-10-30 10:02:08');
 
 -- --------------------------------------------------------
 

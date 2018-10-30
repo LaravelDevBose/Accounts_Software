@@ -4,9 +4,7 @@
         <div class="widget-box">
             <div class="widget-header">
                 <h4 class="widget-title">Order Details Information</h4>
-                <div class="widget-toolbar">
-                    <button type="button" onclick="print_data()" class="btn btn-sm btn-info pull-right"><i class="ace-icon fa fa-print"  ></i> Print</button>
-                </div>
+                
             </div>
 
             <div class="widget-body" id="data_table">

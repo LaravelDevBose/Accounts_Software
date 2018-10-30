@@ -133,18 +133,7 @@
 			return false;
 		}
 
-		var puc_lc_id  = $('#puc_lc_id').val();
-		if(puc_lc_id == '' || puc_lc_id < 1){
-			$('#puc_lc_id_chosen .chosen-single').css('border', '1px solid red');
-			swal({
-                  text: "Pleass Select a L/C Number",
-                  icon: "warning",
-                  buttons: false,
-                  timer: 1500,
-                });
-			return false;
-		}
-
+		
 		var puc_car_model  = $('#puc_car_model').val();
 		if(puc_car_model == '' || puc_car_model.length < 1){
 			$('#puc_car_model').css('border', '1px solid red');

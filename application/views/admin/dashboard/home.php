@@ -77,6 +77,7 @@
         <!-- Header Logo -->
         <div class="col-md-12 header">
           <?php 
+
               $logo = $this->Setting_model->get_company_info('logo'); 
               $image = base_url().$logo;  
                 if(!file_exists($image) && !getimagesize($image) ){ 
@@ -88,6 +89,78 @@
         </div>
         
       
+        <div class="col-md-3 section3">
+          <div class="col-md-12 section12">
+          <a href="<?php echo base_url(); ?>order/dashboard">
+            <div class="logo">
+              <i class="fa fa-shopping-bag"></i>
+            </div>
+            <div class="textModule">
+              Sales Module
+            </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 section3">
+          <div class="col-md-12 section12">
+          <a href="<?php echo base_url(); ?>purchase/dashboard">
+            <div class="logo">
+              <i class="fa fa-cart-arrow-down"></i>
+            </div>
+            <div class="textModule">
+              Purchase Module
+            </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 section3">
+          <div class="col-md-12 section12">
+          <a href="<?php echo base_url(); ?>account/dashboard">
+            <div class="logo">
+              <i class="fa fa-clipboard"></i>
+            </div>
+            <div class="textModule">
+              Accounts Module
+            </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 section3">
+          <div class="col-md-12 section12">
+          <a href="<?php echo base_url(); ?>hr_payroll/dashboard">
+            <div class="logo">
+              <i class="fa fa-users"></i>
+            </div>
+            <div class="textModule">
+              HR & Payroll Module
+            </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 section3">
+          <div class="col-md-12 section12">
+          <a href="<?php echo base_url(); ?>report/dashboard">
+            <div class="logo">
+              <i class="fa fa-print"></i>
+            </div>
+            <div class="textModule">
+              Reports Module
+            </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 section3">
+          <div class="col-md-12 section12">
+          <a href="<?php echo base_url(); ?>administration/dashboard">
+            <div class="logo">
+              <i class="fa fa-cogs"></i>
+            </div>
+            <div class="textModule">
+              Administration
+            </div>
+            </a>
+          </div>
+        </div>
         <div class="col-md-3 section3">
           <div class="col-md-12 section12">
           <a href="<?php echo base_url(); ?>Adminlogin/logout">
