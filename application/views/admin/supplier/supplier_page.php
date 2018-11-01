@@ -152,7 +152,7 @@
                               <a class="green " href="<?= base_url();?>supplier/edit/<?= $supplier->id;?>" >
                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                               </a>
-                              <a class="red" href="<?= base_url(); ?>supplier/delete/<?= $supplier->id ?>" onclick="confirm('Are You Sure Went to Delete This! ')">
+                              <a class="red" href="<?= base_url(); ?>supplier/delete/<?= $supplier->id ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                               </a>
                           </div>

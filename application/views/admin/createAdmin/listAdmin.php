@@ -63,7 +63,7 @@
                         <i class="ace-icon fa fa-pencil bigger-130"></i>
                       </a>
                       <?php if($data->admin_id !=$this->session->userdata('id') ):?>
-                        <a class="red" href="<?php echo base_url(); ?>deleteAdmin/<?php echo $data->admin_id; ?>"  onclick="confirm('Are You Sure Went to Delete This! ')">
+                        <a class="red" href="<?php echo base_url(); ?>deleteAdmin/<?php echo $data->admin_id; ?>"  onclick="return confirm('Are You Sure Went to Delete This! ')">
                           <i class="ace-icon fa fa-trash-o bigger-130"></i>
                         </a>
                       <?php endif; ?>

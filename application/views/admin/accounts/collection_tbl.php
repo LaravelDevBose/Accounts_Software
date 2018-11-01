@@ -17,7 +17,7 @@
             <a class="green linka fancybox fancybox.ajax" href="<?= base_url();?>collection/edit/<?= $data->id; ?>" >
               <i class="ace-icon fa fa-pencil bigger-130"></i>
             </a>
-            <a class="red" href="<?= base_url(); ?>collection/delete/<?= $data->id?>" onclick="confirm('Are You Sure Went to Delete This! ')">
+            <a class="red" href="<?= base_url(); ?>collection/delete/<?= $data->id?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
               <i class="ace-icon fa fa-trash-o bigger-130"></i>
             </a>
         </div>

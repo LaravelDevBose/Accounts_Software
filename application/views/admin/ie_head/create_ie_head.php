@@ -120,7 +120,7 @@
                         <a class="green linka fancybox fancybox.ajax" href="<?= base_url();?>ie_head/edit/<?= $ie_head->id; ?>" >
                           <i class="ace-icon fa fa-pencil bigger-130"></i>
                         </a>
-                        <a class="red" href="<?= base_url(); ?>ie_head/delete/<?= $ie_head->id?>" onclick="confirm('Are You Sure Went to Delete This! ')">
+                        <a class="red" href="<?= base_url(); ?>ie_head/delete/<?= $ie_head->id?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
                           <i class="ace-icon fa fa-trash-o bigger-130"></i>
                         </a>
                     </div>

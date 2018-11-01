@@ -78,7 +78,7 @@
                                 <a class="info" title="Edit" href="<?= base_url();?>order/edit/<?= $order->id;?>" >
                                   <i class="ace-icon fa fa-pencil bigger-130"></i>
                                 </a>
-                                <a class="red" title="Delete" href="<?= base_url(); ?>order/delete/<?= $order->id ?>" onclick="confirm('Are You Sure Went to Delete This! ')">
+                                <a class="red" title="Delete" href="<?= base_url(); ?>order/delete/<?= $order->id ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
                                   <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                 </a>
                             </div>
