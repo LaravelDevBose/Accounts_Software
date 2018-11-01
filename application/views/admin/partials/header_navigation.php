@@ -51,7 +51,7 @@
 
                   <b class="arrow"></b>
                 </li>
-
+                <?php if($access->sale_module == 1){ ?>
                 <li class="hover">
                   <a href="<?= base_url();?>order/dashboard">
                     <i class="menu-icon fa fa-shopping-bag"></i>
@@ -59,6 +59,7 @@
                   </a>
                   <b class="arrow"></b>
                 </li>
+                <?php } if($access->purchase_module ==1){ ?>
                 <li class="hover">
                   <a href="<?= base_url();?>purchase/dashboard">
                     <i class="menu-icon fa fa-cart-arrow-down"></i>
@@ -66,6 +67,7 @@
                   </a>
                   <b class="arrow"></b>
                 </li>
+                <?php } if($access->account_module ==1){ ?>
                 <li class="hover">
                   <a href="<?= base_url();?>account/dashboard">
                     <i class="menu-icon fa fa-clipboard"></i>
@@ -73,6 +75,7 @@
                   </a>
                   <b class="arrow"></b>
                 </li>
+                <?php } if($access->hr_module ==1){ ?>
                 <li class="hover">
                   <a href="<?= base_url();?>hr_payroll/dashboard">
                     <i class="menu-icon fa fa-users"></i>
@@ -80,6 +83,7 @@
                   </a>
                   <b class="arrow"></b>
                 </li>
+                <?php } if($access->report_module ==1){ ?>
                 <li class="hover">
                   <a href="<?= base_url();?>report/dashboard">
                     <i class="menu-icon fa fa-print"></i>
@@ -87,6 +91,7 @@
                   </a>
                   <b class="arrow"></b>
                 </li>
+                <?php } if($access->administration ==1){ ?>
                 <li class="hover">
                   <a href="<?= base_url();?>administration/dashboard">
                     <i class="menu-icon fa fa-cogs"></i>
@@ -94,7 +99,7 @@
                   </a>
                   <b class="arrow"></b>
                 </li>
-
+                <?php } ?>
               </ul><!-- /.nav-list -->
             </div>
           </div>

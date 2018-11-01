@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Order extends CI_Controller
+class Order extends MY_Controller
 {
 	/*==========Admin Login Check=============*/
 	public function __construct()
@@ -23,6 +23,11 @@ class Order extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('all_order_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
 			$data['title'] = 'Order Information List';  
 			$data['content'] = 'order_info/order_list';
 			$data['orders']	= $this->Order_model->get_order_info();
@@ -37,6 +42,11 @@ class Order extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('pending_order_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
 			$data['title'] = 'Order Pending Information List';  
 			$data['content'] = 'order_info/order_pending_list';
 			$data['orders']	= $this->Order_model->get_order_pending_info();
@@ -51,6 +61,11 @@ class Order extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('process_order_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
 			$data['title'] = 'Order On Procces List';  
 			$data['content'] = 'order_info/order_onprocess_list';
 			$data['orders']	= $this->Order_model->get_order_onprocess_info();
@@ -66,6 +81,11 @@ class Order extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('order_entry') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
 			$data['title'] = 'Order Information';  
 			$data['content'] = 'order_info/create_order';
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
@@ -117,7 +137,11 @@ class Order extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
-
+			if($this->admin_access('edit_access') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
 			if($result = $this->Order_model->order_info_by_id($id)){
 
 				$data['title'] = 'Order Information';  
@@ -198,7 +222,13 @@ class Order extends CI_Controller
 
 	/*======== Delete Order Info Data ========*/
 	public function delete_order_info($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('order/dashboard');
+		}
+		
 		if($result = $this->Order_model->delete_order_info($id)){
 
 			$data['success']="Delete Successfully!";

@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class IE_head extends CI_Controller
+class IE_head extends MY_Controller
 {
 	/*==========Admin Login Check=============*/
 	public function __construct()
@@ -21,6 +21,11 @@ class IE_head extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('expense_head_entry') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('administration/dashboard');
+			}
 			$data['title'] = 'Incone & Expense Head Information';  
 			$data['content'] = 'ie_head/create_ie_head'; 
 			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();  
@@ -41,7 +46,13 @@ class IE_head extends CI_Controller
 
 	/*====== Ie head edit page view======*/
 	public function edit_ie_head_info($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('administration/dashboard');
+		}
+
 		if($result = $this->IE_head_model->ie_head_data_by_id($id)){
 
 			$data['ie_head'] = $result;
@@ -74,7 +85,13 @@ class IE_head extends CI_Controller
 
 	/*========== Delete Lc Number info =======*/
 	public function delete_ie_head_info($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('administration/dashboard');
+		}
+
 		if($this->IE_head_model->delete_ie_head_data($id)){
 			$data['success']="Delete Succesfully";
 			$this->session->set_flashdata($data);

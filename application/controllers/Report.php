@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Report extends CI_Controller
+class Report extends MY_Controller
 {
 
 	/*==========Admin Login Check=============*/
@@ -27,7 +27,13 @@ class Report extends CI_Controller
 	}
 	/*======== Car Stock Report ============*/
 	public function view_car_stock_report()
-	{
+	{	
+		if($this->admin_access('stock_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Car Stock Report';  
 		$data['content'] = 'report/car_stock_report'; 
 		$data['cars'] = $this->Purchase_model->car_stock_report();  
@@ -38,6 +44,12 @@ class Report extends CI_Controller
 	/*========= View All Customer Due Report ==========*/
 	public function view_full_due_report()
 	{	
+		if($this->admin_access('cus_due_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$i = 0; $reports = array();
 		$customers = $this->Customer_model->find_all_customer_info();
 		foreach ($customers as $customer) {
@@ -70,7 +82,13 @@ class Report extends CI_Controller
 
 	/*========= View L/C Report Data ======*/
 	public function view_lc_report()
-	{
+	{	
+		if($this->admin_access('lc_list_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'L/C Report';  
 		$data['content'] = 'report/lc_report_view'; 
 		$data['lc_data'] = $this->LC_model->get_all_lc_info();  
@@ -79,7 +97,13 @@ class Report extends CI_Controller
 
 	/*=======  View Customer Report Data ========== */
 	public function view_customer_report()
-	{
+	{	
+		if($this->admin_access('cus_list_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Customer Report';  
 		$data['content'] = 'report/customer_report_view';
 		$data['customers'] = $this->Customer_model->find_all_customer_info();
@@ -88,7 +112,13 @@ class Report extends CI_Controller
 
 	/*======= View Lc Wise Order Report ========*/
 	public function view_lc_wise_order_report()
-	{
+	{	
+		if($this->admin_access('lc_order_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Lc Wise Order Report';  
 		$data['content'] = 'report/lc_order_report_view';
 		$data['lc_data'] = $this->LC_model->get_all_lc_info();
@@ -110,6 +140,11 @@ class Report extends CI_Controller
 	/*======== View Collection Report Page ========*/
 	public function view_collection_report()
 	{	
+		if($this->admin_access('collection_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
 
 		$data['title'] = 'Collection Report';  
 		$data['content'] = 'report/collection_report_view';
@@ -128,7 +163,13 @@ class Report extends CI_Controller
 
 	/*======== Customer wise Colletion Report ========*/
 	public function customer_wise_collection()
-	{
+	{	
+		if($this->admin_access('cus_coll_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Customer Collection Report';  
 		$data['content'] = 'report/cus_wise_collection';
 		$data['customers'] = $this->Customer_model->find_all_customer_info();
@@ -149,7 +190,13 @@ class Report extends CI_Controller
 
 	/*======= car Chassis Number wise Collection REport Page =======*/
 	public function car_wise_collection_view()
-	{
+	{	
+		if($this->admin_access('car_coll_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Car Wise Collection Report';  
 		$data['content'] = 'report/car_wise_collection';
 		$data['orders'] = $this->Order_model->get_order_chassis_number();
@@ -169,7 +216,13 @@ class Report extends CI_Controller
 
 	/*====== Customer Order Report Page =======*/
 	public function view_customer_order_report()
-	{
+	{	
+		if($this->admin_access('cus_order_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Customer Order Report';  
 		$data['content'] = 'report/customer_order_report';
 		$data['customers'] = $this->Customer_model->find_all_customer_info();
@@ -189,7 +242,13 @@ class Report extends CI_Controller
 
 	/*======= delivery order report page ========*/
 	public function delivery_order_view()
-	{
+	{	
+		if($this->admin_access('deliv_order_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Customer Order Report';  
 		$data['content'] = 'report/delivery_order_report';
 		$this->load->view('admin/adminMaster', $data);
@@ -197,7 +256,8 @@ class Report extends CI_Controller
 
 	/*======== date wise delivery order ========*/
 	public function date_wise_delivery_order()
-	{
+	{	
+
 		if($res = $this->Order_model->order_report_date_wise()){
 			$data['orders'] = $res;
 			$this->load->view('admin/report/delivery_order_tbl', $data);
@@ -208,7 +268,13 @@ class Report extends CI_Controller
 
 	/*====== date to date Salary View ==========*/
 	public function salary_date_to_date_report()
-	{
+	{	
+		if($this->admin_access('sallary_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Salary Report';
 		$data['content'] = 'report/date_to_date_salary';
 		$this->load->view('admin/adminMaster', $data);
@@ -230,7 +296,13 @@ class Report extends CI_Controller
 
 	/*======= employee wise salary report ========*/
 	public function employee_wise_salary()
-	{
+	{	
+		if($this->admin_access('emp_sallary_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Salary Report';
 		$data['content'] = 'report/employee_salary';
 		$data['employees'] = $this->Employee_model->find_all_employee_info();
@@ -250,7 +322,13 @@ class Report extends CI_Controller
 
 	/*====== Final report View ======*/
 	public function car_full_report()
-	{
+	{	
+		if($this->admin_access('car_full_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Car Full Report';
 		$data['content'] = 'report/full_report';
 		$data['orders'] = $this->Order_model->get_active_order_info();
@@ -259,11 +337,12 @@ class Report extends CI_Controller
 
 	/*======= Order Wise Report View ========*/
 	public function find_full_deatils_report($order_id=Null)
-	{
+	{	
+
 		if($order_info = $this->Order_model->order_info_by_id($order_id)){
 			$data['customer'] = $this->Customer_model->customer_by_id($order_info->cus_id);
 			$data['collections'] = $this->Collection_model->order_wise_collection($order_id);
-			$data['payments'] = $this->Payment_model->order_wise_payment($order_id);
+			$data['payments'] = $this->Purchase_model->order_wise_estimate_price($order_info->pus_id);
 			$data['order'] = $order_info;
 			$this->load->view('admin/report/report_view', $data);
 		}else{
@@ -274,7 +353,13 @@ class Report extends CI_Controller
 
 	/*======= Date wise payment report page ==========*/
 	public function payment_report_page()
-	{
+	{	
+		if($this->admin_access('date_payment_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+
 		$data['title'] = 'Date Wise Payment Report';
 		$data['content'] = 'report/payment_report';
 		$this->load->view('admin/adminMaster', $data);
@@ -295,7 +380,13 @@ class Report extends CI_Controller
 
 	/*=========== supplier payment report page ===========*/
 	public function supplier_payment_report_page()
-	{
+	{	
+		if($this->admin_access('supplier_payment_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+		
 		$data['title'] = 'Supplier Payment Report';
 		$data['content'] = 'report/supplier_payment_report';
 		$data['suppliers'] = $this->Supplier_model->find_all_supplier_info();
@@ -314,7 +405,13 @@ class Report extends CI_Controller
 
 	/*=========== Office Payment Report Page ===========*/
 	public function office_payment_report_page()
-	{
+	{	
+		if($this->admin_access('office_payment_report') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('report/dashboard');
+		}
+		
 		$data['title'] = 'Office Payment Report';
 		$data['content'] = 'report/office_payment_report';
 		$this->load->view('admin/adminMaster', $data);

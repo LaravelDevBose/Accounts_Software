@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Check extends CI_Controller
+class Check extends MY_Controller
 {
 	/*==========Admin Login Check=============*/
 	public function __construct()
@@ -32,6 +32,11 @@ class Check extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('check_entry') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('account/dashboard');
+			}
 			$data['title'] = 'Check Information';  
 			$data['content'] = 'check/check_entry'; 
 			$data['checks'] = $this->Check_model->get_all_check_info();
@@ -41,7 +46,12 @@ class Check extends CI_Controller
 	}
 
 	public function check_pendaing_date_list()
-	{
+	{	
+		if($this->admin_access('pending_check_list') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
 		$data['title'] = 'Pending Check Information';  
 		$data['content'] = 'check/pending_check_list'; 
 		$data['checks'] = $this->Check_model->get_all_pending_check_info();  
@@ -49,7 +59,12 @@ class Check extends CI_Controller
 	}
 
 	public function check_reminder_date_list()
-	{
+	{	
+		if($this->admin_access('reminder_check_list') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
 		$data['title'] = 'Reminder Check Information';  
 		$data['content'] = 'check/check_reminder_list'; 
 		$data['checks'] = $this->Check_model->get_all_remaind_check_info();  
@@ -57,7 +72,12 @@ class Check extends CI_Controller
 	}
 
 	public function check_paid_date_list()
-	{
+	{	
+		if($this->admin_access('paid_check_list') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
 		$data['title'] = 'Paid Check Information';  
 		$data['content'] = 'check/paid_check_list'; 
 		$data['checks'] = $this->Check_model->get_all_paid_check_info();  
@@ -114,7 +134,12 @@ class Check extends CI_Controller
 
 	/*====== check edit page view======*/
 	public function check_edit_page($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
 		if($result = $this->Check_model->check_data_by_id($id)){
 			$data['title'] = 'Check Edit Information';  
 			$data['content'] = 'check/edit_check'; 
@@ -164,7 +189,12 @@ class Check extends CI_Controller
 
 	/*========== Delete Lc Number info =======*/
 	public function check_delete_info($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
 		if($this->Check_model->delete_check_data($id)){
 			$data['success']=" Delete Succesfully";
 			$this->session->set_flashdata($data);

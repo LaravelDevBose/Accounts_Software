@@ -139,7 +139,8 @@
                   </thead>
 
                   <tbody>
-                    <?php $i = 1; $total_col= 0; if($collections && isset($collections)): foreach ($collections as $collection): ?>
+
+                    <?php $i = 1; $total_col= 0; $grd_total=0; if($collections && isset($collections)): foreach ($collections as $collection): ?>
                     <tr>
                       <td class="center"><?= $i++; ?></td>
 
@@ -154,6 +155,13 @@
                       </td>
                     </tr>
                   <?php $total_col = $total_col+$collection->amount;  endforeach; $grd_total = $total_col+$order->ord_advance;  ?>
+                    <tr>
+                      <td colspan="2">Advance</td>
+                      <td>
+                        <?= number_format($order->ord_advance, 2); ?>
+                      </td>
+                    </tr>
+
                     <tr>
                       <td colspan="2"><span style="float: right; font-weight: bold;">Total: </span></td>
                       <td ><?= number_format($grd_total, 2)?></td>
@@ -170,7 +178,6 @@
                   <thead>
                     <tr>
                       <th class="center">#</th>
-                      <th>Date</th>
                       <th >Expence Head</th>
                       <th class="hidden-480">Amount</th>
                     </tr>
@@ -180,19 +187,13 @@
                     <?php $i = 1; $total_pay= 0; if($payments && isset($payments)): foreach ($payments as $payment): ?>
                     <tr>
                       <td class="center"><?= $i++; ?></td>
-
-                      <td>
-                        <?php 
-                          $date = new DateTime($payment->payment_date);
-                          echo date_format($date, 'd M Y'); 
-                        ?> 
                       </td>
                       <td ><?= $payment->head_title; ?> </td>
-                      <td><?= number_format($payment->payment_amount, 2); ?></td>
+                      <td><?= number_format($payment->amount, 2); ?></td>
                     </tr>
-                    <?php $total_pay =$total_pay+$payment->payment_amount;  endforeach; ?>
+                    <?php $total_pay =$total_pay+$payment->amount;  endforeach; ?>
                     <tr>
-                      <td colspan="3"><span style="float: right; font-weight: bold;">Total: </span></td>
+                      <td colspan="2"><span style="float: right; font-weight: bold;">Total: </span></td>
                       <td ><?= number_format($total_pay, 2); ?></td>
                     </tr>
                   <?php endif;?>
@@ -207,7 +208,7 @@
                   <table class="table  ">
                     <thead>
                       <tr>
-                        <th colspan="2">Payment Summery</th>
+                        <th colspan="2">Payment Summery</th> 
                       </tr>
                     </thead>
                   <tbody >

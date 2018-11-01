@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Transport extends CI_Controller
+class Transport extends MY_Controller
 {
 
 	/*==========Admin Login Check=============*/
@@ -28,6 +28,12 @@ class Transport extends CI_Controller
 	/*======= Transtion Process Page========*/
 	public function transport_car_status_view()
 	{	
+
+		if($this->admin_access('transport_status') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('purchase/dashboard');
+		}
 		$data['title'] = 'Car Transport Location';
 		$data['content'] = 'transport/transport_car_list';
 		$data['purchases']	= $this->Purchase_model->undelivery_purchase_car();
@@ -35,7 +41,13 @@ class Transport extends CI_Controller
 	}
 
 	public function transport_car_status_change_page($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('purchase/dashboard');
+		}
+
 		$data['trans_heads'] = $this->Transport_head_model->transport_head_list();
 		$data['id'] = $id;
 		$this->load->view('admin/transport/trans_status_change_page', $data);
@@ -66,7 +78,13 @@ class Transport extends CI_Controller
 	/************** Transport Head Mothod ***********/
 
 	public function transport_head_view()
-	{
+	{	
+		if($this->admin_access('transport_head') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('purchase/dashboard');
+		}
+
 		$data['title'] = 'Transport Head';
 		$data['content'] = 'transport/trans_head_view';
 		$data['heads'] = $this->Transport_head_model->transport_head_list();
@@ -84,7 +102,13 @@ class Transport extends CI_Controller
 	}
 
 	public function transport_head_edit($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('purchase/dashboard');
+		}
+
 		if($res = $this->Transport_head_model->get_data_by_id($id)){
 			$data['head']= $res;
 			$this->load->view('admin/transport/edit_head_page',$data);
@@ -110,7 +134,13 @@ class Transport extends CI_Controller
 	}
 
 	public function transport_head_delete($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('purchase/dashboard');
+		}
+		
 		if($this->Transport_head_model->delete_header_data($id)){
 			$data['success']="Delete Successfuly";
 			$this->session->set_flashdata($data);

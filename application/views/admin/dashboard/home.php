@@ -88,7 +88,7 @@
           <img src="<?php echo base_url().'libs/logo_image/maven.jpg'; ?>" class="img img-responsive center-block">
         </div>
         
-      
+        <?php if($access->sale_module == 1){ ?>
         <div class="col-md-3 section3">
           <div class="col-md-12 section12">
           <a href="<?php echo base_url(); ?>order/dashboard">
@@ -101,6 +101,7 @@
             </a>
           </div>
         </div>
+        <?php } if($access->purchase_module ==1){ ?>
         <div class="col-md-3 section3">
           <div class="col-md-12 section12">
           <a href="<?php echo base_url(); ?>purchase/dashboard">
@@ -113,6 +114,7 @@
             </a>
           </div>
         </div>
+        <?php } if($access->account_module ==1){ ?>
         <div class="col-md-3 section3">
           <div class="col-md-12 section12">
           <a href="<?php echo base_url(); ?>account/dashboard">
@@ -125,6 +127,7 @@
             </a>
           </div>
         </div>
+        <?php } if($access->hr_module ==1){ ?>
         <div class="col-md-3 section3">
           <div class="col-md-12 section12">
           <a href="<?php echo base_url(); ?>hr_payroll/dashboard">
@@ -137,6 +140,7 @@
             </a>
           </div>
         </div>
+        <?php } if($access->report_module ==1){ ?>
         <div class="col-md-3 section3">
           <div class="col-md-12 section12">
           <a href="<?php echo base_url(); ?>report/dashboard">
@@ -149,6 +153,7 @@
             </a>
           </div>
         </div>
+        <?php } if($access->administration ==1){ ?>
         <div class="col-md-3 section3">
           <div class="col-md-12 section12">
           <a href="<?php echo base_url(); ?>administration/dashboard">
@@ -161,6 +166,7 @@
             </a>
           </div>
         </div>
+        <?php } ?>
         <div class="col-md-3 section3">
           <div class="col-md-12 section12">
           <a href="<?php echo base_url(); ?>Adminlogin/logout">

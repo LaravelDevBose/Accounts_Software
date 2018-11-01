@@ -37,6 +37,9 @@ $route['customer/edit/(:any)']		=	'Customer/edit_customer_info/$1';
 $route['customer/update/(:any)']	=	'Customer/update_customer_info/$1';
 $route['customer/delete/(:any)']	=	'Customer/delete_customer_info/$1';
 
+$route['customer/order/insert'] 	=	'Customer/customer_order_insert_page';
+$route['customer/order/store'] 		=	'Customer/customer_order_store';
+
 /*========Order CRUD Route list=========*/
 $route['order/list'] 			= 	"Order/index";
 $route['order/pending/list'] 	= 	"Order/order_pending_list";
@@ -126,6 +129,18 @@ $route['other_income/update/(:any)']= 'Account/other_income_update/$1';
 $route['other_income/delete/(:any)']= 'Account/delete_other_income/$1';
 
 
+
+$route['check/pending/list'] 	=	'Check/check_pendaing_date_list';
+$route['check/reminder/list'] 	=	'Check/check_reminder_date_list';
+$route['check/paid/list'] 		=	'Check/check_paid_date_list';
+$route['check/entry'] 			=	'Check/check_entry_page';
+$route['check/store'] 			=	'Check/check_date_store';
+$route['check/view/(:any)'] 	=	'Check/check_view_page/$1';
+$route['check/edit/(:any)'] 	=	'Check/check_edit_page/$1';
+$route['check/update/(:any)'] 	=	'Check/check_update_info/$1';
+$route['check/delete/(:any)'] 	=	'Check/check_delete_info/$1';
+
+
 /****************************************************************************************************/
 /************************************* HR & Payroll Module Route List *******************************/
 
@@ -210,16 +225,6 @@ $route['report/customer']					= 'Report/view_customer_report';
 /*********************************** Administration Module Route List *******************************/
 
 
-$route['check/pending/list'] 	=	'Check/check_pendaing_date_list';
-$route['check/reminder/list'] 	=	'Check/check_reminder_date_list';
-$route['check/paid/list'] 		=	'Check/check_paid_date_list';
-$route['check/entry'] 			=	'Check/check_entry_page';
-$route['check/store'] 			=	'Check/check_date_store';
-$route['check/view/(:any)'] 	=	'Check/check_view_page/$1';
-$route['check/edit/(:any)'] 	=	'Check/check_edit_page/$1';
-$route['check/update/(:any)'] 	=	'Check/check_update_info/$1';
-$route['check/delete/(:any)'] 	=	'Check/check_delete_info/$1';
-
 /*========L/C CRUD Route list=========*/
 $route['lc/insert'] 		= 	"LC_controller";
 $route['lc/store'] 			= 	"LC_controller/store_lc_info";
@@ -236,8 +241,8 @@ $route['ie_head/update/(:any)']	=	'IE_head/update_ie_head_info/$1';
 $route['ie_head/delete/(:any)']	=	'IE_head/delete_ie_head_info/$1';
 
 /*======== Setting Route List ===========*/
-$route['setting/insert']	= 'Setting/view_setting_page';
-$route['company_info/store']		= 'Setting/store_or_update_conpany_info';
+$route['setting/insert']		= 'Setting/view_setting_page';
+$route['company_info/store']	= 'Setting/store_or_update_conpany_info';
 
 /*========Create Admin=========*/
 $route['createAdmin'] 			=	"Admincreate/addAdminPage";
@@ -248,7 +253,7 @@ $route['AdminUpdate/(:any)'] 	=	"Admincreate/edit_admin_data_check/$1";
 $route['deleteAdmin/(:any)'] 	=	"Admincreate/admin_delete/$1";
 
 $route['change_pass_page/(:any)'] 	= 	"Admincreate/change_pass_page/$1";
-$route['access_page/(:any)'] 		= 	"Access/show_access_page/$1";
-$route['DefineAccess'] 				= 	"Access/DefineAccessPortion";
+$route['access_page/(:any)'] 		= 	"AdminAccess/show_access_page/$1";
+$route['define_access'] 			= 	"AdminAccess/define_access";
 
 

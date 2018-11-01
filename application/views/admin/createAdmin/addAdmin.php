@@ -61,9 +61,19 @@
 
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="image"> Image:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="image"> Admin Type:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                     <input class="form-control" id="image" name="image" type="file" placeholder="Admin Image" accept="image/*" style="    padding: 0px;" />
+                     <select name="admin_type" id="" class="form-control" style="height: 30px; border-radius: 5px;">
+                       <option value="a">Admin</option>
+                       <option value="s">Super-Admin</option>
+                     </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="id-input-file-2"> Image:<span class="text-bold text-danger">*</span> </label>
+                  <div class="col-sm-8">
+                     <input class="form-control" id="id-input-file-2" name="image" type="file" placeholder="Admin Image" accept="image/*" style="    padding: 0px;" />
                   </div>
                 </div>
 
@@ -77,7 +87,7 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="repeat_password"> Confirm Password:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <input type="text" id="repeat_password" name="repeat_password" placeholder="Repeat Password" class="form-control" minlength="6" />
+                    <input type="password" id="repeat_password" name="repeat_password" placeholder="Repeat Password" class="form-control" minlength="6" />
                   </div>
                 </div>
                 <div class="form-group" style="margin-top: 10px;">

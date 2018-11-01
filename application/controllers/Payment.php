@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Payment extends CI_Controller
+class Payment extends MY_Controller
 {
 
 	/*==========Admin Login Check=============*/
@@ -27,7 +27,13 @@ class Payment extends CI_Controller
 
 	/*======== Payment Entry View Page ========*/
 	public function payment_entry_page()
-	{
+	{	
+		if($this->admin_access('payment') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		$data['title'] = 'Payment Entry';
 		$data['content'] = 'accounts/payment_entry';
 		$payment = $this->db->order_by('id', 'desc')->where('payment_type', 'CP')->limit(1)->get('payments')->row();
@@ -90,7 +96,13 @@ class Payment extends CI_Controller
 
 	/*======= Edit Payment page =======*/
 	public function payment_entry_edit($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		if($result = $this->Payment_model->get_payment_by_id($id)){
 			$data['payment'] = $result;
 			$data['suppliers'] = $this->Supplier_model->find_all_supplier_info();
@@ -138,7 +150,13 @@ class Payment extends CI_Controller
 
 	/*======== delete _data=====*/
 	public function delete_payment_data($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		if($this->Payment_model->delete_payment_data($id)){
 			$data['success']="Delete SuccessFully";
 			$this->session->set_flashdata($data);
@@ -178,7 +196,13 @@ class Payment extends CI_Controller
 
 	/*======== Office Payment Entry View Page ========*/
 	public function office_payment_entry_page()
-	{
+	{	
+		if($this->admin_access('ofice_payment') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		$data['title'] = 'Office Payment Entry';
 		$data['content'] = 'accounts/office_payment_entry';
 		$payment = $this->db->order_by('id', 'desc')->where('payment_type', 'OP')->limit(1)->get('payments')->row();
@@ -236,7 +260,13 @@ class Payment extends CI_Controller
 
 	/*======= Edit Office Payment page =======*/
 	public function office_payment_edit($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		if($result = $this->Payment_model->get_payment_by_id($id)){
 			$data['payment'] = $result;
 			$data['heads'] = $this->IE_head_model->get_all_head_info('O');
@@ -277,7 +307,12 @@ class Payment extends CI_Controller
 
 	/*======== delete _data=====*/
 	public function office_payment_delete($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
 		if($this->Payment_model->delete_payment_data($id)){
 			$data['success']="Delete SuccessFully";
 			$this->session->set_flashdata($data);

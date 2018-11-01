@@ -11,6 +11,18 @@
 		}
 	}
 
+	function amount_cal(){
+		var amount = 0;
+		var total_amount = 0; 
+		for (var i = 1; i <= 8; i++) {
+			amount = $('#amount'+i+'').val();
+			if(amount != ''){
+				total_amount =total_amount+parseInt(amount);
+			}
+		}
+		$('#total_amount').html(total_amount);
+	}
+
 	/*=========== Find Customer info====== */
 	$('#sup_info').on('change', function(e){
 		var sup_id = e.target.value;

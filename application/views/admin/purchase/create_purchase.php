@@ -289,7 +289,7 @@
                   </div>
 
                   <div class="col-sm-5">
-                    <input type="text" id="amount1"  name="amount[1]" placeholder="Amount" disabled class="form-control" />
+                    <input type="number" id="amount1"  name="amount[1]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -303,7 +303,7 @@
                   </div>
 
                   <div class="col-sm-5">
-                    <input type="text" id="amount2"  name="amount[2]" placeholder="Amount" disabled class="form-control" />
+                    <input type="number" id="amount2"  name="amount[2]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -317,7 +317,7 @@
                   </div>
 
                   <div class="col-sm-5">
-                    <input type="text" id="amount3"  name="amount[3]" placeholder="Amount" disabled class="form-control" />
+                    <input type="number" id="amount3"  name="amount[3]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -331,7 +331,7 @@
                   </div>
 
                   <div class="col-sm-5">
-                    <input type="text" id="amount4"  name="amount[4]" placeholder="Amount" disabled class="form-control" />
+                    <input type="number" id="amount4"  name="amount[4]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
                   </div>
                 </div>
 
@@ -350,7 +350,7 @@
                   </div>
 
                   <div class="col-sm-5">
-                    <input type="text" id="amount5"  name="amount[5]" placeholder="Amount" disabled class="form-control" />
+                    <input type="number" id="amount5"  name="amount[5]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -364,7 +364,7 @@
                   </div>
 
                   <div class="col-sm-5">
-                    <input type="text" id="amount6"  name="amount[6]" placeholder="Amount" disabled class="form-control" />
+                    <input type="number" id="amount6"  name="amount[6]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -378,7 +378,7 @@
                   </div>
 
                   <div class="col-sm-5">
-                    <input type="text" id="amount7"   name="amount[7]" placeholder="Amount" disabled class="form-control" />
+                    <input type="number" id="amount7"   name="amount[7]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -392,7 +392,7 @@
                   </div>
 
                   <div class="col-sm-5">
-                    <input type="text" id="amount8"  name="amount[8]" placeholder="Amount" disabled class="form-control" />
+                    <input type="number" id="amount8"  name="amount[8]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
                   </div>
                 </div>
                 <div class="form-group" >
@@ -401,7 +401,10 @@
                   </div>
                 </div>
               </div>
-          
+              <div class="col-md-12">
+                <p style="position: absolute; bottom: 12px; left: 11%; font-size: 20px; color: blue; ">Total Estimate Price: <span id="total_amount" style="font-size: 22px; font-weight: 800">00.00</span> TK</p>
+              </div>
+              
             </div>
           </div>
         </div>

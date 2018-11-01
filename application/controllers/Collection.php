@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Collection extends CI_Controller
+class Collection extends MY_Controller
 {
 
 	/*==========Admin Login Check=============*/
@@ -27,7 +27,13 @@ class Collection extends CI_Controller
 
 	/*======== Collention Entry View Page ========*/
 	public function collection_entry_page()
-	{
+	{	
+		if($this->admin_access('collection') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		$data['title'] = 'Collection Entry';
 		$data['content'] = 'accounts/collection_entry';
 		$data['customers'] = $this->Customer_model->find_all_customer_info();
@@ -65,7 +71,13 @@ class Collection extends CI_Controller
 
 	/*======= Edit Collection page =======*/
 	public function collection_entry_edit($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		if($result = $this->Collection_model->get_collection_by_id($id)){
 			$data['collection'] = $result;
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
@@ -111,7 +123,13 @@ class Collection extends CI_Controller
 
 	/*======== delete _data=====*/
 	public function delete_collection_data($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+		
 		if($this->Collection_model->delete_collection_data($id)){
 			$data['success']="Delete SuccessFully";
 			$this->session->set_flashdata($data);

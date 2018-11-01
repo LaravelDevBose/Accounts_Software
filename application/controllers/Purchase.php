@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Purchase extends CI_Controller
+class Purchase extends MY_Controller
 {
 	/*==========Admin Login Check=============*/
 	public function __construct()
@@ -21,6 +21,11 @@ class Purchase extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('purchase_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('purchase/dashboard');
+			}
 			$data['title'] = 'Purchase Information List';  
 			$data['content'] = 'purchase/purchase_list';
 			$data['purchases']	= $this->Purchase_model->get_purchase_info();
@@ -37,6 +42,12 @@ class Purchase extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('purchase_entry') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('purchase/dashboard');
+			}
+
 			$data['title'] = 'New Purchase Information';  
 			$data['content'] = 'purchase/create_purchase';
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
@@ -115,7 +126,11 @@ class Purchase extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
-
+			if($this->admin_access('edit_access') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('purchase/dashboard');
+			}
 			if($result = $this->Purchase_model->purchase_info_by_id($id)){
 
 				$data['title'] = 'Edit Purchase Information';  
@@ -209,7 +224,11 @@ class Purchase extends CI_Controller
 
 	/*======== Delete Order Info Data ========*/
 	public function delete_purchase_info($id=Null)
-	{
+	{	if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('purchase/dashboard');
+		}
 		if($result = $this->Purchase_model->delete_purchase_info($id)){
 
 			$data['success']="Delete Successfully!";

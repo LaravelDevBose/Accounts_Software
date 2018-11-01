@@ -346,4 +346,20 @@ class Purchase_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*=========== Order Wise Car Estimate Price ============*/
+	public function order_wise_estimate_price($pus_id = Null)
+	{
+		$this->db->select('purchase_pricing.*, ie_heads.head_title');
+		$this->db->from('purchase_pricing');
+		$this->db->join('ie_heads', 'purchase_pricing.head_id = ie_heads.id' );
+		$this->db->where('purchase_pricing.purchase_id',$pus_id);
+		$result = $this->db->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
 }

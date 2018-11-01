@@ -1,6 +1,6 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Admindashboard extends CI_Controller
+class Admindashboard extends MY_Controller
 {
 	/*================View Admin Dashboard=================*/
 	/*================View Admin Dashboard=================*/

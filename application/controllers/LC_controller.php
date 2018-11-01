@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class LC_controller extends CI_Controller
+class LC_controller extends MY_Controller
 {
 	/*==========Admin Login Check=============*/
 	public function __construct()
@@ -21,6 +21,11 @@ class LC_controller extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('lc_entry') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('administration/dashboard');
+			}
 			$data['title'] = 'L/C Information';  
 			$data['content'] = 'lc_info/create_lc'; 
 			$data['lc_data'] = $this->LC_model->get_all_lc_info();  
@@ -41,7 +46,11 @@ class LC_controller extends CI_Controller
 
 	/*====== lc edit page view======*/
 	public function edit_lc_info($id=Null)
-	{
+	{	if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('administration/dashboard');
+		}
 		if($result = $this->LC_model->lc_data_by_id($id)){
 
 			$data['lc'] = $result;
@@ -76,7 +85,12 @@ class LC_controller extends CI_Controller
 
 	/*========== Delete Lc Number info =======*/
 	public function delete_lc_info($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('administration/dashboard');
+		}
 		if($this->LC_model->delete_lc_data($id)){
 			$data['success']="L/C Number Delete Succesfully";
 			$this->session->set_flashdata($data);

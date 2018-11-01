@@ -15,6 +15,16 @@ class Customer_model extends CI_Model
 		 }
 	}
 
+	public function find_limit_customer_info(){
+		
+		 $result = $this->db->where('cus_status', 'a')->limit(5)->order_by('id', 'desc')->get('customers')->result();
+		 if($result){
+		 	return $result;
+		 }else{
+		 	return FALSE; 
+		 }
+	}
+
 	public function store_customer_info()
 	{	
 
@@ -35,6 +45,7 @@ class Customer_model extends CI_Model
 		$attr = array(
 			'cus_code'	=>$this->input->post('cus_code'),
 			'cus_name'	=>$this->input->post('cus_name'),
+			'org_name'	=>$this->input->post('org_name'),
 			'cus_contact_no'	=>$this->input->post('cus_contact_no'),
 			'alt_contact_no'	=>$this->input->post('alt_contact_no'),
 			'cus_entry_date'	=>$this->input->post('cus_entry_date'),
@@ -106,6 +117,7 @@ class Customer_model extends CI_Model
 		$attr = array(
 			'cus_code'	=>$this->input->post('cus_code'),
 			'cus_name'	=>$this->input->post('cus_name'),
+			'org_name'	=>$this->input->post('org_name'),
 			'cus_contact_no'	=>$this->input->post('cus_contact_no'),
 			'alt_contact_no'	=>$this->input->post('alt_contact_no'),
 			'cus_entry_date'	=>$this->input->post('cus_entry_date'),

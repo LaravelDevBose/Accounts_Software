@@ -41,7 +41,12 @@
                     <input type="text" id="cus_name" name="cus_name" value="<?= $customer->cus_name; ?>" required placeholder="Customer Name" class="form-control" />
                   </div>
                 </div>
-                
+                <div class="form-group">
+                  <label class="col-sm-5 control-label no-padding-left" for="org_name"> Organization Name:</label>
+                  <div class="col-sm-7">
+                    <input type="text" id="org_name" name="org_name" value="<?= $customer->org_name; ?>"  placeholder="Organization Name" class="form-control" />
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-5 control-label no-padding-left" for="cus_contact_no"> Contact No:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-7">
@@ -61,12 +66,7 @@
                     <input type="text" id="cus_email" name="cus_email" value="<?= $customer->cus_email; ?>" placeholder="E-mail" class="form-control" />
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="cus_fb"> Facebook Id:</label>
-                  <div class="col-sm-7">
-                    <input type="text" id="cus_fb" name="cus_fb" value="<?= $customer->cus_fb; ?>" required placeholder="Facebook Id Url" class="form-control" />
-                  </div>
-                </div>
+                
               </div>
 
 
@@ -82,6 +82,12 @@
                   <label class="col-sm-4 control-label no-padding-left" for="cus_address"> Address:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
                     <textarea id="cus_address" required name="cus_address" placeholder="Address" class="form-control" ><?= $customer->cus_address; ?></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-5 control-label no-padding-left" for="cus_fb"> Facebook Id:</label>
+                  <div class="col-sm-7">
+                    <input type="text" id="cus_fb" name="cus_fb" value="<?= $customer->cus_fb; ?>"  placeholder="Facebook Id Url" class="form-control" />
                   </div>
                 </div>
                 <div class="form-group">

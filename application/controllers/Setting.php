@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Setting extends CI_Controller
+class Setting extends MY_Controller
 {
 	/*==========Admin Login Check=============*/
 	public function __construct()
@@ -26,7 +26,13 @@ class Setting extends CI_Controller
 
 	/*======= Setting Page View ======*/
 	public function view_setting_page()
-	{
+	{	
+		if($this->admin_access('company_info') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('administration/dashboard');
+		}
+		
 		$data['title'] = 'Company Setting';
 		$data['content'] = 'setting/setting_page';
 		$data['logo'] = $this->Setting_model->get_company_info('logo');

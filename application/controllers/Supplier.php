@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Supplier extends CI_Controller
+class Supplier extends MY_Controller
 {
 
 	/*==========Admin Login Check=============*/
@@ -31,6 +31,13 @@ class Supplier extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+
+			if($this->admin_access('supplier') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('hr_payroll/dashboard');
+			}
+
 			$data['title'] = 'Supplier Information';  
 			$data['content'] = 'supplier/supplier_page';
 
@@ -102,7 +109,12 @@ class Supplier extends CI_Controller
 	/*========  Edit Customer info page=============*/
 
 	public function edit_supplier_info($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('hr_payroll/dashboard');
+		}
 		if (!$this->Admin_model->is_admin_loged_in()) 
 		{
 			redirect('Adminlogin/?logged_in_first');
@@ -148,7 +160,12 @@ class Supplier extends CI_Controller
 
 	/*========== Delete Customer Info ===========*/
 	public function delete_supplier_info($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('hr_payroll/dashboard');
+		}
 		if($this->Supplier_model->delete_supplier_info($id)){
 			$data['success']="Supplier info Delete Successfully!";
 			$this->session->set_flashdata($data);

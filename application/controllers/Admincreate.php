@@ -1,6 +1,6 @@
 <?php 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Admincreate extends CI_Controller
+class Admincreate extends MY_Controller
 {
 	/*=================Admin Login Check====================*/
 	/*=================Admin Login Check====================*/
@@ -31,7 +31,13 @@ class Admincreate extends CI_Controller
 	/*======================Add Admin Page======================*/
 	/*======================Add Admin Page======================*/
 	public function addAdminPage()
-	{
+	{	
+		if($this->admin_access('admin_entry') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('administration/dashboard');
+		}
+
 		$data['title'] = 'Add Admin Information';
 		$data['add_admin'] = 'active';
 
@@ -65,7 +71,29 @@ class Admincreate extends CI_Controller
 			if(!isset($_FILES['image']) || $_FILES['image']['error'] == UPLOAD_ERR_NO_FILE) 
 			{
 				$filename = 0;
-				if($this->Admin_model->add_admin_data_insert($filename)) :
+				if($admin_id = $this->Admin_model->add_admin_data_insert($filename)) :
+					if($this->input->post('admin_type') == 's'){
+						$fields = $this->db->list_fields('admin_access');
+						// print_r($fields); die();
+						$attr = array('admin_id'=>$admin_id);
+						for ($i=2; $i <= 57; $i++) { 
+							$attr[$fields[$i]] = '1';
+						}
+
+						// echo "<pre>"; print_r($attr); die();
+						$res = $this->db->insert('admin_access', $attr);
+						
+						if($res){
+							$data['success']="Save Successfully!";
+							$this->session->set_flashdata($data);
+							redirect('createAdmin');
+						}else{
+							$data['error']="Admin Access Not Insert for super Admin!";
+							$this->session->set_flashdata($data);
+							redirect('createAdmin');
+						}
+					}
+
 					$data['success']="Save Successfully!";
 					$this->session->set_flashdata($data);
 					redirect('createAdmin');
@@ -133,7 +161,13 @@ class Admincreate extends CI_Controller
 	/*======================List Admin Page======================*/
 	/*======================List Admin Page======================*/
 	public function listOfAdmin()
-	{
+	{	
+		if($this->admin_access('admin_list') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('administration/dashboard');
+		}
+
 		$data['title'] = 'Admin Information List';
 		$data['content'] = 'createAdmin/listAdmin'; 
 		$data['admins'] = $this->Admin_model->fatch_all_data();
@@ -147,7 +181,13 @@ class Admincreate extends CI_Controller
 	/*==============View Admin Edit Page With Data==============*/
 	/*==============View Admin Edit Page With Data==============*/
 	public function edit_admin($id = null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('administration/dashboard');
+		}
+
 		$data['title'] = 'Edit Admin Information';
 		if ($this->Admin_model->edit_admin($id)) {
 			$data['admin'] = $this->Admin_model->edit_admin($id);
@@ -221,7 +261,13 @@ class Admincreate extends CI_Controller
 	/*======================Admin Delete======================*/
 	/*======================Admin Delete======================*/
 	public function admin_delete($id = null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('administration/dashboard');
+		}
+
 		if($this->Admin_model->admin_delete($id))
 		{
 			$data['errorMsg']="Delete Successfully!";

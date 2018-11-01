@@ -80,7 +80,7 @@ class Admin_model extends CI_Model
 
 		if($insert)
 		{
-			return TRUE;
+			return $adminID;
 		}
 		else
 		{
