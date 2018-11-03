@@ -21,6 +21,16 @@ class LC_controller extends MY_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			redirect('Admindashboard');
+		}
+	}
+
+	public function lc_list_view()
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
 			if($this->admin_access('lc_entry') != 1){
 				$data['warning_msg']="You Are Not able to Access this Module...!";
 				$this->session->set_flashdata($data);
@@ -32,6 +42,29 @@ class LC_controller extends MY_Controller
 			$this->load->view('admin/adminMaster', $data);
 		}	
 	}
+
+	public function lc_insert_page()
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			if($this->admin_access('lc_entry') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('administration/dashboard');
+			}
+			$data['title'] = 'L/C Information';  
+			$data['content'] = 'lc_info/create_lc'; 
+			$data['companies'] = $this->Company_model->find_all_company_info(); 
+			$data['suppliers'] = $this->Supplier_model->find_all_supplier_info(); 
+			$data['agents'] = $this->Agent_model->find_all_agent_info(); 
+			$data['customers'] = $this->Customer_model->find_all_customer_info(); 
+			$this->load->view('admin/adminMaster', $data);
+		}	
+	}
+
+
 
 	/*====== L/C Number Store Via Ajax Request==========*/
 	public function store_lc_info()

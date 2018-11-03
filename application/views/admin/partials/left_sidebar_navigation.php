@@ -440,18 +440,54 @@
   </li>
   <?php } }else{ ?>
 <?php if($access->lc_entry ==1){ ?>
-  <li class="<?= ($this->uri->uri_string()== 'lc/insert')?'active': ' ' ?>">
-    <a href="<?php echo base_url(); ?>lc/insert">
+  <li class="">
+    <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-cc"></i>
-      <span class="menu-text">L/C Entry </span>
+      <span class="menu-text"> L/C Info</span>
+
+      <b class="arrow fa fa-angle-down"></b>
     </a>
+
     <b class="arrow"></b>
+
+    <ul class="submenu">
+      
+      <li class="">
+        <a href="<?php echo base_url(); ?>lc/list">
+          <i class="menu-icon fa fa-caret-right"></i>
+          L/C List
+        </a>
+        <b class="arrow"></b>
+      </li>
+    
+      <li class="">
+        <a href="<?php echo base_url(); ?>lc/insert">
+          <i class="menu-icon fa fa-caret-right"></i>
+          L/C Entry
+        </a>
+        <b class="arrow"></b>
+      </li>
+    </ul>
   </li>
   <?php } if($access->expense_head_entry ==1){ ?>
   <li class="<?= ($this->uri->uri_string()== 'ie_head/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>ie_head/insert">
       <i class="menu-icon fa fa-money"></i>
       <span class="menu-text">Expense Head </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+   <li class="<?= ($this->uri->uri_string()== 'agent/insert')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>agent/insert">
+      <i class="menu-icon fa fa-users"></i>
+      <span class="menu-text">C & F Agent </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+   <li class="<?= ($this->uri->uri_string()== 'company/insert')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>company/insert">
+      <i class="menu-icon fa fa-money"></i>
+      <span class="menu-text">Other Company</span>
     </a>
     <b class="arrow"></b>
   </li>

@@ -68,7 +68,7 @@ class Supplier extends MY_Controller
 				endif;
 			}
 			
-			$data['sup_code'] = $cus_code;
+			$data['sup_code'] = $cus_code; 
 			$data['suppliers'] = $this->Supplier_model->find_all_supplier_info();
 			$this->load->view('admin/adminMaster', $data);
 		}	

@@ -226,7 +226,8 @@ $route['report/customer']					= 'Report/view_customer_report';
 
 
 /*========L/C CRUD Route list=========*/
-$route['lc/insert'] 		= 	"LC_controller";
+$route['lc/list'] 			= 	"LC_controller/lc_list_view";
+$route['lc/insert'] 		= 	"LC_controller/lc_insert_page";
 $route['lc/store'] 			= 	"LC_controller/store_lc_info";
 $route['lc/edit/(:any)']	=	'LC_controller/edit_lc_info/$1';
 $route['lc/update/(:any)']	=	'LC_controller/update_lc_info/$1';
@@ -239,6 +240,19 @@ $route['ie_head/store'] 		= 	"IE_head/store_ie_head_info";
 $route['ie_head/edit/(:any)']	=	'IE_head/edit_ie_head_info/$1';
 $route['ie_head/update/(:any)']	=	'IE_head/update_ie_head_info/$1';
 $route['ie_head/delete/(:any)']	=	'IE_head/delete_ie_head_info/$1';
+
+/*========== Agent Route List ============*/
+$route['agent/insert'] 			= 	"Agent/agent_page_view";
+$route['agent/store'] 			= 	"Agent/store_agent_info";
+$route['agent/edit/(:any)']		=	'Agent/edit_agent_info/$1';
+$route['agent/update/(:any)']	=	'Agent/update_agent_info/$1';
+$route['agent/delete/(:any)']	=	'Agent/delete_agent_info/$1';
+
+$route['company/insert'] 		= 	"Company/company_page_view";
+$route['company/store'] 		= 	"Company/store_company_info";
+$route['company/edit/(:any)']	=	'Company/edit_company_info/$1';
+$route['company/update/(:any)']	=	'Company/update_company_info/$1';
+$route['company/delete/(:any)']	=	'Company/delete_company_info/$1';
 
 /*======== Setting Route List ===========*/
 $route['setting/insert']		= 'Setting/view_setting_page';
