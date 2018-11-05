@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2018 at 11:06 AM
+-- Generation Time: Nov 05, 2018 at 12:39 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -43,19 +43,111 @@ CREATE TABLE `accounts` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `accounts`
+-- Table structure for table `admin_access`
 --
 
-INSERT INTO `accounts` (`id`, `enty_type`, `ie_head`, `account_type`, `date`, `amount`, `description`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'c_enty', '2018-10-08 18:00:00', 56, 'ok', 'd', 'admin', 'admin', '2018-10-08 18:00:00', '2018-10-08 18:00:00'),
-(2, 1, 1, 'c_enty', '2018-10-01 18:00:00', 5000000, 'rent', 'a', 'admin', 'admin', '2018-10-08 18:00:00', '2018-10-08 18:00:00'),
-(3, 0, 1, 'payment', '2018-10-08 18:00:00', 5800, 'payment update', 'd', 'admin', 'admin', '2018-10-08 18:00:00', '2018-10-08 18:00:00'),
-(4, 1, 1, 'other_income', '2018-10-01 18:00:00', 5000, 'demo update', 'd', 'admin', 'admin', '2018-10-08 18:00:00', '2018-10-08 18:00:00'),
-(5, 0, 1, 'payment', '2018-10-08 18:00:00', 1000000, 'fdgdfg', 'a', 'admin', 'admin', '2018-10-10 18:00:00', '2018-10-10 18:00:00'),
-(6, 0, 3, 'payment', '2018-10-10 18:00:00', 5000, 'okk', 'a', 'admin', 'admin', '2018-10-10 18:00:00', '2018-10-10 18:00:00'),
-(7, 0, 3, 'payment', '2018-10-04 18:00:00', 500, 'arup', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-14 18:00:00'),
-(8, 1, 4, 'other_income', '2018-10-20 18:00:00', 56, 'ffg', 'a', 'admin', 'admin', '2018-10-20 18:00:00', '2018-10-20 18:00:00');
+CREATE TABLE `admin_access` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `admin_id` tinyint(1) DEFAULT NULL,
+  `sale_module` tinyint(1) DEFAULT '0',
+  `customer_order` tinyint(1) DEFAULT '0',
+  `order_entry` tinyint(1) DEFAULT '0',
+  `all_order_list` tinyint(1) DEFAULT '0',
+  `pending_order_list` tinyint(1) DEFAULT '0',
+  `process_order_list` tinyint(1) DEFAULT '0',
+  `customer_entry` tinyint(1) DEFAULT '0',
+  `customer_list` tinyint(1) DEFAULT '0',
+  `purchase_module` tinyint(1) DEFAULT '0',
+  `purchase_entry` tinyint(1) DEFAULT '0',
+  `purchase_list` tinyint(1) DEFAULT '0',
+  `transport_status` tinyint(1) DEFAULT '0',
+  `supplier` tinyint(1) DEFAULT '0',
+  `transport_head` tinyint(1) DEFAULT '0',
+  `account_module` tinyint(1) DEFAULT '0',
+  `collection` tinyint(1) DEFAULT '0',
+  `payment` tinyint(1) DEFAULT '0',
+  `ofice_payment` tinyint(1) DEFAULT '0',
+  `other_income` tinyint(1) DEFAULT '0',
+  `check_option` tinyint(1) DEFAULT '0',
+  `check_entry` tinyint(1) DEFAULT '0',
+  `pending_check_list` tinyint(1) DEFAULT '0',
+  `reminder_check_list` tinyint(1) DEFAULT '0',
+  `paid_check_list` tinyint(1) DEFAULT '0',
+  `hr_module` tinyint(1) DEFAULT '0',
+  `sallay_payment` tinyint(1) DEFAULT '0',
+  `employee_list` tinyint(1) DEFAULT '0',
+  `employee_entry` tinyint(1) DEFAULT '0',
+  `monthe_entry` tinyint(1) DEFAULT '0',
+  `report_module` tinyint(1) DEFAULT '0',
+  `stock_report` tinyint(1) DEFAULT '0',
+  `car_full_report` tinyint(1) DEFAULT '0',
+  `car_coll_report` tinyint(1) DEFAULT '0',
+  `cus_due_report` tinyint(1) DEFAULT '0',
+  `cus_order_report` tinyint(1) DEFAULT '0',
+  `deliv_order_report` tinyint(1) DEFAULT '0',
+  `lc_order_report` tinyint(1) DEFAULT '0',
+  `collection_report` tinyint(1) DEFAULT '0',
+  `cus_coll_report` tinyint(1) DEFAULT '0',
+  `date_payment_report` tinyint(1) DEFAULT '0',
+  `supplier_payment_report` tinyint(1) DEFAULT '0',
+  `office_payment_report` tinyint(1) DEFAULT '0',
+  `sallary_report` tinyint(1) DEFAULT '0',
+  `emp_sallary_report` tinyint(1) DEFAULT '0',
+  `lc_list_report` tinyint(1) DEFAULT '0',
+  `cus_list_report` tinyint(1) DEFAULT '0',
+  `administration` tinyint(1) DEFAULT '0',
+  `lc_entry` tinyint(1) DEFAULT '0',
+  `expense_head_entry` tinyint(1) DEFAULT '0',
+  `company_info` tinyint(1) DEFAULT '0',
+  `admin` tinyint(1) DEFAULT '0',
+  `admin_entry` tinyint(1) DEFAULT '0',
+  `admin_list` tinyint(1) DEFAULT '0',
+  `admin_access` tinyint(1) DEFAULT '0',
+  `edit_access` tinyint(1) DEFAULT '0',
+  `delete_access` tinyint(1) DEFAULT '0',
+  `created_by` varchar(100) DEFAULT NULL,
+  `updated_by` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin_access`
+--
+
+INSERT INTO `admin_access` (`id`, `admin_id`, `sale_module`, `customer_order`, `order_entry`, `all_order_list`, `pending_order_list`, `process_order_list`, `customer_entry`, `customer_list`, `purchase_module`, `purchase_entry`, `purchase_list`, `transport_status`, `supplier`, `transport_head`, `account_module`, `collection`, `payment`, `ofice_payment`, `other_income`, `check_option`, `check_entry`, `pending_check_list`, `reminder_check_list`, `paid_check_list`, `hr_module`, `sallay_payment`, `employee_list`, `employee_entry`, `monthe_entry`, `report_module`, `stock_report`, `car_full_report`, `car_coll_report`, `cus_due_report`, `cus_order_report`, `deliv_order_report`, `lc_order_report`, `collection_report`, `cus_coll_report`, `date_payment_report`, `supplier_payment_report`, `office_payment_report`, `sallary_report`, `emp_sallary_report`, `lc_list_report`, `cus_list_report`, `administration`, `lc_entry`, `expense_head_entry`, `company_info`, `admin`, `admin_entry`, `admin_list`, `admin_access`, `edit_access`, `delete_access`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2018-10-31 10:05:24', '2018-10-31 10:05:24'),
+(3, 12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2018-11-01 05:53:50', '2018-11-01 05:53:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agents`
+--
+
+CREATE TABLE `agents` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `agent_code` varchar(100) NOT NULL,
+  `agent_name` varchar(255) NOT NULL,
+  `agent_phone` varchar(100) DEFAULT NULL,
+  `agent_email` varchar(100) DEFAULT NULL,
+  `agent_address` text,
+  `status` char(5) DEFAULT 'a',
+  `created_by` varchar(150) DEFAULT NULL,
+  `updated_by` varchar(1500) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `agents`
+--
+
+INSERT INTO `agents` (`id`, `agent_code`, `agent_name`, `agent_phone`, `agent_email`, `agent_address`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'A00001', 'New Agent', '0123456789', 'agent@gmail.com', 'Mirpur', 'a', 'admin', 'admin', '2018-11-02 18:00:00', '2018-11-02 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -83,15 +175,6 @@ CREATE TABLE `checks` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `checks`
---
-
-INSERT INTO `checks` (`id`, `cus_id`, `bank_name`, `branch_name`, `check_no`, `check_amount`, `date`, `check_date`, `remid_date`, `sub_date`, `note`, `check_status`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 5, 'dsfdf', 'sdfsdf', '5463456', 645654, '2018-10-27 18:00:00', '2018-10-31 18:00:00', '2018-10-29 18:00:00', '2018-10-30 18:00:00', 'ddd', 'Pe', 'a', 'admin', 'admin', '2018-10-27 18:00:00', '2018-10-28 18:00:00'),
-(2, 1, 'Brack Bank', 'Mirpur 11', 'C-12345612', 500000, '2018-10-28 18:00:00', '2018-11-09 18:00:00', '2018-11-07 18:00:00', '2018-11-08 18:00:00', '', 'Pa', 'a', 'admin', 'admin', '2018-10-28 18:00:00', '2018-10-28 18:00:00'),
-(3, 1, 'Sonali Bank', 'Samoliy', 'C57235645', 50000, '2018-10-28 18:00:00', '2018-10-30 18:00:00', '2018-11-01 18:00:00', '2018-11-05 18:00:00', 'plll', 'Pe', 'a', 'admin', 'admin', '2018-10-28 18:00:00', '2018-10-28 18:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -114,28 +197,32 @@ CREATE TABLE `collections` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `collections`
+-- Table structure for table `companies`
 --
 
-INSERT INTO `collections` (`id`, `cus_id`, `order_no`, `lc_id`, `date`, `amount`, `description`, `type`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 4, 8, 1, '2018-10-09 18:00:00', 15000, 'cash', 'receive', 'd', 'admin', 'admin', '2018-10-10 07:36:06', '2018-10-10 07:36:06'),
-(2, 1, 4, 1, '2018-10-09 18:00:00', 2000, 'okk', 'receive', 'a', 'admin', 'admin', '2018-10-10 07:40:25', '2018-10-09 18:00:00'),
-(3, 4, 8, 1, '2018-10-09 18:00:00', 50000, '', 'receive', 'a', 'admin', 'admin', '2018-10-10 09:57:42', '2018-10-10 09:57:42'),
-(4, 4, 8, 3, '2018-10-09 18:00:00', 20000, 'cash', 'receive', 'a', 'admin', 'admin', '2018-10-10 10:06:14', '2018-10-10 10:06:14'),
-(5, 1, 3, 3, '2018-10-10 18:00:00', 2000, 'in cash', 'receive', 'a', 'admin', 'admin', '2018-10-11 03:55:45', '2018-10-11 03:55:45'),
-(6, 1, 3, 3, '2018-10-10 18:00:00', 2000, 'cash', 'receive', 'a', 'admin', 'admin', '2018-10-11 03:57:41', '2018-10-11 03:57:41'),
-(7, 1, 3, 3, '2018-10-10 18:00:00', 79880, 'bank', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:02:34', '2018-10-11 04:02:34'),
-(8, 1, 3, 3, '2018-10-10 18:00:00', 79880, 'bank', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:02:42', '2018-10-11 04:02:42'),
-(9, 1, 3, 3, '2018-10-10 18:00:00', 79880, 'bank', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:02:44', '2018-10-11 04:02:44'),
-(10, 1, 3, 3, '2018-10-10 18:00:00', 79880, 'bank', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:02:44', '2018-10-11 04:02:44'),
-(11, 1, 3, 3, '2018-10-10 18:00:00', 79880, 'bank', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:02:45', '2018-10-11 04:02:45'),
-(12, 1, 3, 3, '2018-10-10 18:00:00', 79880, 'bank', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:02:45', '2018-10-11 04:02:45'),
-(13, 1, 3, 3, '2018-10-10 18:00:00', 2000, '', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:13:34', '2018-10-11 04:13:34'),
-(14, 4, 8, 3, '2018-10-10 18:00:00', 5000, 'ok', 'receive', 'a', 'admin', 'admin', '2018-10-11 04:21:55', '2018-10-10 18:00:00'),
-(15, 5, 10, 4, '2018-10-12 18:00:00', 60000, 'check', 'receive', 'a', 'admin', 'admin', '2018-10-13 10:02:27', '2018-10-12 18:00:00'),
-(16, 5, 10, 4, '2018-10-10 18:00:00', 900000, 'cash', 'receive', 'a', 'admin', 'admin', '2018-10-13 10:03:24', '2018-10-13 10:03:24'),
-(17, 5, 10, 4, '2018-10-15 18:00:00', 200, '22', 'receive', 'a', 'admin', 'admin', '2018-10-16 11:06:08', '2018-10-16 11:06:08');
+CREATE TABLE `companies` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `comp_name` varchar(255) NOT NULL,
+  `comp_phone` varchar(200) NOT NULL,
+  `comp_email` varchar(150) NOT NULL,
+  `comp_address` text,
+  `comp_logo` text,
+  `status` char(2) DEFAULT 'a',
+  `created_by` varchar(150) DEFAULT NULL,
+  `updated_by` varchar(150) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `comp_name`, `comp_phone`, `comp_email`, `comp_address`, `comp_logo`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Link Up', '01111111111111111', 'link@gmail.com', 'mirpur', NULL, 'a', 'admin', 'admin', '2018-11-02 18:00:00', '2018-11-02 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -160,8 +247,8 @@ CREATE TABLE `create_admin` (
 
 INSERT INTO `create_admin` (`admin_id`, `admin_username`, `admin_password`, `admin_email`, `admin_phone`, `admin_address`, `admin_image`, `admin_type`) VALUES
 (5, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin@gmail.com', '018888888888', 'mirpur 10', '20330798845bcefe5a930d9.jpg', 's'),
-(6, 'arup_bose', 'e10adc3949ba59abbe56e057f20f883e', 'arup@gmail.com', '01731909035', 'mirpur', '0', 'd'),
-(7, 'new_admin', 'e10adc3949ba59abbe56e057f20f883e', 'newadmin@gmail.com', '01235455644444', 'no', '14549566825bc1c4498c146.jpg', 'a');
+(12, 'maven Auto', 'e10adc3949ba59abbe56e057f20f883e', 'maven@gmail.com', '12345678910', 'maven auto', '0', 'a'),
+(13, 'maven Auto admin', 'e10adc3949ba59abbe56e057f20f883e', 'maven@gmail.com', '12345678910', 'maven auto', '0', 'a');
 
 -- --------------------------------------------------------
 
@@ -173,6 +260,7 @@ CREATE TABLE `customers` (
   `id` int(20) UNSIGNED NOT NULL,
   `cus_code` varchar(100) NOT NULL,
   `cus_name` varchar(250) NOT NULL,
+  `org_name` varchar(255) DEFAULT NULL,
   `cus_contact_no` varchar(150) DEFAULT NULL,
   `alt_contact_no` varchar(150) DEFAULT NULL,
   `cus_entry_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -192,15 +280,9 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `cus_code`, `cus_name`, `cus_contact_no`, `alt_contact_no`, `cus_entry_date`, `cus_email`, `cus_address`, `cus_fb`, `cus_image`, `cus_bus_card`, `cus_status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'C00001', 'arup Bose', '01571721310', '01731909035', '2018-10-02 18:00:00', 'arup@#gmail.com', 'mirpur 11', NULL, NULL, NULL, 'a', NULL, NULL, '2018-10-07 08:29:39', '2018-10-07 08:29:39'),
-(2, 'C00002', 'Joy', '01357456542', '1425452121', '2018-10-05 18:00:00', 'joy@gmail.com', 'mirpur', NULL, NULL, NULL, 'd', NULL, NULL, '2018-10-07 08:29:39', '2018-10-07 08:29:39'),
-(3, 'C00003', 'dsafdf', 'dsfsdf', 'dsfsdf', '2018-10-06 18:00:00', 'sdafsd@dsfsdfs.ccc', 'dsfsdf', NULL, NULL, NULL, 'a', NULL, NULL, '2018-10-07 08:29:39', '2018-10-07 08:29:39'),
-(4, 'C00004', 'ddd', 'dddd', 'dddd', '2018-10-08 18:00:00', 'ddd@fffff', 'ddd', NULL, NULL, NULL, 'a', 'admin', 'admin', '2018-10-08 18:00:00', '2018-10-08 18:00:00'),
-(5, 'C00005', 'Otish Kumer', '0123456987', '1236459785', '2018-10-12 18:00:00', 'otish@gmail.com', 'Fani', NULL, NULL, NULL, 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00'),
-(6, 'C00006', 'Dipok', '0123456789', '0123456789', '2018-10-21 18:00:00', '', 'Mirpur 11', 'https://www.facebook.com/aajob.arup', 'libs/upload_pic/cus_image/8673857565bcfe6a9289ef.jpg', 'libs/upload_pic/cus_image/3986150175bcfe6ce243eb.jpg', 'a', 'admin', 'admin', '2018-10-22 18:00:00', '2018-10-23 18:00:00'),
-(7, 'C00006', 'Dipok', '0123456789', '0123456789', '2018-10-21 18:00:00', '', 'Mirpur 11', 'https://www.facebook.com/aajob.arup', 'libs/upload_pic/cus_image/13799468315bceecbd3c744.jpg', '0', 'a', 'admin', 'admin', '2018-10-22 18:00:00', '2018-10-22 18:00:00'),
-(8, 'C00007', 'new Customer', '111111111111111', '111111111111111111', '2018-10-26 18:00:00', 'c@gmail.com', 'mirpur 10', 'https://www.facebook.com/', 'libs/upload_pic/cus_image/1160783195bd448821937d.jpg', 'libs/upload_pic/cus_image/12430492185bd829f232159.jpg', 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-29 18:00:00');
+INSERT INTO `customers` (`id`, `cus_code`, `cus_name`, `org_name`, `cus_contact_no`, `alt_contact_no`, `cus_entry_date`, `cus_email`, `cus_address`, `cus_fb`, `cus_image`, `cus_bus_card`, `cus_status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'C00001', 'Arup', 'Link Up', '01731909035', '01571721910', '2018-11-05 18:00:00', 'arup@gmail.com', 'Mirpur 11', '', 'libs/upload_pic/cus_image/18017224965bd9595006305.jpg', 'libs/upload_pic/cus_image/20743173695bd9595027d31.jpg', 'a', 'admin', 'admin', '2018-10-30 18:00:00', '2018-10-30 18:00:00'),
+(2, 'C00002', 'arup bose', 'link up', '1234567895320', '', '2018-10-31 18:00:00', 'sdkfjd@fjkd.com', 'fdgfg', '', 'libs/upload_pic/cus_image/16496143055bdae84d8c6e5.jpg', 'libs/upload_pic/cus_image/3601753815bdae84dae487.jpg', 'a', 'admin', 'admin', '2018-10-31 18:00:00', '2018-10-31 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -226,14 +308,6 @@ CREATE TABLE `employees` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `employees`
---
-
-INSERT INTO `employees` (`id`, `emp_name`, `emp_dob`, `emp_nid`, `emp_phone`, `emp_email`, `emp_join_date`, `pre_address`, `par_address`, `emp_sallary`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Arup Kumer Bose', '2018-10-09', '123456789', '01731909035', 'arup@gmail.com', '2018-10-06 18:00:00', 'mirpur 11', 'mirpur 11', 15000, 'a', 'admin', 'admin', '2018-10-06 18:00:00', '2018-10-06 18:00:00'),
-(2, 'Sajat', '1986-04-10', '1234567895452', '01071111141', 'sajat@gmail.com', '2018-05-31 18:00:00', 'mirpur 11', 'mirpur 10', 15000, 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -256,12 +330,36 @@ CREATE TABLE `ie_heads` (
 --
 
 INSERT INTO `ie_heads` (`id`, `head_title`, `head_type`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Office Rent', 'O', 'a', 'admin', 'admin', '2018-10-06 18:00:00', '2018-10-06 18:00:00'),
-(2, 'LC Opening', 'C', 'a', 'admin', 'admin', '2018-10-06 18:00:00', '2018-10-06 18:00:00'),
-(3, 'Car Maintenance ', 'C', 'a', 'admin', 'admin', '2018-10-08 18:00:00', '2018-10-08 18:00:00'),
-(4, 'Snacks ', 'O', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00'),
-(5, 'Godoun', 'C', 'a', 'admin', 'admin', '2018-10-15 18:00:00', '2018-10-15 18:00:00'),
-(6, 'okkk', 'C', 'd', 'admin', 'admin', '2018-10-15 18:00:00', '2018-10-15 18:00:00');
+(1, 'fdf', 'O', 'a', 'admin', 'admin', '2018-11-04 18:00:00', '2018-11-04 18:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lc_details`
+--
+
+CREATE TABLE `lc_details` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `lc_id` int(20) UNSIGNED NOT NULL,
+  `pus_id` int(20) UNSIGNED NOT NULL,
+  `cus_id` int(20) UNSIGNED NOT NULL,
+  `order_id` int(20) UNSIGNED NOT NULL,
+  `car_value` int(10) UNSIGNED NOT NULL,
+  `fright_value` int(10) UNSIGNED NOT NULL,
+  `total` int(15) UNSIGNED NOT NULL,
+  `status` char(5) DEFAULT 'a'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `lc_details`
+--
+
+INSERT INTO `lc_details` (`id`, `lc_id`, `pus_id`, `cus_id`, `order_id`, `car_value`, `fright_value`, `total`, `status`) VALUES
+(1, 1, 3, 2, 3, 8000, 500, 8500, 'd'),
+(2, 1, 2, 1, 2, 8000, 3500, 11500, 'd'),
+(3, 2, 1, 2, 1, 4000, 1000, 5000, 'a'),
+(4, 1, 2, 1, 2, 8000, 2000, 10000, 'd'),
+(5, 1, 3, 2, 3, 9000, 1000, 10000, 'd');
 
 -- --------------------------------------------------------
 
@@ -273,24 +371,6 @@ CREATE TABLE `months` (
   `id` int(3) UNSIGNED NOT NULL,
   `month_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `months`
---
-
-INSERT INTO `months` (`id`, `month_name`) VALUES
-(1, 'January'),
-(2, 'February'),
-(3, 'March'),
-(4, 'April'),
-(5, 'May'),
-(6, 'June'),
-(7, 'July'),
-(8, 'August'),
-(9, 'September'),
-(10, 'October'),
-(11, 'November'),
-(12, 'December');
 
 -- --------------------------------------------------------
 
@@ -330,18 +410,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `cus_id`, `ord_lc_no`, `pus_id`, `ord_car_model`, `ord_color`, `ord_engine_no`, `ord_chassis_no`, `order_no`, `ord_other_tirm`, `ord_make_model`, `ord_grade`, `ord_type`, `ord_year`, `ord_mileage`, `ord_budget_range`, `ord_advance`, `order_status`, `delivery_date`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, NULL, 'C-1654714', 'dsafsd', 'fsdafs', 'C0001', 'sdfsdf', '', 'sdfsdf', 'sadfsdf', 'sdafsadf', 'sadfsdf', 'sadfsdf', 300000, 500, 'a', '2018-10-13 04:03:27', 'd', NULL, NULL, '2018-10-07 08:30:53', '2018-10-07 08:30:53'),
-(3, 1, 3, NULL, 'sadfsdf', 'dsaf', 'dsfsdf', 'C0002', 'sdafsd', 'fdsfsdf', 'f', 'fasdfsda', 'sadfads', 'asdfsdaf', 'sdfsadf', 9088880, 5000, 'a', '2018-10-13 04:03:27', 'a', NULL, NULL, '2018-10-07 08:30:53', '2018-10-07 08:30:53'),
-(4, 1, 1, NULL, 'qqqq', 'dsafsd', 'fsdafs', 'C0003', 'sdfsdf', '', 'sdfsdf', 'sadfsdf', 'sdafsadf', 'sadfsdf', 'sadfsdf', 1800000, 4888, 'c', '2018-10-09 18:00:00', 'a', NULL, NULL, '2018-10-07 08:30:53', '2018-10-07 08:30:53'),
-(5, 2, 3, NULL, 'asd', 'sadf', 'sadf', 'C0004', 'dsf', '', 'dsf', 'adsf', 'dsf', 'sdf', 'dsaf', 5000000, 89955, 'c', '2018-10-12 18:00:00', 'a', NULL, 'admin', '2018-10-07 08:30:53', '2018-10-08 18:00:00'),
-(8, 4, 3, NULL, 'eer', 'Red', '1255874', 'C0005', 'dsfsdf', '', '', '', 'sdfsdf', 'sdfsdf', 'sdf', 100000, 10000, 'c', '2018-10-12 18:00:00', 'a', 'admin', 'admin', '2018-10-09 18:00:00', '2018-10-09 18:00:00'),
-(9, 5, 0, NULL, 'Primo', 'black', '', '', 'O-123654', 'Good Quality', '', 'A', 'Classic', '2014', '50000', 500000, 10000, 'p', '2018-10-13 09:40:00', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00'),
-(10, 5, 4, NULL, 'X-corola', 'Brown', '6528', '859746513', 'C-0015', '', 'good', 'B', 'Good', '2008', '100000', 2000000, 50000, 'a', '2018-10-13 09:43:08', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00'),
-(11, 6, 4, NULL, '', '', '32324', '234234', 'R444444', '', 'rer', 'erer', 'erer', '2010', '10000000', 1800000, 50000, 'a', '2018-10-23 09:40:37', 'a', 'admin', 'admin', '2018-10-22 18:00:00', '2018-10-27 09:35:01'),
-(12, 7, 4, 0, 'dffdf', 'dfdf', '', '', 'R444444', '', 'rer', 'erer', 'erer', '2010', '10000000', 1800000, 50000, 'p', '2018-10-23 09:41:17', 'a', 'admin', 'admin', '2018-10-22 18:00:00', '2018-10-28 04:07:58'),
-(13, 8, 0, 0, 'fsdf', 'dfdf', '', '', 'O-333', '', 'oooo', 'dsfsd', 'fdfdsf', 'dsfsd', 'fdsfdsf', 1500000, 50000, 'p', '2018-10-16 18:00:00', 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-28 04:08:27'),
-(14, 1, 0, 3, 'dsfsdf', 'sdfsd', 'fsdf', '', 'O-3654', '', 'sdfdsf', 'sdf', 'sdfsdf', 'sdfsdf', 'sdf', 5000000, 200000, 'p', '2018-10-27 11:24:19', 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-27 11:26:45'),
-(15, 8, 0, 0, 'fsdf', 'dfdf', '', '', 'O-333', '', 'oooo', 'dsfsd', 'fdfdsf', 'dsfsd', 'fdsfdsf', 1500000, 50000, 'p', '2018-10-16 18:00:00', 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-28 04:08:27');
+(1, 2, 2, 0, 'fdgfdg', 'fgfg', '', '', 'fdsgfdg', 'fdgfdg', 'gfg', '454', '454', '545', '4545454545', 2147483647, 454545454, 'p', '2018-11-01 11:49:33', 'a', 'admin', 'admin', '2018-10-31 18:00:00', '2018-10-31 18:00:00'),
+(2, 1, 0, 0, 'dfdsfds', 'dfdsfdsf', '', '', 'dfdfdf', 'dfdsf', 'dsfsdf', 'dfdf', 'dsfdsf', 'dsfdsf', 'dsfdsf', 5656565, 4545, 'p', '2018-11-04 11:14:36', 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
+(3, 2, 0, 0, 'dfgdfgfg', 'fgfgfg', '', '', 'fdgdfg', 'fgfdgdfg', 'dfgfdg', 'fgdf', 'gfdg', 'fdgdfg', 'fdgdf', 3433434, 2147483647, 'p', '2018-11-04 11:16:55', 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -366,20 +437,6 @@ CREATE TABLE `payments` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `payments`
---
-
-INSERT INTO `payments` (`id`, `payment_code`, `payment_type`, `supplier_id`, `order_id`, `lc_id`, `head_id`, `payment_date`, `payment_amount`, `note`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'CP-00001', 'CP', 1, 10, 4, 4, '2018-10-15 18:00:00', 10000, 'cash', 'a', 'admin', 'admin', '2018-10-16 09:42:16', '2018-10-16 09:42:16'),
-(2, 'CP-00002', 'CP', 2, 3, 3, 4, '2018-10-09 18:00:00', 15454, 'okkk', 'd', 'admin', 'admin', '2018-10-16 09:44:59', '2018-10-21 07:45:16'),
-(3, 'OP-00001', 'OP', NULL, NULL, NULL, 4, '2018-10-20 18:00:00', 56556, 'cash', 'a', 'admin', 'admin', '2018-10-21 06:27:35', '2018-10-21 06:27:35'),
-(4, 'OP-00002', 'OP', NULL, NULL, NULL, 4, '2018-10-20 18:00:00', 50, 'cash', 'a', 'admin', 'admin', '2018-10-21 06:29:17', '2018-10-21 06:29:17'),
-(5, 'OP-00003', 'OP', NULL, NULL, NULL, 4, '2018-10-02 18:00:00', 65, '', 'd', 'admin', 'admin', '2018-10-21 06:30:58', '2018-10-21 06:30:58'),
-(6, 'OP-00004', 'OP', NULL, NULL, NULL, 1, '2018-10-08 18:00:00', 50000, 'cash', 'a', 'admin', 'admin', '2018-10-21 06:34:42', '2018-10-21 07:11:43'),
-(7, 'CP-00003', 'CP', 2, 10, 4, 3, '2018-10-20 18:00:00', 50000, '', 'a', 'admin', 'admin', '2018-10-21 10:44:31', '2018-10-21 10:44:31'),
-(8, 'CP-00004', 'CP', 2, 10, 4, 2, '2018-10-27 18:00:00', 5000, 'kdfdk', 'a', 'admin', 'admin', '2018-10-28 09:46:10', '2018-10-28 09:46:10');
 
 -- --------------------------------------------------------
 
@@ -418,11 +475,9 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`id`, `supplier_id`, `customer_id`, `order_id`, `puc_lc_id`, `puc_car_model`, `puc_color`, `puc_engine_no`, `puc_chassis_no`, `puc_make`, `puc_grade`, `puc_type`, `puc_year`, `puc_mileage`, `puc_other_tirm`, `total_price`, `transport_id`, `car_status`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 2, 0, 0, 3, 'fsdf', 'dfdf', '232323', '4442323', NULL, 'dsfsd', 'fdfdsf', 'dsfsd', 'fdsfdsf', 'fdsfsdf', 205000, 2, 0, 'a', 'admin', 'admin', '2018-10-24 18:00:00', '2018-10-24 18:00:00'),
-(2, 2, 0, 0, 4, 'dfasdfsf', 'dsfsdf', '34324324', '32423432423', 'gffgf', 'erer', 'erer', '2010', '10000000', 'fgdgdsg', 105, NULL, 0, 'd', 'admin', 'admin', '2018-10-24 18:00:00', '2018-10-25 09:37:01'),
-(3, 2, 1, 14, 4, 'dsfsdf', 'sdfsd', 'fsdf', 'sdfsd', 'sdfdsf', 'sdf', 'sdfsdf', 'sdfsdf', 'sdf', 'dsfsdf', 327567, 1, 1, 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-26 18:00:00'),
-(4, 1, 6, 11, 4, 'fgdfgd', 'fdgdfg', '32324', '234234', 'rer', 'erer', 'erer', '2010', '10000000', 'dfdf', 34720201, 3, 0, 'a', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-26 18:00:00'),
-(5, 2, 0, 0, 3, 'fsdf', 'dfdf', '232323', '4442323', '', 'dsfsd', 'fdfdsf', 'dsfsd', 'fdsfdsf', 'fdsfsdf', 205000, 2, 0, 'a', 'admin', 'admin', '2018-10-24 18:00:00', '2018-10-30 10:02:08');
+(1, 1, 2, 1, 2, 'fdgfdg', 'fgfg', '1000000000000', '25323333222', 'gfg', '454', '454', '545', '4545454545', 'fdgfdg', 0, NULL, 0, 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
+(2, 1, 1, 2, 0, 'dfdsfds', 'dfdsfdsf', '5424571214', '46512045475', 'dsfsdf', 'dfdf', 'dsfdsf', 'dsfdsf', 'dsfdsf', 'dfdsf', 0, NULL, 0, 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
+(3, 1, 2, 3, 0, 'dfgdfgfg', 'fgfgfg', '333333333333', '333333333333', 'dfgfdg', 'fgdf', 'gfdg', 'fdgdfg', 'fdgdf', 'fgfdgdfg', 0, NULL, 0, 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -436,24 +491,6 @@ CREATE TABLE `purchase_pricing` (
   `head_id` int(20) DEFAULT NULL,
   `amount` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `purchase_pricing`
---
-
-INSERT INTO `purchase_pricing` (`id`, `purchase_id`, `head_id`, `amount`) VALUES
-(1, 1, 5, 35000),
-(2, 1, 3, 40000),
-(3, 1, 5, 50000),
-(4, 1, 2, 80000),
-(10, 2, 2, 45),
-(11, 2, 3, 10),
-(12, 2, 5, 50),
-(13, 3, 5, 324234),
-(14, 3, 3, 3333),
-(15, 4, 5, 33333),
-(16, 4, 3, 343434),
-(17, 4, 2, 34343434);
 
 -- --------------------------------------------------------
 
@@ -475,21 +512,6 @@ CREATE TABLE `salaries` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `salaries`
---
-
-INSERT INTO `salaries` (`id`, `emp_id`, `month_id`, `date`, `payment_amount`, `due_amount`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 2, 4, '2018-10-14 18:00:00', 5000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
-(2, 2, 4, '2018-10-14 18:00:00', 5000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
-(3, 1, 4, '2018-10-09 18:00:00', 4000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
-(4, 2, 4, '2018-10-14 18:00:00', 1000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
-(5, 2, 4, '2018-10-14 18:00:00', 500, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
-(6, 1, 4, '2018-10-12 18:00:00', 5000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
-(7, 1, 4, '2018-10-14 18:00:00', 5000, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
-(8, 2, 4, '2018-10-14 18:00:00', 3500, 0, 'd', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00'),
-(9, 2, 4, '2018-10-01 18:00:00', 3500, 0, 'a', 'admin', 'admin', '2018-10-14 18:00:00', '2018-10-14 18:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -507,17 +529,6 @@ CREATE TABLE `sallay_months` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `sallay_months`
---
-
-INSERT INTO `sallay_months` (`id`, `year`, `month_id`, `note`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 2018, 10, 'note', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
-(2, 2018, 11, '', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
-(3, 2018, 12, '', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
-(4, 2018, 10, 'note', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00'),
-(5, 2018, 7, 'note', 'a', 'admin', 'admin', '2018-10-13 18:00:00', '2018-10-13 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -573,8 +584,7 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `sup_code`, `sup_name`, `sup_phone`, `sup_email`, `sup_ent_date`, `sup_ref`, `sup_address`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'S00001', 'arup', '01731909035', 'arup@gmail.com', '2018-10-09 18:00:00', 'na', 'mirpur 10', 'a', 'admin', 'admin', '2018-10-15 18:00:00', '2018-10-15 18:00:00'),
-(2, 'S00002', 'joy', '1111111', '', '2018-10-15 18:00:00', 'no', 'dhaka', 'a', 'admin', 'admin', '2018-10-15 18:00:00', '2018-10-15 18:00:00');
+(1, 'S00001', 'New Supplier', '0123456789', 'supplier@gmail.com', '2018-11-03 18:00:00', 'new', 'mirpur', 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -584,16 +594,23 @@ INSERT INTO `suppliers` (`id`, `sup_code`, `sup_name`, `sup_phone`, `sup_email`,
 
 CREATE TABLE `tbl_lcs` (
   `id` int(20) UNSIGNED NOT NULL,
-  `lc_no` varchar(250) NOT NULL,
-  `bank_name` varchar(255) NOT NULL,
-  `branch_name` text,
+  `lc_no` varchar(255) NOT NULL,
   `lc_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lc_amount` int(10) DEFAULT NULL,
-  `car_qty` int(5) DEFAULT NULL,
-  `lc_note` text,
-  `status` char(5) DEFAULT NULL,
-  `created_by` varchar(250) DEFAULT NULL,
-  `updated_by` varchar(250) DEFAULT NULL,
+  `lc_amount` int(10) UNSIGNED NOT NULL,
+  `car_qty` int(5) UNSIGNED NOT NULL DEFAULT '1',
+  `bank_name` varchar(255) NOT NULL,
+  `branch_name` varchar(200) DEFAULT NULL,
+  `lc_insur` varchar(200) DEFAULT NULL,
+  `comp_id` int(20) UNSIGNED NOT NULL,
+  `supplier_id` int(20) UNSIGNED NOT NULL,
+  `agent_id` int(10) UNSIGNED DEFAULT NULL,
+  `ship_name` varchar(200) DEFAULT NULL,
+  `arriv_date` timestamp NULL DEFAULT NULL,
+  `port_name` varchar(200) DEFAULT NULL,
+  `note` text,
+  `status` char(5) DEFAULT 'a',
+  `created_by` varchar(200) DEFAULT NULL,
+  `updated_by` varchar(200) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -602,12 +619,9 @@ CREATE TABLE `tbl_lcs` (
 -- Dumping data for table `tbl_lcs`
 --
 
-INSERT INTO `tbl_lcs` (`id`, `lc_no`, `bank_name`, `branch_name`, `lc_date`, `lc_amount`, `car_qty`, `lc_note`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, '1212432434', 'DBBL', NULL, '2018-10-01 18:00:00', NULL, NULL, 'new lc', 'a', NULL, NULL, '2018-10-07 08:32:02', '2018-10-07 08:32:02'),
-(2, '3543453254', 'Rupaly', NULL, '2018-09-30 18:00:00', NULL, NULL, 'fdgsdfg', 'a', NULL, NULL, '2018-10-07 08:32:02', '2018-10-07 08:32:02'),
-(3, '544523453245', 'Sonaly Bank', NULL, '2018-09-30 18:00:00', NULL, NULL, 'fdfddsf', 'a', NULL, NULL, '2018-10-07 08:32:02', '2018-10-07 08:32:02'),
-(4, '869543587156', 'Rupaly', NULL, '2018-10-09 18:00:00', NULL, NULL, 'Cash', 'a', 'admin', 'admin', '2018-10-12 18:00:00', '2018-10-12 18:00:00'),
-(5, 'LC1226541252', 'DBBL', 'Mirpur 10', '2018-10-27 18:00:00', 5000000, 10, 'cash', 'a', 'admin', 'admin', '2018-10-27 18:00:00', '2018-10-27 18:00:00');
+INSERT INTO `tbl_lcs` (`id`, `lc_no`, `lc_date`, `lc_amount`, `car_qty`, `bank_name`, `branch_name`, `lc_insur`, `comp_id`, `supplier_id`, `agent_id`, `ship_name`, `arriv_date`, `port_name`, `note`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, '202020220', '2018-11-04 18:00:00', 20000, 2, 'DBBL', 'mirpur', 'dfdf', 1, 1, 1, '', '2018-11-04 18:00:00', '', '', 'a', 'admin', 'admin', '2018-11-04 18:00:00', '2018-11-05 11:25:29'),
+(2, '323434', '2018-11-04 18:00:00', 5000, 1, 'dbbl', 'gh', 'ghg', 1, 1, 1, '', '2018-11-04 18:00:00', '', '', 'a', 'admin', 'admin', '2018-11-04 18:00:00', '2018-11-04 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -626,15 +640,6 @@ CREATE TABLE `transports` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `transports`
---
-
-INSERT INTO `transports` (`id`, `purchase_id`, `trans_head_id`, `trans_date`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 3, 1, '2018-10-26 18:00:00', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-26 18:00:00'),
-(2, 1, 1, '2018-10-24 18:00:00', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-26 18:00:00'),
-(3, 4, 1, '2018-10-26 18:00:00', 'admin', 'admin', '2018-10-26 18:00:00', '2018-10-26 18:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -648,18 +653,6 @@ CREATE TABLE `trans_heads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `trans_heads`
---
-
-INSERT INTO `trans_heads` (`id`, `head_name`, `status`) VALUES
-(1, 'Dhaka', 'a'),
-(2, 'Japan', 'a'),
-(3, 'Japan Port', 'a'),
-(4, 'In Ship', 'a'),
-(5, 'Chittagong Port', 'a'),
-(6, 'In Garage', 'a');
-
---
 -- Indexes for dumped tables
 --
 
@@ -667,6 +660,18 @@ INSERT INTO `trans_heads` (`id`, `head_name`, `status`) VALUES
 -- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `admin_access`
+--
+ALTER TABLE `admin_access`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `agents`
+--
+ALTER TABLE `agents`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -679,6 +684,12 @@ ALTER TABLE `checks`
 -- Indexes for table `collections`
 --
 ALTER TABLE `collections`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `companies`
+--
+ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -703,6 +714,12 @@ ALTER TABLE `employees`
 -- Indexes for table `ie_heads`
 --
 ALTER TABLE `ie_heads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lc_details`
+--
+ALTER TABLE `lc_details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -785,85 +802,109 @@ ALTER TABLE `trans_heads`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `admin_access`
+--
+ALTER TABLE `admin_access`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `agents`
+--
+ALTER TABLE `agents`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `checks`
 --
 ALTER TABLE `checks`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `companies`
+--
+ALTER TABLE `companies`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `create_admin`
 --
 ALTER TABLE `create_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ie_heads`
 --
 ALTER TABLE `ie_heads`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `lc_details`
+--
+ALTER TABLE `lc_details`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `months`
 --
 ALTER TABLE `months`
-  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `purchase_pricing`
 --
 ALTER TABLE `purchase_pricing`
-  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `salaries`
 --
 ALTER TABLE `salaries`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sallay_months`
 --
 ALTER TABLE `sallay_months`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `setting`
@@ -875,25 +916,25 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_lcs`
 --
 ALTER TABLE `tbl_lcs`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transports`
 --
 ALTER TABLE `transports`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `trans_heads`
 --
 ALTER TABLE `trans_heads`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
