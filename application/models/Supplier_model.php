@@ -61,7 +61,7 @@ class Supplier_model extends CI_Model
 			'sup_ref'	=>$this->input->post('sup_ref'),
 			'sup_address'	=>$this->input->post('sup_address'),
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d'),
+			'updated_at' =>date('Y-m-d H:i:s'),
 		);
 
 		$this->db->where('id', $id);

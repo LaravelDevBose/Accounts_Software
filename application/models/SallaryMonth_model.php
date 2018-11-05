@@ -73,7 +73,7 @@ class SallaryMonth_model extends CI_Model
 			'month_id'=>$this->input->post('month_id'),
 			'note'=>$this->input->post('note'),
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d')
+			'updated_at' =>date('Y-m-d H:i:s')
 		);
 
 		$this->db->where('id', $id);

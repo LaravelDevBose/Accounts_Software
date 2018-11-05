@@ -55,7 +55,7 @@ class Company_model extends CI_Model
 			'comp_email'	=>$this->input->post('comp_email'),
 			'comp_address'	=>$this->input->post('comp_address'),
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d'),
+			'updated_at' =>date('Y-m-d H:i:s'),
 		);
 
 		$this->db->where('id', $id);

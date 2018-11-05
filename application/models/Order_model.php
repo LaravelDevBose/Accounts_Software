@@ -395,4 +395,23 @@ class Order_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+
+	
+	/*====== Update Lc Number in Order ==============*/
+	public function update_lc_in_order($id=Null, $lc_id= Null)
+	{
+		$attr = array(
+			'ord_lc_no'=>$lc_id,
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('orders', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
 }

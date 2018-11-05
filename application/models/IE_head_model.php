@@ -55,7 +55,7 @@ class IE_head_model extends CI_Model
 			'head_title' =>$this->input->post('head_title'),
 			'head_type' =>$this->input->post('head_type'),
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d'),
+			'updated_at' =>date('Y-m-d H:i:s'),
 		);
 
 		$this->db->where('id', $id);

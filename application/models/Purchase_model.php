@@ -362,4 +362,37 @@ class Purchase_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*====== find order and Chassis number by customer id ======*/
+	public function find_purchase_by_customer($cus_id=Null)
+	{
+		$res = $this->db->select('id, puc_chassis_no')->where('customer_id', $cus_id)->where('puc_lc_id', 0)->where('car_status', 0)->where('status','a')->order_by('id', 'desc')->get('purchase')->result(); 
+
+		if($res){ return $res; }else{ return FALSE;}
+	}
+
+	/*====== find order and Chassis number by customer id ======*/
+	public function find_purchase_info($id=Null)
+	{
+		$res = $this->db->select('id,order_id, puc_chassis_no,puc_car_model,puc_color,puc_engine_no,puc_year')->where('id', $id)->where('car_status', 0)->where('status','a')->get('purchase')->row(); 
+
+		if($res){ return $res; }else{ return FALSE;}
+	}
+
+	/*====== Update Lc Number in Purchase ==============*/
+	public function update_lc_in_purchase($id=Null, $lc_id= Null)
+	{
+		$attr = array(
+			'puc_lc_id'=>$lc_id,
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('purchase', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
 }

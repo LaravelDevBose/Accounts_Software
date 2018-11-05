@@ -29,7 +29,7 @@ class Transport_model extends CI_Model
 			'created_by' =>$this->session->userdata('name'),
 			'updated_by'  =>$this->session->userdata('name'),
 			'created_at' =>date('Y-m-d'),
-			'updated_at' =>date('Y-m-d')
+			'updated_at' =>date('Y-m-d H:i:s')
 		);
 		$result = $this->db->insert('transports', $attr);
 		$trans_id = $this->db->insert_id();

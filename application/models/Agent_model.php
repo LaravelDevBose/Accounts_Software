@@ -59,7 +59,7 @@ class Agent_model extends CI_Model
 			'agent_email'	=>$this->input->post('agent_email'),
 			'agent_address'	=>$this->input->post('agent_address'),
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d'),
+			'updated_at' =>date('Y-m-d H:i:s'),
 		);
 
 		$this->db->where('id', $id);

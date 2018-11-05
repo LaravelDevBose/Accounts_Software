@@ -29,44 +29,44 @@
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="lc_no">L/C No.:<span class="text-bold text-danger">*</span></label>
                     <div class="col-sm-8">
-                      <input type="text" id="lc_no" name="lc_no" required placeholder="L/C Number" class="form-control" />
+                      <input type="text" id="lc_no" name="lc_no"  placeholder="L/C Number" class="form-control" />
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="lc_date"> Date:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
-                       <input class="form-control date-picker" required id="lc_date" name="lc_date" type="text" value="<?php echo date('Y-m-d'); ?>"  data-date-format="yyyy-mm-dd" />
+                       <input class="form-control date-picker"  id="lc_date" name="lc_date" type="text" value="<?php echo date('Y-m-d'); ?>"  data-date-format="yyyy-mm-dd" />
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="lc_amount">L/C Amount:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
-                      <input type="text" id="lc_amount"  name="lc_amount" required placeholder="L/C Amount" class="form-control"  />
+                      <input type="number" id="lc_amount"  name="lc_amount"  placeholder="L/C Amount" class="form-control"  />
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="car_qty">Car QTY:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
-                      <input type="text" id="car_qty"  name="car_qty" required placeholder="Car Quantity" class="form-control"  />
+                      <input type="number" id="car_qty"  name="car_qty"  placeholder="Car Quantity" class="form-control"  />
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="bank_name">Bank Name:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
-                      <input type="text" id="bank_name"  name="bank_name" required placeholder="Bank Name" class="form-control"  />
+                      <input type="text" id="bank_name"  name="bank_name"  placeholder="Bank Name" class="form-control"  />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="branch_name">Branch Name:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-4 control-label no-padding-left" for="branch_name">Branch Name: </label>
                     <div class="col-sm-8">
-                      <input type="text" id="branch_name"  name="branch_name" required placeholder="Branch Name" class="form-control"  />
+                      <input type="text" id="branch_name"  name="branch_name"  placeholder="Branch Name" class="form-control" />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="lc_insur">Insurance:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-4 control-label no-padding-left" for="lc_insur">Insurance: </label>
                     <div class="col-sm-8">
-                      <input type="text" id="lc_insur"  name="lc_insur" required placeholder="Insurance Id" class="form-control"  />
+                      <input type="text" id="lc_insur"  name="lc_insur"  placeholder="Insurance Id" class="form-control" />
                     </div>
                   </div>
                 </div>
@@ -76,7 +76,8 @@
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="comp_id" style="padding-right: 0px;"> Company Name:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
-                      <select name="comp_id" id="comp_id" required class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
+                      <select name="comp_id" id="comp_id"  class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
+                          <option value="0">Select A Company Name</option>
                         <?php if(isset($companies) && $companies): foreach($companies as $company):?>
                           <option value="<?= $company->id ?>"><?= $company->comp_name; ?></option>
                         <?php  endforeach; endif; ?>
@@ -86,7 +87,8 @@
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="supplier_id"> Supplier:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
-                      <select name="supplier_id" id="supplier_id" required class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
+                      <select name="supplier_id" id="supplier_id"  class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
+                        <option value="0">Select A Supplier Name</option>
                         <?php if(isset($suppliers) && $suppliers): foreach($suppliers as $supplier):?>
                           <option value="<?= $supplier->id ?>"><?= $supplier->sup_code.'-'.$supplier->sup_name; ?></option>
                         <?php  endforeach; endif; ?> 
@@ -97,8 +99,8 @@
                     <label class="col-sm-4 control-label no-padding-left" for="agent_id"> Agent Name:</label>
                     <div class="col-sm-8">
                       <select name="agent_id" id="agent_id" class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
-                        <?php if(isset($suppliers) && $suppliers): foreach($suppliers as $supplier):?>
-                          <option value="<?= $supplier->id ?>"><?= $supplier->sup_code.'-'.$supplier->sup_name; ?></option>
+                        <?php if(isset($agents) && $agents): foreach($agents as $agent):?>
+                          <option value="<?= $agent->id ?>"><?= $agent->agent_code.'-'.$agent->agent_name; ?></option>
                         <?php  endforeach; endif; ?>
                       </select>
                     </div>
@@ -149,6 +151,7 @@
                     <label class="col-sm-4 control-label no-padding-left" for="customer_id"> Client Name:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
                       <select name="customer_id" id="customer_id" class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
+                          <option value="0">Select A Customer</option>
                         <?php if(isset($customers) && $customers): foreach($customers as $customer):?>
                           <option value="<?= $customer->id ?>"><?= $customer->cus_code.'-'.$customer->cus_name; ?></option>
                         <?php  endforeach; endif; ?>
@@ -156,9 +159,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="chassis_no">Chassis No:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-4 control-label no-padding-left" for="pus_id">Chassis No:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
-                      <select name="chassis_no" id="chassis_no" class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
+                      <select name="pus_id" id="pus_id" class="form-control" style="height: 28px; border-radius: 5px;">
                         
                       </select>
                     </div>
@@ -166,7 +169,8 @@
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="engine_no">Engine No:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
-                      <input type="hidden" id="order_id" name="order_id">
+                      <input type="hidden" id="chassis_no"  name="chassis_no" />
+                      <input type="hidden" id="order_id"  name="order_id" />
                       <input type="text" id="engine_no"  name="engine_no" readonly required placeholder="Engine No" class="form-control"  />
                     </div>
                   </div>
@@ -183,7 +187,7 @@
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="car_color">Color: </label>
                     <div class="col-sm-8">
-                      <input type="text" id="car_color" required name="car_color" placeholder="Car Color" class="form-control"  />
+                      <input type="text" id="car_color" readonly name="car_color" placeholder="Car Color" class="form-control"  />
                       
                     </div>
                   </div>
@@ -210,11 +214,15 @@
                   <div class="form-group" style="margin-top: 10px;">
                     <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> </label>
                     <div class="col-sm-8">
-                      <button type="button" id="lc_submit" style="height: 27px; padding-top: 0px; float: right; " class="btn btn-primary cus_submit">Add</button>
+                      <button type="button" id="lc_car_submit" style="height: 27px; padding-top: 0px; float: right; " class="btn btn-primary cus_submit">Add</button>
                     </div>
                   </div>
 
 
+                </div>
+                <div class="col-md-2">
+                  <p style="text-align: center; font-size: 15px; font-weight: 600"> Available L/C Amount: <br>
+                    <strong id="avi_lc_amt" >00.0</strong></p>
                 </div>
 
               </div>
@@ -224,7 +232,10 @@
       </div>
   </div>  
 </div>
-
+<script>
+    var cart_qty = 0;
+    var cart_total = 0;
+</script>
 <div class="row">
   <div class="col-xs-12">
     <div class="widget-box">
@@ -244,6 +255,7 @@
                 <th>Car Value</th>
                 <th>Firght Value</th>
                 <th>Sub Total</th>
+                <th>Action</th>
                 
               </tr>
             </thead>

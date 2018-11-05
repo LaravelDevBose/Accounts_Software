@@ -233,6 +233,11 @@ $route['lc/edit/(:any)']	=	'LC_controller/edit_lc_info/$1';
 $route['lc/update/(:any)']	=	'LC_controller/update_lc_info/$1';
 $route['lc/delete/(:any)']	=	'LC_controller/delete_lc_info/$1';
 
+$route['find/chassis_no/(:any)'] = 'LC_controller/find_chassis_no/$1';
+$route['find/purchase_info/(:any)'] = 'LC_controller/find_purchase_info/$1';
+$route['store/lc/car_info'] = 'LC_controller/store_car_info_in_cart';
+$route['cart/destroy']		= 'LC_controller/destroy_cart';
+$route['lc/details/delete/(:any)'] = 'LC_controller/delete_lc_details/$1';
 
 /*========Income Expense Head CRUD Route list=========*/
 $route['ie_head/insert'] 		= 	"IE_head";
