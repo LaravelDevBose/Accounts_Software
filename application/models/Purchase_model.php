@@ -70,33 +70,7 @@ class Purchase_model extends CI_Model
 		
 	}
 
-	/*======== Car Estimating Price Store ========*/
-	public function estimating_price_store($puc_id=Null)
-	{
-		if(!is_null($puc_id)){
-			$head_ids = $this->input->post('head_id');
-			$amounts = $this->input->post('amount');
-			$total = 0;
-			for ($i=1; $i < count($head_ids) ; $i++) { 
-				
-				if($head_ids[$i] != 0){
-
-					$attr= array(
-						'purchase_id'=>$puc_id,
-						'head_id'=>$head_ids[$i],
-						'amount'=>$amounts[$i]
-					);
-
-					$res = $this->db->insert('purchase_pricing', $attr);
-
-					$total += $amounts[$i];
-				}
-			}
-
-			return $total;
-		}
-		return FALSE;
-	}
+	
 
 
 	/*=========== Update Total Pice =======*/
@@ -120,12 +94,6 @@ class Purchase_model extends CI_Model
 		}else{
 			return FALSE;
 		}
-	}
-
-	public function get_purchase_prices($pus_id=Null)
-	{
-		$result = $this->db->where('purchase_id', $pus_id)->get('purchase_pricing')->result();
-		if($result): return $result; else: return FALSE; endif;
 	}
 
 	/*======== Update purchase Info =========*/
@@ -158,58 +126,6 @@ class Purchase_model extends CI_Model
 		}
 	}
 
-	/*=========== Estimate Price Update and Store and Delete ========*/
-	public function estimating_price_store_update($pus_id=Null)
-	{
-		$all_price = $this->get_purchase_prices($pus_id);
-		$head_ids = $this->input->post('head_id');
-		$amounts = $this->input->post('amount');
-
-		$total = 0;
-		if($all_price){
-
-			foreach ($all_price as $value) {
-			 	if(!in_array($value->head_id, $head_ids)){
-
-			 		$this->db->where('id',$value->id);
-			 		$this->db->delete('purchase_pricing');
-			 	}
-			}
-		}
-
-		$head_id_array = array();
-		if($all_price){
-
-			$head_id_array = array_column($all_price, 'head_id');
-		}
-		
-
-		for ($i=1; $i<= count($head_ids); $i++) { 
-			
-			if($head_ids[$i] != 0){
-
-				if(in_array($head_ids[$i], $head_id_array)){
-
-					
-					$attr = array('amount'=>$amounts[$i]);
-					$this->db->where('head_id',$head_ids[$i])->where('purchase_id',$pus_id);
-					$this->db->update('purchase_pricing', $attr);
-				}else{
-					
-					$attr1= array(
-						'purchase_id'=>$pus_id,
-						'head_id'=>$head_ids[$i],
-						'amount'=>$amounts[$i]
-					);
-
-					$this->db->insert('purchase_pricing', $attr1);
-				}
-				$total += $amounts[$i];
-			}
-		}
-
-		return $total ;
-	}
 
 	/*======= delete purchase Info =========*/
 	public function delete_purchase_info($id=Null)
@@ -233,6 +149,23 @@ class Purchase_model extends CI_Model
 		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
 		$this->db->where('purchase.status !=', 'd')->where('car_status', '0');
 		$result = $this->db->order_by('id', 'desc')->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function purchase_car_full_deatils($id = Null)
+	{
+		$this->db->select('purchase.*, suppliers.sup_name, suppliers.sup_phone, orders.order_no, customers.cus_name, customers.cus_contact_no');
+		$this->db->from('purchase');
+		$this->db->join('orders', 'purchase.order_id = orders.id' ,'left');
+		$this->db->join('customers', 'purchase.customer_id = customers.id','left');
+		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
+		$this->db->where('purchase.id', $id)->where('car_status', '0');
+		$result = $this->db->where('purchase.status !=', 'd')->get()->row();
 
 		if($result){
 			return $result;

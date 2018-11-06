@@ -85,31 +85,20 @@ class Purchase extends MY_Controller
 		}else{
 			
 			if($purchase_id = $this->Purchase_model->store_purchase_info(0)){
+				if($this->input->post('order_id')){
 
-				if($total = $this->Purchase_model->estimating_price_store($purchase_id)){
-
-					$this->Purchase_model->total_price_update($purchase_id,$total);
-
-					if($this->input->post('order_id')){
-
-						if($this->Order_model->order_purchase_info_update($id)){
-							$data['success']=" Store Successfully!";
-							$this->session->set_flashdata($data);
-							redirect('purchase/list');
-						}
-						$data['warning']="Car Info Store Successfully! But Order Info Not Updated.";
+					if($this->Order_model->order_purchase_info_update($id)){
+						$data['success']=" Store Successfully!";
 						$this->session->set_flashdata($data);
 						redirect('purchase/list');
 					}
-					
 					$data['success']=" Store Successfully!";
 					$this->session->set_flashdata($data);
 					redirect('purchase/list');
 				}
-				$data['warning']="Car Info Store Successfully! but Pricing not Store.";
+				$data['warning']="Car Info Store Successfully! But Order Info Not Updated.";
 				$this->session->set_flashdata($data);
-				redirect('purchase/insert');
-
+				redirect('purchase/list');
 			}else{
 
 				$data['error']="Save Unsuccessfully!";
@@ -254,5 +243,15 @@ class Purchase extends MY_Controller
 		}
 	}
 	
+
+	/*========== find purchase car ful deatils ================*/
+	public function find_purchase_car_info($pus_id=Null)
+	{
+		if($res= $this->Purchase_model->purchase_car_full_deatils($pus_id)){
+			echo json_encode($res);
+		}else{
+			echo 0;
+		}
+	}
 
 }

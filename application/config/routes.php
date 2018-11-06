@@ -81,6 +81,14 @@ $route['purchase/update/(:any)']	=	'Purchase/update_purchase_info/$1';
 $route['purchase/delete/(:any)']	=	'Purchase/delete_purchase_info/$1';
 $route['find/car_info/(:any)']		= 	'Purchase/find_car_info/$1';
 
+$route['pricing/list']			=	'Purchase_pricing/pricing_list_view';
+$route['pricing/entry']			=	'Purchase_pricing/insert_pricing_info';
+$route['pricing/store']			=	'Purchase_pricing/store_pricing_info';
+$route['pricing/edit/(:any)']	=	'Purchase_pricing/edit_pricing_info/$1';
+$route['pricing/update/(:any)']	=	'Purchase_pricing/update_pricing_info/$1';
+$route['pricing/delete/(:any)']	=	'Purchase_pricing/delete_pricing_info/$1';
+$route['find/purchase_car/info/(:any)']	 =	'Purchase/find_purchase_car_info/$1';
+
 /*======= Car Location Traking =======*/
 $route['transport/status'] 			= 'Transport/transport_car_status_view';
 $route['trans/status/chnage/(:any)']= 'Transport/transport_car_status_change_page/$1';
@@ -226,7 +234,7 @@ $route['report/customer']					= 'Report/view_customer_report';
 
 
 /*========L/C CRUD Route list=========*/
-$route['lc/list'] 			= 	"LC_controller/lc_list_view";
+$route['   '] 			= 	"LC_controller/lc_list_view";
 $route['lc/insert'] 		= 	"LC_controller/lc_insert_page";
 $route['lc/store'] 			= 	"LC_controller/store_lc_info";
 $route['lc/edit/(:any)']	=	'LC_controller/edit_lc_info/$1';

@@ -131,7 +131,7 @@
     <b class="arrow"></b>
   </li>
   <?php } ?>
-  <?php } elseif($this->router->class == 'Supplier' || $this->router->class == 'Purchase' || $this->router->class == 'Transport' || $this->router->method == 'purchase_dashboard'){ ?>
+  <?php } elseif($this->router->class == 'Supplier' || $this->router->class == 'Purchase' || $this->router->class == 'Transport' ||$this->router->class == 'Purchase_pricing'|| $this->router->method == 'purchase_dashboard'){ ?>
 <?php  if($access->purchase_entry ==1){ ?>
   <li class="<?= ($this->uri->uri_string()== 'purchase/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>purchase/insert">
@@ -148,6 +148,22 @@
     </a>
     <b class="arrow"></b>
   </li>
+
+  <li class="<?= ($this->uri->uri_string()== 'pricing/entry')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>pricing/entry">
+      <i class="menu-icon fa fa-list"></i>
+      <span class="menu-text">Pricing Entry </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+  <li class="<?= ($this->uri->uri_string()== 'pricing/list')?'active': ' ' ?>">
+    <a href="<?php echo base_url(); ?>pricing/list">
+      <i class="menu-icon fa fa-list"></i>
+      <span class="menu-text">Pricing List </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+
 <?php } if($access->transport_status ==1){ ?>
   <li class="<?= ($this->uri->uri_string()== 'transport/status')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>transport/status">
