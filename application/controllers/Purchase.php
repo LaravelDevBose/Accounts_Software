@@ -84,10 +84,10 @@ class Purchase extends MY_Controller
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 			
-			if($purchase_id = $this->Purchase_model->store_purchase_info(0)){
+			if($purchase_id = $this->Purchase_model->store_purchase_info()){
 				if($this->input->post('order_id')){
 
-					if($this->Order_model->order_purchase_info_update($id)){
+					if($this->Order_model->order_purchase_info_update($purchase_id)){
 						$data['success']=" Store Successfully!";
 						$this->session->set_flashdata($data);
 						redirect('purchase/list');
@@ -219,6 +219,8 @@ class Purchase extends MY_Controller
 			redirect('purchase/dashboard');
 		}
 		if($result = $this->Purchase_model->delete_purchase_info($id)){
+
+			$this->Order_model->remove_purchase_info($id);
 
 			$data['success']="Delete Successfully!";
 			$this->session->set_flashdata($data);

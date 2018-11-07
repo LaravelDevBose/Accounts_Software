@@ -162,18 +162,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_lc_id"> L / C No:<span class="text-bold text-danger">*</span> </label>
-                  <div class="col-sm-8">
-                    <select class="chosen-select form-control"  id="puc_lc_id" name="puc_lc_id" style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a L / C No</option>
-                      <?php if($lc_data && isset($lc_data)): foreach($lc_data as $data):?>
-                        <option value="<?= $data->id; ?>" <?php if(isset($order)&& $order): if($order->ord_lc_no == $data->id): echo 'selected'; endif; endif; ?> ><?= $data->lc_no; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-                </div>
-
+                
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="puc_car_model"> Car Model:<span class="text-bold text-danger">*</span>  </label>
                   <div class="col-sm-8">
@@ -250,165 +239,17 @@
                     <input type="text" id="puc_mileage" name="puc_mileage" value="<?= (isset($order)&& $order)? $order->ord_mileage : '' ?>" placeholder="Mileage" class="form-control" />
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="widget-box">
-        <div class="widget-header">
-          <h4 class="widget-title">Estimating Price Information</h4>
-          <div class="widget-toolbar">
-            <a href="#" data-action="collapse">
-              <i class="ace-icon fa fa-chevron-up"></i>
-            </a>
-
-            <a href="#" data-action="close">
-              <i class="ace-icon fa fa-times"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="widget-body">
-          <div class="widget-main">
-
-            <div class="row">
-              <div class="col-sm-1">
-                
-              </div>
-
-              <div class="col-sm-5">
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id1" name="head_id[1]" onchange="apr_priceing(1)" style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="number" id="amount1"  name="amount[1]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id2" name="head_id[2]" onchange="apr_priceing(2)"  style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="number" id="amount2"  name="amount[2]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id3" name="head_id[3]" onchange="apr_priceing(3)"  style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="number" id="amount3"  name="amount[3]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id4" name="head_id[4]" onchange="apr_priceing(4)" style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="number" id="amount4"  name="amount[4]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-
-              </div>
-
-
-              <div class="col-sm-5">
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id5" name="head_id[5]" onchange="apr_priceing(5)"  style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="number" id="amount5"  name="amount[5]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id6" name="head_id[6]" onchange="apr_priceing(6)"  style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="number" id="amount6"  name="amount[6]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id7" name="head_id[7]" onchange="apr_priceing(7)"  style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="number" id="amount7"   name="amount[7]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select readonly  class="chosen-select form-control"  id="head_id8" name="head_id[8]" onchange="apr_priceing(8)" style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="number" id="amount8"  name="amount[8]" oninput="amount_cal();" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
                 <div class="form-group" >
                   <div class="col-sm-12" style="margin-top: 30px;">
                     <button type="Submit" class="btn btn-primary pull-right" id="pus_submit" style="width: 50%;">Purchase</button>
                   </div>
                 </div>
               </div>
-              <div class="col-md-12">
-                <p style="position: absolute; bottom: 12px; left: 11%; font-size: 20px; color: blue; ">Total Estimate Price: <span id="total_amount" style="font-size: 22px; font-weight: 800">00.00</span> TK</p>
-              </div>
-              
             </div>
           </div>
         </div>
       </div>
+      
     </form>
   </div>  
 </div>

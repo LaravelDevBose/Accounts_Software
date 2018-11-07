@@ -88,7 +88,6 @@ class Order_model extends CI_Model
 		if(!is_null($cus_id)){
 			$attr = array(
 				'cus_id'	=>$cus_id,
-				'ord_lc_no'	=>$this->input->post('ord_lc_no'),
 				'ord_car_model'	=>$this->input->post('ord_car_model'),
 				'ord_color'	=>$this->input->post('ord_color'),
 				'pus_id'	=>$this->input->post('pus_id'),
@@ -146,7 +145,6 @@ class Order_model extends CI_Model
 		$status = $this->check_order_status();
 		$attr = array(
 			'cus_id'	=>$this->input->post('cus_id'),
-			'ord_lc_no'	=>$this->input->post('ord_lc_no'),
 			'ord_car_model'	=>$this->input->post('ord_car_model'),
 			'ord_color'	=>$this->input->post('ord_color'),
 			'pus_id'	=>$this->input->post('pus_id'),
@@ -220,12 +218,30 @@ class Order_model extends CI_Model
 		}
 	}
 
+	/*============= remove Purhae Info when Purchase will deleted =============*/
+	public function remove_purchase_info($pus_id=Null)
+	{
+		$attr= array(
+			'pus_id'=>'0',
+			'ord_engine_no'=>'',
+			'ord_chassis_no'=>''
+			);
+		
+		$this->db->where('pus_id', $pus_id);
+		$qu = $this->db->update('orders', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
 	/*========== Order Purchess Info Update =========*/
 	public function order_purchase_info_update($pus_id=Null)
 	{
 		$attr = array(
 			'pus_id' => $pus_id,
-			'ord_lc_no'=>$this->input->post('puc_lc_id'),
 			'ord_engine_no'=>$this->input->post('puc_engine_no'),
 			'ord_chassis_no'=>$this->input->post('puc_chassis_no'),
 			'order_status'=>'a',

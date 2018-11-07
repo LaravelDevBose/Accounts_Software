@@ -35,14 +35,14 @@ class Purchase_model extends CI_Model
 	}
 
 	/*====== store order data ======*/
-	public function store_purchase_info($total_price = Null)
+	public function store_purchase_info()
 	{	
 
 		$attr = array(
 			'customer_id'	=>$this->input->post('customer_id'),
 			'supplier_id'	=>$this->input->post('supplier_id'),
 			'order_id'		=>$this->input->post('order_id'),
-			'puc_lc_id'		=>$this->input->post('puc_lc_id'),
+			'puc_lc_id'		=>0,
 			'puc_car_model'	=>$this->input->post('puc_car_model'),
 			'puc_color'		=>$this->input->post('puc_color'),
 			'puc_engine_no'	=>$this->input->post('puc_engine_no'),
@@ -53,7 +53,7 @@ class Purchase_model extends CI_Model
 			'puc_year'		=>$this->input->post('puc_year'),
 			'puc_mileage'	=>$this->input->post('puc_mileage'),
 			'puc_other_tirm'=>$this->input->post('puc_other_tirm'),
-			'total_price'	=>$total_price,
+			'total_price'	=>'0',
 			'car_status'	=>'0',
 			'status'	=>'a',
 			'created_by' =>$this->session->userdata('name'),
@@ -142,6 +142,20 @@ class Purchase_model extends CI_Model
 		}
 	}
 
+	public function order_id_remove($order_id = Null)
+	{
+		$attr= array('order_id'=>'0');
+		
+		$this->db->where('order_id', $order_id);
+		$qu = $this->db->update('purchase', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
 	public function undelivery_purchase_car()
 	{
 		$this->db->select('purchase.*, suppliers.sup_name');
@@ -157,11 +171,25 @@ class Purchase_model extends CI_Model
 		}
 	}
 
+	public function car_purchase_pricing()
+	{
+		$this->db->select('purchase.*, suppliers.sup_name');
+		$this->db->from('purchase');
+		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
+		$this->db->where('purchase.status !=', 'd')->where('purchase.total_price', '0')->where('car_status', '0');
+		$result = $this->db->order_by('id', 'desc')->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
 	public function purchase_car_full_deatils($id = Null)
 	{
-		$this->db->select('purchase.*, suppliers.sup_name, suppliers.sup_phone, orders.order_no, customers.cus_name, customers.cus_contact_no');
+		$this->db->select('purchase.*, suppliers.sup_name, suppliers.sup_phone, customers.cus_name, customers.cus_contact_no');
 		$this->db->from('purchase');
-		$this->db->join('orders', 'purchase.order_id = orders.id' ,'left');
 		$this->db->join('customers', 'purchase.customer_id = customers.id','left');
 		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
 		$this->db->where('purchase.id', $id)->where('car_status', '0');

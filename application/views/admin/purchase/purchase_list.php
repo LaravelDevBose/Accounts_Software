@@ -56,6 +56,11 @@
                         <td><?= number_format($purchase->total_price,2); ?></td>
                         <td>
                             <div class="hidden-sm hidden-xs action-buttons">
+
+                                <a style="color: #04921c;" title="Price" href="<?= base_url();?>pricing/purchase/<?= $purchase->id;?>" >
+                                  <i class="ace-icon fa fa-usd bigger-130" ></i>
+                                </a>
+
                                 <a style="color: #F89406;" title="View" href="<?= base_url();?>purchase/view/<?= $purchase->id;?>" >
                                   <i class="ace-icon fa fa-eye bigger-130" ></i>
                                 </a>

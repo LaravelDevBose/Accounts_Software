@@ -76,6 +76,7 @@ class Customer extends MY_Controller
 					$cus_code = 'C'.$num;
 				endif;
 			}
+
 			$data['customers'] = $this->Customer_model->find_limit_customer_info();
 			$data['cus_code'] = $cus_code;
 			$this->load->view('admin/adminMaster', $data);
@@ -157,8 +158,34 @@ class Customer extends MY_Controller
 					$cus_code = 'C'.$num;
 				endif;
 			}
+
+			$last_order = $this->db->order_by('id', 'desc')->limit(1)->get('orders')->row();
+			if(is_null($last_order)|| !isset($last_order)){
+				$order_no = 'M-00001';
+			}else{
+
+				$num = substr($last_order->order_no, 2, strlen($last_order->order_no));
+
+				if($num < 9):
+					$num+=1;
+					$order_no = 'M-0000'.$num;
+				elseif($num < 99):
+					$num+=1;
+					$order_no = 'M-000'.$num;
+				elseif($num < 999):
+					$num+=1;
+					$order_no = 'M-00'.$num;
+				elseif($num<9999):
+					$num+=1;
+					$order_no = 'M-0'.$num;
+				else:
+					$num+=1;
+					$order_no = 'M-'.$num;
+				endif;
+			}
 			
 			$data['cus_code'] = $cus_code;
+			$data['order_no'] = $order_no;
 			$data['lc_data'] = $this->LC_model->get_all_lc_info();
 			$data['cars'] = $this->Purchase_model->unOrder_car_list();
 			$this->load->view('admin/adminMaster', $data);

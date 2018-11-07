@@ -52,14 +52,14 @@
                         <td><?= number_format($price->total_price,2); ?></td>
                         <td>
                             <div class="hidden-sm hidden-xs action-buttons">
-                                <a style="color: #F89406;" title="View" href="<?= base_url();?>price/view/<?= $price->id;?>" >
+                                <a style="color: #F89406;" title="View"  href="<?= base_url();?>pricing/view/<?= $price->id;?>" >
                                   <i class="ace-icon fa fa-eye bigger-130" ></i>
                                 </a>
 
-                                <a class="info" title="Edit" href="<?= base_url();?>price/edit/<?= $price->id;?>" >
+                                <a class="info" title="Edit" href="<?= base_url();?>pricing/edit/<?= $price->id;?>" >
                                   <i class="ace-icon fa fa-pencil bigger-130"></i>
                                 </a>
-                                <a class="red" title="Delete" href="<?= base_url(); ?>price/delete/<?= $price->id ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
+                                <a class="red" title="Delete" href="<?= base_url(); ?>pricing/delete/<?= $price->id ?>/<?= $price->pus_id; ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
                                   <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                 </a>
                             </div>

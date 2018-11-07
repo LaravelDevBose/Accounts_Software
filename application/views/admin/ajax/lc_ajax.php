@@ -156,7 +156,7 @@
                     
                     if(car_value > 0 && car_value != ''){
                         
-                         if(fright_value > 0 && fright_value != ''){
+                        if(fright_value > 0 && fright_value != ''){
                             
                             var grand_total = parseInt(cart_total)+parseInt(car_value)+parseInt(fright_value);
                             if(parseInt(grand_total) > parseInt(lc_amount)){
@@ -518,7 +518,7 @@
             }
 
             $.ajax({
-                url:'<?= base_url(); ?>lc/update/<?= $lc->id; ?>',
+                url:'<?= base_url(); ?>lc/update/<?= (isset($lc) && $lc)? $lc->id:'' ?>',
                 type:'POST',
                 dataType:'json',
                 data:$('#lc_form').serialize(),

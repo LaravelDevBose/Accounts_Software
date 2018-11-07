@@ -61,7 +61,35 @@ class Purchase_pricing extends MY_Controller
 
 			$data['title'] = 'Add Pricing Information';  
 			$data['content'] = 'pricing/pricing_entry';
-			$data['purchases'] = $this->Purchase_model->undelivery_purchase_car();
+			$data['purchases'] = $this->Purchase_model->car_purchase_pricing();
+			$this->load->view('admin/adminMaster', $data);
+		}
+	}
+
+	/*========== Purchase Priching Insert =========*/
+	public function purchase_pricing_insert($pus_id=Null)
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			if($this->admin_access('employee_entry') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('purchase/dashboard');
+			}
+			$purchase = $this->Purchase_model->purchase_car_full_deatils($pus_id);
+			if($purchase->total_price >0 && !is_null($purchase->total_price)){
+
+				$data['warning_msg']="This Car Purchase Estimating Price Already Counted...";
+				$this->session->set_flashdata($data);
+				redirect('purchase/list');
+			}
+
+			$data['title'] = 'Add Purchase Pricing Information';  
+			$data['content'] = 'pricing/pricing_entry';
+			$data['purchases'] = $this->Purchase_model->car_purchase_pricing();
+			$data['purchase'] = $purchase;
 			$this->load->view('admin/adminMaster', $data);
 		}
 	}
@@ -74,7 +102,7 @@ class Purchase_pricing extends MY_Controller
 		if($this->form_validation->run() == FAlSE){
 			$data['title'] = 'Add Pricing Information';  
 			$data['content'] = 'pricing/pricing_entry';
-			$data['purchases'] = $this->Purchase_model->undelivery_purchase_car();
+			$data['purchases'] = $this->Purchase_model->car_purchase_pricing();
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 			
@@ -93,6 +121,15 @@ class Purchase_pricing extends MY_Controller
 		}
 	}
 
+	/*========= Pricing Full Details view ============*/
+	public function view_pricing_details($id=Null)
+	{
+		$data['title'] = 'View Pricing Information';  
+		$data['content'] = 'pricing/view_pricing';
+		$data['pricing'] = $this->Pricing_model->pricing_by_id($id);
+		$this->load->view('admin/adminMaster', $data);
+	}
+
 	/*======== Edit Employee page ========*/
 	public function edit_pricing_info($id=Null)
 	{
@@ -105,9 +142,10 @@ class Purchase_pricing extends MY_Controller
 				$this->session->set_flashdata($data);
 				redirect('purchase/dashboard');
 			}
-			$data['title'] = 'Edit Employee Information';  
+			$data['title'] = 'Edit Priching Information';  
 			$data['content'] = 'pricing/edit_pricing';
-			$data['employee'] = $this->Employee_model->employee_by_id($id);
+			$data['pricing'] = $this->Pricing_model->pricing_by_id($id);
+			$data['purchases'] = $this->Purchase_model->undelivery_purchase_car();
 			$this->load->view('admin/adminMaster', $data);
 		}
 	}
@@ -116,36 +154,41 @@ class Purchase_pricing extends MY_Controller
 	/*======= Store Employee information ==========*/
 	public function update_pricing_info($id = Null)
 	{
-		$this->form_validation->set_rules('emp_name', 'Employee Name ', 'required|trim');
-		$this->form_validation->set_rules('emp_dob', 'Date of Birth', 'required|trim');
-		$this->form_validation->set_rules('emp_nid', 'Employee NID', 'required|trim');
-		$this->form_validation->set_rules('emp_phone', 'Contact No', 'required|trim');
-		$this->form_validation->set_rules('emp_join_date', 'Joining Date', 'required|trim');
-		$this->form_validation->set_rules('emp_sallary', 'Sallary', 'required|trim');
-		$this->form_validation->set_rules('pre_address', 'Present Address', 'required|trim');
+		$this->form_validation->set_rules('pus_id', 'Chassis Number', 'required|trim');
 
 		if($this->form_validation->run() == FAlSE){
-			$data['title'] = 'Edit Employee Information';  
+			$data['title'] = 'Edit Priching Information';  
 			$data['content'] = 'pricing/edit_pricing';
-			$data['employee'] = $this->Employee_model->employee_by_id($id);
+			$data['pricing'] = $this->Pricing_model->pricing_by_id($id);
+			$data['purchases'] = $this->Purchase_model->undelivery_purchase_car();
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 			
-			if($this->Employee_model->update_employee_data($id)){
+			if($this->Pricing_model->update_pricing_data($id)){
+				$pus_id = $this->input->post('pus_id');
+				$old_pus_id = $this->input->post('old_pus_id');
+				$total_price = $this->input->post('total_price');
 
+				if($pus_id == $old_pus_id){
+					$this->Purchase_model->total_price_update($pus_id,$total_price);
+				}else{
+					$this->Purchase_model->total_price_update($pus_id,$total_price);
+					$this->Purchase_model->total_price_update($old_pus_id,0);
+				}
+				
 				$data['success'] = 'Update Successfully!';
 				$this->session->set_flashdata($data);
-				redirect('employees');
+				redirect('pricing/list');
 			}else{
 				$data['error'] = 'Update UnSuccessfully!';
 				$this->session->set_flashdata($data);
-				redirect('employees');
+				redirect('pricing/list');
 			}
 		}
 	}
 
 	/*========= delete Employee Info =======*/
-	public function delete_pricing_info($id=Null)
+	public function delete_pricing_info($id=Null, $pus_id=Null)
 	{	
 		if($this->admin_access('delete_access') != 1){
 			$data['warning_msg']="You Are Not able to Access this Module...!";
@@ -153,33 +196,19 @@ class Purchase_pricing extends MY_Controller
 			redirect('purchase/dashboard');
 		}
 
-		if($this->Employee_model->delete_employee_data($id)){
+		if($this->Pricing_model->delete_pricing_data($id)){
+
+			$this->Purchase_model->total_price_update($pus_id,0);
+
 			$data['success'] = 'Delete Successfully!';
 			$this->session->set_flashdata($data);
-			redirect('employees');
+			redirect('pricing/list');
 		}else{
 			$data['error'] = 'Delete UnSuccessfully!';
 			$this->session->set_flashdata($data);
-			redirect('employees');
+			redirect('pricing/list');
 		}
-	}
-
-	/*======== view Employee info ==========*/
-	public function view_employee_info($id=Null)
-	{
-		$data['employee'] = $this->Employee_model->employee_by_id($id);
-		$this->load->view('admin/employee/view_employee', $data);
 	}
 
 	
-
-	/*======== get employee salary details=======*/
-	public function get_employee_salary($emp_id=Null)
-	{
-		if($res = $this->Employee_model->employee_by_id($emp_id)){
-			echo json_encode($res->emp_sallary);
-		}else{
-			echo 0;
-		}
-	}
 }

@@ -81,12 +81,15 @@ $route['purchase/update/(:any)']	=	'Purchase/update_purchase_info/$1';
 $route['purchase/delete/(:any)']	=	'Purchase/delete_purchase_info/$1';
 $route['find/car_info/(:any)']		= 	'Purchase/find_car_info/$1';
 
+$route['pricing/purchase/(:any)']	=	'Purchase_pricing/purchase_pricing_insert/$1';
+
 $route['pricing/list']			=	'Purchase_pricing/pricing_list_view';
 $route['pricing/entry']			=	'Purchase_pricing/insert_pricing_info';
 $route['pricing/store']			=	'Purchase_pricing/store_pricing_info';
+$route['pricing/view/(:any)']	=	'Purchase_pricing/view_pricing_details/$1';
 $route['pricing/edit/(:any)']	=	'Purchase_pricing/edit_pricing_info/$1';
 $route['pricing/update/(:any)']	=	'Purchase_pricing/update_pricing_info/$1';
-$route['pricing/delete/(:any)']	=	'Purchase_pricing/delete_pricing_info/$1';
+$route['pricing/delete/(:any)/(:any)']	=	'Purchase_pricing/delete_pricing_info/$1/$2';
 $route['find/purchase_car/info/(:any)']	 =	'Purchase/find_purchase_car_info/$1';
 
 /*======= Car Location Traking =======*/
@@ -136,8 +139,6 @@ $route['other_income/edit/(:any)'] 	= 'Account/other_income_edit/$1';
 $route['other_income/update/(:any)']= 'Account/other_income_update/$1';
 $route['other_income/delete/(:any)']= 'Account/delete_other_income/$1';
 
-
-
 $route['check/pending/list'] 	=	'Check/check_pendaing_date_list';
 $route['check/reminder/list'] 	=	'Check/check_reminder_date_list';
 $route['check/paid/list'] 		=	'Check/check_paid_date_list';
@@ -147,6 +148,14 @@ $route['check/view/(:any)'] 	=	'Check/check_view_page/$1';
 $route['check/edit/(:any)'] 	=	'Check/check_edit_page/$1';
 $route['check/update/(:any)'] 	=	'Check/check_update_info/$1';
 $route['check/delete/(:any)'] 	=	'Check/check_delete_info/$1';
+
+$route['insurance/list'] 			= 'Insurance/view_insurance_list';
+$route['insurance/insert'] 			= 'Insurance/insert_insurance_list';
+$route['insurance/store'] 			= 'Insurance/store_insurance_list';
+$route['insurance/view/(:any)'] 	= 'Insurance/view_insurance_list';
+$route['insurance/edit/(:any)'] 	= 'Insurance/edit_insurance_list';
+$route['insurance/update/(:any)'] 	= 'Insurance/update_insurance_list';
+$route['insurance/delete/(:any)'] 	= 'Insurance/delete_insurance_list';
 
 
 /****************************************************************************************************/
@@ -234,7 +243,7 @@ $route['report/customer']					= 'Report/view_customer_report';
 
 
 /*========L/C CRUD Route list=========*/
-$route['   '] 			= 	"LC_controller/lc_list_view";
+$route['lc/list'] 			= 	"LC_controller/lc_list_view";
 $route['lc/insert'] 		= 	"LC_controller/lc_insert_page";
 $route['lc/store'] 			= 	"LC_controller/store_lc_info";
 $route['lc/edit/(:any)']	=	'LC_controller/edit_lc_info/$1';

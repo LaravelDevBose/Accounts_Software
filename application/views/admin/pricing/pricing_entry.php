@@ -28,7 +28,7 @@
                   <select class="chosen-select form-control" id="car_pus_id" style="height: 30px; border-radius: 5px;">
                     <option value=" ">Select a Chassis No</option>
                     <?php if(isset($purchases) && $purchases):  foreach($purchases as $pus):?>
-                      <option value="<?= $pus->id; ?>"><?= $pus->puc_chassis_no; ?></option>
+                      <option value="<?= $pus->id; ?>" <?php if(isset($purchase) && $purchase){ if($purchase->id == $pus->id){echo "selected"; }}?> ><?= $pus->puc_chassis_no; ?></option>
                     <?php endforeach; endif; ?>
                   </select>
                 </div>
@@ -37,33 +37,33 @@
               <div class="form-group">
                 <label class="col-sm-5 control-label no-padding-left" for="engine_no"> Engine No </label>
                 <div class="col-sm-7">
-                  <input type="text" id="engine_no" name="engine_no" placeholder="Engine No" class="form-control" readonly />
+                  <input type="text" id="engine_no" name="engine_no" value="<?= (isset($purchase) && $purchase)? $purchase->puc_engine_no : '' ?>"  placeholder="Engine No" class="form-control" readonly />
                 </div>
               </div>
               
               <div class="form-group">
                 <label class="col-sm-5 control-label no-padding-left" for="car_model"> Model </label>
                 <div class="col-sm-7">
-                  <input type="text" id="car_model" readonly name="car_model" placeholder="Car Model" class="form-control" />
+                  <input type="text" id="car_model" readonly name="car_model" value="<?= (isset($purchase) && $purchase)? $purchase->puc_car_model : '' ?>" placeholder="Car Model" class="form-control" />
                 </div>
               </div>
             
               <div class="form-group">
                 <label class="col-sm-5 control-label no-padding-left" for="car_color"> Color </label>
                 <div class="col-sm-7">
-                  <input type="text" id="car_color" readonly name="car_color" placeholder="Car Color" class="form-control" />
+                  <input type="text" id="car_color" readonly name="car_color" value="<?= (isset($purchase) && $purchase)? $purchase->puc_color : '' ?>"  placeholder="Car Color" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-5 control-label no-padding-left" for="car_year"> Year </label>
                 <div class="col-sm-7">
-                   <input type="text" id="car_year" readonly name="car_year" placeholder="Car Year" class="form-control" />
+                   <input type="text" id="car_year" readonly name="car_year" value="<?= (isset($purchase) && $purchase)? $purchase->puc_year : '' ?>"  placeholder="Car Year" class="form-control" />
                 </div>
               </div>
             </div>
             <div class="col-sm-4">
-              <div class="form-group">
-                <label class="col-sm-5 control-label no-padding-left" for="order_no"> Order No </label>
+              <div class="form-group" style="display: none;">
+                <label class="col-sm-5 control-label no-padding-left"  for="order_no"> Order No </label>
                 <div class="col-sm-7">
                   <input type="text" id="order_no" name="order_no" placeholder="Order No" class="form-control" readonly />
                 </div>
@@ -72,26 +72,26 @@
               <div class="form-group">
                 <label class="col-sm-5 control-label no-padding-left" for="cus_name"> Customer Name </label>
                 <div class="col-sm-7">
-                  <input type="text" id="cus_name" name="cus_name" placeholder="Customer Name" class="form-control" readonly />
+                  <input type="text" id="cus_name" name="cus_name" value="<?= (isset($purchase) && $purchase)? $purchase->cus_name : '' ?>"  placeholder="Customer Name" class="form-control" readonly />
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-5 control-label no-padding-left" for="cus_phone"> Customer Phone No </label>
                 <div class="col-sm-7">
-                  <input type="text" id="cus_phone" readonly name="cus_phone" placeholder="Contact No" class="form-control" />
+                  <input type="text" id="cus_phone" readonly name="cus_phone" value="<?= (isset($purchase) && $purchase)? $purchase->cus_contact_no : '' ?>"  placeholder="Contact No" class="form-control" />
                 </div>
               </div>
               
               <div class="form-group">
                 <label class="col-sm-5 control-label no-padding-left" for="sup_name"> Supplier Name </label>
                 <div class="col-sm-7">
-                  <input type="text" id="sup_name" readonly name="sup_name" placeholder="Supplier Name" class="form-control" />
+                  <input type="text" id="sup_name" readonly name="sup_name" value="<?= (isset($purchase) && $purchase)? $purchase->sup_name : '' ?>"  placeholder="Supplier Name" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-5 control-label no-padding-left" for="sup_phone"> Supplier Phone No </label>
                 <div class="col-sm-7">
-                  <input type="text" id="sup_phone" readonly name="sup_phone" placeholder="Contact No" class="form-control" />
+                  <input type="text" id="sup_phone" readonly name="sup_phone" value="<?= (isset($purchase) && $purchase)? $purchase->sup_phone : '' ?>"  placeholder="Contact No" class="form-control" />
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@
 
             <div class="row">
               <div class="col-sm-2">
-                <input type="hidden" name="pus_id" id="pus_id">
+                <input type="hidden" name="pus_id" id="pus_id" value="<?= (isset($purchase) && $purchase)? $purchase->id : '' ?>" >
               </div>
               <div class="col-sm-4">
                 

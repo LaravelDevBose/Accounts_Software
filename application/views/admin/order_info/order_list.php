@@ -64,13 +64,16 @@
                         </td>
                         <td>
                             <div class="hidden-sm hidden-xs action-buttons">
+                              <?php if($order->order_status != 'c'){ ?>
                                 <a class="green linka fancybox fancybox.ajax "  href="<?= base_url();?>order/delivery/show/<?= $order->id;?>" >
                                   <i class="ace-icon fa fa-truck bigger-130"></i>
                                 </a>
-
+                              <?php } if($order->pus_id == 0){ ?>
+    
                                 <a style="color: #7e35de;" title="Purchase" href="<?= base_url();?>purchase/insert/<?= $order->id;?>" >
                                   <i class="ace-icon fa fa-cart-arrow-down bigger-130" ></i>
                                 </a>
+                              <?php }?>
                                 <a style="color: #F89406;" title="View" href="<?= base_url();?>order/view/<?= $order->id;?>" >
                                   <i class="ace-icon fa fa-eye bigger-130" ></i>
                                 </a>
