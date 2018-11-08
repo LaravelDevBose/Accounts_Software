@@ -12,52 +12,6 @@
 
         avaible_amount();
 
-
-        $('#customer_id').change(function(e){
-            var cus_id = e.target.value;
-
-            if(cus_id != 0 && cus_id != ''){
-                $.ajax({
-                    url:'<?= base_url(); ?>find/chassis_no/'+cus_id,
-                    type:'POST',
-                    dataType:'json',
-                    success:function(data){
-                        $('#pus_id').empty();
-                        if(data != 0){
-                            $('#pus_id').append('<option value="0">Select A Chassis No</option>');
-                            $.each(data, function(key, val){
-                                $('#pus_id').append('<option value="'+val.id+'">'+val.puc_chassis_no+'</option>');
-                            });
-                        }else{
-                            swal({
-                                text: "No Data Found...",
-                                icon: "info",
-                                buttons: false,
-                                timer: 1500,
-                            });
-                        }
-
-                    },error:function(error){
-                        console.log(error);
-                        swal({
-                            text: "Some Thing Error...!",
-                            icon: "warning",
-                            buttons: false,
-                            timer: 1500,
-                        });
-                    }
-                });
-            }else{
-                swal({
-                    text: "First Select Customer",
-                    icon: "warning",
-                    buttons: false,
-                    timer: 1500,
-                });
-            }
-        });
-
-
         $('#pus_id').change(function(e){
             pus_id = e.target.value;
             $('#chassis_no').val('');
@@ -66,6 +20,8 @@
             $('#car_color').val('');
             $('#car_year').val('');
             $('#order_id').val('');
+            $('#customer_id').val('');
+            $('#cus_info').val('');
 
             if(pus_id != 0 && pus_id != ''){
                 $.ajax({
@@ -81,6 +37,8 @@
                             $('#car_color').val(data.puc_color);
                             $('#car_year').val(data.puc_year);
                             $('#order_id').val(data.order_id);
+                            $('#customer_id').val(data.id);
+                            $('#cus_info').val(data.cus_code+'-'+data.cus_name);
 
                         }else{
                             swal({
@@ -212,6 +170,8 @@
                                         $('#car_year').val('');
                                         $('#car_value').val('');
                                         $('#fright_value').val('');
+                                        $('#customer_id').val('');
+                                        $('#cus_info').val('');
                                     }else{
                                         console.log(data);
                                         swal({

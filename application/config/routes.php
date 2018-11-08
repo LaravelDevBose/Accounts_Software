@@ -55,7 +55,8 @@ $route['order/delivery/show/(:any)']	=	'Order/show_order_deliery_info/$1';
 $route['order/deliver/(:any)']	=	'Order/order_delivery/$1';
 $route['find/customer/(:any)']	=	'Customer/find_customer_info/$1';
 
-
+$route['ready/car/sale']		=	'Order/ready_car_sale_page';
+$route['order/purchase/marge']	= 	'Order/order_purchase_car_marge';
 
 
 /****************************************************************************************************/

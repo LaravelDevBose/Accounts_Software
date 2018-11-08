@@ -325,17 +325,21 @@ class Purchase_model extends CI_Model
 	}
 
 	/*====== find order and Chassis number by customer id ======*/
-	public function find_purchase_by_customer($cus_id=Null)
+	public function find_purchase_by_chassis_no()
 	{
-		$res = $this->db->select('id, puc_chassis_no')->where('customer_id', $cus_id)->where('puc_lc_id', 0)->where('car_status', 0)->where('status','a')->order_by('id', 'desc')->get('purchase')->result(); 
+		$res = $this->db->select('id, puc_chassis_no')->where('puc_lc_id', 0)->where('car_status', 0)->where('status','a')->order_by('id', 'desc')->get('purchase')->result(); 
 
 		if($res){ return $res; }else{ return FALSE;}
 	}
 
+	
 	/*====== find order and Chassis number by customer id ======*/
 	public function find_purchase_info($id=Null)
 	{
-		$res = $this->db->select('id,order_id, puc_chassis_no,puc_car_model,puc_color,puc_engine_no,puc_year')->where('id', $id)->where('car_status', 0)->where('status','a')->get('purchase')->row(); 
+		$this->db->select('customers.id, purchase.order_id, purchase.puc_chassis_no, purchase.puc_car_model, purchase.puc_color, purchase.puc_engine_no,purchase.puc_year, customers.cus_code, customers.cus_name');
+		$this->db->from('purchase');
+		$this->db->join('customers', 'purchase.customer_id = customers.id', 'left');
+		$res = $this->db->where('purchase.id', $id)->where('purchase.car_status', 0)->where('purchase.status','a')->get()->row(); 
 
 		if($res){ return $res; }else{ return FALSE;}
 	}

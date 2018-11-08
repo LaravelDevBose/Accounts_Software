@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2018 at 12:39 PM
+-- Generation Time: Nov 07, 2018 at 01:11 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -119,7 +119,7 @@ CREATE TABLE `admin_access` (
 --
 
 INSERT INTO `admin_access` (`id`, `admin_id`, `sale_module`, `customer_order`, `order_entry`, `all_order_list`, `pending_order_list`, `process_order_list`, `customer_entry`, `customer_list`, `purchase_module`, `purchase_entry`, `purchase_list`, `transport_status`, `supplier`, `transport_head`, `account_module`, `collection`, `payment`, `ofice_payment`, `other_income`, `check_option`, `check_entry`, `pending_check_list`, `reminder_check_list`, `paid_check_list`, `hr_module`, `sallay_payment`, `employee_list`, `employee_entry`, `monthe_entry`, `report_module`, `stock_report`, `car_full_report`, `car_coll_report`, `cus_due_report`, `cus_order_report`, `deliv_order_report`, `lc_order_report`, `collection_report`, `cus_coll_report`, `date_payment_report`, `supplier_payment_report`, `office_payment_report`, `sallary_report`, `emp_sallary_report`, `lc_list_report`, `cus_list_report`, `administration`, `lc_entry`, `expense_head_entry`, `company_info`, `admin`, `admin_entry`, `admin_list`, `admin_access`, `edit_access`, `delete_access`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2018-10-31 10:05:24', '2018-10-31 10:05:24'),
+(1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2018-10-31 10:05:24', '2018-10-31 10:05:24'),
 (3, 12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2018-11-01 05:53:50', '2018-11-01 05:53:50');
 
 -- --------------------------------------------------------
@@ -340,10 +340,10 @@ INSERT INTO `ie_heads` (`id`, `head_title`, `head_type`, `status`, `created_by`,
 
 CREATE TABLE `lc_details` (
   `id` int(20) UNSIGNED NOT NULL,
-  `lc_id` int(20) UNSIGNED NOT NULL,
+  `lc_id` int(20) UNSIGNED DEFAULT '0',
   `pus_id` int(20) UNSIGNED NOT NULL,
-  `cus_id` int(20) UNSIGNED NOT NULL,
-  `order_id` int(20) UNSIGNED NOT NULL,
+  `cus_id` int(20) UNSIGNED DEFAULT '0',
+  `order_id` int(20) UNSIGNED DEFAULT '0',
   `car_value` int(10) UNSIGNED NOT NULL,
   `fright_value` int(10) UNSIGNED NOT NULL,
   `total` int(15) UNSIGNED NOT NULL,
@@ -355,11 +355,7 @@ CREATE TABLE `lc_details` (
 --
 
 INSERT INTO `lc_details` (`id`, `lc_id`, `pus_id`, `cus_id`, `order_id`, `car_value`, `fright_value`, `total`, `status`) VALUES
-(1, 1, 3, 2, 3, 8000, 500, 8500, 'd'),
-(2, 1, 2, 1, 2, 8000, 3500, 11500, 'd'),
-(3, 2, 1, 2, 1, 4000, 1000, 5000, 'a'),
-(4, 1, 2, 1, 2, 8000, 2000, 10000, 'd'),
-(5, 1, 3, 2, 3, 9000, 1000, 10000, 'd');
+(2, 2, 5, 2, 1, 8000, 2000, 10000, 'a');
 
 -- --------------------------------------------------------
 
@@ -410,9 +406,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `cus_id`, `ord_lc_no`, `pus_id`, `ord_car_model`, `ord_color`, `ord_engine_no`, `ord_chassis_no`, `order_no`, `ord_other_tirm`, `ord_make_model`, `ord_grade`, `ord_type`, `ord_year`, `ord_mileage`, `ord_budget_range`, `ord_advance`, `order_status`, `delivery_date`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 2, 2, 0, 'fdgfdg', 'fgfg', '', '', 'fdsgfdg', 'fdgfdg', 'gfg', '454', '454', '545', '4545454545', 2147483647, 454545454, 'p', '2018-11-01 11:49:33', 'a', 'admin', 'admin', '2018-10-31 18:00:00', '2018-10-31 18:00:00'),
-(2, 1, 0, 0, 'dfdsfds', 'dfdsfdsf', '', '', 'dfdfdf', 'dfdsf', 'dsfsdf', 'dfdf', 'dsfdsf', 'dsfdsf', 'dsfdsf', 5656565, 4545, 'p', '2018-11-04 11:14:36', 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
-(3, 2, 0, 0, 'dfgdfgfg', 'fgfgfg', '', '', 'fdgdfg', 'fgfdgdfg', 'dfgfdg', 'fgdf', 'gfdg', 'fdgdfg', 'fdgdf', 3433434, 2147483647, 'p', '2018-11-04 11:16:55', 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00');
+(1, 2, 2, 5, 'fdgfdg', 'fgfg', '5555555555555', '66666666666666', 'M-00001', 'fdgfdg', 'gfg', '454', '454', '545', '4545454545', 2147483647, 454545454, 'a', '2018-11-01 11:49:33', 'a', 'admin', 'admin', '2018-10-31 18:00:00', '2018-11-07 10:50:08'),
+(2, 1, 0, 2, 'dfdsfds', 'dfdsfdsf', '', '', 'M-00002', 'dfdsf', 'dsfsdf', 'dfdf', 'dsfdsf', 'dsfdsf', 'dsfdsf', 5656565, 4545, 'p', '2018-11-04 11:14:36', 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
+(3, 2, 0, 3, 'dfgdfgfg', 'fgfgfg', '', '', 'M-00003', 'fgfdgdfg', 'dfgfdg', 'fgdf', 'gfdg', 'fdgdfg', 'fdgdf', 3433434, 2147483647, 'p', '2018-11-04 11:16:55', 'd', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -449,7 +445,7 @@ CREATE TABLE `purchase` (
   `supplier_id` int(10) UNSIGNED NOT NULL,
   `customer_id` int(20) UNSIGNED DEFAULT NULL,
   `order_id` int(20) UNSIGNED DEFAULT NULL,
-  `puc_lc_id` int(20) UNSIGNED DEFAULT NULL,
+  `puc_lc_id` int(20) UNSIGNED DEFAULT '0',
   `puc_car_model` varchar(200) DEFAULT NULL,
   `puc_color` varchar(200) DEFAULT NULL,
   `puc_engine_no` varchar(200) DEFAULT NULL,
@@ -460,7 +456,7 @@ CREATE TABLE `purchase` (
   `puc_year` varchar(200) DEFAULT NULL,
   `puc_mileage` varchar(200) DEFAULT NULL,
   `puc_other_tirm` text,
-  `total_price` int(10) UNSIGNED DEFAULT NULL,
+  `total_price` int(10) UNSIGNED DEFAULT '0',
   `transport_id` int(20) UNSIGNED DEFAULT NULL COMMENT 'transport table last id',
   `car_status` smallint(6) UNSIGNED DEFAULT NULL COMMENT '1= Deliver 0= Undelivered',
   `status` char(5) DEFAULT NULL,
@@ -475,9 +471,10 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`id`, `supplier_id`, `customer_id`, `order_id`, `puc_lc_id`, `puc_car_model`, `puc_color`, `puc_engine_no`, `puc_chassis_no`, `puc_make`, `puc_grade`, `puc_type`, `puc_year`, `puc_mileage`, `puc_other_tirm`, `total_price`, `transport_id`, `car_status`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 1, 2, 'fdgfdg', 'fgfg', '1000000000000', '25323333222', 'gfg', '454', '454', '545', '4545454545', 'fdgfdg', 0, NULL, 0, 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
-(2, 1, 1, 2, 0, 'dfdsfds', 'dfdsfdsf', '5424571214', '46512045475', 'dsfsdf', 'dfdf', 'dsfdsf', 'dsfdsf', 'dsfdsf', 'dfdsf', 0, NULL, 0, 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
-(3, 1, 2, 3, 0, 'dfgdfgfg', 'fgfgfg', '333333333333', '333333333333', 'dfgfdg', 'fgdf', 'gfdg', 'fdgdfg', 'fdgdf', 'fgfdgdfg', 0, NULL, 0, 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00');
+(1, 1, 2, 1, 0, 'fdgfdg', 'fgfg', '1000000000000', '25323333222', 'gfg', '454', '454', '545', '4545454545', 'fdgfdg', 0, NULL, 0, 'd', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
+(2, 1, 1, 2, 0, 'dfdsfds', 'dfdsfdsf', '5424571214', '46512045475', 'dsfsdf', 'dfdf', 'dsfdsf', 'dsfdsf', 'dsfdsf', 'dfdsf', 4294967295, NULL, 0, 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
+(3, 1, 2, 0, 0, 'dfgdfgfg', 'fgfgfg', '333333333333', '333333333333', 'dfgfdg', 'fgdf', 'gfdg', 'fdgdfg', 'fdgdf', 'fgfdgdfg', 5103700, NULL, 0, 'a', 'admin', 'admin', '2018-11-03 18:00:00', '2018-11-03 18:00:00'),
+(5, 1, 2, 1, 2, 'fdgfdg', 'fgfg', '5555555555555', '66666666666666', 'gfg', '454', '454', '545', '4545454545', 'fdgfdg', 17979222, NULL, 0, 'a', 'admin', 'admin', '2018-11-06 18:00:00', '2018-11-06 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -487,10 +484,38 @@ INSERT INTO `purchase` (`id`, `supplier_id`, `customer_id`, `order_id`, `puc_lc_
 
 CREATE TABLE `purchase_pricing` (
   `id` int(30) UNSIGNED NOT NULL,
-  `purchase_id` int(20) DEFAULT NULL,
-  `head_id` int(20) DEFAULT NULL,
-  `amount` int(10) DEFAULT NULL
+  `pus_id` int(20) UNSIGNED NOT NULL,
+  `lc_value` int(10) UNSIGNED DEFAULT NULL,
+  `obc_value` int(10) UNSIGNED DEFAULT NULL,
+  `insurance_charge` int(10) UNSIGNED DEFAULT NULL,
+  `final_dosis` int(10) UNSIGNED DEFAULT NULL,
+  `custom_value` int(10) UNSIGNED DEFAULT NULL,
+  `cf_agent` int(10) UNSIGNED DEFAULT NULL,
+  `cuharf_value` int(10) UNSIGNED DEFAULT NULL,
+  `s_charge` int(10) UNSIGNED DEFAULT NULL,
+  `regi_charge` int(10) UNSIGNED DEFAULT NULL,
+  `first_party_insu` int(10) UNSIGNED DEFAULT NULL,
+  `third_party_insu` int(10) UNSIGNED DEFAULT NULL,
+  `workshop_bill` int(10) UNSIGNED DEFAULT NULL,
+  `decuration_bill` int(10) UNSIGNED DEFAULT NULL,
+  `other_exp` int(10) UNSIGNED DEFAULT NULL,
+  `status` char(5) DEFAULT 'a',
+  `created_by` varchar(100) DEFAULT NULL,
+  `updated_by` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `purchase_pricing`
+--
+
+INSERT INTO `purchase_pricing` (`id`, `pus_id`, `lc_value`, `obc_value`, `insurance_charge`, `final_dosis`, `custom_value`, `cf_agent`, `cuharf_value`, `s_charge`, `regi_charge`, `first_party_insu`, `third_party_insu`, `workshop_bill`, `decuration_bill`, `other_exp`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 3, 10000, 50000, 0, 6000, 1000, 0, 0, 0, 0, 20000, 3000, 50000, 50000, 21000, 'd', 'admin', 'admin', '2018-11-06 10:48:57', '2018-11-06 10:48:57'),
+(2, 3, 50000, 254100, 254100, 5500, 545, 0, 0, 5000, 6845, 9000, 3500, 20000, 50000, 10000, 'd', 'admin', 'admin', '2018-11-06 10:50:41', '2018-11-07 05:52:42'),
+(3, 3, 5000, 4424, 5444, 0, 42424, 0, 0, 2001, 0, 77741, 4542424, 0, 424242, 0, 'a', 'admin', 'admin', '2018-11-07 06:24:17', '2018-11-07 11:11:21'),
+(4, 5, 50000, 0, 600000, 4540000, 0, 50000, 70000, 0, 7477000, 4740000, 440000, 0, 4445, 7777, 'a', 'admin', 'admin', '2018-11-07 11:30:40', '2018-11-07 11:30:40'),
+(5, 2, 55252, 4242, 0, 21102, 0, 0, 0, 758752, 0, 4294967295, 0, 224420120, 0, 0, 'a', 'admin', 'admin', '2018-11-07 12:07:43', '2018-11-07 12:07:43');
 
 -- --------------------------------------------------------
 
@@ -620,8 +645,7 @@ CREATE TABLE `tbl_lcs` (
 --
 
 INSERT INTO `tbl_lcs` (`id`, `lc_no`, `lc_date`, `lc_amount`, `car_qty`, `bank_name`, `branch_name`, `lc_insur`, `comp_id`, `supplier_id`, `agent_id`, `ship_name`, `arriv_date`, `port_name`, `note`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, '202020220', '2018-11-04 18:00:00', 20000, 2, 'DBBL', 'mirpur', 'dfdf', 1, 1, 1, '', '2018-11-04 18:00:00', '', '', 'a', 'admin', 'admin', '2018-11-04 18:00:00', '2018-11-05 11:25:29'),
-(2, '323434', '2018-11-04 18:00:00', 5000, 1, 'dbbl', 'gh', 'ghg', 1, 1, 1, '', '2018-11-04 18:00:00', '', '', 'a', 'admin', 'admin', '2018-11-04 18:00:00', '2018-11-04 18:00:00');
+(2, '777777777777', '2018-11-05 18:00:00', 10000, 1, 'fff', 'fddfg', 'dfgfg', 1, 1, 1, '', '2018-11-06 18:00:00', '', '', 'a', 'admin', 'admin', '2018-11-06 18:00:00', '2018-11-06 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -720,7 +744,8 @@ ALTER TABLE `ie_heads`
 -- Indexes for table `lc_details`
 --
 ALTER TABLE `lc_details`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indexes for table `months`
@@ -862,7 +887,7 @@ ALTER TABLE `ie_heads`
 -- AUTO_INCREMENT for table `lc_details`
 --
 ALTER TABLE `lc_details`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `months`
@@ -886,13 +911,13 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `purchase_pricing`
 --
 ALTER TABLE `purchase_pricing`
-  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `salaries`

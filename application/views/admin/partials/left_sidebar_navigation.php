@@ -112,6 +112,15 @@
     </a>
     <b class="arrow"></b>
   </li>
+  <li class="<?= ($this->uri->uri_string()== 'ready/car/sale')?'active': ' ' ?>">
+    <!-- module/dashboard -->
+    <a href="<?php echo base_url(); ?>ready/car/sale"> 
+      <i class="menu-icon fa fa-th-list"></i>
+      <span class="menu-text">Ready Car Sale </span>
+    </a>
+    <b class="arrow"></b>
+  </li>
+
   <?php } if($access->customer_entry ==1){ ?>
   <li class="<?= ($this->uri->uri_string()== 'customer/insert')?'active': ' ' ?>">
     <!-- module/dashboard -->

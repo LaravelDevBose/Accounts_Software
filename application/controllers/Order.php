@@ -315,4 +315,23 @@ class Order extends MY_Controller
 		}
 	}
 
+	/*========== Ready Car sale page =========== */
+	public function ready_car_sale_page()
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			if($this->admin_access('all_order_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
+			$data['title'] = 'Ready Car Sale';  
+			$data['content'] = 'order_info/ready_car_sale';
+
+			$this->load->view('admin/adminMaster', $data);
+		}
+	}
+
 }

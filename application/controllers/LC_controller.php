@@ -10,7 +10,7 @@ class LC_controller extends MY_Controller
 		parent::__construct();
 		if (!$this->Admin_model->is_admin_loged_in()) 
 		{
-			redirect('Adminlogin/?logged_in_first');
+			redirect('Adminlogin/?logged_in_first'); 
 		}
 	}
 
@@ -63,7 +63,7 @@ class LC_controller extends MY_Controller
 			$data['companies'] = $this->Company_model->find_all_company_info(); 
 			$data['suppliers'] = $this->Supplier_model->find_all_supplier_info(); 
 			$data['agents'] = $this->Agent_model->find_all_agent_info(); 
-			$data['customers'] = $this->Customer_model->find_all_customer_info(); 
+			$data['purchases'] = $this->Purchase_model->find_purchase_by_chassis_no(); 
 			$this->load->view('admin/adminMaster', $data);
 		}	
 	}
@@ -193,16 +193,7 @@ class LC_controller extends MY_Controller
 		}
 	}
 
-	public function find_chassis_no($cus_id=Null)
-	{
-		$order_info = $this->Purchase_model->find_purchase_by_customer($cus_id);
-
-		if($order_info){
-			echo json_encode($order_info);
-		}else{
-			echo 0;
-		}
-	}
+	
 
 	public function find_purchase_info($pus_id=Null)
 	{

@@ -148,26 +148,25 @@
                 <div class="col-sm-4">
                   
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="customer_id"> Client Name:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-4 control-label no-padding-left" for="pus_id"> Chassis No:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-8">
-                      <select name="customer_id" id="customer_id" class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
-                          <option value="0">Select A Customer</option>
-                        <?php if(isset($customers) && $customers): foreach($customers as $customer):?>
-                          <option value="<?= $customer->id ?>"><?= $customer->cus_code.'-'.$customer->cus_name; ?></option>
+                      <select name="pus_id" id="pus_id" class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
+                          <option value="0">Select A Chassis Number</option>
+                        <?php if(isset($purchases) && $purchases): foreach($purchases as $purchase):?>
+                          <option value="<?= $purchase->id ?>"><?= $purchase->puc_chassis_no; ?></option>
                         <?php  endforeach; endif; ?>
                       </select>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="pus_id">Chassis No:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-4 control-label no-padding-left" for="cus_info">Customer: </label>
                     <div class="col-sm-8">
-                      <select name="pus_id" id="pus_id" class="form-control" style="height: 28px; border-radius: 5px;">
-                        
-                      </select>
+                      <input type="hidden" id="customer_id"  name="customer_id" />
+                      <input type="text" id="cus_info"  name="cus_info" readonly required placeholder="Customer Name" class="form-control"  />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="engine_no">Engine No:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-4 control-label no-padding-left" for="engine_no">Engine No:</label>
                     <div class="col-sm-8">
                       <input type="hidden" id="chassis_no"  name="chassis_no" />
                       <input type="hidden" id="order_id"  name="order_id" />
@@ -175,7 +174,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="car_model">Car Model:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-4 control-label no-padding-left" for="car_model">Car Model:</label>
                     <div class="col-sm-8">
                       <input type="text" id="car_model"  name="car_model" readonly placeholder="Car Model" class="form-control"  />
                     </div>
@@ -193,7 +192,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="car_year">Year:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-4 control-label no-padding-left" for="car_year">Year:</label>
                     <div class="col-sm-8">
                        <input type="text" name="car_year" id="car_year" class="form-control" readonly placeholder="Car Year" />
                     </div>
