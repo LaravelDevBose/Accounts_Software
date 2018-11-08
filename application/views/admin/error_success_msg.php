@@ -120,5 +120,13 @@
     </div>
   <?php endif; ?>
 
+ <?php
+    if($this->session->flashdata('warning_msg')) :
+  ?>
+    <div class="alert alert-danger alert-styled-left alert-arrow-left alert-bordered">
+        <button type="button" style="color: red;" class="close" data-dismiss="alert">
+        <span>&times;</span><span class="sr-only">Close</span></button><?php echo $this->session->flashdata('warning_msg'); ?>
+    </div>
+  <?php endif; ?>
 
 </div>

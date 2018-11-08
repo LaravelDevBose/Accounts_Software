@@ -19,7 +19,20 @@
 					Order Full Amount is not Paid...!
 					<br>
 				</div>
+				<?php endif;  if($order->ord_lc_no == '' || $order->ord_chassis_no == ''): ?>
+					<div class="alert alert-danger">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="ace-icon fa fa-times"></i>
+						</button>
+						<strong>
+							<i class="ace-icon fa fa-times"></i>
+							Warning!
+						</strong>
+						Order Lc Number and Chassis Number not added add First..!
+						<br>
+					</div>
 				<?php endif; ?>
+
 				<div class="col-sm-6">
 					<div class="row">
 						<div class="col-xs-11 label label-lg label-info arrowed-in arrowed-right">
@@ -82,6 +95,7 @@
 			</div><!-- /.row -->
 			<div class="row">
 				<div class="col-md-7">
+					<?php if($order->order_status != 'c'):?>
 					<div class="widget-box " >
 						<div class="widget-body" style="background-color: #E7F2F8;">
 							<div class="widget-main">
@@ -106,6 +120,7 @@
 							</div>
 						</div>
 					</div>
+					<?php endif;?>
 				</div>
 				<div class="col-md-5">
 					<div class="widget-box " >

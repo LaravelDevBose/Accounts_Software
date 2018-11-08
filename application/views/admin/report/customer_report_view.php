@@ -18,7 +18,10 @@
 
                
                 <div id="data_table">
-                  <div class="table-header">
+                  <div id="header" style="display: none;">
+                    <?php $this->load->view('admin/partials/print_header');?>
+                  </div>
+                  <div id="table-header" class="table-header">
                     Customer Information List
                   </div>
 

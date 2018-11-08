@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Account extends CI_Controller
+class Account extends MY_Controller
 {
 
 	/*==========Admin Login Check=============*/
@@ -25,107 +25,18 @@ class Account extends CI_Controller
 		}
 	}
 
-	/********** Payment Entry Method List ****************/
-	/********** Payment Entry Method List ****************/
-	/********** Payment Entry Method List ****************/
-
-	public function payment_entry_page()
-	{
-		$data['title'] = 'Payment Entry';
-		$data['content'] = 'accounts/payment_entry';
-		$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
-		$data['payments'] = $this->Account_model->get_all_payment_data();
-		$this->load->view('admin/adminMaster', $data);
-	}
-
-	/*===== Store Payment Entry Data =======*/
-	public function payment_entry_store()
-	{	
-		// print_r($this->input->post()); die();
-
-		$this->form_validation->set_rules('ie_head', 'IE Head ', 'required|trim');
-		$this->form_validation->set_rules('date', 'Date', 'required|trim');
-		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
-
-		if($this->form_validation->run() == FALSE){
-		 	$data['title'] = 'Payment Entry';
-			$data['content'] = 'accounts/payment_entry';
-			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
-			$data['payments'] = $this->Account_model->get_all_payment_data();
-			$this->load->view('admin/adminMaster', $data);
-		}else{
-
-		 	if($this->Account_model->store_account_data()){
-		 		$data['payments'] = $this->Account_model->get_all_payment_data();
-		 		$this->load->view('admin/accounts/payment_tbl', $data);
-		 	}else{
-		 		echo 0;
-		 	}
-		}
-	}
-
-
-	/*======= Edit Payment page =======*/
-	public function payment_entry_edit($id=Null)
-	{
-		if($result = $this->Account_model->get_data_by_id($id)){
-			$data['entry'] = $result;
-			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
-			$this->load->view('admin/accounts/edit_payment', $data);
-		}else{
-			$data['error']="No Data Found...!";
-			$this->session->set_flashdata($data);
-			redirect('account/payment');
-		}
-	}
-
-	/*====== Update Payment Date =========*/
-	public function payment_entry_update($id=Null)
-	{
-		$this->form_validation->set_rules('ie_head', 'IE Head ', 'required|trim');
-		$this->form_validation->set_rules('date', 'Date', 'required|trim');
-		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
-
-		if($this->form_validation->run() == FALSE){
-		 	$data['title'] = 'Payment Entry';
-			$data['content'] = 'accounts/payment_entry';
-			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
-			$data['payments'] = $this->Account_model->get_all_payment_data();
-			$this->load->view('admin/adminMaster', $data);
-		}else{
-
-		 	if($this->Account_model->update_account_data($id)){
-		 		$data['success']="Update SuccessFully";
-				$this->session->set_flashdata($data);
-				redirect('account/payment');
-		 	}else{	
-		 		$data['error']="Update UnSuccessfull";
-				$this->session->set_flashdata($data);
-				redirect('account/payment');
-		 	}
-		}
-	}
-
-	/*======== delete _data=====*/
-	public function delete_payment_data($id=Null)
-	{
-		if($this->Account_model->delete_data($id)){
-			$data['success']="Delete SuccessFully";
-			$this->session->set_flashdata($data);
-			redirect('account/payment');
-		}else{
-			$data['error']="Delete UnSuccessfull";
-			$this->session->set_flashdata($data);
-			redirect('account/payment');
-		}
-	}
-
 	/********** Other Income Method List ****************/
 	/********** Other Income Method List ****************/
 	/********** Other Income Method List ****************/
 
 	public function other_income_page()
-	{
+	{	
+		if($this->admin_access('other_income') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		$data['title'] = 'Other Income Entry';
 		$data['content'] = 'accounts/other_income_entry';
 		$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
@@ -162,7 +73,13 @@ class Account extends CI_Controller
 
 	/*======= Edit Other Income page =======*/
 	public function other_income_edit($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		if($result = $this->Account_model->get_data_by_id($id)){
 			$data['entry'] = $result;
 			$data['ie_heads'] = $this->IE_head_model->get_all_ie_head_info();
@@ -203,7 +120,12 @@ class Account extends CI_Controller
 
 	/*======== delete _data=====*/
 	public function delete_other_income($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
 		if($this->Account_model->delete_data($id)){
 			$data['success']="Delete SuccessFully";
 			$this->session->set_flashdata($data);

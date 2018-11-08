@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Order extends CI_Controller
+class Order extends MY_Controller
 {
 	/*==========Admin Login Check=============*/
 	public function __construct()
@@ -14,6 +14,8 @@ class Order extends CI_Controller
 		}
 	}
 
+	
+
 	/*==========Order Page show ==========*/
 	public function index()
 	{ 
@@ -21,6 +23,11 @@ class Order extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('all_order_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
 			$data['title'] = 'Order Information List';  
 			$data['content'] = 'order_info/order_list';
 			$data['orders']	= $this->Order_model->get_order_info();
@@ -28,6 +35,43 @@ class Order extends CI_Controller
 		}	
 	}
 
+	/*========= Order Pending List==========*/
+	public function order_pending_list()
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			if($this->admin_access('pending_order_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
+			$data['title'] = 'Order Pending Information List';  
+			$data['content'] = 'order_info/order_pending_list';
+			$data['orders']	= $this->Order_model->get_order_pending_info();
+			$this->load->view('admin/adminMaster', $data);
+		}
+	}
+
+	/*========= Order On Process List==========*/
+	public function order_onprocess_list()
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			if($this->admin_access('process_order_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
+			$data['title'] = 'Order On Procces List';  
+			$data['content'] = 'order_info/order_onprocess_list';
+			$data['orders']	= $this->Order_model->get_order_onprocess_info();
+			$this->load->view('admin/adminMaster', $data);
+		}
+	}
 
 
 	/*==========Order insert Page show ==========*/
@@ -37,10 +81,45 @@ class Order extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('order_entry') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
+
+
+			$last_order = $this->db->order_by('id', 'desc')->limit(1)->get('orders')->row();
+			if(is_null($last_order)|| !isset($last_order)){
+				$order_no = 'M-00001';
+			}else{
+
+				$num = substr($last_order->order_no, 2, strlen($last_order->order_no));
+
+				if($num < 9):
+					$num+=1;
+					$order_no = 'M-0000'.$num;
+				elseif($num < 99):
+					$num+=1;
+					$order_no = 'M-000'.$num;
+				elseif($num < 999):
+					$num+=1;
+					$order_no = 'M-00'.$num;
+				elseif($num<9999):
+					$num+=1;
+					$order_no = 'M-0'.$num;
+				else:
+					$num+=1;
+					$order_no = 'M-'.$num;
+				endif;
+			}
+
 			$data['title'] = 'Order Information';  
 			$data['content'] = 'order_info/create_order';
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
 			$data['lc_data'] = $this->LC_model->get_all_lc_info();
+			$data['cars'] = $this->Purchase_model->unOrder_car_list();
+			$data['order_no'] = $order_no;
+
 			$this->load->view('admin/adminMaster', $data);
 		}	
 	}
@@ -49,10 +128,6 @@ class Order extends CI_Controller
 	public function store_order_info()
 	{
 		$this->form_validation->set_rules('cus_id', 'Select Customer', 'required|trim');
-		// $this->form_validation->set_rules('ord_lc_no', 'L/c Number ', 'required|trim');
-		// $this->form_validation->set_rules('ord_car_model', 'Model Number ', 'required|trim');
-		// $this->form_validation->set_rules('ord_engine_no', 'Engine Number', 'required|trim');
-		// $this->form_validation->set_rules('ord_chassis_no', 'Chassis No', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Order No', 'required|trim');
 
 		if($this->form_validation->run() == FALSE){
@@ -65,8 +140,12 @@ class Order extends CI_Controller
 		}else{
 			$cus_id = $this->input->post('cus_id');
 			
-			if($this->Order_model->store_order_info($cus_id)){
+			if($order_id = $this->Order_model->store_order_info($cus_id)){
 
+				$pus_id = $this->input->post('pus_id');
+				$lc_no = $this->input->post('ord_lc_no');
+				$this->Purchase_model->update_order_info_in_purchase($pus_id,$order_id,$cus_id,$lc_no,0);
+					
 				$data['success']="Save Successfully!";
 				$this->session->set_flashdata($data);
 				redirect('order/insert');
@@ -87,7 +166,11 @@ class Order extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
-
+			if($this->admin_access('edit_access') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
 			if($result = $this->Order_model->order_info_by_id($id)){
 
 				$data['title'] = 'Order Information';  
@@ -96,6 +179,7 @@ class Order extends CI_Controller
 				$data['lc_data'] = $this->LC_model->get_all_lc_info();
 				$data['customer_info'] = $this->Customer_model->customer_by_id($result->cus_id);
 				$data['order'] = $result;
+				$data['cars'] = $this->Purchase_model->unOrder_car_list();
 				$this->load->view('admin/adminMaster', $data);
 			}else{
 				$data['warning'] ='No data Found!';
@@ -124,7 +208,9 @@ class Order extends CI_Controller
 	}
 	/*========= Order Data Update =======*/
 	public function update_order_info($id = Null)
-	{
+	{	
+		
+
 		$this->form_validation->set_rules('cus_id', 'Select Customer', 'required|trim');
 		$this->form_validation->set_rules('ord_car_model', 'Model Number ', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Order No', 'required|trim');
@@ -143,6 +229,13 @@ class Order extends CI_Controller
 			
 			if($this->Order_model->update_order_info($id)){
 
+				$pus_id = $this->input->post('pus_id');
+				$cus_id = $this->input->post('cus_id');
+				if($pus_id != 0){
+					$this->Purchase_model->update_order_info_in_purchase($pus_id,$id,$cus_id,0);
+				}else{
+					$this->Purchase_model->update_order_edit_info_in_purchase($id,$cus_id);
+				}
 				$data['success']="Update Successfully!";
 				$this->session->set_flashdata($data);
 				redirect('order/list');
@@ -158,8 +251,16 @@ class Order extends CI_Controller
 
 	/*======== Delete Order Info Data ========*/
 	public function delete_order_info($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('order/dashboard');
+		}
+		
 		if($result = $this->Order_model->delete_order_info($id)){
+
+			$this->Purchase_model->order_id_remove($id);
 
 			$data['success']="Delete Successfully!";
 			$this->session->set_flashdata($data);
@@ -174,9 +275,18 @@ class Order extends CI_Controller
 
 	/*======== order delivery status change =======*/
 	public function order_delivery($id=Null)
-	{
+	{	
+		$res = $this->Order_model->order_info_by_id($id);
+		if($res->ord_lc_no == '' || $res->ord_chassis_no == ''){
+
+			$data['error']="Order Lc Number and Chassis Number not added add First..!";
+			$this->session->set_flashdata($data);
+			redirect('order/list');
+		}
+
 		if($this->Order_model->delivery_order($id)){
 
+			$this->Purchase_model->update_car_dliv_status($id);
 			$data['success']="Deliver Successfully!";
 			$this->session->set_flashdata($data);
 			redirect('order/list');
@@ -202,6 +312,25 @@ class Order extends CI_Controller
 			$data['error']="No Data Find..!";
 			$this->session->set_flashdata($data);
 			redirect('order/list');
+		}
+	}
+
+	/*========== Ready Car sale page =========== */
+	public function ready_car_sale_page()
+	{
+		if (!$this->Admin_model->is_admin_loged_in()) 
+		{
+			redirect('Adminlogin/?logged_in_first');
+		}else{
+			if($this->admin_access('all_order_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('order/dashboard');
+			}
+			$data['title'] = 'Ready Car Sale';  
+			$data['content'] = 'order_info/ready_car_sale';
+
+			$this->load->view('admin/adminMaster', $data);
 		}
 	}
 

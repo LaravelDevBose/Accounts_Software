@@ -53,7 +53,7 @@
                     <label class="col-sm-5 control-label no-padding-left" for="lc_no">L/C No: </label>
                     <div class="col-sm-7">
                       <input type="hidden" name="lc_id" id="lc_id">
-                      <input type="number" id="lc_no" required name="lc_no" readonly class="form-control" placeholder="L/C Number" /> 
+                      <input type="text" id="lc_no" required name="lc_no" readonly class="form-control" placeholder="L/C Number" /> 
                     </div>
                   </div>
                 </div>
@@ -126,10 +126,10 @@
           <table id="dynamic-table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
+                <th>Date</th>
                 <th>Customer Name</th>
                 <th>Chassis No</th>
                 <th>L/C No</th>
-                <th>Date</th>
                 <th>Amount</th>
                 <th>Description</th>
                 <th>Action</th>
@@ -139,15 +139,16 @@
             <tbody id="tBody">
                 <?php  if($collections && isset($collections)): foreach($collections as $data):?>
               <tr>
-                <td class="center"><?= ucfirst($data->cus_name) ?></td>
-                <td><?= $data->ord_chassis_no; ?></td>
-                <td><?= $data->lc_no; ?></td>
                 <td>
                   <?php 
                     $date = new DateTime($data->date);
                     echo date_format($date, 'd M Y'); 
                   ?> 
                 </td>
+                <td class="center"><?= ucfirst($data->cus_name) ?></td>
+                <td><?= $data->ord_chassis_no; ?></td>
+                <td><?= $data->lc_no; ?></td>
+                
                 <td><?= number_format($data->amount) ?></td>
                 <td><?= $data->description; ?></td>
                 <td>
@@ -155,7 +156,7 @@
                         <a class="green linka fancybox fancybox.ajax" href="<?= base_url();?>collection/edit/<?= $data->id; ?>" >
                           <i class="ace-icon fa fa-pencil bigger-130"></i>
                         </a>
-                        <a class="red" href="<?= base_url(); ?>collection/delete/<?= $data->id?>" onclick="confirm('Are You Sure Went to Delete This! ')">
+                        <a class="red" href="<?= base_url(); ?>collection/delete/<?= $data->id?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
                           <i class="ace-icon fa fa-trash-o bigger-130"></i>
                         </a>
                     </div>

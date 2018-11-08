@@ -1,10 +1,11 @@
 <?php $this->load->view('admin/partials/header_css_js') ?>
+
 <?php $this->load->view('admin/partials/header_navigation') ?>
 
 
 
 
-  <div class="main-container ace-save-state" id="main-container">
+  <div class="main-container ace-save-state" id="main-container" style="padding-top: 55px;">
       <script type="text/javascript">
         try{ace.settings.loadState('main-container')}catch(e){}
       </script>
@@ -14,35 +15,7 @@
           try{ace.settings.loadState('sidebar')}catch(e){}
         </script>
 
-        <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-          <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-            <button class="btn btn-success">
-              <i class="ace-icon fa fa-signal"></i>
-            </button>
-
-            <button class="btn btn-info">
-              <i class="ace-icon fa fa-pencil"></i>
-            </button>
-
-            <button class="btn btn-warning">
-              <i class="ace-icon fa fa-users"></i>
-            </button>
-
-            <button class="btn btn-danger">
-              <i class="ace-icon fa fa-cogs"></i>
-            </button>
-          </div>
-
-          <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-            <span class="btn btn-success"></span>
-
-            <span class="btn btn-info"></span>
-
-            <span class="btn btn-warning"></span>
-
-            <span class="btn btn-danger"></span>
-          </div>
-        </div><!-- /.sidebar-shortcuts -->
+        <!-- /.sidebar-shortcuts -->
 
 
         <?php $this->load->view('admin/partials/left_sidebar_navigation'); ?>
@@ -60,17 +33,19 @@
             <ul class="breadcrumb">
               <li>
                 <i class="ace-icon fa fa-home home-icon"></i>
-                <a href="#">Home</a>
+                <a href="<?= base_url();?>">Home</a>
               </li>
 
               <li>
                 <a href="#"><?php if(isset($title)): echo $title; endif; ?></a>
               </li>
+
             </ul>
+
           </div>
 
           <div class="page-content">
-
+            
             
             <div id="loader" hidden style="position: fixed; z-index: 1000; margin: auto; height: 100%; width: 100%; background:rgba(255, 255, 255, 0.72);;">
             <img src="<?php echo base_url(); ?>libs/Backend/assets/loader.gif" style="top: 30%; left: 50%; opacity: 1; position: fixed;">

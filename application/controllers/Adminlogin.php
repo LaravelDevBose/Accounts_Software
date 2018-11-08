@@ -1,6 +1,6 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Adminlogin extends CI_Controller
+class Adminlogin extends MY_Controller
 {
 	/*================View Login Page======================*/	
 	/*================View Login Page======================*/	
@@ -41,11 +41,11 @@ class Adminlogin extends CI_Controller
 			$res =  $this->Admin_model->admin_login_data_check();
 			if($res)
 			{
-				redirect('admindashboard');
+				redirect('Admindashboard');
 			}
 			else{
-				$data['error_login'] = 'Invalid User Name or Password';
-				$this->load->view('login_page', $data);
+				$data['login_error'] = 'Invalid User Name or Password';
+				$this->load->view('login_page', $data); 
 			}
 		}
 	}

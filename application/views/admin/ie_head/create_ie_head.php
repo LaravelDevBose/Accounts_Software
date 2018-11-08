@@ -36,11 +36,21 @@
               </div>
 
               <div class="col-sm-4">
+                <div class="form-group">
+                  <label class="col-sm-5 control-label no-padding-left" for="head_type">Head Type:<span class="text-bold text-danger">*</span></label>
+                  <div class="col-sm-7">
+                    <select class="chosen-select form-control" id="head_type" style="height: 30px; border-radius: 5px;">
+                      <option value="C">Car Payment</option>
+                      <option value="O">Office Payment</option>
+                      
+                    </select>
+                  </div>
+                </div>
 
                 <div class="form-group">
-                  
+                  <div class="col-sm-4 " for="head_type"></div>
                   <div class="col-sm-8">
-                    <button type="Submit" id="head_submit" style="height: 27px; padding-top: 0px; float: right; " class="btn btn-primary cus_submit pull-left">Submit</button>
+                    <button type="Submit" id="head_submit" style="height: 27px; padding-top: 0px; float: right; " class="btn btn-primary ">Submit</button>
                   </div>
                 </div>
 
@@ -80,6 +90,7 @@
                 </th>
                 <th>SL No</th>
                 <th>Head Title</th>
+                <th>Head Type</th>
                 <th>Action</th>
                 <th style="display:none;"></th>
                 <th style="display:none;"></th>
@@ -98,18 +109,25 @@
                 <td><?= $i++; ?></td>
                 <td><?= $ie_head->head_title; ?></td>
                 <td>
+                    <?php if($ie_head->head_type == 'C'):?>
+                      <label class="label label-success">Car Payment</label>
+                      <?php else: ?>
+                      <label class="label label-danger">Ofice Payment</label>
+                    <?php endif; ?>
+                </td>
+                <td>
                     <div class="hidden-sm hidden-xs action-buttons">
                         <a class="green linka fancybox fancybox.ajax" href="<?= base_url();?>ie_head/edit/<?= $ie_head->id; ?>" >
                           <i class="ace-icon fa fa-pencil bigger-130"></i>
                         </a>
-                        <a class="red" href="<?= base_url(); ?>ie_head/delete/<?= $ie_head->id?>" onclick="confirm('Are You Sure Went to Delete This! ')">
+                        <a class="red" href="<?= base_url(); ?>ie_head/delete/<?= $ie_head->id?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
                           <i class="ace-icon fa fa-trash-o bigger-130"></i>
                         </a>
                     </div>
                 </td>
                 <td style="display:none;"></td>
                 <td style="display:none;"></td>
-                <td style="display:none;"></td>
+
 
                 
               </tr>

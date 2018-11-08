@@ -71,7 +71,7 @@ class Salary_model extends CI_Model
 			'payment_amount' => $this->input->post('payment_amount'),
 			'due_amount' => $this->input->post('due_amount'),
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d')
+			'updated_at' =>date('Y-m-d H:i:s')
 		);
 
 		$this->db->where('id', $id);

@@ -24,7 +24,7 @@
             <div class="form-group">
               <label class="col-sm-5 control-label no-padding-left" for="e_cus_id">Customer Name:<span class="text-bold text-danger">*</span></label>
               <div class="col-sm-7">
-                <select class="form-control select-chosen " id="e_cus_id" required name="cus_id" style="height: 30px; border-radius: 5px;">
+                <select class="form-control chosen-select " id="e_cus_id" required name="cus_id" style="height: 30px; border-radius: 5px;">
                   <option value=" ">Select a Customer</option>
                   <?php if($customers && isset($customers)):  foreach($customers as $customer):?>
                     <option value="<?= $customer->id; ?>" <?= ($customer->id == $collection->cus_id)? 'selected': '' ?>><?= $customer->cus_code.'-'.ucfirst($customer->cus_name); ?></option>
@@ -35,7 +35,7 @@
             <div class="form-group">
               <label class="col-sm-5 control-label no-padding-left" for="e_order_no">Chassis No:<span class="text-bold text-danger">*</span></label>
               <div class="col-sm-7">
-                <select class="form-control select-chosen" id="e_order_no" required name="order_no" style="height: 30px; border-radius: 5px;">
+                <select class="form-control chosen-select" id="e_order_no" required name="order_no" style="height: 30px; border-radius: 5px;">
                   <option value=" ">Select a Chassis No</option>
                   <?php if($orders && isset($orders)):  foreach($orders as $order):?>
                     <option value="<?= $order->id; ?>" <?= ($order->id == $collection->order_no)? 'selected': '' ?> ><?= $order->ord_chassis_no; ?></option>
@@ -87,8 +87,21 @@
 </div>
 <?php $this->load->view('admin/ajax/collection_ajax');?>
 <script>
-    $('.date-picker').datepicker({
+  $( document ).ready(function() {
+    var config = {
+           '.chosen-select'           : {},
+           '.chosen-select-deselect'  : {allow_single_deselect:true},
+           '.chosen-select-no-single' : {disable_search_threshold:10},
+           '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+           '.chosen-select-width'     : {width:"95%"}
+      }
+      for (var selector in config) {
+        $(selector).chosen(config[selector]);
+      }
+      $('.date-picker').datepicker({
           autoclose: true,
           todayHighlight: true
         })
+    });
+    
   </script>

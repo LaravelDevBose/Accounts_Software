@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Employee extends CI_Controller
+class Employee extends MY_Controller
 {
 
 	/*==========Admin Login Check=============*/
@@ -20,6 +20,11 @@ class Employee extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('employee_list') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('hr_payroll/dashboard');
+			}
 			$data['title'] = 'Employee Information List';  
 			$data['content'] = 'employee/employee_list';
 			$data['employees'] = $this->Employee_model->find_all_employee_info();
@@ -34,6 +39,11 @@ class Employee extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('employee_entry') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('hr_payroll/dashboard');
+			}
 			$data['title'] = 'Add Employee Information';  
 			$data['content'] = 'employee/insert_employee';
 			$this->load->view('admin/adminMaster', $data);
@@ -77,6 +87,11 @@ class Employee extends CI_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
+			if($this->admin_access('edit_access') != 1){
+				$data['warning_msg']="You Are Not able to Access this Module...!";
+				$this->session->set_flashdata($data);
+				redirect('hr_payroll/dashboard');
+			}
 			$data['title'] = 'Edit Employee Information';  
 			$data['content'] = 'employee/edit_employee';
 			$data['employee'] = $this->Employee_model->employee_by_id($id);
@@ -118,7 +133,13 @@ class Employee extends CI_Controller
 
 	/*========= delete Employee Info =======*/
 	public function delete_employee_info($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('hr_payroll/dashboard');
+		}
+
 		if($this->Employee_model->delete_employee_data($id)){
 			$data['success'] = 'Delete Successfully!';
 			$this->session->set_flashdata($data);
@@ -139,7 +160,12 @@ class Employee extends CI_Controller
 
 	/*========== Sallary Month Insert Page==============*/
 	public function month_insert_Page()
-	{
+	{	
+		if($this->admin_access('monthe_entry') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('hr_payroll/dashboard');
+		}
 		$data['title'] = "Add Sallary Month";
 		$data['content'] = 'employee/month/month_insert_Page';
 		$data['month_names'] = $this->SallaryMonth_model->all_month_name();
@@ -168,7 +194,12 @@ class Employee extends CI_Controller
 
 	/*====== Edit Sallary Month Data ========*/
 	public function edit_sallary_month($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('hr_payroll/dashboard');
+		}
 		if($res = $this->SallaryMonth_model->sallary_month_by_id($id)){
 			$data['sallary_month'] = $res;
 			$data['month_names'] = $this->SallaryMonth_model->all_month_name();
@@ -208,7 +239,12 @@ class Employee extends CI_Controller
 
 	/*======== delete sallary month data ==========*/
 	public function delete_sallary_month($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('hr_payroll/dashboard');
+		}
 		if( $this->SallaryMonth_model->sallary_month_delete($id)){
 			$data['success'] = 'Delete Successfully';
 			$this->session->set_flashdata($data);

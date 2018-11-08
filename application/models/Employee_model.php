@@ -63,7 +63,7 @@ class Employee_model extends CI_Model
 			'pre_address'	=> $this->input->post('pre_address'),
 			'par_address'	=> $this->input->post('par_address'),
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d')
+			'updated_at' =>date('Y-m-d H:i:s')
 		);
 
 		$this->db->where('id', $id);

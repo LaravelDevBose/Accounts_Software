@@ -43,7 +43,7 @@
                     <select class="chosen-select form-control" id="month_id" name="month_id" required  style="height: 30px; border-radius: 5px;">
                       <option value="0">Select a Month Name</option>
                       <?php if($month_names && isset($month_names)):  foreach($month_names as $month):?>
-                        <option value="<?= $month->id; ?>"><?= $month->month_name; ?></option>
+                        <option value="<?= $month->id; ?>"><?= $month->m onth_name; ?></option>
                       <?php endforeach; endif; ?>
                     </select>
                   </div>

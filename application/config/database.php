@@ -12,6 +12,10 @@ $db['default'] = array(
 	'username' => 'root',
 	'password' => '',
 	'database' => 'accounts_soft',
+	
+	// 'username' => 'greentechin6ustr_Knight_coder',
+	// 'password' => 'KnightC0der',
+	// 'database' => 'greentechin6ustr_maven',
 
 
 	'dbdriver' => 'mysqli',

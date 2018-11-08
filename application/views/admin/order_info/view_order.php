@@ -4,12 +4,13 @@
         <div class="widget-box">
             <div class="widget-header">
                 <h4 class="widget-title">Order Details Information</h4>
-                <div class="widget-toolbar">
-                    <button type="button" onclick="print_data()" class="btn btn-sm btn-info pull-right"><i class="ace-icon fa fa-print"  ></i> Print</button>
-                </div>
+                
             </div>
 
             <div class="widget-body" id="data_table">
+                <div id="header" style="display: none;">
+                    <?php $this->load->view('admin/partials/print_header');?>
+                </div>
                 <div class="widget-main">
                     <div class="row">
                         <div class="col-md-1"></div>
@@ -126,7 +127,7 @@
                                               <?php elseif($order->order_status == 'a'): ?>
                                               <span class="label " style="background: #36a2ec;">Active</span>
                                               <?php else: ?>
-                                              <span class="label " style="background: #ec880a;">Panding</span>
+                                              <span class="label " style="background: #ec880a;">Pending</span>
                                               <?php endif;?>
                                         </span>
                                     </div>

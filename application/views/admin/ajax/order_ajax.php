@@ -1,4 +1,5 @@
 <script>
+
 	/*=========== Find Customer info====== */
 	$('#cus_info').on('change', function(e){
 		var cus_id = e.target.value;

@@ -1,10 +1,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <form id="CusOrderForm" method="post" action="<?= base_url('customer/store'); ?>">  
-
-      <!--============Customer Information============ -->
-      <!--============Customer Information============ -->
+    <form id="CusOrderForm" method="post" action="<?= base_url('customer/store'); ?>" autocomplete="off" enctype="multipart/form-data">  
       <div class="widget-box">
         <div class="widget-header">
           <h4 class="widget-title">Customer Information</h4>
@@ -39,11 +36,16 @@
                     <input type="text" id="cus_name" name="cus_name" required placeholder="Customer Name" class="form-control" />
                   </div>
                 </div>
-                
+                <div class="form-group">
+                  <label class="col-sm-5 control-label no-padding-left" for="org_name"> Organization Name:</label>
+                  <div class="col-sm-7">
+                    <input type="text" id="org_name" name="org_name" placeholder="Organization Name" class="form-control" />
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-5 control-label no-padding-left" for="cus_contact_no"> Contact No:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-7">
-                    <input type="number" id="cus_contact_no" name="cus_contact_no" required placeholder="Contact No" class="form-control" />
+                    <input type="number" id="cus_contact_no" name="cus_contact_no"  required placeholder="Contact No" class="form-control" />
                   </div>
                 </div>
 
@@ -53,47 +55,72 @@
                     <input type="number" id="alt_contact_no" name="alt_contact_no" placeholder="Alt. Contact No" class="form-control" />
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-5 control-label no-padding-left" for="cus_email"> E-mail:</label>
+                  <div class="col-sm-7">
+                    <input type="email" id="cus_email" name="cus_email" placeholder="E-mail" class="form-control" />
+                  </div>
+                </div>
+                
               </div>
 
 
               <div class="col-sm-4">
+                
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="cus_entry_date"> Entry Date:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
                      <input class="form-control date-picker" required id="cus_entry_date" name="cus_entry_date" type="text" value="<?php echo date('Y-m-d'); ?>" 
                       data-date-format="yyyy-mm-dd" />
-
-                    
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="cus_email"> E-mail:</label>
-                  <div class="col-sm-8">
-                    <input type="email" id="cus_email" name="cus_email" placeholder="E-mail" class="form-control" />
-                  </div>
-                </div>
-                
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="cus_address"> Address:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
                     <textarea id="cus_address" required name="cus_address" placeholder="Address" class="form-control" ></textarea>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="cus_fb"> Facebook Id:</label>
+                  <div class="col-sm-8">
+                    <input type="text" id="cus_fb" name="cus_fb" placeholder="Facebook Id Url" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="id-input-file-2"> Image:</label>
+                  <div class="col-sm-8">
+                    <input type="file" name="cus_image" required id="id-input-file-2" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label no-padding-left" for="id-input-file-2">Business Card:</label>
+                  <div class="col-sm-8">
+                    <input type="file" name="cus_bus_card" id="id-input-file-2" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> </label>
+                  <div class="col-sm-8">
+                    <button type="Submit" class="btn btn-primary cus_submit pull-right">Submit</button>
+                  </div>
+                </div>
+
               </div>
           
             </div>
           </div>
         </div>
       </div>
+    </form>
+  </div>  
+</div>
 
-
-
-      <!--============Order Information============ -->
-      <!--============Order Information============ -->
+<div class="row">
+  <div class="col-xs-12">
       <div class="widget-box">
         <div class="widget-header">
-          <h4 class="widget-title">Order Information</h4>
+          <h4 class="widget-title">Customer Information List</h4>
           <div class="widget-toolbar">
             <a href="#" data-action="collapse">
               <i class="ace-icon fa fa-chevron-up"></i>
@@ -108,140 +135,62 @@
         <div class="widget-body">
           <div class="widget-main">
 
+
             <div class="row">
-              <div class="col-sm-2"></div>
+              <div class="col-xs-12">
+                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                     
+                      <th colspan="2">Customer Info</th>
+                      <th>Contact No.</th>
+                      <th>Email Address</th>
+                      <th>Entry Date</th>
+                      <th>Address</th>
+                      <th>Action</th>
+                      
+                    </tr>
+                  </thead>
 
-              <div class="col-sm-4">
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_lc_no"> L / C No:  </label>
-                  <div class="col-sm-8">
-                    <select class="chosen-select "  id="ord_lc_no" name="ord_lc_no" style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a L / C No</option>
-                      <?php if($lc_data && isset($lc_data)): foreach($lc_data as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->lc_no; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-                </div>
+                  <tbody id="tBody">
+                      <?php  if($customers && isset($customers)): foreach($customers as $customer):?>
+                    <tr>
+                      <?php  $image = base_url().$customer->cus_image;  if(!file_exists($image) && !getimagesize($image) ){ $image =base_url().'libs/upload_pic/no.png';} ?>
+                      <td><img src="<?= $image ?>" alt="" style="height: 40px; width: 40px; border: 1px solid #ddd;"></td>
+                      <td><?= $customer->cus_code.'-'.$customer->cus_name ?></td>
+                      <td><?= $customer->cus_contact_no.'<br>'.$customer->alt_contact_no ?></td>
+                      <td><?= $customer->cus_email ?> </td>
+                      <td>
+                        <?php 
+                          $date = new DateTime($customer->cus_entry_date);
+                          echo date_format($date, 'd M Y'); 
+                        ?>
+                            
+                      </td>
+                      <td><?= $customer->cus_address; ?></td>
+                      <td>
+                          <div class="hidden-sm hidden-xs action-buttons">
+                              <a class="green " href="<?= base_url();?>customer/edit/<?= $customer->id;?>" >
+                                <i class="ace-icon fa fa-pencil bigger-130"></i>
+                              </a>
+                              <a class="red" href="<?= base_url(); ?>customer/delete/<?= $customer->id ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
+                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                              </a>
+                          </div>
+                      </td>
 
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> Car Model: </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_car_model" name="ord_car_model"  placeholder="Car Model" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_color"> Color: </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_color" name="ord_color" placeholder="Color" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No: </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_engine_no" name="ord_engine_no" placeholder="Engine No" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_chassis_no"> Chassis No: </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_chassis_no" name="ord_chassis_no" placeholder="Chassis No" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="order_no"> Order No:<span class="text-bold text-danger">*</span> </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="order_no" name="order_no" required placeholder="Order No" class="form-control" />
-                  </div>
-                </div>
-
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_other_tirm"> Other Tirm: </label>
-                  <div class="col-sm-8">
-                    <textarea id="ord_other_tirm" name="ord_other_tirm" placeholder="Other Tirm" class="form-control" ></textarea>
-                  </div>
-                </div>
-
+                      
+                    </tr>
+                    <?php endforeach; endif; ?>
+                  </tbody>
+                </table>
               </div>
-
-
-              <div class="col-sm-4">
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_make"> Make: </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_make" name="ord_make_model" placeholder="Make" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_grade"> 
-                  Grade: </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_grade" name="ord_grade" placeholder="Grade" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_type"> 
-                  Type: </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_type" name="ord_type" placeholder="Type" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_year"> 
-                  Year:</label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_year" name="ord_year" placeholder="Year" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_mileage"> Mileage: </label>
-                  <div class="col-sm-8">
-                    <input type="text" id="ord_mileage" name="ord_mileage" placeholder="Mileage" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> Budget Range:<span class="text-bold text-danger">*</span> </label>
-                  <div class="col-sm-8">
-                    <input type="number" id="ord_budget_range" required name="ord_budget_range" placeholder="Budget Range" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_advance"> Advance:<span class="text-bold text-danger">*</span> </label>
-                  <div class="col-sm-8">
-                    <input type="number" id="ord_advance" required name="ord_advance" placeholder="Order Advance" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group"><div class="col-sm-12" style="height: 10px;"></div></div>
-
-                <div class="form-group" style="margin-top: 10px;">
-                  <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> </label>
-                  <div class="col-sm-8">
-                    <button type="Submit" class="btn btn-primary cus_submit">Submit</button>
-                  </div>
-                </div>
-
-              </div>
-          
             </div>
           </div>
+
         </div>
       </div>
-    </form>
-  </div>  
-</div>
-<div style="display: none;">
-  <table id="dynamic-table"  >
-</table>
+    </div>
+  </div>
 </div>
 

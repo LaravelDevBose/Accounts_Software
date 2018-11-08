@@ -58,7 +58,7 @@ class Collection_model extends CI_Model
 			'amount'		=>$this->input->post('amount'),
 			'description'	=>$this->input->post('description'),
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d')
+			'updated_at' =>date('Y-m-d H:i:s')
 		);
 
 		$this->db->where('id', $id);
@@ -149,4 +149,15 @@ class Collection_model extends CI_Model
 		}
 	}
 
+
+	/*======== Customer Wise Total Collection =======*/
+	public function cus_wise_total_collection($cus_id=Null)
+	{
+		$res = $this->db->select_sum('amount')->where('cus_id', $cus_id)->where('status', 'a')->get('collections')->row();
+		if($res){
+			return $res;
+		}else{
+			return FALSE;
+		}
+	}
 }

@@ -21,6 +21,48 @@ class Order_model extends CI_Model
 		}
 	}
 
+	public function get_order_pending_info()
+	{	
+		$this->db->select('orders.*, customers.cus_name');
+		$this->db->from('orders');
+		$this->db->join('customers', 'orders.cus_id = customers.id' );
+		$this->db->where('orders.order_status','p')->where('orders.status !=', 'd')->order_by('id', 'desc');
+		$result = $this->db->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function get_order_onprocess_info()
+	{	
+		$this->db->select('orders.*, customers.cus_name');
+		$this->db->from('orders');
+		$this->db->join('customers', 'orders.cus_id = customers.id' );
+		$this->db->where('orders.order_status','a')->where('orders.status !=', 'd')->order_by('id', 'desc');
+		$result = $this->db->get()->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function get_active_order_info()
+	{	
+		$result = $this->db->where('orders.status !=', 'd')->where('orders.order_status !=', 'p')->order_by('id', 'desc')->get('orders')->result();
+
+		if($result){
+			return $result;
+		}else{
+			return FALSE;
+		}
+	}
+
+
 	/*====== find order by lc_no ======*/
 	public function lc_wise_order($lc_no=Null)
 	{
@@ -46,9 +88,9 @@ class Order_model extends CI_Model
 		if(!is_null($cus_id)){
 			$attr = array(
 				'cus_id'	=>$cus_id,
-				'ord_lc_no'	=>$this->input->post('ord_lc_no'),
 				'ord_car_model'	=>$this->input->post('ord_car_model'),
 				'ord_color'	=>$this->input->post('ord_color'),
+				'pus_id'	=>$this->input->post('pus_id'),
 				'ord_engine_no'	=>$this->input->post('ord_engine_no'),
 				'ord_chassis_no'	=>$this->input->post('ord_chassis_no'),
 				'order_no'	=>$this->input->post('order_no'),
@@ -69,8 +111,8 @@ class Order_model extends CI_Model
 			);
 
 			$result = $this->db->insert('orders', $attr);
-			
-			if($result): return True; else: return FALSE; endif;
+			$order_id = $this->db->insert_id();
+			if($result): return $order_id; else: return FALSE; endif;
 
 		}else{
 			return FALSE; 
@@ -80,9 +122,17 @@ class Order_model extends CI_Model
 	public function order_info_by_id($id = null)
 	{
 		if(!is_null($id)){
+			$this->db->select('orders.*, customers.cus_code,customers.cus_name,customers.cus_contact_no, customers.cus_address');
+			$this->db->from('orders');
+			$this->db->join('customers', 'orders.cus_id = customers.id' );
+			$this->db->where('orders.id', $id)->where('orders.status !=', 'd');
+			$result = $this->db->get()->row();
 
-			$result = $this->db->where('id', $id)->where('status', 'a')->get('orders')->row();
-			if($result){ return $result; }else{ return FALSE; }
+			if($result){
+				return $result;
+			}else{
+				return FALSE;
+			}
 
 		}else{
 			return FALSE;
@@ -95,9 +145,9 @@ class Order_model extends CI_Model
 		$status = $this->check_order_status();
 		$attr = array(
 			'cus_id'	=>$this->input->post('cus_id'),
-			'ord_lc_no'	=>$this->input->post('ord_lc_no'),
 			'ord_car_model'	=>$this->input->post('ord_car_model'),
 			'ord_color'	=>$this->input->post('ord_color'),
+			'pus_id'	=>$this->input->post('pus_id'),
 			'ord_engine_no'	=>$this->input->post('ord_engine_no'),
 			'ord_chassis_no'	=>$this->input->post('ord_chassis_no'),
 			'order_no'	=>$this->input->post('order_no'),
@@ -110,7 +160,7 @@ class Order_model extends CI_Model
 			'ord_budget_range'	=>$this->input->post('ord_budget_range'),
 			'order_status'	=> $status,
 			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d')
+			'updated_at' =>date('Y-m-d H:i:s')
 		);
 
 		$this->db->where('id', $id);
@@ -127,22 +177,22 @@ class Order_model extends CI_Model
 	public function check_order_status()
 	{	
 		$order_status = $this->input->post('order_status');
-		$lc_no = $this->input->post('ord_lc_no');
 		$chassis_no = $this->input->post('ord_chassis_no');
+		$engine_no = $this->input->post('ord_engine_no');
 
 
 		if($order_status && isset($order_status)){ //check is request for store or Update
-			if($order_status == 'c'){ //check order already complete or not
+			if($order_status == 'c' && $chassis_no && $engine_no){ //check order already complete or not
 				return 'c';
 			}else{
-				if($lc_no && $chassis_no){  //check lc and chase has or not
+				if($engine_no && $chassis_no){  //check lc and chase has or not
 					return 'a';
 				}else{
 					return 'p';
 				}
 			}
 		}else{
-			if($lc_no && $chassis_no){ //check lc and chase has or not
+			if($engine_no && $chassis_no){ //check lc and chase has or not
 				return 'a';
 			}else{
 				return 'p';
@@ -158,6 +208,48 @@ class Order_model extends CI_Model
 	{	
 		$attr= array('status'=>'d');
 		
+		$this->db->where('id', $id);
+		$qu = $this->db->update('orders', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
+	/*============= remove Purhae Info when Purchase will deleted =============*/
+	public function remove_purchase_info($pus_id=Null)
+	{
+		$attr= array(
+			'pus_id'=>'0',
+			'ord_engine_no'=>'',
+			'ord_chassis_no'=>''
+			);
+		
+		$this->db->where('pus_id', $pus_id);
+		$qu = $this->db->update('orders', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
+			return FALSE;
+		}
+	}
+
+	/*========== Order Purchess Info Update =========*/
+	public function order_purchase_info_update($pus_id=Null)
+	{
+		$attr = array(
+			'pus_id' => $pus_id,
+			'ord_engine_no'=>$this->input->post('puc_engine_no'),
+			'ord_chassis_no'=>$this->input->post('puc_chassis_no'),
+			'order_status'=>'a',
+			'updated_by'  =>$this->session->userdata('name'),
+			'updated_at' =>date('Y-m-d H:i:s')
+		);
+
+		$id = $this->input->post('order_id');
 		$this->db->where('id', $id);
 		$qu = $this->db->update('orders', $attr);
 		
@@ -288,6 +380,53 @@ class Order_model extends CI_Model
 		if($result){
 			return $result;
 		}else{
+			return FALSE;
+		}
+	}
+
+	/*========= Customer Wist Total Advance and c total order Count =========*/
+	public function customer_total_order_and_advance($cus_id=Null)
+	{
+		$this->db->select('COUNT("id") as total_order')->select_sum('ord_advance','total_advance' );
+		$res = $this->db->where('cus_id', $cus_id)->where('status', 'a')->get('orders')->row();
+
+		if($res){
+			return $res;
+		}else{
+			return FALSE;
+		}
+
+	}
+
+	/*=========== Customer Wise Total Delivery =======*/
+
+	public function customer_wise_total_delivery($cus_id=Null)
+	{
+		$this->db->select('COUNT("id") as total_deli')->where('cus_id', $cus_id);
+		$res = $this->db->where('order_status', 'c')->where('status', 'a')->get('orders')->row();
+
+		if($res){
+			return $res;
+		}else{
+			return FALSE;
+		}
+	}
+
+
+	
+	/*====== Update Lc Number in Order ==============*/
+	public function update_lc_in_order($id=Null, $lc_id= Null)
+	{
+		$attr = array(
+			'ord_lc_no'=>$lc_id,
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('orders', $attr);
+		
+		if ( $this->db->affected_rows()) {
+			return TRUE;
+		}else {
 			return FALSE;
 		}
 	}

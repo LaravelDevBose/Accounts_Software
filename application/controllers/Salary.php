@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Salary extends CI_Controller
+class Salary extends MY_Controller
 {
 
 	/*==========Admin Login Check=============*/
@@ -27,7 +27,13 @@ class Salary extends CI_Controller
 
 	/*======== view salary payment Page ========*/
 	public function salary_payment_page()
-	{
+	{	
+		if($this->admin_access('sallay_payment') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
+
 		$data['title'] = 'Salary Payment';
 		$data['content'] = 'salary/salary_payment';
 		$data['months'] = $this->SallaryMonth_model->get_all_sallay_month();
@@ -58,7 +64,12 @@ class Salary extends CI_Controller
 
 	/*======== edit salary Payment =========*/
 	public function salary_payment_edit($id=Null)
-	{
+	{	
+		if($this->admin_access('edit_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
 		if($res = $this->Salary_model->salary_info_by_id($id)){
 			$data['salary'] = $res;
 			$data['months'] = $this->SallaryMonth_model->get_all_sallay_month();
@@ -87,7 +98,12 @@ class Salary extends CI_Controller
 
 	/*========= delete Salary Payment ==========*/
 	public function salary_payment_delete($id=Null)
-	{
+	{	
+		if($this->admin_access('delete_access') != 1){
+			$data['warning_msg']="You Are Not able to Access this Module...!";
+			$this->session->set_flashdata($data);
+			redirect('account/dashboard');
+		}
 		if($this->Salary_model->delete_salary_payment($id)){
 			$data['success'] = 'Delete Successfully..!';
 			$this->session->set_flashdata($data);
