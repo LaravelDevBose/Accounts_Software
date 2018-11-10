@@ -43,7 +43,7 @@
                   <div class="form-group">
                     <label class="col-sm-5 control-label no-padding-left" for="order_no">Chassis No:<span class="text-bold text-danger">*</span></label>
                     <div class="col-sm-7">
-                      <select class="form-control  " id="order_no" required name="order_no" style="height: 30px; border-radius: 5px;">
+                      <select class="form-control" id="order_no" required name="order_no" style="height: 30px; border-radius: 5px;">
                         <option value=" ">Select a Chassis No</option>
                         
                       </select>

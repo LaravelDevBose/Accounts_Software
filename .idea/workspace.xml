@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a5927f7d-2bb3-4282-a10a-b98daa972abe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/application/controllers/Bank_transaction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/BankTransaction_model.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/admin/accounts/edit_bank_trans.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Account.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Account.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/AdminAccess.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/AdminAccess.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Admincreate.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Admincreate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Admindashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Admindashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Adminlogin.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Adminlogin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Agent.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Agent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Check.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Check.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Collection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/IE_head.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/IE_head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/LC_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/LC_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Purchase.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Purchase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Purchase_pricing.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Purchase_pricing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Salary.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Salary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Setting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Supplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Supplier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Transport.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Transport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/core/MY_Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/MY_Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Account_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Account_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Collection_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Collection_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Customer_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Customer_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/LC_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/LC_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Order_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Order_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Payment_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Payment_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Purchase_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Purchase_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Salary_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Salary_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/accounts/collection_entry.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/accounts/collection_entry.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/ajax/collection_ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/ajax/collection_ajax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/ajax/lc_ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/ajax/lc_ajax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/dashboard/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/dashboard/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/lc_info/lc_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/lc_info/lc_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/order_info/ready_car_sale.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/order_info/ready_car_sale.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1995332327">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="8" />
+          <entry key="project.open.time.41" value="1" />
+          <entry key="project.open.time.42" value="1" />
+          <entry key="project.open.time.47" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.98" value="1" />
+          <entry key="project.opened" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="1" />
+          <entry key="php" value="97" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="1" />
+          <entry key="PHP" value="94" />
+          <entry key="PLAIN_TEXT" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="php" value="7663" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PHP" value="7663" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.php.new.class">
+        <counts>
+          <entry key="PHP Class.type" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/config/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="148" column="73" selection-start-line="148" selection-start-column="58" selection-end-line="148" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/Bank_transaction.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="140" column="71" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/edit_bank_trans.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="46" column="134" selection-start-line="46" selection-start-column="134" selection-end-line="46" selection-end-column="134" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#6;n#div#2;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#6;n#div#2;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/BankTransaction_model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="67" column="50" lean-forward="true" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/bank_trans_entry.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="89" selection-end-column="34" />
+              <folding>
+                <element signature="n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>F</find>
+      <find>order_purchase_car_marge</find>
+      <find>lc_car_submit</find>
+      <find>Selectmenu</find>
+      <find>find/chassis_no/</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/application/views/admin/accounts/bank_trans_entry.php" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/application/models/Customer_model.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/ajax/ready_car_ajax.php" />
+        <option value="$PROJECT_DIR$/application/models/Purchase_model.php" />
+        <option value="$PROJECT_DIR$/application/models/LC_model.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/order_info/ready_car_sale.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/ajax/lc_ajax.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/lc_info/lc_table.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/dashboard/home.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/ajax/collection_ajax.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/accounts/collection_entry.php" />
+        <option value="$PROJECT_DIR$/application/models/Collection_model.php" />
+        <option value="$PROJECT_DIR$/application/models/Account_model.php" />
+        <option value="$PROJECT_DIR$/application/models/Payment_model.php" />
+        <option value="$PROJECT_DIR$/application/models/Salary_model.php" />
+        <option value="$PROJECT_DIR$/application/models/Order_model.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/accounts/balance_sheet.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Account.php" />
+        <option value="$PROJECT_DIR$/application/controllers/AdminAccess.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Admincreate.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Admindashboard.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Adminlogin.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Agent.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Check.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Collection.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Company.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Customer.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Employee.php" />
+        <option value="$PROJECT_DIR$/application/controllers/IE_head.php" />
+        <option value="$PROJECT_DIR$/application/controllers/LC_controller.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Order.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Payment.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Purchase.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Purchase_pricing.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Report.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Salary.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Setting.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Supplier.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Transport.php" />
+        <option value="$PROJECT_DIR$/application/core/MY_Controller.php" />
+        <option value="$PROJECT_DIR$/application/config/routes.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/ajax/bank_ajax.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/bank/bank_insert_page.php" />
+        <option value="$PROJECT_DIR$/application/models/Bank_model.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/bank/bank_edit.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Bank.php" />
+        <option value="$PROJECT_DIR$/application/config/autoload.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/accounts/bank_trans_entry.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Bank_transaction.php" />
+        <option value="$PROJECT_DIR$/application/models/BankTransaction_model.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/accounts/edit_bank_trans.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="698" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="accounts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="ajax" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="rese&#9;ACTION&#9;Git.Reset" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\xampp\htdocs\Accounts_Software\application\views\admin\accounts" />
+      <recent name="F:\xampp\htdocs\Accounts_Software\application\models" />
+      <recent name="F:\xampp\htdocs\Accounts_Software\application\controllers" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a5927f7d-2bb3-4282-a10a-b98daa972abe" name="Default Changelist" comment="" />
+      <created>1541668493200</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1541668493200</updated>
+      <workItem from="1541668506384" duration="10481000" />
+      <workItem from="1541820818824" duration="228000" />
+      <workItem from="1541821993661" duration="11402000" />
+      <workItem from="1541838178028" duration="4540000" />
+      <workItem from="1541842749363" duration="49000" />
+      <workItem from="1541842828150" duration="941000" />
+      <workItem from="1541843828750" duration="243000" />
+      <workItem from="1541844625446" duration="4967000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="32851000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20499243" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" x="22" y="267" width="1322" height="204" id="Event Log" order="11" side_tool="true" weight="0.32903227" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24962178" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Remote Host" order="4" weight="0.32980332" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18986385" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32903227" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24962178" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/application/models/Account_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="109" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Collection_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="159" column="25" lean-forward="true" selection-start-line="159" selection-start-column="25" selection-end-line="159" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Payment_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="229" column="101" selection-start-line="229" selection-start-column="101" selection-end-line="229" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Salary_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="136" column="102" selection-start-line="136" selection-start-column="102" selection-end-line="136" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Order_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="448" column="96" selection-start-line="448" selection-start-column="96" selection-end-line="448" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/collection_ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/balance_sheet.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="117" column="71" selection-start-line="117" selection-start-column="71" selection-end-line="117" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/AdminAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Admincreate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Admindashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Adminlogin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Company.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Employee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/IE_head.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Purchase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Salary.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Setting.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Supplier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Transport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Purchase_pricing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/LC_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/core/MY_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/bank/bank_table.php" />
+    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/payment_entry.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="27" selection-end-line="195" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="119" column="16" selection-start-line="119" selection-start-column="16" selection-end-line="121" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Agent_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="77" column="8" selection-start-line="77" selection-start-column="8" selection-end-line="85" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/payment_ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2550" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/bank_ajax.php" />
+    <entry file="file://$PROJECT_DIR$/application/views/admin/bank/bank_edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="158" selection-start-line="32" selection-start-column="158" selection-end-line="32" selection-end-column="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Bank.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="140" column="36" selection-start-line="140" selection-start-column="36" selection-end-line="140" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/hfjhsdf.php" />
+    <entry file="file://$PROJECT_DIR$/application/controllers/Collection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="236" column="50" selection-start-line="236" selection-start-column="50" selection-end-line="236" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Bank_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Customer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="57" column="63" lean-forward="true" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/lc_ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="296" column="16" lean-forward="true" selection-start-line="296" selection-start-column="16" selection-end-line="297" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="138" column="63" selection-start-line="138" selection-start-column="63" selection-end-line="138" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/collection_entry.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="177" lean-forward="true" selection-start-line="177" selection-end-line="177" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/bank/bank_insert_page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1782">
+          <caret line="146" column="22" lean-forward="true" selection-start-line="146" selection-start-column="22" selection-end-line="146" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/bank_trans_entry.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="89" selection-end-column="34" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="148" column="73" selection-start-line="148" selection-start-column="58" selection-end-line="148" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Bank_transaction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="140" column="71" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/BankTransaction_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="67" column="50" lean-forward="true" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/edit_payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="57" column="211" selection-start-line="57" selection-start-column="116" selection-end-line="57" selection-end-column="211" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/edit_collection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="955">
+          <caret line="89" column="1" selection-start-line="89" selection-start-column="1" selection-end-line="104" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/edit_bank_trans.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="46" column="134" selection-start-line="46" selection-start-column="134" selection-end-line="46" selection-end-column="134" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#2;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#6;n#div#2;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

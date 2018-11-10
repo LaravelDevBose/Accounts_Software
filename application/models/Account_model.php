@@ -102,4 +102,11 @@ class Account_model extends CI_Model
 
 		if($this->db->affected_rows()){ return TRUE;}else{return FALSE; }
 	}
+
+	/*======= Count Total Other Income ============*/
+    public function total_other_income(){
+        $res = $this->db->where('status', 'a')->select_sum('amount')->get('accounts')->row();
+
+        if($res){ return $res; }else{ return false;}
+    }
 }

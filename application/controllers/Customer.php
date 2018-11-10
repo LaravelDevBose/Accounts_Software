@@ -1,4 +1,10 @@
-<?php 
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Arup
+ * Date: 11/10/2018
+ * Time: 12:37 PM
+ */
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -103,7 +109,7 @@ class Customer extends MY_Controller
 		else{
 			if($cus_id = $this->Customer_model->store_customer_info()){
 				
-				$data['warning']="Customer Info Store Successfully!";
+				$data['success']="Customer Info Store Successfully!";
 				$this->session->set_flashdata($data);
 				redirect('customer/insert');
 

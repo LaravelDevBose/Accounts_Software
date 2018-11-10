@@ -37,8 +37,11 @@
                             $('#car_color').val(data.puc_color);
                             $('#car_year').val(data.puc_year);
                             $('#order_id').val(data.order_id);
-                            $('#customer_id').val(data.id);
-                            $('#cus_info').val(data.cus_code+'-'+data.cus_name);
+                            if(!isNaN(data.id) ){
+                                $('#customer_id').val(data.id);
+                                $('#cus_info').val(data.cus_code+'-'+data.cus_name);
+                            }
+
 
                         }else{
                             swal({
@@ -97,142 +100,131 @@
                 return false;
             }
 
-
-            var customer_id = $('#customer_id').val();
             var pus_id = $('#pus_id').val();
             var car_value = $('#car_value').val();
             var fright_value = $('#fright_value').val();
 
-            $('#customer_id_chosen .chosen-single').css('border', '1px solid #aaaaaa');
             $('#pus_id').css('border', '1px solid #d5d5d5');
             $('#car_value').css('border', '1px solid #d5d5d5');
             $('#fright_value').css('border', '1px solid #d5d5d5');
 
-            if(customer_id != 0){
+
                 
-                if(pus_id != 0 && pus_id != ''){
-                    
-                    if(car_value > 0 && car_value != ''){
-                        
-                        if(fright_value > 0 && fright_value != ''){
-                            
-                            var grand_total = parseInt(cart_total)+parseInt(car_value)+parseInt(fright_value);
-                            if(parseInt(grand_total) > parseInt(lc_amount)){
-                                $('#fright_value').css('border', '1px solid red');
-                                $('#fright_value').focus();
-                                $('#car_value').css('border', '1px solid red');
-                                swal({
-                                    text: "Total Add Amount is Grater than L/C Amount", 
-                                    icon: "warning",
-                                    buttons: false,
-                                    timer: 1500,
-                                });
-                                return false;
-                            }
+            if(pus_id != 0 && pus_id != ''){
 
-                            var grand_qty = parseInt(cart_qty) +1;
-                            if(grand_qty > parseInt(car_qty)){
-                                $('#car_qty').css('border', '1px solid red');
-                                $('#car_qty').focus();
-                                swal({
-                                    text: "Total Add Car is Grater than L/C Quentity", 
-                                    icon: "warning",
-                                    buttons: false,
-                                    timer: 1500,
-                                });
-                                return false;
-                            }
+                if(car_value > 0 && car_value != ''){
 
-                            $.ajax({
-                                url:'<?= base_url();?>store/lc/car_info',
-                                type:'POST',
-                                dataType:'html',
-                                data:$('#lc_car_info').serialize(),
-                                success:function(data){
-                                    // alert(data);
+                    if(fright_value > 0 && fright_value != ''){
 
-                                    if(data != 0){
-                                        $('#tBody').empty();
-                                        $('#tBody').html(data);
-                                        $('#avi_lc_amt').html(parseInt(lc_amount)- parseInt(cart_total));
-                                        swal({
-                                            text: "L/C Car Info Store In Temporary", 
-                                            icon: "success",
-                                            buttons: false,
-                                            timer: 1500,
-                                        });
+                        var grand_total = parseInt(cart_total)+parseInt(car_value)+parseInt(fright_value);
+                        if(parseInt(grand_total) > parseInt(lc_amount)){
+                            $('#fright_value').css('border', '1px solid red');
+                            $('#fright_value').focus();
+                            $('#car_value').css('border', '1px solid red');
+                            swal({
+                                text: "Total Add Amount is Grater than L/C Amount",
+                                icon: "warning",
+                                buttons: false,
+                                timer: 1500,
+                            });
+                            return false;
+                        }
 
-                                        $('#pus_id').empty();
-                                        $('#chassis_no').val('');
-                                        $('#engine_no').val('');
-                                        $('#car_model').val('');
-                                        $('#car_color').val('');
-                                        $('#car_year').val('');
-                                        $('#car_value').val('');
-                                        $('#fright_value').val('');
-                                        $('#customer_id').val('');
-                                        $('#cus_info').val('');
-                                    }else{
-                                        console.log(data);
-                                        swal({
-                                            text: "Some Thing Wrong Found.. Data Not store.", 
-                                            icon: "error",
-                                            buttons: false,
-                                            timer: 1500,
-                                        });
-                                    }
+                        var grand_qty = parseInt(cart_qty) +1;
+                        if(grand_qty > parseInt(car_qty)){
+                            $('#car_qty').css('border', '1px solid red');
+                            $('#car_qty').focus();
+                            swal({
+                                text: "Total Add Car is Grater than L/C Quentity",
+                                icon: "warning",
+                                buttons: false,
+                                timer: 1500,
+                            });
+                            return false;
+                        }
 
-                                },error:function(error){
-                                    console.log(error);
+                        $.ajax({
+                            url:'<?= base_url();?>store/lc/car_info',
+                            type:'POST',
+                            dataType:'html',
+                            data:$('#lc_car_info').serialize(),
+                            success:function(data){
+                                // alert(data);
+
+                                if(data != 0){
+                                    $('#tBody').empty();
+                                    $('#tBody').html(data);
+                                    $('#avi_lc_amt').html(parseInt(lc_amount)- parseInt(cart_total));
                                     swal({
-                                        text: "Some Error Found.. Data Not store.", 
+                                        text: "L/C Car Info Store In Temporary",
+                                        icon: "success",
+                                        buttons: false,
+                                        timer: 1500,
+                                    });
+
+                                    $('#pus_id').empty();
+                                    $('#chassis_no').val('');
+                                    $('#engine_no').val('');
+                                    $('#car_model').val('');
+                                    $('#car_color').val('');
+                                    $('#car_year').val('');
+                                    $('#car_value').val('');
+                                    $('#fright_value').val('');
+                                    $('#customer_id').val('');
+                                    $('#cus_info').val('');
+                                }else{
+                                    console.log(data);
+                                    swal({
+                                        text: "Some Thing Wrong Found.. Data Not store.",
                                         icon: "error",
                                         buttons: false,
                                         timer: 1500,
                                     });
                                 }
-                            });
+
+                            },error:function(error){
+                                console.log(error);
+                                swal({
+                                    text: "Some Error Found.. Data Not store.",
+                                    icon: "error",
+                                    buttons: false,
+                                    timer: 1500,
+                                });
+                            }
+                        });
 
 
-                        }else{
-                            $('#fright_value').css('border', '1px solid red');
-                            $('#fright_value').focus();
-                            swal({
-                                text: "Given Valid Fright Value", 
-                                icon: "warning",
-                                buttons: false,
-                                timer: 1500,
-                            });
-                        }
                     }else{
-                        $('#car_value').css('border', '1px solid red');
-                        $('#car_value').focus();
+                        $('#fright_value').css('border', '1px solid red');
+                        $('#fright_value').focus();
                         swal({
-                            text: "Given Valid Car Value",
+                            text: "Given Valid Fright Value",
                             icon: "warning",
                             buttons: false,
                             timer: 1500,
                         });
                     }
                 }else{
-                    $('#pus_id').css('border', '1px solid red');
+                    $('#car_value').css('border', '1px solid red');
+                    $('#car_value').focus();
                     swal({
-                        text: "First Select Chassis No",
+                        text: "Given Valid Car Value",
                         icon: "warning",
                         buttons: false,
                         timer: 1500,
                     });
                 }
-
             }else{
-                $('#customer_id_chosen .chosen-single').css('border', '1px solid red');
+                $('#pus_id').css('border', '1px solid red');
                 swal({
-                    text: "First Select Customer",
+                    text: "First Select Chassis No",
                     icon: "warning",
                     buttons: false,
                     timer: 1500,
                 });
             }
+
+
         });
     
 

@@ -2,7 +2,7 @@
   <div class="col-xs-12">
       <div class="widget-box">
         <div class="widget-header">
-          <h4 class="widget-title">Customer Information</h4>
+          <h4 class="widget-title">Ready Car Sales</h4>
           <div class="widget-toolbar">
             <a href="#" data-action="collapse">
               <i class="ace-icon fa fa-chevron-up"></i>
@@ -16,8 +16,8 @@
 
         <div class="widget-body">
           <div class="widget-main">
-
-            <div class="row">
+              <form action="<?= base_url()?>order/purchase/marge" method="POST">
+                <div class="row">
               <div class="col-sm-2"></div>
 
               <div class="col-sm-4">
@@ -34,13 +34,11 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="order_id">Select Customer</label>
+                  <label class="col-sm-5 control-label no-padding-left" for="order_id">Select Order</label>
                   <div class="col-sm-7">
-                    <select class="chosen-select form-control" id="order_id" name="order_id" style="height: 30px; border-radius: 5px;">
-                      <option value=" ">Select a Customer</option>
-                      <?php if($customers && isset($customers)):  foreach($customers as $customer):?>
-                        <option value="<?= $customer->id; ?>"><?= $customer->cus_code.'-'.ucfirst($customer->cus_name); ?></option>
-                      <?php endforeach; endif; ?>
+                    <select class="form-control" id="order_id" name="order_id" style="height: 30px; border-radius: 5px;">
+
+
                     </select>
                   </div>
                 </div>
@@ -76,12 +74,12 @@
 
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="pus_id">Select Customer</label>
+                  <label class="col-sm-5 control-label no-padding-left" for="pus_id">Chassis NO</label>
                   <div class="col-sm-7">
                     <select class="chosen-select form-control" id="pus_id" name="pus_id" style="height: 30px; border-radius: 5px;">
                       <option value=" ">Select a Chassis No</option>
-                      <?php if($customers && isset($customers)):  foreach($customers as $customer):?>
-                        <option value="<?= $customer->id; ?>"><?= $customer->cus_code.'-'.ucfirst($customer->cus_name); ?></option>
+                      <?php if($purchases && isset($purchases)):  foreach($purchases as $purchase):?>
+                        <option value="<?= $purchase->id; ?>"><?= $purchase->puc_chassis_no; ?></option>
                       <?php endforeach; endif; ?>
                     </select>
                   </div>
@@ -90,7 +88,9 @@
                 <div class="form-group">
                   <label class="col-sm-5 control-label no-padding-left" for="engine_no">Engine No</label>
                   <div class="col-sm-7">
-                    <input type="text" id="engine_no"  placeholder="Car Engine No" class="form-control" readonly />
+                      <input type="hidden" id="lc_id" name="puc_lc_id">
+                      <input type="hidden" id="chassis_no" name="puc_chassis_no">
+                    <input type="text" id="engine_no" name="puc_engine_no"  placeholder="Car Engine No" class="form-control" readonly />
                   </div>
                 </div>
 
@@ -120,11 +120,21 @@
                     <input type="text" id="pus_mileage" readonly placeholder="Purchase Car Mileage" class="form-control" />
                   </div>
                 </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                  <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> </label>
+                  <div class="col-sm-8">
+                      <button type="Submit" id="order_submit" class="btn btn-primary pull-right">Submit</button>
+                  </div>
+                </div>
               </div>
           
             </div>
+              </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+<?php $this->load->view('admin/ajax/ready_car_ajax')?>

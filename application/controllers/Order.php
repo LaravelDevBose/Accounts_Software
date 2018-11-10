@@ -1,4 +1,10 @@
-<?php 
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Arup
+ * Date: 11/10/2018
+ * Time: 12:37 PM
+ */
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -143,8 +149,7 @@ class Order extends MY_Controller
 			if($order_id = $this->Order_model->store_order_info($cus_id)){
 
 				$pus_id = $this->input->post('pus_id');
-				$lc_no = $this->input->post('ord_lc_no');
-				$this->Purchase_model->update_order_info_in_purchase($pus_id,$order_id,$cus_id,$lc_no,0);
+				$this->Purchase_model->update_order_info_in_purchase($pus_id,$order_id,$cus_id,0);
 					
 				$data['success']="Save Successfully!";
 				$this->session->set_flashdata($data);
@@ -329,9 +334,78 @@ class Order extends MY_Controller
 			}
 			$data['title'] = 'Ready Car Sale';  
 			$data['content'] = 'order_info/ready_car_sale';
+            $data['customers'] = $this->Customer_model->unperchase_order_customer();
+            $data['purchases'] = $this->Purchase_model->unsales_purchase_car_list();
 
 			$this->load->view('admin/adminMaster', $data);
 		}
 	}
+
+	/*=========== marge order and sale info =========*/
+    public function order_purchase_car_marge(){
+
+        $res1 = $this->Order_model->order_purchase_info_update($this->input->post('pus_id'));
+        if(!$res1){
+            $data['error']="Purchase Information not Updated....!";
+            $this->session->set_flashdata($data);
+            redirect('ready/car/sale');
+        }
+        $pus_id = $this->input->post('pus_id');
+        $order_id = $this->input->post('order_id');
+        $cus_id = $this->input->post('cus_id');
+
+        $res2 = $this->Purchase_model->update_order_info_in_purchase($pus_id, $order_id,$cus_id,0);
+
+        if(!$res2){
+            $data['error']="Order Information not Updated....!";
+            $this->session->set_flashdata($data);
+            redirect('ready/car/sale');
+        }
+
+        $lc_id = $this->input->post('puc_lc_id');
+
+        if(isset($lc_id) && $lc_id){
+            $res3 = $this->LC_model->update_lc_details_by_id($lc_id, $pus_id,$cus_id, $order_id);
+            if(!$res3){
+                $data['error']="L/C Information not Updated....!";
+                $this->session->set_flashdata($data);
+                redirect('ready/car/sale');
+            }
+        }
+
+        $data['success']="SuccessFully Marge";
+        $this->session->set_flashdata($data);
+        redirect('ready/car/sale');
+
+    }
+
+	/*========== find un-purchase order list ==========*/
+    public function find_unperchase_order($cus_id = Null){
+
+        if($res = $this->Order_model->find_unperchase_order($cus_id)){
+            echo json_encode($res);
+        }else{
+            echo 0;
+        }
+    }
+
+    /*========= find order details ==========*/
+    public function find_order_details($order_id = Null){
+        if($res = $this->Order_model->order_info_by_id($order_id)){
+            echo json_encode($res);
+        }else{
+            echo 0;
+        }
+    }
+
+    /*========= find order details ==========*/
+    public function find_purchase_details($pus_id = Null){
+        if($res = $this->Purchase_model->purchase_info_by_id($pus_id)){
+            echo json_encode($res);
+        }else{
+            echo 0;
+        }
+    }
+
 
 }

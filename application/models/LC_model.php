@@ -164,4 +164,25 @@ class LC_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*========= get all lc_details ===========*/
+    public function update_lc_details_by_id($lc_id= Null, $pus_id = Null, $cus_id = Null, $order_id=Null){
+
+        $detail = $this->db->where('pus_id', $pus_id)->where('lc_id', $lc_id)->where('status', 'a')->get('lc_details')->row();
+
+        $attr = array(
+            'cus_id' => $cus_id,
+            'order_id' => $order_id,
+        );
+
+        $this->db->where('id', $detail->id);
+        $this->db->update('lc_details', $attr);
+
+        if ( $this->db->affected_rows()) {
+            return TRUE;
+        }else {
+            return FALSE;
+        }
+
+    }
 }

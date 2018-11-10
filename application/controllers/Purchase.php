@@ -1,4 +1,10 @@
-<?php 
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Arup
+ * Date: 11/10/2018
+ * Time: 12:37 PM
+ */
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -62,7 +68,10 @@ class Purchase extends MY_Controller
 	}
 
 	/*========= Order Data Store =======*/
-	public function store_purchase_info()
+    /**
+     *
+     */
+    public function store_purchase_info()
 	{	
 		
 		// $this->form_validation->set_rules('cus_id', 'Select Customer', 'required|trim');

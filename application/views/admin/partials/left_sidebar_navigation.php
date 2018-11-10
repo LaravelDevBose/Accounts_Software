@@ -231,6 +231,22 @@
     </a>
     <b class="arrow"></b>
   </li>
+  <li class="<?= ($this->uri->uri_string()== 'bank_trans/pagee')?'active': ' ' ?>">
+      <a href="<?php echo base_url(); ?>bank_trans/page">
+          <i class="menu-icon fa fa-car"></i>
+          <span class="menu-text">Bank Transaction</span>
+      </a>
+      <b class="arrow"></b>
+  </li>
+
+  <li class="<?= ($this->uri->uri_string()== 'account/balance_sheet')?'active': ' ' ?>">
+      <a href="<?php echo base_url(); ?>account/balance_sheet">
+          <i class="menu-icon fa fa-balance-scale"></i>
+          <span class="menu-text">Balance Sheet</span>
+      </a>
+      <b class="arrow"></b>
+  </li>
+
   <?php } if($access->check_option ==1){ ?>
   <li class="<?= (strpos($this->uri->uri_string(), 'check') !== false)? 'active open': '' ?>">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
@@ -502,7 +518,14 @@
     </a>
     <b class="arrow"></b>
   </li>
-   <li class="<?= ($this->uri->uri_string()== 'agent/insert')?'active': ' ' ?>">
+  <li class="<?= ($this->uri->uri_string()== 'bank/insert')?'active': ' ' ?>">
+      <a href="<?php echo base_url(); ?>bank/insert">
+          <i class="menu-icon fa fa-money"></i>
+          <span class="menu-text">Bank</span>
+      </a>
+      <b class="arrow"></b>
+  </li>
+  <li class="<?= ($this->uri->uri_string()== 'agent/insert')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>agent/insert">
       <i class="menu-icon fa fa-users"></i>
       <span class="menu-text">C & F Agent </span>

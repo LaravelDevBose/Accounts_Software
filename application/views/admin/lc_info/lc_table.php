@@ -7,8 +7,8 @@
 ?>
 <tr id="detail_<?= $data->id;?>">
   <td><?= $i++ ?></td>
-  <?php $cus_name = $this->db->where('id', $data->cus_id)->get('customers')->row();?>
-  <td><?= ucfirst($cus_name->cus_name); ?></td>
+  <?php $cus_name = ''; if(!$data->cus_id){ $cus_info = $this->db->where('id', $data->cus_id)->get('customers')->row(); $cus_name = $cus_info->cus_name; }?>
+  <td><?= ucfirst($cus_name); ?></td>
   <td><?= $data->puc_chassis_no ?></td>
   <td><?= $data->puc_engine_no; ?></td>
   <td><?= $data->puc_car_model; ?></td>

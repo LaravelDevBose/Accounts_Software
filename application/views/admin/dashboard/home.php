@@ -5,12 +5,20 @@
     height: 150px;
     margin-top: 0px;
   }
+
   .img{
-    height: 120px;
-    width: 220px;
-    margin-top: 0px;
-    /*border: 1px solid;*/
+      height: 100px;
+      width: 280px;
+      margin-top: 10px;
+      /*border: 1px solid;*/
   }
+
+  /*.img{*/
+    /*height: 120px;*/
+    /*width: 220px;*/
+    /*margin-top: 0px;*/
+    /*!*border: 1px solid;*!*/
+  /*}*/
   .section3{
     /*border: 1px solid;*/
     height: 150px;
@@ -40,34 +48,11 @@
     color: #000;
     text-align: center;
   }
+  a{
+      color:#333;
+  }
 </style>
 
-<style type="text/css">
-  .header{
-    /*border: 1px solid;*/
-    width: 100%;
-    height: 150px;
-  }
-  .img{
-    height: 100px;
-    width: 280px;
-    margin-top: 10px;
-    /*border: 1px solid;*/
-  }
-  .txtBody{
-    height: auto;
-    width: 100%;
-    margin-top: 5px;
-    font-weight: bold;
-    font-size: 70px;
-    color: #1A7EB0;
-    text-align: center;
-  }
-  a{
-    color:#333;
-  }
-  
-</style>
 
 <div class="row">
   <div class="col-md-12 col-xs-12">

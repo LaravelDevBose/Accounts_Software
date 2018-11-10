@@ -131,4 +131,11 @@ class Salary_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*========== Total Salary count ===========*/
+    public function total_sallary(){
+        $res = $this->db->where('status', 'a')->select_sum('payment_amount	','amount')->get('salaries')->row();
+
+        if($res){ return $res; }else{ return false;}
+    }
 }

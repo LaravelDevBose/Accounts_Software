@@ -79,6 +79,16 @@ class Customer_model extends CI_Model
 		}
 	}
 
+	public function unperchase_order_customer(){
+
+	    $this->db->select('customers.id, customers.cus_code, customers.cus_name')->from('customers');
+	    $this->db->join('orders', 'customers.id = orders.cus_id');
+	    $this->db->where('orders.status', 'a')->where('orders.pus_id', '0')->where('orders.order_status', 'p')->where('customers.cus_status', 'a');
+	    $res = $this->db->order_by('customers.id', 'desc')->get()->result();
+
+	    if($res): return $res; else: return FALSE; endif;
+    }
+
 	/*========== Update Customer Info ===========*/
 	public function update_customer_info($id=Null)
 	{	

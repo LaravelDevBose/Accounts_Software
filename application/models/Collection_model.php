@@ -160,4 +160,11 @@ class Collection_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*========= Total Collection Amount Count ===========*/
+    public function total_collection(){
+        $res = $this->db->where('status', 'a')->select_sum('amount')->get('collections')->row();
+
+        if($res){ return $res; }else{ return false;}
+    }
 }

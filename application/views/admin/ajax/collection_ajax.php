@@ -6,7 +6,7 @@
 		var cus_id = e.target.value;
 		if(cus_id >= 1){
 			$.ajax({
-				url:'<?= base_url();?>find/chassis_no/'+cus_id,
+				url:'<?= base_url();?>find/customer/chassis_no/'+cus_id,
 				type:'POST',
 				dataType:'Json',
 				success:function(data){
@@ -19,7 +19,6 @@
 						$.each(data, function(key, val){
 							console.log(val.id);
 							$('#order_no').append('<option value="'+val.id+'">'+val.ord_chassis_no+'</option>');
-
 						});
 						$('#order_no').trigger('chosen:update');
 					}else{

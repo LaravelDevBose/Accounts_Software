@@ -58,6 +58,9 @@ $route['find/customer/(:any)']	=	'Customer/find_customer_info/$1';
 $route['ready/car/sale']		=	'Order/ready_car_sale_page';
 $route['order/purchase/marge']	= 	'Order/order_purchase_car_marge';
 
+$route['find/unpurchase_order/(:any)']  =   'Order/find_unperchase_order/$1';
+$route['find/order_details/(:any)']  =   'Order/find_order_details/$1';
+$route['find/purchase_details/(:any)']  =   'Order/find_purchase_details/$1';
 
 /****************************************************************************************************/
 /************************************* Purchase Module Route List ***********************************/
@@ -114,7 +117,7 @@ $route['collection/store'] 			= 'Collection/collection_entry_store';
 $route['collection/edit/(:any)'] 	= 'Collection/collection_entry_edit/$1';
 $route['collection/update/(:any)'] 	= 'Collection/collection_entry_update/$1';
 $route['collection/delete/(:any)'] 	= 'Collection/delete_collection_data/$1';
-$route['find/chassis_no/(:any)']	= 'Collection/find_order_info/$1';
+$route['find/customer/chassis_no/(:any)']	= 'Collection/find_order_info/$1';
 $route['find/lc/due_amount/(:any)'] = 'Collection/find_lc_due_amount/$1';
 
 //payment Route List
@@ -134,11 +137,22 @@ $route['office_payment/update/(:any)']		= 'Payment/office_payment_update/$1';
 $route['office_payment/delete/(:any)']		= 'Payment/office_payment_delete/$1';
 
 //Other Income Entry Route List
-$route['account/other_income']		='Account/other_income_page';
+$route['account/other_income']		= 'Account/other_income_page';
 $route['other_income/store']		= 'Account/other_income_store';
 $route['other_income/edit/(:any)'] 	= 'Account/other_income_edit/$1';
 $route['other_income/update/(:any)']= 'Account/other_income_update/$1';
 $route['other_income/delete/(:any)']= 'Account/delete_other_income/$1';
+
+/*========== Bank Transtaction Route =============*/
+$route['bank_trans/page']			=	'Bank_transaction/bank_trans_page';
+$route['bank_trans/store']			=	'Bank_transaction/bank_trans_store';
+$route['bank_trans/edit/(:any)']	=	'Bank_transaction/bank_trans_edit/$1';
+$route['bank_trans/update/(:any)']	=	'Bank_transaction/bank_trans_update/$1';
+$route['bank_trans/delete/(:any)']	=	'Bank_transaction/bank_trans_delete/$1';
+
+
+$route['account/balance_sheet']     = 'Account/balance_sheet';
+
 
 $route['check/pending/list'] 	=	'Check/check_pendaing_date_list';
 $route['check/reminder/list'] 	=	'Check/check_reminder_date_list';
@@ -263,6 +277,14 @@ $route['ie_head/store'] 		= 	"IE_head/store_ie_head_info";
 $route['ie_head/edit/(:any)']	=	'IE_head/edit_ie_head_info/$1';
 $route['ie_head/update/(:any)']	=	'IE_head/update_ie_head_info/$1';
 $route['ie_head/delete/(:any)']	=	'IE_head/delete_ie_head_info/$1';
+
+/*========= Bank Route List =========*/
+$route['bank/insert']       =   'Bank/bank_create_page';
+$route['bank/store']       =   'Bank/store_bank_info';
+$route['bank/edit/(:any)']       =   'Bank/bank_info_edit/$1';
+$route['bank/update/(:any)']       =   'Bank/update_bank_info/$1';
+$route['bank/delete/(:any)']       =   'Bank/bank_info_delete/$1';
+
 
 /*========== Agent Route List ============*/
 $route['agent/insert'] 			= 	"Agent/agent_page_view";

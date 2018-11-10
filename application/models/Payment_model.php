@@ -12,9 +12,9 @@ class Payment_model extends CI_Model
 		$this->db->select('payments.*, suppliers.sup_name, tbl_lcs.lc_no, orders.ord_chassis_no, ie_heads.head_title');
 		$this->db->from('payments');
 		$this->db->join('suppliers','payments.supplier_id = suppliers.id');
-		$this->db->join('tbl_lcs','payments.lc_id = tbl_lcs.id');
-		$this->db->join('orders','payments.order_id = orders.id');
-		$this->db->join('ie_heads','payments.head_id = ie_heads.id');
+		$this->db->join('tbl_lcs','payments.lc_id = tbl_lcs.id','left');
+		$this->db->join('orders','payments.order_id = orders.id','left');
+		$this->db->join('ie_heads','payments.head_id = ie_heads.id','left');
 		$this->db->where('payments.status', 'a')->where('payment_type', 'CP');
 		$result = $this->db->order_by('id', 'desc')->get()->result();
 
@@ -224,4 +224,11 @@ class Payment_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*========= Total Payment Count =========*/
+	public function total_payment(){
+        $res = $this->db->where('status', 'a')->select_sum('payment_amount', 'amount')->get('payments')->row();
+
+        if($res){ return $res; }else{ return false;}
+    }
 }

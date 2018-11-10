@@ -96,6 +96,14 @@ class Purchase_model extends CI_Model
 		}
 	}
 
+	/*=========== Un sales car parchase List =========*/
+    public function unsales_purchase_car_list(){
+        $res = $this->db->select('id, puc_chassis_no')->where('order_id', 0)->where('car_status', 0)->where('status', 'a')->get('purchase')->result();
+
+        if($res){return $res;}else{return false;}
+
+    }
+
 	/*======== Update purchase Info =========*/
 	public function Update_purchase_info($id=Null)
 	{	
@@ -232,12 +240,11 @@ class Purchase_model extends CI_Model
 	}
 
 	/*========== Update Order And Customer Info in Purchase ==========*/
-	public function update_order_info_in_purchase($pus_id = Null, $order_id=Null, $cus_id = Null ,$lc_no = Null, $status= Null)
+	public function update_order_info_in_purchase($pus_id = Null, $order_id=Null, $cus_id = Null , $status= Null)
 	{
 		$attr = array(
 			'customer_id'=>$cus_id,
 			'order_id'=>$order_id,
-			'puc_lc_id'=>$lc_no,
 			'car_status'=>$status
 		);
 

@@ -1,4 +1,10 @@
-<?php 
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Arup
+ * Date: 11/10/2018
+ * Time: 12:37 PM
+ */
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -136,4 +142,52 @@ class Account extends MY_Controller
 			redirect('account/payment');
 		}
 	}
+
+
+	/*============= Balance Sheet ==============*/
+    public function balance_sheet(){
+        if($this->admin_access('delete_access') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('account/dashboard');
+        }
+
+        $data['title'] = 'Balance Sheet';
+        $data['content'] = 'accounts/balance_sheet';
+
+        #collection entry
+        $data['total_coll'] = $this->total_collection_count();
+
+        #total Payment Count
+        $data['total_pymt'] = $this->total_payment_count();
+
+        $this->load->view('admin/adminMaster', $data);
+
+    }
+
+    /**
+     * @return mixed
+     */
+    private function total_collection_count(){
+
+        $coll = $this->Collection_model->total_collection();
+
+        #other Entry
+        $other_inm = $this->Account_model->total_other_income();
+        #order advance
+        $advance = $this->Order_model->total_advance();
+        #total_collection
+        return $coll->amount + $other_inm->amount + $advance->ord_advance;
+    }
+
+    private function total_payment_count(){
+
+        //payment entry & Office Payment
+        $payment = $this->Payment_model->total_payment();
+
+        //Employee Salary
+        $sallary = $this->Salary_model->total_sallary();
+
+        return $payment->amount + $sallary->amount;
+    }
 }

@@ -4,6 +4,7 @@ class MY_Controller extends CI_Controller {
 	public $access;
 
    function __construct() {
+
        parent::__construct();
        $data['access'] = $this->db->where('admin_id', $this->session->userdata('id'))->get('admin_access')->row();
       

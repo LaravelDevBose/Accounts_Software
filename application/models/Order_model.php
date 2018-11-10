@@ -62,6 +62,12 @@ class Order_model extends CI_Model
 		}
 	}
 
+	public  function find_unperchase_order($cus_id = Null){
+	    $res = $this->db->select('id, order_no')->where('cus_id', $cus_id)->where('pus_id', '0')->where('order_status', 'p')->where('status', 'a')->get('orders')->result();
+
+	    if($res){return $res;} return FALSE;
+    }
+
 
 	/*====== find order by lc_no ======*/
 	public function lc_wise_order($lc_no=Null)
@@ -88,6 +94,7 @@ class Order_model extends CI_Model
 		if(!is_null($cus_id)){
 			$attr = array(
 				'cus_id'	=>$cus_id,
+				'ord_lc_no'	=>'0',
 				'ord_car_model'	=>$this->input->post('ord_car_model'),
 				'ord_color'	=>$this->input->post('ord_color'),
 				'pus_id'	=>$this->input->post('pus_id'),
@@ -240,9 +247,15 @@ class Order_model extends CI_Model
 	/*========== Order Purchess Info Update =========*/
 	public function order_purchase_info_update($pus_id=Null)
 	{
+        $lc_id = $this->input->post('puc_lc_id');
+	    if(!isset($lc_id) && $lc_id){
+	        $lc_id = 0;
+        }
+
 		$attr = array(
 			'pus_id' => $pus_id,
-			'ord_engine_no'=>$this->input->post('puc_engine_no'),
+            'ord_lc_no'=> $lc_id,
+            'ord_engine_no'=>$this->input->post('puc_engine_no'),
 			'ord_chassis_no'=>$this->input->post('puc_chassis_no'),
 			'order_status'=>'a',
 			'updated_by'  =>$this->session->userdata('name'),
@@ -251,7 +264,7 @@ class Order_model extends CI_Model
 
 		$id = $this->input->post('order_id');
 		$this->db->where('id', $id);
-		$qu = $this->db->update('orders', $attr);
+		$this->db->update('orders', $attr);
 		
 		if ( $this->db->affected_rows()) {
 			return TRUE;
@@ -430,4 +443,10 @@ class Order_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	/*====== count Total Order Advance =========*/
+    public function total_advance(){
+        $res = $this->db->where('status', 'a')->select_sum('ord_advance')->get('orders')->row();
+        if($res){ return $res; }else{ return false;}
+    }
 }
