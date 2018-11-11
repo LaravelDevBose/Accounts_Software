@@ -120,8 +120,8 @@
                         <tr>
                             <th>Trans. Id</th>
                             <th>Trans. Date</th>
-                            <th>Bank Name/Branch Name</th>
-                            <th>Account No</th>
+                            <th>Bank Info </th>
+                            <th>Trans. Type</th>
                             <th>Amount</th>
                             <th>Description</th>
                             <th>Action</th>
@@ -138,8 +138,13 @@
                                     echo date_format($date, 'd M Y');
                                     ?>
                                 </td>
-                                <td><?= ucfirst($data->bank_name).'-'.$data->branch_name ?></td>
-                                <td><?= $data->account_no; ?></td>
+                                <td><?= ucfirst($data->bank_name).'-'.$data->branch_name ?> <br> AC. NO- <?= $data->account_no; ?> </td>
+                                <td><?php if($data->trans_type == 'D'){ ?>
+                                    <span class="label label-success">Deposit</span>
+                                    <?php }else{?>
+                                    <span class="label label-warning">Withdrawal</span>
+                                    <?php }?>
+                                </td>
                                 <td><?= number_format($data->amount) ?></td>
                                 <td><?= $data->note; ?></td>
                                 <td>
@@ -161,3 +166,4 @@
         </div>
     </div>
 </div>
+

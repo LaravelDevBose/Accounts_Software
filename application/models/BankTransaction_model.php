@@ -45,18 +45,18 @@ class BankTransaction_model extends CI_Model
 	
 
 	/*====== Store Collection Entry Data =======*/
-	public function update_collection_data($id = Null)
+	public function update_bank_trans_data($id = Null)
 	{
-		$attr = array(
-			'cus_id'		=>$this->input->post('cus_id'),
-			'order_no'	=>$this->input->post('order_no'),
-			'lc_id'		=>$this->input->post('lc_id'),
-			'date'			=>$this->input->post('date'),
-			'amount'		=>$this->input->post('amount'),
-			'description'	=>$this->input->post('description'),
-			'updated_by'  =>$this->session->userdata('name'),
-			'updated_at' =>date('Y-m-d H:i:s')
-		);
+        $attr = array(
+            'trans_id'		=>$this->input->post('trans_id'),
+            'trans_type'	=>$this->input->post('trans_type'),
+            'bank_id'		=>$this->input->post('bank_id'),
+            'trans_date'			=>$this->input->post('trans_date'),
+            'amount'		=>$this->input->post('amount'),
+            'note'	=>$this->input->post('note'),
+            'updated_by'  =>$this->session->userdata('name'),
+            'updated_at' =>date('Y-m-d H:i:s')
+        );
 
 		$this->db->where('id', $id);
 		$res = $this->db->update('bank_trans', $attr);
@@ -72,7 +72,7 @@ class BankTransaction_model extends CI_Model
 	}
 
 	/*====== Delete bank_trans table Data =======*/
-	public function delete_collection_data($id=Null)
+	public function delete_trans_type_data($id=Null)
 	{
 		$attr= array('status'=> 'd');
 
@@ -81,5 +81,27 @@ class BankTransaction_model extends CI_Model
 
 		if($this->db->affected_rows()){ return TRUE;}else{return FALSE; }
 	}
+
+    /*========== Bank total Deposit balance==========*/
+    public function bank_deposit_balance(){
+        $res = $this->db->where('trans_type', 'D')->where('status', 'a')->select_sum('amount')->get('bank_trans')->row();
+
+        if($res){
+            return $res;
+        }
+        return FLASE;
+
+    }
+
+    /*========== Bank total Deposit balance==========*/
+    public function bank_withdrawal_balance(){
+        $res = $this->db->where('trans_type', 'W')->where('status', 'a')->select_sum('amount')->get('bank_trans')->row();
+
+        if($res){
+            return $res;
+        }
+        return FLASE;
+
+    }
 
 }

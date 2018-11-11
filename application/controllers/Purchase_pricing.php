@@ -39,7 +39,7 @@ class Purchase_pricing extends MY_Controller
 			redirect('Adminlogin/?logged_in_first');
 		}else{
 
-			if($this->admin_access('employee_list') != 1){
+			if($this->admin_access('pricing_list') != 1){
 				$data['warning_msg']="You Are Not able to Access this Module...!";
 				$this->session->set_flashdata($data);
 				redirect('purchase/dashboard');
@@ -59,7 +59,7 @@ class Purchase_pricing extends MY_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
-			if($this->admin_access('employee_entry') != 1){
+			if($this->admin_access('pricing_entry') != 1){
 				$data['warning_msg']="You Are Not able to Access this Module...!";
 				$this->session->set_flashdata($data);
 				redirect('purchase/dashboard');
@@ -73,32 +73,32 @@ class Purchase_pricing extends MY_Controller
 	}
 
 	/*========== Purchase Priching Insert =========*/
-	public function purchase_pricing_insert($pus_id=Null)
-	{
-		if (!$this->Admin_model->is_admin_loged_in()) 
-		{
-			redirect('Adminlogin/?logged_in_first');
-		}else{
-			if($this->admin_access('employee_entry') != 1){
-				$data['warning_msg']="You Are Not able to Access this Module...!";
-				$this->session->set_flashdata($data);
-				redirect('purchase/dashboard');
-			}
-			$purchase = $this->Purchase_model->purchase_car_full_deatils($pus_id);
-			if($purchase->total_price >0 && !is_null($purchase->total_price)){
-
-				$data['warning_msg']="This Car Purchase Estimating Price Already Counted...";
-				$this->session->set_flashdata($data);
-				redirect('purchase/list');
-			}
-
-			$data['title'] = 'Add Purchase Pricing Information';  
-			$data['content'] = 'pricing/pricing_entry';
-			$data['purchases'] = $this->Purchase_model->car_purchase_pricing();
-			$data['purchase'] = $purchase;
-			$this->load->view('admin/adminMaster', $data);
-		}
-	}
+//	public function purchase_pricing_insert($pus_id=Null)
+//	{
+//		if (!$this->Admin_model->is_admin_loged_in())
+//		{
+//			redirect('Adminlogin/?logged_in_first');
+//		}else{
+//			if($this->admin_access('employee_entry') != 1){
+//				$data['warning_msg']="You Are Not able to Access this Module...!";
+//				$this->session->set_flashdata($data);
+//				redirect('purchase/dashboard');
+//			}
+//			$purchase = $this->Purchase_model->purchase_car_full_deatils($pus_id);
+//			if($purchase->total_price >0 && !is_null($purchase->total_price)){
+//
+//				$data['warning_msg']="This Car Purchase Estimating Price Already Counted...";
+//				$this->session->set_flashdata($data);
+//				redirect('purchase/list');
+//			}
+//
+//			$data['title'] = 'Add Purchase Pricing Information';
+//			$data['content'] = 'pricing/pricing_entry';
+//			$data['purchases'] = $this->Purchase_model->car_purchase_pricing();
+//			$data['purchase'] = $purchase;
+//			$this->load->view('admin/adminMaster', $data);
+//		}
+//	}
 
 	/*======= Store Employee information ==========*/
 	public function store_pricing_info()

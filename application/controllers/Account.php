@@ -146,7 +146,7 @@ class Account extends MY_Controller
 
 	/*============= Balance Sheet ==============*/
     public function balance_sheet(){
-        if($this->admin_access('delete_access') != 1){
+        if($this->admin_access('balance_sheet') != 1){
             $data['warning_msg']="You Are Not able to Access this Module...!";
             $this->session->set_flashdata($data);
             redirect('account/dashboard');
@@ -156,10 +156,34 @@ class Account extends MY_Controller
         $data['content'] = 'accounts/balance_sheet';
 
         #collection entry
-        $data['total_coll'] = $this->total_collection_count();
+        $total_coll = $this->total_collection_count();
 
         #total Payment Count
-        $data['total_pymt'] = $this->total_payment_count();
+        $total_pymt = $this->total_payment_count();
+
+        #bank opening balance
+        $opening_balance = $this->Bank_model->bank_opening_balance();
+
+        #bank deposit balance
+        $deposit = $this->BankTransaction_model->bank_deposit_balance();
+
+        #bank withdwaral balance
+        $withdrawal = $this->BankTransaction_model->bank_withdrawal_balance();
+
+
+        $total_hand_balance  = ($total_coll-$total_pymt) - ($opening_balance->amount + $deposit->amount) +$withdrawal->amount;
+
+        $total_bank_balance = ($opening_balance->amount + $deposit->amount) - $withdrawal->amount;
+
+//        echo 'C-'.$total_coll.'<br> P-'.$total_pymt.'<br> O-'.
+//            $opening_balance->amount.'<br> D-'.$deposit->amount.
+//            '<br> W-'.$withdrawal->amount.'<br> TH-'.$total_hand_balance.'<br> TB-'.$total_bank_balance ; exit();
+
+
+        $data['total_coll']= $total_coll ;
+        $data['total_pymt'] = $total_pymt;
+        $data['hand_balance'] = $total_hand_balance ;
+        $data['bank_balance'] = $total_bank_balance;
 
         $this->load->view('admin/adminMaster', $data);
 

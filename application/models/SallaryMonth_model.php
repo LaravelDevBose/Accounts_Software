@@ -104,4 +104,30 @@ class SallaryMonth_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+
+	/*========= Insert Month name in months Table ====*/
+    public function insert_sallary_month_data(){
+
+        $month_name = array('January','February','March','April','May','June','July','August','September','October','November','December');
+        $k = 0;
+
+        for($i = 0; $i<12; $i++){
+            $attr = array(
+                'month_name'=> $month_name[$i]
+            );
+
+            $res = $this->db->insert('months', $attr);
+            if($res){
+                $k++;
+            }
+        }
+
+        if($k== 12){
+            return TRUE;
+        }
+        else{
+            return FALSE;
+        }
+    }
 }

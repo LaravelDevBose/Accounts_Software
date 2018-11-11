@@ -37,7 +37,7 @@ class LC_controller extends MY_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
-			if($this->admin_access('lc_entry') != 1){
+			if($this->admin_access('lc_list') != 1){
 				$data['warning_msg']="You Are Not able to Access this Module...!";
 				$this->session->set_flashdata($data);
 				redirect('administration/dashboard');

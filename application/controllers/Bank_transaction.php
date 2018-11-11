@@ -34,7 +34,7 @@ class Bank_transaction extends MY_Controller
 	/*======== bank Trans Entry View Page ========*/
 	public function bank_trans_page()
 	{	
-		if($this->admin_access('collection') != 1){
+		if($this->admin_access('bank_trans') != 1){
 			$data['warning_msg']="You Are Not able to Access this Module...!";
 			$this->session->set_flashdata($data);
 			redirect('account/dashboard');
@@ -145,36 +145,60 @@ class Bank_transaction extends MY_Controller
 		}else{
 			$data['error']="No Data Found...!";
 			$this->session->set_flashdata($data);
-			redirect('collections');
+			redirect('bank_trans/page');
 		}
 	}
 
 	/*====== Update Collection Date =========*/
 	public function bank_trans_update($id=Null)
 	{
-		$this->form_validation->set_rules('cus_id', 'Customer ', 'required|trim');
-		$this->form_validation->set_rules('order_no', 'Chassis Number ', 'required|trim');
-		$this->form_validation->set_rules('lc_no', 'L/C Number ', 'required|trim');
-		$this->form_validation->set_rules('date', 'Date', 'required|trim');
-		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
-		$this->form_validation->set_rules('description', 'Description', 'trim');
+        $this->form_validation->set_rules('trans_id', 'Transaction Id ', 'required|trim');
+        $this->form_validation->set_rules('bank_id', 'Bnak Name', 'required|trim');
+        $this->form_validation->set_rules('trans_type', 'L/C Number ', 'required|trim');
+        $this->form_validation->set_rules('trans_date', 'Date', 'required|trim');
+        $this->form_validation->set_rules('amount', 'Amount', 'required|trim');
 
 		if($this->form_validation->run() == FALSE){
-		 	$data['title'] = 'Collection Entry';
-			$data['content'] = 'accounts/collection_entry';
-			$data['customers'] = $this->Customer_model->find_all_customer_info();
-			$data['collections'] = $this->Collection_model->get_all_collection_data();
-			$this->load->view('admin/adminMaster', $data);
+            $trans_info = $this->db->order_by('id', 'desc')->limit(1)->get('bank_trans')->row();
+            if(is_null($trans_info)|| !isset($trans_info)){
+                $trans_id = 'BT-00001';
+            }else{
+
+                $num = substr($trans_info->trans_id, 3, strlen($trans_info->trans_id));
+
+                if($num < 9):
+                    $num+=1;
+                    $trans_id = 'BT-0000'.$num;
+                elseif($num < 99):
+                    $num+=1;
+                    $trans_id = 'BT-000'.$num;
+                elseif($num < 999):
+                    $num+=1;
+                    $trans_id = 'BT-00'.$num;
+                elseif($num<9999):
+                    $num+=1;
+                    $trans_id = 'BT-0'.$num;
+                else:
+                    $num+=1;
+                    $trans_id = 'BT-'.$num;
+                endif;
+            }
+            $data['trans_id'] = $trans_id;
+            $data['title'] = 'Bank Transaction Entry';
+            $data['content'] = 'accounts/bank_trans_entry';
+            $data['banks'] = $this->Bank_model->bank_list();
+            $data['trans'] = $this->BankTransaction_model->bank_trans_list();
+            $this->load->view('admin/adminMaster', $data);
 		}else{
 
-		 	if($this->Collection_model->update_collection_data($id)){
+		 	if($this->BankTransaction_model->update_bank_trans_data($id)){
 		 		$data['success']="Update SuccessFully";
 				$this->session->set_flashdata($data);
-				redirect('collections');
+				redirect('bank_trans/page');
 		 	}else{	
 		 		$data['error']="Update UnSuccessfull";
 				$this->session->set_flashdata($data);
-				redirect('collections');
+				redirect('bank_trans/page');
 		 	}
 		}
 	}
@@ -188,15 +212,17 @@ class Bank_transaction extends MY_Controller
 			redirect('account/dashboard');
 		}
 		
-		if($this->Collection_model->delete_collection_data($id)){
+		if($this->BankTransaction_model->delete_trans_type_data($id)){
 			$data['success']="Delete SuccessFully";
 			$this->session->set_flashdata($data);
-			redirect('collections');
+			redirect('bank_trans/page');
 		}else{
 			$data['error']="Delete UnSuccessfull";
 			$this->session->set_flashdata($data);
-			redirect('account/collection');
+			redirect('bank_trans/page');
 		}
 	}
+
+
 
 }

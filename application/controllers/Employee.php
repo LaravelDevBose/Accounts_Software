@@ -172,6 +172,16 @@ class Employee extends MY_Controller
 			$this->session->set_flashdata($data);
 			redirect('hr_payroll/dashboard');
 		}
+        $m_count = $this->SallaryMonth_model->all_month_name();
+
+		if(empty($m_count)){
+            if(!$this->SallaryMonth_model->insert_sallary_month_data()){
+                $data['error'] = 'Some thing Found Wrong Try Again..';
+                $this->session->set_flashdata($data);
+                redirect('hr_payroll/dashboard');
+            }
+        }
+
 		$data['title'] = "Add Sallary Month";
 		$data['content'] = 'employee/month/month_insert_Page';
 		$data['month_names'] = $this->SallaryMonth_model->all_month_name();

@@ -112,6 +112,7 @@
     </a>
     <b class="arrow"></b>
   </li>
+  <?php } if($access->ready_car_sale ==1){ ?>
   <li class="<?= ($this->uri->uri_string()== 'ready/car/sale')?'active': ' ' ?>">
     <!-- module/dashboard -->
     <a href="<?php echo base_url(); ?>ready/car/sale"> 
@@ -157,7 +158,7 @@
     </a>
     <b class="arrow"></b>
   </li>
-
+  <?php } if($access->pricing_entry ==1){ ?>
   <li class="<?= ($this->uri->uri_string()== 'pricing/entry')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>pricing/entry">
       <i class="menu-icon fa fa-list"></i>
@@ -165,6 +166,7 @@
     </a>
     <b class="arrow"></b>
   </li>
+  <?php } if($access->pricing_list ==1){ ?>
   <li class="<?= ($this->uri->uri_string()== 'pricing/list')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>pricing/list">
       <i class="menu-icon fa fa-list"></i>
@@ -198,7 +200,7 @@
     <b class="arrow"></b>
   </li>
 <?php } ?>
-  <?php } elseif($this->uri->uri_string()== 'collections' || $this->uri->uri_string()== 'payment' ||$this->uri->uri_string()== 'office_payment' || strpos($this->uri->uri_string(), 'account') !== false || strpos($this->uri->uri_string(), 'check') !== false || $this->router->method == 'accounts_dashboard'){ ?>
+  <?php } elseif($this->uri->uri_string()== 'collections' || $this->uri->uri_string()== 'payment' ||$this->uri->uri_string()== 'office_payment' || $this->uri->uri_string()== 'bank_trans/page' || strpos($this->uri->uri_string(), 'account') !== false || strpos($this->uri->uri_string(), 'check') !== false || $this->router->method == 'accounts_dashboard'){ ?>
 <?php if($access->collection ==1){ ?>
   <li class="<?= ($this->uri->uri_string()== 'collections')?'active': ' ' ?>">
     <a href="<?php echo base_url(); ?>collections">
@@ -231,14 +233,15 @@
     </a>
     <b class="arrow"></b>
   </li>
-  <li class="<?= ($this->uri->uri_string()== 'bank_trans/pagee')?'active': ' ' ?>">
+  <?php } if($access->bank_trans ==1){ ?>
+  <li class="<?= ($this->uri->uri_string()== 'bank_trans/page')?'active': ' ' ?>">
       <a href="<?php echo base_url(); ?>bank_trans/page">
           <i class="menu-icon fa fa-car"></i>
           <span class="menu-text">Bank Transaction</span>
       </a>
       <b class="arrow"></b>
   </li>
-
+  <?php } if($access->balance_sheet ==1){ ?>
   <li class="<?= ($this->uri->uri_string()== 'account/balance_sheet')?'active': ' ' ?>">
       <a href="<?php echo base_url(); ?>account/balance_sheet">
           <i class="menu-icon fa fa-balance-scale"></i>
@@ -480,7 +483,7 @@
     </ul>
   </li>
   <?php } }else{ ?>
-<?php if($access->lc_entry ==1){ ?>
+    <?php if($access->lc_info ==1){ ?>
   <li class="">
     <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
       <i class="menu-icon fa fa-cc"></i>
@@ -492,7 +495,7 @@
     <b class="arrow"></b>
 
     <ul class="submenu">
-      
+        <?php if($access->lc_list ==1){ ?>
       <li class="">
         <a href="<?php echo base_url(); ?>lc/list">
           <i class="menu-icon fa fa-caret-right"></i>
@@ -500,7 +503,7 @@
         </a>
         <b class="arrow"></b>
       </li>
-    
+        <?php }if($access->lc_entry ==1){ ?>
       <li class="">
         <a href="<?php echo base_url(); ?>lc/insert">
           <i class="menu-icon fa fa-caret-right"></i>
@@ -508,6 +511,7 @@
         </a>
         <b class="arrow"></b>
       </li>
+        <?php } ?>
     </ul>
   </li>
   <?php } if($access->expense_head_entry ==1){ ?>

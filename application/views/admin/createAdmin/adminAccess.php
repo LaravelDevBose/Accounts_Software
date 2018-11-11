@@ -49,6 +49,7 @@
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->all_order_list ==1): echo "checked"; endif;?> value="1" id="all_order_list" NAME="all_order_list">All Order List</li>
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->pending_order_list ==1): echo "checked"; endif;?> value="1" id="pending_order_list" NAME="pending_order_list">Pending Order List</li>
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->process_order_list ==1): echo "checked"; endif;?> value="1" id="process_order_list" NAME="process_order_list">On Procces list</li>
+          <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->ready_car_sale ==1): echo "checked"; endif;?> value="1" id="ready_car_sale" NAME="ready_car_sale">Ready Car Sale</li>
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->customer_entry ==1): echo "checked"; endif;?> value="1" id="customer_entry" NAME="customer_entry">Customer Entry</li>
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->customer_list ==1): echo "checked"; endif;?> value="1" id="customer_list" NAME="customer_list">Cuatomer List</li>
         </ul>
@@ -58,6 +59,8 @@
         <ul id="brunch_menu">
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->purchase_entry ==1): echo "checked"; endif;?> value="1" id="purchase_entry" NAME="purchase_entry">Purchase Entry</li>
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->purchase_list ==1): echo "checked"; endif;?> value="1" id="purchase_list" NAME="purchase_list">Purchase list</li>
+          <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->pricing_entry ==1): echo "checked"; endif;?> value="1" id="pricing_entry" NAME="pricing_entry">Pricing Entry</li>
+          <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->pricing_list ==1): echo "checked"; endif;?> value="1" id="pricing_list" NAME="pricing_list">Pricing list</li>
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->transport_status ==1): echo "checked"; endif; ?> value="1" id="transport_status" NAME="transport_status">Transport Status</li>
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->supplier ==1): echo "checked"; endif;?> value="1" id="supplier" NAME="supplier">Supplier</li>
           <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->transport_head ==1): echo "checked"; endif;?> value="1" id="transport_head" NAME="transport_head">Transport Head</li>
@@ -67,7 +70,13 @@
       <li>
        <INPUT TYPE="CHECKBOX"  class="myace " class="" <?php if($access->administration ==1): echo "checked"; endif;?> value="1" id="administration" NAME="administration"><strong>Administration Module</strong>
        <ul id="brunch_menu">
-        <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->lc_entry ==1): echo "checked"; endif;?> value="1" id="lc_entry" NAME="lc_entry">L/C Entry</li>
+           <li>
+               <INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->lc_info ==1): echo "checked"; endif;?> value="1" id="lc_info" NAME="lc_info"><strong>L/C Info</strong>
+               <ul id="brunch_menu">
+                   <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->lc_entry ==1): echo "checked"; endif;?> value="1" id="lc_entry" NAME="lc_entry">L/C Entry</li>
+                   <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->lc_list ==1): echo "checked"; endif;?> value="1" id="lc_list" NAME="lc_list">L/C List</li>
+               </ul>
+           </li>
         <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->expense_head_entry ==1): echo "checked"; endif;?> value="1" id="expense_head_entry" NAME="expense_head_entry">Expense Head Entry</li>
         <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->company_info ==1): echo "checked"; endif;?> value="1" id="company_info" NAME="company_info">Company Profile</li>
         <li>
@@ -91,6 +100,8 @@
       <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->payment ==1): echo "checked"; endif;?> value="1" id="payment" NAME="payment">Payment</li>
       <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->ofice_payment ==1): echo "checked"; endif;?> value="1" id="ofice_payment" NAME="ofice_payment">Office Payment</li>
       <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->other_income ==1): echo "checked"; endif;?> value="1" id="other_income" NAME="other_income">Other Income</li>
+      <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->bank_trans ==1): echo "checked"; endif;?> value="1" id="bank_trans" NAME="bank_trans">Bank Transaction</li>
+      <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->balance_sheet ==1): echo "checked"; endif;?> value="1" id="balance_sheet" NAME="balance_sheet">Balance Sheet</li>
       <li>
        <INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->check_option ==1): echo "checked"; endif;?> value="1" id="check_option" NAME="check_option"><strong>Check</strong>
          <ul id="brunch_menu">

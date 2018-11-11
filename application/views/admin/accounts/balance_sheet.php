@@ -90,6 +90,7 @@
                         <i class="fa fa-hand-paper-o"></i>
                     </div>
                     <div class="textModule">
+                        <span><?= number_format($hand_balance, 2)?></span> <br>
                         Cash in Hand
                     </div>
 
@@ -102,6 +103,7 @@
                         <i class="fa fa-university"></i>
                     </div>
                     <div class="textModule">
+                        <span><?= number_format($bank_balance, 2)?></span> <br>
                         Bank Balance
                     </div>
 
@@ -115,7 +117,7 @@
                         <i class="fa fa-balance-scale"></i>
                     </div>
                     <div class="textModule">
-                        <span><?= number_format($total_coll-$total_pymt, 2)?></span> <br>
+                        <span><?= number_format($hand_balance+$bank_balance, 2)?></span> <br>
                         Total Income
                     </div>
 

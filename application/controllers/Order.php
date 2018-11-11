@@ -327,7 +327,7 @@ class Order extends MY_Controller
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
-			if($this->admin_access('all_order_list') != 1){
+			if($this->admin_access('ready_car_sale') != 1){
 				$data['warning_msg']="You Are Not able to Access this Module...!";
 				$this->session->set_flashdata($data);
 				redirect('order/dashboard');
