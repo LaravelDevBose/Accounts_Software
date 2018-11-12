@@ -14,7 +14,7 @@
           <div class="col-md-7">
             <div class="widget-box red" >
               <div class="widget-body" style="padding:5px;">
-                  <h4 class="widget-title" id="e_due_amount" style="display:inline-block;"><?= number_format($due_amount,2); ?></h4>
+                  <h4 class="widget-title" id="e_due_amount" style="display:inline-block;"><?= $due_amount; ?></h4>
                   <P style="display:inline-block;">Due Amount</P>
               </div>
             </div>

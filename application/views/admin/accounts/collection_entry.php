@@ -53,7 +53,8 @@
                     <label class="col-sm-5 control-label no-padding-left" for="lc_no">L/C No: </label>
                     <div class="col-sm-7">
                       <input type="hidden" name="lc_id" id="lc_id">
-                      <input type="text" id="lc_no" required name="lc_no" readonly class="form-control" placeholder="L/C Number" /> 
+                      <input type="hidden" name="pus_id" id="pus_id">
+                      <input type="text" id="lc_no" required name="lc_no" readonly class="form-control" placeholder="L/C Number" />
                     </div>
                   </div>
                 </div>

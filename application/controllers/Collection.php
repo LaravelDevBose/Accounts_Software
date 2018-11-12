@@ -52,7 +52,7 @@ class Collection extends MY_Controller
 	{	
 		$this->form_validation->set_rules('cus_id', 'Customer ', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Chassis Number ', 'required|trim');
-		$this->form_validation->set_rules('lc_no', 'L/C Number ', 'required|trim');
+//		$this->form_validation->set_rules('lc_no', 'L/C Number ', 'required|trim');
 		$this->form_validation->set_rules('date', 'Date', 'required|trim');
 		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
 		$this->form_validation->set_rules('description', 'Description', 'trim');
@@ -84,17 +84,22 @@ class Collection extends MY_Controller
 			redirect('account/dashboard');
 		}
 
-		if($result = $this->Collection_model->get_collection_by_id($id)){
+            $result = $this->Collection_model->get_collection_by_id($id);
 			$data['collection'] = $result;
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
 			$data['orders'] = $this->Order_model->get_all_order_for_collection($result->cus_id);
-			$data['due_amount'] = $this->Order_model->find_due_amount($result->order_no);
+
+            $ord_advance = $this->db->where('id', $result->order_no)->get('orders')->row()->ord_advance;
+            $coll_amount = $this->Order_model->find_total_colection_amount($result->order_no);
+
+
+            $total_paid = $coll_amount->amount + $ord_advance;
+
+            $perchas_price = $this->db->where('order_id', $result->order_no)->get('purchase')->row()->total_price;
+
+            $data['due_amount'] = number_format($perchas_price- $total_paid,2);
 			$this->load->view('admin/accounts/edit_collection', $data);
-		}else{
-			$data['error']="No Data Found...!";
-			$this->session->set_flashdata($data);
-			redirect('collections');
-		}
+
 	}
 
 	/*====== Update Collection Date =========*/
@@ -102,7 +107,7 @@ class Collection extends MY_Controller
 	{
 		$this->form_validation->set_rules('cus_id', 'Customer ', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Chassis Number ', 'required|trim');
-		$this->form_validation->set_rules('lc_no', 'L/C Number ', 'required|trim');
+//		$this->form_validation->set_rules('lc_no', 'L/C Number ', 'required|trim');
 		$this->form_validation->set_rules('date', 'Date', 'required|trim');
 		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
 		$this->form_validation->set_rules('description', 'Description', 'trim');
@@ -158,22 +163,29 @@ class Collection extends MY_Controller
 	}
 
 	/*====== find lc Number and due amount=============*/
-	public function find_lc_due_amount($order_id=Null)
+	public function find_order_due_amount($order_id=Null)
 	{
-		if($lc_no = $this->Order_model->find_lc_number($order_id)){
+        $order_info = $this->db->where('id', $order_id)->get('orders')->row();
 
-			if($amount = $this->Order_model->find_due_amount($order_id)){
-				$data['lc_id'] = $lc_no->id;
-				$data['lc_no'] = $lc_no->lc_no;
-				$data['due_amount'] = number_format($amount,2);
+        if($coll_amount = $this->Order_model->find_total_colection_amount($order_id)){
 
-				echo json_encode($data);
-			}else{
-				echo 0;
-			}
-		}else{
-			echo 0;
-		}
+            $total_paid = $coll_amount->amount + $order_info->ord_advance;
+            $perchas_price = $this->db->where('order_id', $order_id)->get('purchase')->row()->total_price;
+            $lc_no = $this->LC_model->lc_data_by_id($order_info->ord_lc_no);
+            $data['lc_no'] = '';
+            if($lc_no){
+                $data['lc_id'] = $lc_no->id;
+                $data['lc_no'] = $lc_no->lc_no;
+            }
+            $data['pus_id'] = $order_info->pus_id;
+
+            $data['due_amount'] = number_format($perchas_price- $total_paid,2);
+
+            echo json_encode($data);
+        }else{
+            echo 0;
+        }
+
 	}
 
 	

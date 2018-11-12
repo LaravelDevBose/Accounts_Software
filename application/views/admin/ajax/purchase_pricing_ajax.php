@@ -2,10 +2,26 @@
 	$(document).ready(function() {
 		var total_price = 0;
 
+
+
 		$('#car_pus_id').change(function(e){
 
 			var pus_id = e.target.value;
-			$('#pus_info')['0'].reset();
+
+
+            $('#engine_no').val('');
+            $('#chassis_no').val('');
+            $('#car_model').val('');
+            $('#car_color').val('');
+            $('#car_year').val('');
+            $('#order_no').val('');
+            $('#cus_name').val('');
+            $('#cus_phone').val('');
+            $('#sup_name').val('');
+            $('#sup_phone').val('');
+
+
+            $('#pus_info')['0'].reset();
 			$('#pus_id').val('');
 			if(pus_id != 0 && pus_id != ''){
 				$.ajax({
@@ -19,6 +35,7 @@
 							$('#pus_id').val(data.id);
 
 							$('#engine_no').val(data.puc_engine_no);
+							$('#chassis_no').val(data.puc_chassis_no);
 							$('#car_model').val(data.puc_car_model);
 							$('#car_color').val(data.puc_color);
 							$('#car_year').val(data.puc_year);

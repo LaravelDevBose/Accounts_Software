@@ -8,9 +8,11 @@ class Purchase_model extends CI_Model
 	/*======== get all order info =========*/
 	public function get_purchase_info()
 	{	
-		$this->db->select('purchase.*, suppliers.sup_name');
+		$this->db->select('purchase.*, suppliers.sup_name, customers.cus_name,tbl_lcs.lc_no');
 		$this->db->from('purchase');
-		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
+        $this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
+        $this->db->join('customers', 'purchase.customer_id = customers.id','left' );
+        $this->db->join('tbl_lcs', 'purchase.puc_lc_id = tbl_lcs.id','left' );
 		$this->db->where('purchase.status', 'a')->order_by('id', 'desc');
 		$result = $this->db->get()->result();
 
@@ -24,7 +26,7 @@ class Purchase_model extends CI_Model
 	/*=========== Un Order Car List ===============*/
 	public function unOrder_car_list()
 	{
-		$this->db->select('id,puc_chassis_no,order_id')->where('order_id','0')->where('car_status','0');
+		$this->db->select('id,pus_sl,puc_chassis_no')->where('order_id','0')->where('car_status','0');
 		$result = $this->db->where('purchase.status', 'a')->order_by('id', 'desc')->get('purchase')->result();
 
 		if($result){
@@ -40,6 +42,7 @@ class Purchase_model extends CI_Model
 
 		$attr = array(
 			'customer_id'	=>$this->input->post('customer_id'),
+			'pus_sl'	=>$this->input->post('pus_sl'),
 			'supplier_id'	=>$this->input->post('supplier_id'),
 			'order_id'		=>$this->input->post('order_id'),
 			'puc_lc_id'		=>0,
@@ -125,7 +128,7 @@ class Purchase_model extends CI_Model
 		);
 
 		$this->db->where('id', $id);
-		$qu = $this->db->update('purchase', $attr);
+		$this->db->update('purchase', $attr);
 		
 		if ( $this->db->affected_rows()) {
 			return TRUE;
@@ -166,9 +169,10 @@ class Purchase_model extends CI_Model
 
 	public function undelivery_purchase_car()
 	{
-		$this->db->select('purchase.*, suppliers.sup_name');
+		$this->db->select('purchase.*, suppliers.sup_name,customers.cus_name');
 		$this->db->from('purchase');
 		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
+		$this->db->join('customers', 'purchase.customer_id = customers.id','left');
 		$this->db->where('purchase.status !=', 'd')->where('car_status', '0');
 		$result = $this->db->order_by('id', 'desc')->get()->result();
 
@@ -181,11 +185,8 @@ class Purchase_model extends CI_Model
 
 	public function car_purchase_pricing()
 	{
-		$this->db->select('purchase.*, suppliers.sup_name');
-		$this->db->from('purchase');
-		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
-		$this->db->where('purchase.status !=', 'd')->where('purchase.total_price', '0')->where('car_status', '0');
-		$result = $this->db->order_by('id', 'desc')->get()->result();
+		$this->db->where('status', 'a')->where('total_price', '0')->where('car_status', '0');
+		$result = $this->db->order_by('id', 'desc')->select('id, pus_sl,puc_chassis_no')->get('purchase')->result();
 
 		if($result){
 			return $result;
@@ -318,11 +319,7 @@ class Purchase_model extends CI_Model
 	/*=========== Order Wise Car Estimate Price ============*/
 	public function order_wise_estimate_price($pus_id = Null)
 	{
-		$this->db->select('purchase_pricing.*, ie_heads.head_title');
-		$this->db->from('purchase_pricing');
-		$this->db->join('ie_heads', 'purchase_pricing.head_id = ie_heads.id' );
-		$this->db->where('purchase_pricing.purchase_id',$pus_id);
-		$result = $this->db->get()->result();
+        $result = $this->db->where('pus_id', $pus_id)->get('purchase_pricing')->row();
 
 		if($result){
 			return $result;

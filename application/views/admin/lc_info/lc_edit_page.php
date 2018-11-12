@@ -150,90 +150,88 @@
         <div class="widget-body">
           <div class="widget-main">
             <form id="lc_car_info">
-              <div class="row">
-                <div class="col-sm-2"></div>
+                <div class="row">
+                    <div class="col-sm-2"></div>
 
-                <div class="col-sm-4">
-                  
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="customer_id"> Client Name:<span class="text-bold text-danger">*</span> </label>
-                    <div class="col-sm-8">
-                      <select name="customer_id" id="customer_id" class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
-                          <option value="0">Select A Customer</option>
-                        <?php if(isset($customers) && $customers): foreach($customers as $customer):?>
-                          <option value="<?= $customer->id ?>"><?= $customer->cus_code.'-'.$customer->cus_name; ?></option>
-                        <?php  endforeach; endif; ?>
-                      </select>
+                    <div class="col-sm-4">
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label no-padding-left" for="pus_id"> Chassis No:<span class="text-bold text-danger">*</span> </label>
+                            <div class="col-sm-8">
+                                <select name="pus_id" id="pus_id" class="form-control chosen-select" style="height: 28px; border-radius: 5px;">
+                                    <option value="0">Select A Chassis Number</option>
+                                    <?php if(isset($purchases) && $purchases): foreach($purchases as $purchase):?>
+                                        <option value="<?= $purchase->id ?>"><?= $purchase->puc_chassis_no; ?></option>
+                                    <?php  endforeach; endif; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label no-padding-left" for="cus_info">Customer: </label>
+                            <div class="col-sm-8">
+                                <input type="hidden" id="customer_id"  name="customer_id" />
+                                <input type="text" id="cus_info"  name="cus_info" readonly required placeholder="Customer Name" class="form-control"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label no-padding-left" for="engine_no">Engine No:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" id="chassis_no"  name="chassis_no" />
+                                <input type="hidden" id="order_id"  name="order_id" />
+                                <input type="text" id="engine_no"  name="engine_no" readonly required placeholder="Engine No" class="form-control"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label no-padding-left" for="car_model">Car Model:</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="car_model"  name="car_model" readonly placeholder="Car Model" class="form-control"  />
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="pus_id">Chassis No:<span class="text-bold text-danger">*</span> </label>
-                    <div class="col-sm-8">
-                      <select name="pus_id" id="pus_id" class="form-control" style="height: 28px; border-radius: 5px;">
-                        
-                      </select>
+
+                    <div class="col-sm-4">
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label no-padding-left" for="car_color">Color: </label>
+                            <div class="col-sm-8">
+                                <input type="text" id="car_color" readonly name="car_color" placeholder="Car Color" class="form-control"  />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label no-padding-left" for="car_year">Year:</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="car_year" id="car_year" class="form-control" readonly placeholder="Car Year" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label no-padding-left" for="car_value">Car Value:<span class="text-bold text-danger">*</span> </label>
+                            <div class="col-sm-8">
+                                <input type="number" id="car_value" name="car_value" required  class="form-control" placeholder="0.00" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label no-padding-left" for="fright_value">Fright Value:<span class="text-bold text-danger">*</span> </label>
+                            <div class="col-sm-8">
+                                <input type="number" id="fright_value" name="fright_value" required  class="form-control" placeholder="0.00" />
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 10px;">
+                            <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> </label>
+                            <div class="col-sm-8">
+                                <button type="button" id="lc_car_submit" style="height: 27px; padding-top: 0px; float: right; " class="btn btn-primary cus_submit">Add</button>
+                            </div>
+                        </div>
+
+
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="engine_no">Engine No:<span class="text-bold text-danger">*</span> </label>
-                    <div class="col-sm-8">
-                      <input type="hidden" id="chassis_no"  name="chassis_no" />
-                      <input type="hidden" id="order_id"  name="order_id" />
-                      <input type="text" id="engine_no"  name="engine_no" readonly required placeholder="Engine No" class="form-control"  />
+                    <div class="col-md-2">
+                        <p style="text-align: center; font-size: 15px; font-weight: 600"> Available L/C Amount: <br>
+                            <strong id="avi_lc_amt" >00.0</strong></p>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="car_model">Car Model:<span class="text-bold text-danger">*</span> </label>
-                    <div class="col-sm-8">
-                      <input type="text" id="car_model"  name="car_model" readonly placeholder="Car Model" class="form-control"  />
-                    </div>
-                  </div>
                 </div>
-
-                <div class="col-sm-4">
-
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="car_color">Color: </label>
-                    <div class="col-sm-8">
-                      <input type="text" id="car_color" readonly name="car_color" placeholder="Car Color" class="form-control"  />
-                      
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="car_year">Year:<span class="text-bold text-danger">*</span> </label>
-                    <div class="col-sm-8">
-                       <input type="text" name="car_year" id="car_year" class="form-control" readonly placeholder="Car Year" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="car_value">Car Value:<span class="text-bold text-danger">*</span> </label>
-                    <div class="col-sm-8">
-                       <input type="number" id="car_value" name="car_value" required  class="form-control" placeholder="0.00" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label no-padding-left" for="fright_value">Fright Value:<span class="text-bold text-danger">*</span> </label>
-                    <div class="col-sm-8">
-                       <input type="number" id="fright_value" name="fright_value" required  class="form-control" placeholder="0.00" />
-                    </div>
-                  </div>
-
-                  <div class="form-group" style="margin-top: 10px;">
-                    <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> </label>
-                    <div class="col-sm-8">
-                      <button type="button" id="lc_car_submit" style="height: 27px; padding-top: 0px; float: right; " class="btn btn-primary cus_submit">Add</button>
-                    </div>
-                  </div>
-
-
-                </div>
-                <div class="col-md-2">
-                  <p style="text-align: center; font-size: 15px; font-weight: 600"> Available L/C Amount: <br>
-                    <strong id="avi_lc_amt" >00.00</strong></p>
-                </div>
-
-              </div>
             </form>
           </div>
         </div>

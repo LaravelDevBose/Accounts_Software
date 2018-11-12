@@ -87,7 +87,6 @@ class Supplier extends MY_Controller
 	{
 		$this->form_validation->set_rules('sup_code', 'Supplier Code ', 'required|trim');
 		$this->form_validation->set_rules('sup_name', 'Supplier Name ', 'required|trim');
-		$this->form_validation->set_rules('sup_phone', 'Contact Number ', 'required|trim');
 		$this->form_validation->set_rules('sup_ent_date', 'Entry Date', 'required|trim');
 
 
@@ -137,7 +136,6 @@ class Supplier extends MY_Controller
 	{
 		$this->form_validation->set_rules('sup_code', 'Supplier Code ', 'required|trim');
 		$this->form_validation->set_rules('sup_name', 'Supplier Name ', 'required|trim');
-		$this->form_validation->set_rules('sup_phone', 'Contact Number ', 'required|trim');
 		$this->form_validation->set_rules('sup_ent_date', 'Entry Date', 'required|trim');
 		
 

@@ -311,19 +311,15 @@ class Order_model extends CI_Model
 	}
 
 	/*======= find Due Amount ==========*/
-	public function find_due_amount($order_id=Null)
+	public function find_total_colection_amount($order_id=Null)
 	{
-		$order_info = $this->db->where('id', $order_id)->get('orders')->row();
+	    $coll_amount = $this->db->select_sum('amount')->where('order_no', $order_id)->where('status', 'a')->get('collections')->row();
+	    if($coll_amount){
+            return $coll_amount;
+        }else{
+            return FALSE;
+        }
 
-		if($order_info){
-			$paid_amount = $this->db->select_sum('amount')->where('order_no', $order_id)->where('status', 'a')->get('collections')->row();
-			
-			$total_paid = $paid_amount->amount + $order_info->ord_advance;
-			$due_amount = $order_info->ord_budget_range - $total_paid;
-			return $due_amount;
-		}else{
-			return FALSE;
-		}
 	}
 
 	/*======= find Due Amount ==========*/

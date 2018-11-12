@@ -49,7 +49,7 @@ class AdminAccess extends MY_Controller
 
 	public function define_access()
     {	
-    	// echo "<pre>"; print_r($this->input->post()); die();
+//    	 echo "<pre>"; print_r($this->input->post()); die();
 
         $admin_id = $this->input->post('admin_id', TRUE);
 
@@ -77,7 +77,7 @@ class AdminAccess extends MY_Controller
             'supplier'           		=> ( $this->input->post('supplier'))?1:0, 
             'transport_head'          	=> ( $this->input->post('transport_head'))?1:0,
 
-            'account_module'          	=> ( $this->input->post('account_module'))?1:0, 
+            'account_module'          	=> ( $this->input->post('account_module'))?1:0,
             'collection'           		=> ( $this->input->post('collection'))?1:0, 
             'payment'           		=> ( $this->input->post('payment'))?1:0, 
             'ofice_payment'           	=> ( $this->input->post('ofice_payment'))?1:0, 
@@ -127,6 +127,8 @@ class AdminAccess extends MY_Controller
             
             'edit_access'               => ( $this->input->post('edit_access'))?1:0,
             'delete_access'             => ( $this->input->post('delete_access'))?1:0,
+            'updated_by'  =>$this->session->userdata('name'),
+            'updated_at' =>date('Y-m-d H:i:s')
         );
 
         // echo "<pre>"; print_r($attr); die();

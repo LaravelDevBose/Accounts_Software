@@ -138,8 +138,8 @@ class LC_controller extends MY_Controller
 			$data['agents'] = $this->Agent_model->find_all_agent_info(); 
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
 			$data['lc_details'] = $this->LC_model->find_lc_details_info($id);
-
-			$this->load->view('admin/adminMaster', $data);
+            $data['purchases'] = $this->Purchase_model->find_purchase_by_chassis_no();
+            $this->load->view('admin/adminMaster', $data);
 		}
 	}
 

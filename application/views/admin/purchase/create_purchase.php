@@ -91,6 +91,7 @@
             <div class="row">
               <div class="col-sm-2"></div>
               <div class="col-sm-8">
+
                 <div class="form-group">
                   <label class="col-sm-5 control-label no-padding-left" for="cus_info">Select Customer:<span class="text-bold text-danger">*</span></label>
                   <div class="col-sm-7">
@@ -162,30 +163,35 @@
               </div>
 
               <div class="col-sm-4">
-                
+                  <div class="form-group">
+                      <label class="col-sm-4 control-label no-padding-left" for="pus_sl">Purchase Code: </label>
+                      <div class="col-sm-8">
+                          <input type="text" id="pus_sl" name="pus_sl" value="<?= $pus_sl ?>" placeholder="Purchase Code" class="form-control" readonly />
+                      </div>
+                  </div>
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_car_model"> Car Model:<span class="text-bold text-danger">*</span>  </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="puc_car_model"> Car Model:</label>
                   <div class="col-sm-8">
                     <input type="text" id="puc_car_model"  name="puc_car_model" value="<?= (isset($order)&& $order)? $order->ord_car_model : '' ?>" placeholder="Car Model" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_color"> Color:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="puc_color"> Color: </label>
                   <div class="col-sm-8">
                     <input type="text" id="puc_color" name="puc_color" value="<?= (isset($order)&& $order)? $order->ord_color : '' ?>" placeholder="Color" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_engine_no"> Engine No:<span class="text-bold text-danger">*</span></label>
+                  <label class="col-sm-4 control-label no-padding-left" for="puc_engine_no"> Engine No:</label>
                   <div class="col-sm-8">
                     <input type="text" id="puc_engine_no"  name="puc_engine_no" value="<?= (isset($order)&& $order)? $order->ord_engine_no : '' ?>" placeholder="Engine No" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_chassis_no"> Chassis No:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="puc_chassis_no"> Chassis No: </label>
                   <div class="col-sm-8">
                     <input type="text" id="puc_chassis_no"  name="puc_chassis_no" value="<?= (isset($order)&& $order)? $order->ord_chassis_no : '' ?>" placeholder="Chassis No" class="form-control" />
                   </div>
@@ -240,7 +246,7 @@
                   </div>
                 </div>
                 <div class="form-group" >
-                  <div class="col-sm-12" style="margin-top: 30px;">
+                  <div class="col-sm-12" style="margin-top: 10px;">
                     <button type="Submit" class="btn btn-primary pull-right" id="pus_submit" style="width: 50%;">Purchase</button>
                   </div>
                 </div>

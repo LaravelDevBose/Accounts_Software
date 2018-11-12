@@ -55,22 +55,25 @@
 
 	$('#order_no').on('change', function(e){
 		var order_no = e.target.value;
+        $('#lc_no').val('');
+        $('#lc_id').val('');
+        $('#pus_id').val('');
 
 		if(order_no >= 1){
 			$.ajax({
-				url:'<?= base_url(); ?>find/lc/due_amount/'+order_no,
+				url:'<?= base_url(); ?>find/order/due_amount/'+order_no,
 				type:'POST',
 				dataType:'Json',
 				success:function(data){
 					console.log(data);
 
-					$('#lc_no').val('');
-					$('#lc_id').val('');
+
 					$('#due_amount').html('00.0');
 
 					if(data != 0){
 						
 						$('#lc_id').val(data.lc_id);
+						$('#pus_id').val(data.pus_id);
 						$('#lc_no').val(data.lc_no);
 						$('#due_amount').html(data.due_amount);
 					}else{

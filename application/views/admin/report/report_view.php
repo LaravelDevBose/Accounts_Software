@@ -140,7 +140,7 @@
 
                   <tbody>
 
-                    <?php $i = 1; $total_col= 0; $grd_total=0; if($collections && isset($collections)): foreach ($collections as $collection): ?>
+                    <?php $i = 1; $total_col= 0; $grd_total=0; $total_paymt = 0; if($collections && isset($collections)): foreach ($collections as $collection): ?>
                     <tr>
                       <td class="center"><?= $i++; ?></td>
 
@@ -154,19 +154,18 @@
                         <?= number_format($collection->amount, 2); ?>
                       </td>
                     </tr>
-                  <?php $total_col = $total_col+$collection->amount;  endforeach; $grd_total = $total_col+$order->ord_advance;  ?>
+                  <?php $total_col = $total_col+$collection->amount;  endforeach;  endif; ?>
                     <tr>
                       <td colspan="2">Advance</td>
                       <td>
                         <?= number_format($order->ord_advance, 2); ?>
                       </td>
                     </tr>
-
+                    <?php $grd_total = $total_col+$order->ord_advance;?>
                     <tr>
                       <td colspan="2"><span style="float: right; font-weight: bold;">Total: </span></td>
                       <td ><?= number_format($grd_total, 2)?></td>
                     </tr>
-                  <?php endif; ?>
                   </tbody>
                 </table>
               </div>
@@ -184,17 +183,96 @@
                   </thead>
 
                   <tbody>
-                    <?php $i = 1; $total_pay= 0; if($payments && isset($payments)): foreach ($payments as $payment): ?>
+                    <?php if(isset($pricing) && $pricing):?>
+                    <?php if($pricing->lc_value != 0){?>
                     <tr>
                       <td class="center"><?= $i++; ?></td>
-                      </td>
-                      <td ><?= $payment->head_title; ?> </td>
-                      <td><?= number_format($payment->amount, 2); ?></td>
+                      <td >L/C Value:</td>
+                      <td><?= number_format($pricing->lc_value, 2); ?></td>
                     </tr>
-                    <?php $total_pay =$total_pay+$payment->amount;  endforeach; ?>
+                    <?php } if($pricing->obc_value != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td>OBC Value:</td>
+                        <td><?= number_format($pricing->obc_value, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->insurance_charge != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td >Incurance Charge:</td>
+                        <td><?= number_format($pricing->insurance_charge, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->final_dosis != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td >Final Dosis: </td>
+                        <td><?= number_format($pricing->final_dosis, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->custom_value != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td >Custom Duty:</td>
+                        <td><?= number_format($pricing->custom_value, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->cf_agent != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td >C&F Agent: </td>
+                        <td><?= number_format($pricing->cf_agent, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->cuharf_value != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td >Cuharf Rent:</td>
+                        <td><?= number_format($pricing->cuharf_value, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->s_charge != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td >S/Charge:</td>
+                        <td><?= number_format($pricing->s_charge, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->regi_charge != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td >Registration:</td>
+                        <td><?= number_format($pricing->regi_charge, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->first_party_insu != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td>1st Party Insurance:</td>
+                        <td><?= number_format($pricing->first_party_insu, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->third_party_insu != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td>3st Party Insurance:</td>
+                        <td><?= number_format($pricing->third_party_insu, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->workshop_bill != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td>WorkShop Bill:</td>
+                        <td><?= number_format($pricing->workshop_bill, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->decuration_bill != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td >Decuration Bill:</td>
+                        <td><?= number_format($pricing->decuration_bill, 2); ?></td>
+                    </tr>
+                    <?php } if($pricing->other_exp != 0){?>
+                    <tr>
+                        <td class="center"><?= $i++; ?></td>
+                        <td >Other Expense:</td>
+                        <td><?= number_format($pricing->other_exp, 2); ?></td>
+                    </tr>
+                    <?php } ?>
                     <tr>
                       <td colspan="2"><span style="float: right; font-weight: bold;">Total: </span></td>
-                      <td ><?= number_format($total_pay, 2); ?></td>
+                        <?php $total_pay = $this->db->where('id', $pricing->pus_id)->get('purchase')->total_price; $total_paymt = $total_pay->total_price; ?>
+                      <td ><?= number_format($total_pay->total_price, 2); ?></td>
                     </tr>
                   <?php endif;?>
                   </tbody>
@@ -218,11 +296,11 @@
                     </tr>
                     <tr>
                       <th style="text-align: right;">Total Cost:</th>
-                      <td style="text-align: right;"><?= number_format($total_pay, 2); ?></td>
+                      <td style="text-align: right;"><?= number_format($total_paymt, 2); ?></td>
                     </tr>
                     <tr>
                       <th style="text-align: right;">=</th>
-                      <?php $eql = $total_pay - $grd_total;  ?>
+                      <?php $eql = $total_paymt - $grd_total;  ?>
                       <th style="text-align: right; font-weight: bold;"><?php  echo number_format($eql,2); ?></th>
                     </tr>
                   </tbody>

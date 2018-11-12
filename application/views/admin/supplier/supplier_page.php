@@ -38,9 +38,9 @@
                 </div>
                 
                 <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="sup_phone"> Contact No:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-5 control-label no-padding-left" for="sup_phone"> Contact No:</label>
                   <div class="col-sm-7">
-                    <input type="number" id="sup_phone" name="sup_phone" required placeholder="Contact No" class="form-control" />
+                    <input type="number" id="sup_phone" name="sup_phone"  placeholder="Contact No" class="form-control" />
                   </div>
                 </div>
 

@@ -162,7 +162,7 @@
                                         timer: 1500,
                                     });
 
-                                    $('#pus_id').empty();
+
                                     $('#chassis_no').val('');
                                     $('#engine_no').val('');
                                     $('#car_model').val('');

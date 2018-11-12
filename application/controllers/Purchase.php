@@ -63,6 +63,8 @@ class Purchase extends MY_Controller
 			if(!is_null($order_id)){
 				$data['order'] = $this->Order_model->order_info_by_id($order_id);
 			}
+			$data['pus_sl'] = $this->purchase_sl_create();
+
 			$this->load->view('admin/adminMaster', $data);
 		}	
 	}
@@ -72,24 +74,22 @@ class Purchase extends MY_Controller
      *
      */
     public function store_purchase_info()
-	{	
-		
-		// $this->form_validation->set_rules('cus_id', 'Select Customer', 'required|trim');
+	{
+
 		$this->form_validation->set_rules('supplier_id', 'Select Supplier', 'required|trim');
-		
-		$this->form_validation->set_rules('puc_car_model', 'Model Number ', 'required|trim');
-		$this->form_validation->set_rules('puc_engine_no', 'Engine Number', 'required|trim');
-		$this->form_validation->set_rules('puc_chassis_no', 'Chassis No', 'required|trim');
-		// $this->form_validation->set_rules('order_no', 'Order No', 'required|trim');
 
 		if($this->form_validation->run() == FALSE){
-
-			$data['title'] = 'New Purchase Information';  
-			$data['content'] = 'purchase/create_purchase';
-			$data['customers'] = $this->Customer_model->find_all_customer_info();
-			$data['lc_data'] = $this->LC_model->get_all_lc_info();
-			$data['supplires'] = $this->Supplier_model->find_all_supplier_info();
-			$data['heads'] = $this->IE_head_model->get_all_head_info('C');
+            $data['title'] = 'New Purchase Information';
+            $data['content'] = 'purchase/create_purchase';
+            $data['customers'] = $this->Customer_model->find_all_customer_info();
+            $data['lc_data'] = $this->LC_model->get_all_lc_info();
+            $data['supplires'] = $this->Supplier_model->find_all_supplier_info();
+            $data['heads'] = $this->IE_head_model->get_all_head_info('C');
+            $order_id = $this->input->post('order_id');
+            if(!is_null($order_id)){
+                $data['order'] = $this->Order_model->order_info_by_id($order_id);
+            }
+            $data['pus_sl'] = $this->purchase_sl_create();
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 			
@@ -133,9 +133,8 @@ class Purchase extends MY_Controller
 
 				$data['title'] = 'Edit Purchase Information';  
 				$data['content'] = 'purchase/edit_purchase';
-				$data['lc_data'] = $this->LC_model->get_all_lc_info();
 				$data['supplires'] = $this->Supplier_model->find_all_supplier_info();
-				$data['heads'] = $this->IE_head_model->get_all_head_info('C');
+
 				$data['supplier'] = $this->Supplier_model->supplier_by_id($result->supplier_id);
 				$data['purchase'] = $result;
 				$this->load->view('admin/adminMaster', $data);
@@ -168,49 +167,34 @@ class Purchase extends MY_Controller
 	{	
 		
 		$this->form_validation->set_rules('supplier_id', 'Select Supplier', 'required|trim');
-		$this->form_validation->set_rules('puc_car_model', 'Model Number ', 'required|trim');
-		$this->form_validation->set_rules('puc_engine_no', 'Engine Number', 'required|trim');
-		$this->form_validation->set_rules('puc_chassis_no', 'Chassis No', 'required|trim');
 
 		if($this->form_validation->run() == FALSE){
-
+            $result = $this->Purchase_model->purchase_info_by_id($id);
 			$data['title'] = 'Edit Purchase Information';  
 			$data['content'] = 'purchase/edit_purchase';
-			$data['lc_data'] = $this->LC_model->get_all_lc_info();
 			$data['supplires'] = $this->Supplier_model->find_all_supplier_info();
-			$data['heads'] = $this->IE_head_model->get_all_head_info('C');
 			$data['supplier'] = $this->Supplier_model->supplier_by_id($result->supplier_id);
-			$data['purchase'] = $this->Purchase_model->purchase_info_by_id($id);
+			$data['purchase'] = $result;
 			$this->load->view('admin/adminMaster', $data);
 
 		}else{
 			
 			if($this->Purchase_model->Update_purchase_info($id)){
 
-				if($total = $this->Purchase_model->estimating_price_store_update($id)){
+                if($this->input->post('order_id')){
 
-					$this->Purchase_model->total_price_update($id,$total);
-
-					if($this->input->post('order_id')){
-
-						if($this->Order_model->order_purchase_info_update($id)){
-							$data['success']=" Update Successfully!";
-							$this->session->set_flashdata($data);
-							redirect('purchase/list');
-						}
-						$data['warning']="Car Info Update Successfully! But Order Info Not Updated.";
-						$this->session->set_flashdata($data);
-						redirect('purchase/list');
-					}
-					
-					$data['success']=" Update Successfully!";
-					$this->session->set_flashdata($data);
-					redirect('purchase/list');
-				}
-				$data['warning']="Car Info Update Successfully! but Pricing not Update.";
-				$this->session->set_flashdata($data);
-				redirect('purchase/list');
-
+                    if($this->Order_model->order_purchase_info_update($id)){
+                        $data['success']=" Store Successfully!";
+                        $this->session->set_flashdata($data);
+                        redirect('purchase/list');
+                    }
+                    $data['success']=" Store Successfully!";
+                    $this->session->set_flashdata($data);
+                    redirect('purchase/list');
+                }
+                $data['warning']="Car Info Store Successfully! But Order Info Not Updated.";
+                $this->session->set_flashdata($data);
+                redirect('purchase/list');
 			}else{
 
 				$data['error']="Update Unsuccessfully!";
@@ -242,6 +226,34 @@ class Purchase extends MY_Controller
 		}
 	}
 
+    private function purchase_sl_create(){
+        $last_pus = $this->db->order_by('id', 'desc')->limit(1)->get('purchase')->row();
+        if(is_null($last_pus)|| !isset($last_pus)){
+            $pus_sl = 'P-00001';
+        }else{
+
+            $num = substr($last_pus->pus_sl, 2, strlen($last_pus->pus_sl));
+
+            if($num < 9):
+                $num+=1;
+                $pus_sl = 'P-0000'.$num;
+            elseif($num < 99):
+                $num+=1;
+                $pus_sl = 'P-000'.$num;
+            elseif($num < 999):
+                $num+=1;
+                $pus_sl = 'P-00'.$num;
+            elseif($num<9999):
+                $num+=1;
+                $pus_sl = 'P-0'.$num;
+            else:
+                $num+=1;
+                $pus_sl = 'P-'.$num;
+            endif;
+        }
+
+        return $pus_sl;
+    }
 
 	/*========== Find Car Info ========*/
 	public function find_car_info($pus_id=Null)

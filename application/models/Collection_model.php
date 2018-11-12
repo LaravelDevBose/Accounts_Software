@@ -11,7 +11,7 @@ class Collection_model extends CI_Model
 		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
 		$this->db->from('collections');
 		$this->db->join('customers','collections.cus_id = customers.id');
-		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id');
+		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id','left');
 		$this->db->join('orders','collections.order_no = orders.id');
 		$this->db->where('collections.status', 'a');
 		$result = $this->db->order_by('id', 'desc')->get()->result();
@@ -28,8 +28,8 @@ class Collection_model extends CI_Model
 	{
 		$attr = array(
 			'cus_id'		=>$this->input->post('cus_id'),
-			'order_no'	=>$this->input->post('order_no'),
-			'lc_id'		=>$this->input->post('lc_id'),
+			'order_no'	    =>$this->input->post('order_no'),
+			'lc_id'		    =>0,
 			'date'			=>$this->input->post('date'),
 			'amount'		=>$this->input->post('amount'),
 			'description'	=>$this->input->post('description'),
@@ -53,7 +53,7 @@ class Collection_model extends CI_Model
 		$attr = array(
 			'cus_id'		=>$this->input->post('cus_id'),
 			'order_no'	=>$this->input->post('order_no'),
-			'lc_id'		=>$this->input->post('lc_id'),
+			'lc_id'		=>0,
 			'date'			=>$this->input->post('date'),
 			'amount'		=>$this->input->post('amount'),
 			'description'	=>$this->input->post('description'),
@@ -71,8 +71,8 @@ class Collection_model extends CI_Model
 	public function get_collection_by_id($id=Null)
 	{	
 		$this->db->select('collections.*, customers.cus_name,tbl_lcs.lc_no')->from('collections');
-		$this->db->join('customers', 'collections.cus_id = customers.id');
-		$this->db->join('tbl_lcs', 'collections.lc_id = tbl_lcs.id');
+		$this->db->join('customers', 'collections.cus_id = customers.id','left');
+		$this->db->join('tbl_lcs', 'collections.lc_id = tbl_lcs.id','left');
 		$res = $this->db->where('collections.id', $id)->get()->row();
 		if($res){ return $res; }else{ return FALSE; }
 	}

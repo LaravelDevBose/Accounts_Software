@@ -1,4 +1,51 @@
 <script>
+    $('#supplier_id').on('change', function(e){
+        var supplier_id = e.target.value;
+
+        if(supplier_id >= 1){
+            $.ajax({
+                url:'<?= base_url(); ?>find/purchase_info/'+supplier_id,
+                type:'POST',
+                dataType:'Json',
+                success:function(data){
+                    console.log(data);
+
+                    $('#lc_no').val('');
+                    $('#lc_id').val('');
+
+                    if(data != 0){
+
+                        $('#lc_id').val(data.lc_id);
+                        $('#lc_no').val(data.lc_no);
+                    }else{
+                        swal({
+                            text: "No Data Found..!",
+                            icon: "info",
+                            buttons: false,
+                            timer: 1500,
+                        });
+                    }
+
+                },error:function(error){
+                    console.log(error);
+                    swal({
+                        text: "Some Error Found",
+                        icon: "error",
+                        buttons: false,
+                        timer: 1500,
+                    });
+                }
+            });
+        }else{
+            swal({
+                text: "Pleass Select a Chassis Number",
+                icon: "warning",
+                buttons: false,
+                timer: 1500,
+            });
+        }
+    });
+
 	$('#order_id').on('change', function(e){
     var order_id = e.target.value;
 

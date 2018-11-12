@@ -38,7 +38,7 @@
                     <label class="col-sm-5 control-label no-padding-left" for="supplier_id">Supplier Name:<span class="text-bold text-danger">*</span></label>
                     <div class="col-sm-7">
                       <select class="form-control chosen-select " id="supplier_id" required name="supplier_id" style="height: 30px; border-radius: 5px;">
-                        <option value=" ">Select a Supplier</option>
+                        <option value="">Select a Supplier</option>
                         <?php if($suppliers && isset($suppliers)):  foreach($suppliers as $supplier):?>
                           <option value="<?= $supplier->id; ?>"><?= $supplier->sup_code.'-'.ucfirst($supplier->sup_name); ?></option>
                         <?php endforeach; endif; ?>
@@ -49,10 +49,8 @@
                     <label class="col-sm-5 control-label no-padding-left" for="order_id">Chassis No:<span class="text-bold text-danger">*</span></label>
                     <div class="col-sm-7">
                       <select class="form-control chosen-select " id="order_id" required name="order_id" style="height: 30px; border-radius: 5px;">
-                        <option value=" ">Select a Chassis No</option>
-                        <?php if($orders && isset($orders)):  foreach($orders as $order):?>
-                          <option value="<?= $order->id; ?>"><?= $order->ord_chassis_no; ?></option>
-                        <?php endforeach; endif; ?>
+                        <option value="">Select a Chassis No</option>
+
                       </select>
                     </div>
                   </div>

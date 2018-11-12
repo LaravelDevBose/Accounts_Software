@@ -85,8 +85,8 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="cus_fb"> Facebook Id:</label>
-                  <div class="col-sm-7">
+                  <label class="col-sm-4 control-label no-padding-left" for="cus_fb"> Facebook Id:</label>
+                  <div class="col-sm-8">
                     <input type="text" id="cus_fb" name="cus_fb" value="<?= $customer->cus_fb; ?>"  placeholder="Facebook Id Url" class="form-control" />
                   </div>
                 </div>

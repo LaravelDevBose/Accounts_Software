@@ -23,16 +23,23 @@
 
             <div class="col-sm-4">
               <div class="form-group">
-                <label class="col-sm-5 control-label no-padding-left" for="car_pus_id">Chassis No.<span class="text-bold text-danger">*</span></label>
+                <label class="col-sm-5 control-label no-padding-left" for="car_pus_id">Purchase No.<span class="text-bold text-danger">*</span></label>
                 <div class="col-sm-7">
                   <select class="chosen-select form-control" id="car_pus_id" style="height: 30px; border-radius: 5px;">
-                    <option value=" ">Select a Chassis No</option>
+                    <option value=" ">Select a Purchase No</option>
                     <?php if(isset($purchases) && $purchases):  foreach($purchases as $pus):?>
-                      <option value="<?= $pus->id; ?>" <?php if(isset($purchase) && $purchase){ if($purchase->id == $pus->id){echo "selected"; }}?> ><?= $pus->puc_chassis_no; ?></option>
+                      <option value="<?= $pus->id; ?>" <?php if(isset($purchase) && $purchase){ if($purchase->id == $pus->id){echo "selected"; }}?> ><?= $pus->pus_sl.'-'.$pus->puc_chassis_no; ?></option>
                     <?php endforeach; endif; ?>
                   </select>
                 </div>
               </div>
+                <div class="form-group">
+                    <label class="col-sm-5 control-label no-padding-left" for="chassis_no">Chassis No.</label>
+                    <div class="col-sm-7">
+                        <input type="text" id="chassis_no" name="chassis_no" value="<?= (isset($purchase) && $purchase)? $purchase->puc_engine_no : '' ?>"  placeholder="Engine No" class="form-control" readonly />
+                    </div>
+                </div>
+
               <form id="pus_info">
               <div class="form-group">
                 <label class="col-sm-5 control-label no-padding-left" for="engine_no"> Engine No </label>
@@ -228,7 +235,7 @@
                 </div>
                 <div class="form-group" >
                   <div class="col-sm-12" style="margin-top: 30px;">
-                    <button type="Submit" class="btn btn-primary pull-right" id="pus_submit" style="width: 50%;">Purchase</button>
+                    <button type="Submit" class="btn btn-primary pull-right" id="pus_submit" style="width: 50%;">Save</button>
                   </div>
                 </div>
               </div>

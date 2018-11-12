@@ -93,41 +93,36 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_lc_id"> L / C No:<span class="text-bold text-danger">*</span> </label>
-                  <div class="col-sm-8">
-                    <select class="chosen-select form-control"  id="puc_lc_id" name="puc_lc_id" style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a L / C No</option>
-                      <?php if($lc_data && isset($lc_data)): foreach($lc_data as $data):?>
-                        <option value="<?= $data->id; ?>" <?php if(isset($purchase)&& $purchase): if($purchase->puc_lc_id == $data->id): echo 'selected'; endif; endif; ?> ><?= $data->lc_no; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-                </div>
 
+                  <div class="form-group">
+                      <label class="col-sm-4 control-label no-padding-left" for="pus_sl">Purchase Code: </label>
+                      <div class="col-sm-8">
+                          <input type="text" id="pus_sl" name="pus_sl" value="<?= $purchase->pus_sl ?>" placeholder="Purchase Code" class="form-control" readonly />
+                      </div>
+                  </div>
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_car_model"> Car Model:<span class="text-bold text-danger">*</span>  </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="puc_car_model"> Car Model:  </label>
                   <div class="col-sm-8">
                     <input type="text" id="puc_car_model"  name="puc_car_model" value="<?= (isset($purchase)&& $purchase)? $purchase->puc_car_model : '' ?>" placeholder="Car Model" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_color"> Color:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="puc_color"> Color: </label>
                   <div class="col-sm-8">
                     <input type="text" id="puc_color" name="puc_color" value="<?= (isset($purchase)&& $purchase)? $purchase->puc_color : '' ?>" placeholder="Color" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_engine_no"> Engine No:<span class="text-bold text-danger">*</span></label>
+                  <label class="col-sm-4 control-label no-padding-left" for="puc_engine_no"> Engine No:</label>
                   <div class="col-sm-8">
                     <input type="text" id="puc_engine_no"  name="puc_engine_no" value="<?= (isset($purchase)&& $purchase)? $purchase->puc_engine_no : '' ?>" placeholder="Engine No" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="puc_chassis_no"> Chassis No:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="puc_chassis_no"> Chassis No </label>
                   <div class="col-sm-8">
                     <input type="text" id="puc_chassis_no"  name="puc_chassis_no" value="<?= (isset($purchase)&& $purchase)? $purchase->puc_chassis_no : '' ?>" placeholder="Chassis No" class="form-control" />
                   </div>
@@ -181,115 +176,11 @@
                     <input type="text" id="puc_mileage" name="puc_mileage" value="<?= (isset($purchase)&& $purchase)? $purchase->puc_mileage : '' ?>" placeholder="Mileage" class="form-control" />
                   </div>
                 </div>
+              <div class="form-group" >
+                  <div class="col-sm-12" style="margin-top: 10px;">
+                      <button type="Submit" class="btn btn-primary pull-right" id="pus_submit" style="width: 50%;">Purchase</button>
+                  </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="widget-box">
-        <div class="widget-header">
-          <h4 class="widget-title">Estimating Price Information</h4>
-          <div class="widget-toolbar">
-            <a href="#" data-action="collapse">
-              <i class="ace-icon fa fa-chevron-up"></i>
-            </a>
-
-            <a href="#" data-action="close">
-              <i class="ace-icon fa fa-times"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="widget-body">
-          <div class="widget-main">
-
-            <div class="row">
-              <div class="col-sm-1">
-              </div>
-              <?php $prices = $this->Purchase_model->get_purchase_prices($purchase->id); if($prices): ?>
-              <div class="col-sm-5">
-                
-                <?php $i=5; foreach ($prices as $price):  ?>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id<?= $i;?>" name="head_id[<?= $i;?>]" onchange="apr_priceing('<?= $i;?>')"  style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>" <?= ($price->head_id == $data->id) ? 'selected':''?> ><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="text" id="amount<?= $i;?>"  name="amount[<?= $i;?>]" placeholder="Amount" value="<?= $price->amount; ?>" class="form-control" />
-                  </div>
-                </div>
-                <?php $i++; endforeach; ?>
-              </div>
-              <?php endif; ?>
-
-              <div class="col-sm-5">
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id1" name="head_id[1]" onchange="apr_priceing(1)" style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>" ><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="text" id="amount1"  name="amount[1]" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id2" name="head_id[2]" onchange="apr_priceing(2)"  style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="text" id="amount2"  name="amount[2]" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id3" name="head_id[3]" onchange="apr_priceing(3)"  style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="text" id="amount3"  name="amount[3]" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-7">
-                    <select class="chosen-select form-control"  id="head_id4" name="head_id[4]" onchange="apr_priceing(4)" style="height: 30px; border-radius: 5px;">
-                      <option value="0">Please Select a Expense Head</option>
-                      <?php if($heads && isset($heads)): foreach($heads as $data):?>
-                        <option value="<?= $data->id; ?>"><?= $data->head_title; ?></option>
-                      <?php endforeach; endif;?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-5">
-                    <input type="text" id="amount4"  name="amount[4]" placeholder="Amount" disabled class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group" >
-                  <div class="col-sm-12" style="margin-top: 30px;">
-                    <button type="Submit" class="btn btn-primary pull-right" id="pus_submit" style="width: 50%;">Purchase</button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

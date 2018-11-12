@@ -210,7 +210,7 @@ class Customer extends MY_Controller
 		$this->form_validation->set_rules('cus_address', 'Customer Address', 'required|trim');
 		// $this->form_validation->set_rules('ord_lc_no', 'L/C No', 'required|trim');
 		// $this->form_validation->set_rules('ord_car_model', 'Car Model', 'required|trim');
-		$this->form_validation->set_rules('ord_budget_range', 'Budget Range', 'required|trim');
+//		$this->form_validation->set_rules('ord_budget_range', 'Budget Range', 'required|trim');
 		$this->form_validation->set_rules('ord_advance', 'Advance', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Order No ', 'required|trim');
 
@@ -226,8 +226,9 @@ class Customer extends MY_Controller
 				if($order_id = $this->Order_model->store_order_info($cus_id)){
 
 					$pus_id = $this->input->post('pus_id');
+					$ord_lc_no = $this->input->post('ord_lc_no');
 					if($pus_id != 0){
-						$this->Purchase_model->update_order_info_in_purchase($pus_id,$order_id,$cus_id,0);
+						$this->Purchase_model->update_order_info_in_purchase($pus_id,$order_id,$cus_id,$ord_lc_no);
 					}
 					
 

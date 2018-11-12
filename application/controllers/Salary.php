@@ -131,11 +131,11 @@ class Salary extends MY_Controller
 
 			$data = $res->payment_amount;
 			if(is_null($res->payment_amount)){
-				$data = 1;
+				$data = 0;
 			}
 			echo json_encode($data);
 		}else{
-			echo 0;
+			echo 1;
 		}
 	}
 

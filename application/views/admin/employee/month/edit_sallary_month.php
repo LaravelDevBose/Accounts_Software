@@ -39,7 +39,7 @@
                 <div class="form-group">
                   <label class="col-sm-5 control-label no-padding-left" for="note">Note: </label>
                   <div class="col-sm-7">
-                    <textarea id="note" required name="note" placeholder="Short Note" class="form-control" ><?= $sallary_month->note ?></textarea>
+                    <textarea id="note"  name="note" placeholder="Short Note" class="form-control" ><?= $sallary_month->note ?></textarea>
                   </div>
                 </div>
                 <div class="form-group" style="margin-top: 10px;">

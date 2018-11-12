@@ -64,7 +64,7 @@
 				data:{emp_id:emp_id,month_id:month_id},
 				success:function(data){
 
-					if(data != 0){
+					if(data != 1){
 						var total = parseInt(data)+parseInt(payment_amount);
 
 						var due = parseInt(salary_range) - parseInt(total);

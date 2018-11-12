@@ -103,13 +103,6 @@
 	$('#pus_submit').on('click', function(){
 
 
-		$('#puc_lc_id .chosen-single').css('border', '1px solid #aaa');
-		$('#sup_info .chosen-single').css('border', '1px solid #aaa');
-		$('#puc_engine_no').css('border', '1px solid #D5D5D5');
-		$('#puc_chassis_no').css('border', '1px solid #D5D5D5');
-		$('#puc_car_model').css('border', '1px solid #D5D5D5');
-		$('#puc_color').css('border', '1px solid #D5D5D5');
-
 		var sup_info  = $('#sup_info').val();
 		if(sup_info == '' || sup_info < 1){
 			$('#sup_info_chosen .chosen-single').css('border', '1px solid red');
@@ -122,61 +115,6 @@
                 });
 			return false;
 		}
-
-		
-		var puc_car_model  = $('#puc_car_model').val();
-		if(puc_car_model == '' || puc_car_model.length < 1){
-			$('#puc_car_model').css('border', '1px solid red');
-			$('#puc_car_model').focus();
-			swal({
-                  text: "Pleass Insert Car Model",
-                  icon: "warning",
-                  buttons: false,
-                  timer: 1500,
-                });
-			return false;
-		}
-
-		var puc_color  = $('#puc_color').val();
-		if(puc_color == '' || puc_color.length < 1){
-			$('#puc_color').css('border', '1px solid red');
-			$('#puc_color').focus();
-			swal({
-                  text: "Pleass Insert Car Color",
-                  icon: "warning",
-                  buttons: false,
-                  timer: 1500,
-                });
-			return false;
-		}
-
-
-		var puc_engine_no  = $('#puc_engine_no').val();
-		if(puc_engine_no == '' || puc_engine_no.length < 1){
-			$('#puc_engine_no').css('border', '1px solid red');
-			$('#puc_engine_no').focus();
-			swal({
-                  text: "Pleass Insert Engine Number",
-                  icon: "warning",
-                  buttons: false,
-                  timer: 1500,
-                });
-			return false;
-		}
-
-		var puc_chassis_no  = $('#puc_chassis_no').val();
-		if(puc_chassis_no == '' || puc_chassis_no.length < 1){
-			$('#puc_chassis_no').css('border', '1px solid red');
-			$('#puc_chassis_no').focus();
-			swal({
-                  text: "Pleass Insert Chassis Number",
-                  icon: "warning",
-                  buttons: false,
-                  timer: 1500,
-                });
-			return false;
-		}
-
-
+        return true;
 	});
 </script>

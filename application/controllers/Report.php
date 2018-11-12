@@ -47,6 +47,38 @@ class Report extends MY_Controller
 	}
 
 
+    /*====== Final report View ======*/
+    public function car_full_report()
+    {
+        if($this->admin_access('car_full_report') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('report/dashboard');
+        }
+
+        $data['title'] = 'Car Full Report';
+        $data['content'] = 'report/full_report';
+        $data['orders'] = $this->Order_model->get_active_order_info();
+        $this->load->view('admin/adminMaster', $data);
+    }
+
+    /*======= Order Wise Report View ========*/
+    public function find_full_deatils_report($order_id=Null)
+    {
+
+        if($order_info = $this->Order_model->order_info_by_id($order_id)){
+            $data['customer'] = $this->Customer_model->customer_by_id($order_info->cus_id);
+            $data['collections'] = $this->Collection_model->order_wise_collection($order_id);
+            $data['pricing'] = $this->Purchase_model->order_wise_estimate_price($order_info->pus_id);
+            $data['order'] = $order_info;
+            $this->load->view('admin/report/report_view', $data);
+        }else{
+            echo 0;
+        }
+    }
+
+
+
 	/*========= View All Customer Due Report ==========*/
 	public function view_full_due_report()
 	{	
@@ -321,36 +353,6 @@ class Report extends MY_Controller
 		if($res = $this->Salary_model->find_employee_salary($emp_id)){
 			$data['salaries'] = $res;
 			$this->load->view('admin/report/salary_report_tbl', $data);
-		}else{
-			echo 0;
-		}
-	}
-
-	/*====== Final report View ======*/
-	public function car_full_report()
-	{	
-		if($this->admin_access('car_full_report') != 1){
-			$data['warning_msg']="You Are Not able to Access this Module...!";
-			$this->session->set_flashdata($data);
-			redirect('report/dashboard');
-		}
-
-		$data['title'] = 'Car Full Report';
-		$data['content'] = 'report/full_report';
-		$data['orders'] = $this->Order_model->get_active_order_info();
-		$this->load->view('admin/adminMaster', $data);
-	}
-
-	/*======= Order Wise Report View ========*/
-	public function find_full_deatils_report($order_id=Null)
-	{	
-
-		if($order_info = $this->Order_model->order_info_by_id($order_id)){
-			$data['customer'] = $this->Customer_model->customer_by_id($order_info->cus_id);
-			$data['collections'] = $this->Collection_model->order_wise_collection($order_id);
-			$data['payments'] = $this->Purchase_model->order_wise_estimate_price($order_info->pus_id);
-			$data['order'] = $order_info;
-			$this->load->view('admin/report/report_view', $data);
 		}else{
 			echo 0;
 		}

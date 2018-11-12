@@ -94,7 +94,7 @@
 
 <div class="col-sm-3">
   <li>
-    <INPUT TYPE="CHECKBOX"  class="myace " class="" <?php if($access->account_module ==1): echo "checked"; endif;?> value="" id="account_module" NAME="account_module"><strong>Account Module</strong>
+    <INPUT TYPE="CHECKBOX"  class="myace " class="" <?php if($access->account_module ==1): echo "checked"; endif;?> value="1" id="account_module" NAME="account_module"><strong>Account Module</strong>
     <ul id="brunch_menu">
       <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->collection ==1): echo "checked"; endif;?> value="1" id="collection" NAME="collection">Collection</li>
       <li><INPUT TYPE="CHECKBOX"  class="myace " <?php if($access->payment ==1): echo "checked"; endif;?> value="1" id="payment" NAME="payment">Payment</li>

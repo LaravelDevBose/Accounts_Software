@@ -32,7 +32,7 @@
                     <select class="chosen-select form-control" id="year" name="year" required  style="height: 30px; border-radius: 5px;">
                       <option value="0">Select a Year</option>
                       <?php $year = date('Y'); $year = $year-2;  for($i = 1; $i <= 5; $i++):?>
-                        <option value="<?= $year+$i ?>"><?= $year+$i; ?></option>
+                        <option value="<?= $year+$i ?>" <?= (date('Y')== $year+$i)? 'selected': ''?> ><?= $year+$i; ?></option>
                       <?php endfor; ?>
                     </select>
                   </div>
@@ -43,7 +43,7 @@
                     <select class="chosen-select form-control" id="month_id" name="month_id" required  style="height: 30px; border-radius: 5px;">
                       <option value="0">Select a Month Name</option>
                       <?php if($month_names && isset($month_names)):  foreach($month_names as $month):?>
-                        <option value="<?= $month->id; ?>"><?= $month->month_name; ?></option>
+                        <option  value="<?= $month->id; ?>" <?= (date('n')== $month->id)? 'selected': ''?> ><?= $month->month_name; ?></option>
                       <?php endforeach; endif; ?>
                     </select>
                   </div>

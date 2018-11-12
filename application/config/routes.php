@@ -118,7 +118,7 @@ $route['collection/edit/(:any)'] 	= 'Collection/collection_entry_edit/$1';
 $route['collection/update/(:any)'] 	= 'Collection/collection_entry_update/$1';
 $route['collection/delete/(:any)'] 	= 'Collection/delete_collection_data/$1';
 $route['find/customer/chassis_no/(:any)']	= 'Collection/find_order_info/$1';
-$route['find/lc/due_amount/(:any)'] = 'Collection/find_lc_due_amount/$1';
+$route['find/order/due_amount/(:any)'] = 'Collection/find_order_due_amount/$1';
 
 //payment Route List
 $route['payment'] 					= 'Payment/payment_entry_page';
@@ -128,6 +128,7 @@ $route['payment/update/(:any)'] 	= 'Payment/payment_entry_update/$1';
 $route['payment/delete/(:any)'] 	= 'Payment/delete_payment_data/$1';
 $route['find/chassis_no/(:any)']	= 'Payment/find_order_info/$1';
 $route['find/payment/lc/(:any)'] 	= 'Payment/find_payment_lc/$1';
+$route['find/purchase_info/(:any)'] = 'Payment/find_purchase_info_by_supplier/$1';
 
 //Office Payment Route List
 $route['office_payment']			= 'Payment/office_payment_entry_page';

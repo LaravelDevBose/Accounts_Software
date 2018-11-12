@@ -23,6 +23,14 @@
                             </div>
                             <div class="profile-user-info profile-user-info-striped">
                                 <div class="profile-info-row">
+                                    <div class="profile-info-name"> Purchase No </div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable" id="age"><?= $purchase->pus_sl ?></span>
+                                    </div>
+                                </div>
+
+                                <div class="profile-info-row">
                                     <div class="profile-info-name"> Chassis No </div>
 
                                     <div class="profile-info-value">

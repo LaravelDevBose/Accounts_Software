@@ -50,7 +50,7 @@ class Pricing_model extends CI_Model
 	/*====== find Employee By id =======*/
 	public function pricing_by_id($id=Null)
 	{
-		$this->db->select('purchase_pricing.*, customers.cus_name, customers.cus_contact_no, suppliers.sup_name , suppliers.sup_phone, purchase.puc_chassis_no, purchase.puc_engine_no, purchase.puc_car_model, purchase.puc_year, purchase.puc_color, purchase.total_price')->from('purchase_pricing');
+		$this->db->select('purchase_pricing.*, customers.cus_name, customers.cus_contact_no, suppliers.sup_name , suppliers.sup_phone,purchase.pus_sl, purchase.puc_chassis_no, purchase.puc_engine_no, purchase.puc_car_model, purchase.puc_year, purchase.puc_color, purchase.total_price')->from('purchase_pricing');
 		$this->db->join('purchase', 'purchase_pricing.pus_id = purchase.id');
 		$this->db->join('customers', 'purchase.customer_id = customers.id', 'left');
 		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id', 'left');
