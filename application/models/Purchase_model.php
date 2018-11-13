@@ -91,7 +91,13 @@ class Purchase_model extends CI_Model
 	{
 		if(!is_null($id)){
 
-			$result = $this->db->where('id', $id)->where('status', 'a')->get('purchase')->row();
+            $this->db->select('purchase.*, suppliers.sup_name, customers.cus_name,tbl_lcs.lc_no');
+            $this->db->from('purchase');
+            $this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
+            $this->db->join('customers', 'purchase.customer_id = customers.id','left' );
+            $this->db->join('tbl_lcs', 'purchase.puc_lc_id = tbl_lcs.id','left' );
+            $this->db->where('purchase.id',$id)->where('purchase.status', 'a')->order_by('id', 'desc');
+            $result = $this->db->get()->row();
 			if($result){ return $result; }else{ return FALSE; }
 
 		}else{

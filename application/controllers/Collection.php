@@ -42,6 +42,7 @@ class Collection extends MY_Controller
 
 		$data['title'] = 'Collection Entry';
 		$data['content'] = 'accounts/collection_entry';
+		$data['coll_sl'] = $this->collection_sl_create();
 		$data['customers'] = $this->Customer_model->find_all_customer_info();
 		$data['collections'] = $this->Collection_model->get_all_collection_data();
 		$this->load->view('admin/adminMaster', $data);
@@ -52,7 +53,7 @@ class Collection extends MY_Controller
 	{	
 		$this->form_validation->set_rules('cus_id', 'Customer ', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Chassis Number ', 'required|trim');
-//		$this->form_validation->set_rules('lc_no', 'L/C Number ', 'required|trim');
+		$this->form_validation->set_rules('collection_type', 'Collection Type ', 'required|trim');
 		$this->form_validation->set_rules('date', 'Date', 'required|trim');
 		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
 		$this->form_validation->set_rules('description', 'Description', 'trim');
@@ -62,6 +63,7 @@ class Collection extends MY_Controller
 			$data['content'] = 'accounts/collection_entry';
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
 			$data['collections'] = $this->Collection_model->get_all_collection_data();
+            $data['coll_sl'] = $this->collection_sl_create();
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 
@@ -74,6 +76,28 @@ class Collection extends MY_Controller
 		}
 	}
 
+    /*===== Store Collection Entry Data =======*/
+    public function collection_entry_store_print()
+    {
+        $this->form_validation->set_rules('cus_id', 'Customer ', 'required|trim');
+        $this->form_validation->set_rules('order_no', 'Chassis Number ', 'required|trim');
+        $this->form_validation->set_rules('collection_type', 'Collection Type ', 'required|trim');
+        $this->form_validation->set_rules('date', 'Date', 'required|trim');
+        $this->form_validation->set_rules('amount', 'Amount', 'required|trim');
+        $this->form_validation->set_rules('description', 'Description', 'trim');
+
+        if($this->form_validation->run() == FALSE){
+            echo 1;
+        }else{
+
+            if($coll_id = $this->Collection_model->store_collection_data()){
+                $data['collection'] = $this->Collection_model->get_collection_by_id($coll_id);
+                $this->load->view('admin/accounts/collection_print', $data);
+            }else{
+                echo 0;
+            }
+        }
+    }
 
 	/*======= Edit Collection page =======*/
 	public function collection_entry_edit($id=Null)
@@ -83,7 +107,8 @@ class Collection extends MY_Controller
 			$this->session->set_flashdata($data);
 			redirect('account/dashboard');
 		}
-
+            $data['title'] = 'Collection Entry';
+            $data['content'] = 'accounts/edit_collection';
             $result = $this->Collection_model->get_collection_by_id($id);
 			$data['collection'] = $result;
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
@@ -98,26 +123,38 @@ class Collection extends MY_Controller
             $perchas_price = $this->db->where('order_id', $result->order_no)->get('purchase')->row()->total_price;
 
             $data['due_amount'] = number_format($perchas_price- $total_paid,2);
-			$this->load->view('admin/accounts/edit_collection', $data);
+			$this->load->view('admin/adminMaster', $data);
 
 	}
 
 	/*====== Update Collection Date =========*/
 	public function collection_entry_update($id=Null)
 	{
-		$this->form_validation->set_rules('cus_id', 'Customer ', 'required|trim');
-		$this->form_validation->set_rules('order_no', 'Chassis Number ', 'required|trim');
-//		$this->form_validation->set_rules('lc_no', 'L/C Number ', 'required|trim');
-		$this->form_validation->set_rules('date', 'Date', 'required|trim');
-		$this->form_validation->set_rules('amount', 'Amount', 'required|trim');
-		$this->form_validation->set_rules('description', 'Description', 'trim');
+        $this->form_validation->set_rules('cus_id', 'Customer ', 'required|trim');
+        $this->form_validation->set_rules('order_no', 'Chassis Number ', 'required|trim');
+        $this->form_validation->set_rules('collection_type', 'Collection Type ', 'required|trim');
+        $this->form_validation->set_rules('date', 'Date', 'required|trim');
+        $this->form_validation->set_rules('amount', 'Amount', 'required|trim');
+        $this->form_validation->set_rules('description', 'Description', 'trim');
 
 		if($this->form_validation->run() == FALSE){
-		 	$data['title'] = 'Collection Entry';
-			$data['content'] = 'accounts/collection_entry';
-			$data['customers'] = $this->Customer_model->find_all_customer_info();
-			$data['collections'] = $this->Collection_model->get_all_collection_data();
-			$this->load->view('admin/adminMaster', $data);
+            $data['title'] = 'Collection Entry';
+            $data['content'] = 'accounts/edit_collection';
+            $result = $this->Collection_model->get_collection_by_id($id);
+            $data['collection'] = $result;
+            $data['customers'] = $this->Customer_model->find_all_customer_info();
+            $data['orders'] = $this->Order_model->get_all_order_for_collection($result->cus_id);
+
+            $ord_advance = $this->db->where('id', $result->order_no)->get('orders')->row()->ord_advance;
+            $coll_amount = $this->Order_model->find_total_colection_amount($result->order_no);
+
+
+            $total_paid = $coll_amount->amount + $ord_advance;
+
+            $perchas_price = $this->db->where('order_id', $result->order_no)->get('purchase')->row()->total_price;
+
+            $data['due_amount'] = number_format($perchas_price- $total_paid,2);
+            $this->load->view('admin/adminMaster', $data);
 		}else{
 
 		 	if($this->Collection_model->update_collection_data($id)){
@@ -125,12 +162,19 @@ class Collection extends MY_Controller
 				$this->session->set_flashdata($data);
 				redirect('collections');
 		 	}else{	
-		 		$data['error']="Update UnSuccessfull";
+		 		$data['error']="Update UnSuccessful";
 				$this->session->set_flashdata($data);
 				redirect('collections');
 		 	}
 		}
 	}
+
+	/*=========== collection_entry_view ===============*/
+    public function collection_entry_view($id = Null){
+
+        $data['collection'] = $this->Collection_model->get_collection_by_id($id);
+        $this->load->view('admin/accounts/collection_view', $data);
+    }
 
 	/*======== delete _data=====*/
 	public function delete_collection_data($id=Null)
@@ -152,6 +196,35 @@ class Collection extends MY_Controller
 		}
 	}
 
+    private function collection_sl_create(){
+        $last_coll = $this->db->where('type', 'receive')->order_by('id', 'desc')->limit(1)->get('collections')->row();
+        if(is_null($last_coll)|| !isset($last_coll)){
+            $coll_sl = 'MC-00001';
+        }else{
+
+            $num = substr($last_coll->coll_sl, 3, strlen($last_coll->coll_sl));
+
+            if($num < 9):
+                $num+=1;
+                $coll_sl = 'MC-0000'.$num;
+            elseif($num < 99):
+                $num+=1;
+                $coll_sl = 'MC-000'.$num;
+            elseif($num < 999):
+                $num+=1;
+                $coll_sl = 'MC-00'.$num;
+            elseif($num<9999):
+                $num+=1;
+                $coll_sl = 'MC-0'.$num;
+            else:
+                $num+=1;
+                $coll_sl = 'MC-'.$num;
+            endif;
+        }
+
+        return $coll_sl;
+    }
+
 	/*========== find order info and chassis info =======*/
 	public function find_order_info($cus_id=Null)
 	{
@@ -170,7 +243,11 @@ class Collection extends MY_Controller
         if($coll_amount = $this->Order_model->find_total_colection_amount($order_id)){
 
             $total_paid = $coll_amount->amount + $order_info->ord_advance;
-            $perchas_price = $this->db->where('order_id', $order_id)->get('purchase')->row()->total_price;
+            $perchas_price = 0;
+            if($order_info->pus_id != 0){
+                $perchas_price = $this->db->where('order_id', $order_id)->get('purchase')->row()->total_price;
+            }
+
             $lc_no = $this->LC_model->lc_data_by_id($order_info->ord_lc_no);
             $data['lc_no'] = '';
             if($lc_no){

@@ -294,7 +294,7 @@ class Order_model extends CI_Model
 	/*====== find order and Chassis number by customer id ======*/
 	public function find_order_by_customer($cus_id=Null)
 	{
-		$res = $this->db->select('id, ord_chassis_no')->where('cus_id', $cus_id)->where('order_status','a')->order_by('id', 'desc')->get('orders')->result(); 
+		$res = $this->db->select('id,order_no,ord_chassis_no')->where('cus_id', $cus_id)->order_by('id', 'desc')->get('orders')->result();
 
 		if($res){ return $res; }else{ return FALSE;}
 	}
@@ -342,7 +342,7 @@ class Order_model extends CI_Model
 	/*======= collection page order id and chassis no ========*/
 	public function get_all_order_for_collection($cus_id=Null)
 	{
-		$res = $this->db->select('id,ord_chassis_no')->where('cus_id', $cus_id)->get('orders')->result();
+		$res = $this->db->select('id,order_no,ord_chassis_no')->where('cus_id', $cus_id)->get('orders')->result();
 
 		if($res){return $res;}else{return FALSE; }
 	}

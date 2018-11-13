@@ -96,6 +96,17 @@ $route['pricing/update/(:any)']	=	'Purchase_pricing/update_pricing_info/$1';
 $route['pricing/delete/(:any)/(:any)']	=	'Purchase_pricing/delete_pricing_info/$1/$2';
 $route['find/purchase_car/info/(:any)']	 =	'Purchase/find_purchase_car_info/$1';
 
+
+$route['car/images_insert/page']      =   'Car/car_images_insert_page';
+$route['car/images/store']            =   'Car/car_images_store';
+$route['car/images/view/(:any)']      =   'Car/car_images_view_page/$1';
+$route['car/images/edit/(:any)']      =   'Car/car_images_edit_page/$1';
+$route['car/images/update/(:any)']    =   'Car/car_images_update/$1';
+$route['car/images/delete/(:any)']    =   'Car/car_images_delete/$1';
+$route['car/image/delete/(:any)']     =   'Car/car_image_delete/$1';
+$route['find/car/purchase_info/(:any)']      =   'Car/find_car_purchase_info_for_image/$1';
+
+
 /*======= Car Location Traking =======*/
 $route['transport/status'] 			= 'Transport/transport_car_status_view';
 $route['trans/status/chnage/(:any)']= 'Transport/transport_car_status_change_page/$1';
@@ -114,6 +125,8 @@ $route['trans/head/delete/(:any)'] 	= 'Transport/transport_head_delete/$1';
 //Collection Entry Route List
 $route['collections'] 				= 'Collection/collection_entry_page';
 $route['collection/store'] 			= 'Collection/collection_entry_store';
+$route['collection/store/print'] 	= 'Collection/collection_entry_store_print';
+$route['collection/view/(:any)'] 	= 'Collection/collection_entry_view/$1';
 $route['collection/edit/(:any)'] 	= 'Collection/collection_entry_edit/$1';
 $route['collection/update/(:any)'] 	= 'Collection/collection_entry_update/$1';
 $route['collection/delete/(:any)'] 	= 'Collection/delete_collection_data/$1';

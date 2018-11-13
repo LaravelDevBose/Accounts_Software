@@ -8,12 +8,11 @@ class Collection_model extends CI_Model
 	/*======= get All Collection Entry Data =========*/
 	public function get_all_collection_data() 
 	{
-		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
+		$this->db->select('collections.*, customers.cus_name, orders.order_no');
 		$this->db->from('collections');
 		$this->db->join('customers','collections.cus_id = customers.id');
-		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id','left');
-		$this->db->join('orders','collections.order_no = orders.id');
-		$this->db->where('collections.status', 'a');
+        $this->db->join('orders','collections.order_no = orders.id');
+        $this->db->where('collections.status', 'a')->where('collections.type', 'receive');
 		$result = $this->db->order_by('id', 'desc')->get()->result();
 
 		if($result){
@@ -27,9 +26,12 @@ class Collection_model extends CI_Model
 	public function store_collection_data()
 	{
 		$attr = array(
+			'coll_sl'		=>$this->input->post('coll_sl'),
 			'cus_id'		=>$this->input->post('cus_id'),
 			'order_no'	    =>$this->input->post('order_no'),
-			'lc_id'		    =>0,
+			'collection_type'	    =>$this->input->post('collection_type'),
+			'cheque_no'	    =>$this->input->post('cheque_no'),
+			'bank_name'	    =>$this->input->post('bank_name'),
 			'date'			=>$this->input->post('date'),
 			'amount'		=>$this->input->post('amount'),
 			'description'	=>$this->input->post('description'),
@@ -42,7 +44,8 @@ class Collection_model extends CI_Model
 		);
 
 		$res = $this->db->insert('collections', $attr);
-		if($res){return TRUE; }else{ return FALSE; }
+        $coll_id = $this->db->insert_id();
+		if($res){return $coll_id; }else{ return FALSE; }
 	}
 
 	
@@ -51,12 +54,15 @@ class Collection_model extends CI_Model
 	public function update_collection_data($id = Null)
 	{
 		$attr = array(
-			'cus_id'		=>$this->input->post('cus_id'),
-			'order_no'	=>$this->input->post('order_no'),
-			'lc_id'		=>0,
-			'date'			=>$this->input->post('date'),
-			'amount'		=>$this->input->post('amount'),
-			'description'	=>$this->input->post('description'),
+            'coll_sl'		=>$this->input->post('coll_sl'),
+            'cus_id'		=>$this->input->post('cus_id'),
+            'order_no'	    =>$this->input->post('order_no'),
+            'collection_type'	    =>$this->input->post('collection_type'),
+            'cheque_no'	    =>$this->input->post('cheque_no'),
+            'bank_name'	    =>$this->input->post('bank_name'),
+            'date'			=>$this->input->post('date'),
+            'amount'		=>$this->input->post('amount'),
+            'description'	=>$this->input->post('description'),
 			'updated_by'  =>$this->session->userdata('name'),
 			'updated_at' =>date('Y-m-d H:i:s')
 		);
@@ -70,9 +76,9 @@ class Collection_model extends CI_Model
 	/*======= get Acounts data by id ======*/
 	public function get_collection_by_id($id=Null)
 	{	
-		$this->db->select('collections.*, customers.cus_name,tbl_lcs.lc_no')->from('collections');
-		$this->db->join('customers', 'collections.cus_id = customers.id','left');
-		$this->db->join('tbl_lcs', 'collections.lc_id = tbl_lcs.id','left');
+		$this->db->select('collections.*, customers.cus_name, customers.cus_contact_no,orders.order_no, customers.cus_address, orders.ord_engine_no, orders.ord_chassis_no')->from('collections');
+		$this->db->join('customers', 'collections.cus_id = customers.id');
+		$this->db->join('orders', 'collections.order_no = orders.id');
 		$res = $this->db->where('collections.id', $id)->get()->row();
 		if($res){ return $res; }else{ return FALSE; }
 	}

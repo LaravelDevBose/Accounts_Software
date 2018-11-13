@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/bootstrap-duallistbox.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/bootstrap-multiselect.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/select2.min.css" />
-    
+      <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/colorbox.min.css" />
     <!-------------------  profile css start   --------------------->
     <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/jquery.gritter.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/bootstrap-editable.min.css" />
