@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2018 at 07:33 AM
+-- Generation Time: Nov 13, 2018 at 02:05 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -126,8 +126,9 @@ CREATE TABLE `admin_access` (
 --
 
 INSERT INTO `admin_access` (`id`, `admin_id`, `sale_module`, `customer_order`, `order_entry`, `all_order_list`, `pending_order_list`, `process_order_list`, `ready_car_sale`, `customer_entry`, `customer_list`, `purchase_module`, `purchase_entry`, `purchase_list`, `pricing_entry`, `pricing_list`, `transport_status`, `supplier`, `transport_head`, `account_module`, `collection`, `payment`, `ofice_payment`, `other_income`, `bank_trans`, `balance_sheet`, `check_option`, `check_entry`, `pending_check_list`, `reminder_check_list`, `paid_check_list`, `hr_module`, `sallay_payment`, `employee_list`, `employee_entry`, `monthe_entry`, `report_module`, `stock_report`, `car_full_report`, `car_coll_report`, `cus_due_report`, `cus_order_report`, `deliv_order_report`, `lc_order_report`, `collection_report`, `cus_coll_report`, `date_payment_report`, `supplier_payment_report`, `office_payment_report`, `sallary_report`, `emp_sallary_report`, `lc_list_report`, `cus_list_report`, `administration`, `lc_info`, `lc_entry`, `lc_list`, `expense_head_entry`, `company_info`, `admin`, `admin_entry`, `admin_list`, `admin_access`, `edit_access`, `delete_access`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 5, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2018-10-31 10:05:24', '2018-10-31 10:05:24'),
-(3, 12, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2018-11-01 05:53:50', '2018-11-01 05:53:50');
+(1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 'admin', '2018-10-31 10:05:24', '2018-11-11 10:18:20'),
+(3, 12, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2018-11-01 05:53:50', '2018-11-01 05:53:50'),
+(4, 14, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2018-11-11 06:55:12', '2018-11-11 06:55:12');
 
 -- --------------------------------------------------------
 
@@ -193,6 +194,19 @@ CREATE TABLE `bank_trans` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `car_images`
+--
+
+CREATE TABLE `car_images` (
+  `id` int(30) UNSIGNED NOT NULL,
+  `pus_id` int(20) NOT NULL,
+  `image_path` text NOT NULL,
+  `status` char(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `checks`
 --
 
@@ -224,9 +238,12 @@ CREATE TABLE `checks` (
 
 CREATE TABLE `collections` (
   `id` int(20) UNSIGNED NOT NULL,
+  `coll_sl` varchar(100) NOT NULL,
   `cus_id` int(20) UNSIGNED NOT NULL,
   `order_no` int(20) UNSIGNED DEFAULT NULL,
-  `lc_id` int(20) UNSIGNED DEFAULT NULL,
+  `collection_type` tinyint(4) NOT NULL,
+  `cheque_no` varchar(150) DEFAULT NULL,
+  `bank_name` varchar(150) DEFAULT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `amount` int(10) UNSIGNED DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -282,7 +299,8 @@ CREATE TABLE `create_admin` (
 INSERT INTO `create_admin` (`admin_id`, `admin_username`, `admin_password`, `admin_email`, `admin_phone`, `admin_address`, `admin_image`, `admin_type`) VALUES
 (5, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin@gmail.com', '018888888888', 'mirpur 10', '20330798845bcefe5a930d9.jpg', 's'),
 (12, 'maven Auto', 'e10adc3949ba59abbe56e057f20f883e', 'maven@gmail.com', '12345678910', 'maven auto', '0', 'd'),
-(13, 'maven Auto admin', 'e10adc3949ba59abbe56e057f20f883e', 'maven@gmail.com', '12345678910', 'maven auto', '0', 'd');
+(13, 'maven Auto admin', 'e10adc3949ba59abbe56e057f20f883e', 'maven@gmail.com', '12345678910', 'maven auto', '0', 'd'),
+(14, 'maven_auto', '88108848af3780c04bd574875cfb2cf2', 'mavenautos@gmail.com', '01790117777', 'www.maven-autos.com', '17746909285be7d27242b04.jpg', 'a');
 
 -- --------------------------------------------------------
 
@@ -380,24 +398,6 @@ CREATE TABLE `months` (
   `month_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `months`
---
-
-INSERT INTO `months` (`id`, `month_name`) VALUES
-(1, 'January'),
-(2, 'February'),
-(3, 'March'),
-(4, 'April'),
-(5, 'May'),
-(6, 'June'),
-(7, 'July'),
-(8, 'August'),
-(9, 'September'),
-(10, 'October'),
-(11, 'November'),
-(12, 'December');
-
 -- --------------------------------------------------------
 
 --
@@ -463,10 +463,11 @@ CREATE TABLE `payments` (
 
 CREATE TABLE `purchase` (
   `id` int(20) UNSIGNED NOT NULL,
+  `pus_sl` varchar(100) NOT NULL,
   `supplier_id` int(10) UNSIGNED NOT NULL,
   `customer_id` int(20) UNSIGNED DEFAULT NULL,
   `order_id` int(20) UNSIGNED DEFAULT NULL,
-  `puc_lc_id` int(20) UNSIGNED DEFAULT '0',
+  `puc_lc_id` int(20) UNSIGNED NOT NULL DEFAULT '0',
   `puc_car_model` varchar(200) DEFAULT NULL,
   `puc_color` varchar(200) DEFAULT NULL,
   `puc_engine_no` varchar(200) DEFAULT NULL,
@@ -697,6 +698,12 @@ ALTER TABLE `bank_trans`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `car_images`
+--
+ALTER TABLE `car_images`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `checks`
 --
 ALTER TABLE `checks`
@@ -831,7 +838,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `admin_access`
 --
 ALTER TABLE `admin_access`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `agents`
@@ -850,6 +857,12 @@ ALTER TABLE `banks`
 --
 ALTER TABLE `bank_trans`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `car_images`
+--
+ALTER TABLE `car_images`
+  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `checks`
@@ -873,7 +886,7 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `create_admin`
 --
 ALTER TABLE `create_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -903,7 +916,7 @@ ALTER TABLE `lc_details`
 -- AUTO_INCREMENT for table `months`
 --
 ALTER TABLE `months`
-  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
