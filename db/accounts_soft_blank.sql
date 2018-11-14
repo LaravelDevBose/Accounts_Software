@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2018 at 02:05 PM
+-- Generation Time: Nov 14, 2018 at 10:58 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -241,7 +241,7 @@ CREATE TABLE `collections` (
   `coll_sl` varchar(100) NOT NULL,
   `cus_id` int(20) UNSIGNED NOT NULL,
   `order_no` int(20) UNSIGNED DEFAULT NULL,
-  `collection_type` tinyint(4) NOT NULL,
+  `collection_type` tinyint(4) NOT NULL COMMENT '1=Advance, 2=Part, 3=Full Payment, 4=Cheque',
   `cheque_no` varchar(150) DEFAULT NULL,
   `bank_name` varchar(150) DEFAULT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,

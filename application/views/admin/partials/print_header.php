@@ -1,5 +1,5 @@
-<div style="width: 100%; height: auto; padding: 15px 10%;">
-	<div style="width: 20%; float: left; display: block; height: auto; text-align: center;">
+<div style="width: 100%; height: 145px; padding: 15px 7%; border-bottom: 1px solid #000;">
+	<div style="width: 22%!important; float: left;  height: auto; text-align: center;">
 		<?php 
 			$cmp_name = $this->Setting_model->get_company_info('cmp_name');
 			$cmp_adds = $this->Setting_model->get_company_info('cmp_adds');
@@ -20,10 +20,10 @@
 		<p style="margin-bottom: 0px; font-size: 12px;"><?php if(isset($cmp_adds) && $cmp_adds){echo $cmp_adds; }?></p>
 		<p style="margin-bottom: 0px; font-size: 12px;"><?php if(isset($cmp_phn) && $cmp_phn){echo $cmp_phn; }?></p>
 		<p style="margin-bottom: 0px; font-size: 12px;"><?php  if(isset($cmp_eml) && $cmp_eml){echo $cmp_eml; }?></p>
-		<p style="text-decoration: underline;"><?php if(isset($title)): echo $title; endif; ?></p>
+		<p style="text-decoration: underline;"><span ><?php if(isset($title)): echo $title; endif; ?></span></p>
 	</div>
-	<div style="padding: 10px 5px; width: 20%; height: auto; display: block; float: right;">
+	<div style="padding: 10px 0px; width: 18%; height: auto; float: right;">
 		
-		<p style=""><?= date('d/m/Y')?></p>
+		<p style="font-size: 13px;">Date: <?= date('d/m/Y')?></p>
 	</div>
 </div>

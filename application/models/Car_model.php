@@ -37,6 +37,24 @@ class Car_model extends CI_Model
         return $this->db->where('pus_id', $id)->get('car_images')->result();
     }
 
+
+    public function delete_car_image($id = Null){
+
+        $image = $this->db->where('id', $id)->get('car_images')->row();
+
+        if(file_exists($image->image_path)){
+            unlink($image->image_path);
+        }
+        $this->db->where('id', $id);
+        $this->db->delete('car_images');
+
+        if ( $this->db->affected_rows()) {
+            return TRUE;
+        }else {
+            return FALSE;
+        }
+    }
+
     // =============== Resize Uploded Image ==================
     public function image_resize($sourse){
 

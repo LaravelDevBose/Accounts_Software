@@ -94,39 +94,18 @@ class Collection_model extends CI_Model
 		if($this->db->affected_rows()){ return TRUE;}else{return FALSE; }
 	}
 
-	/*======== find collection data=========*/
-	public function find_collection_date_wise()
-	{
-		$date_from = $this->input->post('date_from');
-		$date_to = $this->input->post('date_to');
 
-		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
-		$this->db->from('collections');
-		$this->db->join('customers','collections.cus_id = customers.id');
-		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id');
-		$this->db->join('orders','collections.order_no = orders.id');
-		$this->db->where('collections.date >=', $date_from)->where('collections.date <=', $date_to);
-		$result = $this->db->where('collections.status', 'a')->order_by('date', 'asc')->get()->result();
-
-
-		if($result){
-			return $result;
-		}else{
-			return FALSE;
-		}
-	}
 
 	/*======== find collection by cunstomer =======*/
 
 	public function collection_by_customer($cus_id)
 	{
-		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
+        $this->db->select('collections.*,customers.cus_name,orders.ord_chassis_no,orders.order_no,orders.ord_engine_no');
 		$this->db->from('collections');
 		$this->db->join('customers','collections.cus_id = customers.id');
-		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id');
 		$this->db->join('orders','collections.order_no = orders.id');
 		$this->db->where('collections.cus_id', $cus_id)->where('collections.status', 'a');
-		$result = $this->db->order_by('date', 'asc')->get()->result();
+		$result = $this->db->order_by('collections.id', 'desc')->get()->result();
 
 
 		if($result){
@@ -139,13 +118,12 @@ class Collection_model extends CI_Model
 	/*========= order wise collection report Data  ==========*/
 	public function order_wise_collection($ord_id=Null)
 	{
-		$this->db->select('collections.*,customers.cus_name, tbl_lcs.lc_no,orders.ord_chassis_no');
+		$this->db->select('collections.*,customers.cus_name,orders.ord_chassis_no,orders.order_no,orders.ord_engine_no');
 		$this->db->from('collections');
 		$this->db->join('customers','collections.cus_id = customers.id');
-		$this->db->join('tbl_lcs','collections.lc_id = tbl_lcs.id');
 		$this->db->join('orders','collections.order_no = orders.id');
-		$this->db->where('collections.order_no', $ord_id)->where('collections.status', 'a');
-		$result = $this->db->order_by('date', 'asc')->get()->result();
+		$this->db->where('collections.order_no', $ord_id)->where('collections.status', 'a')->where('collections.type', 'receive');
+		$result = $this->db->order_by('collections.id', 'desc')->get()->result();
 
 
 		if($result){
@@ -155,6 +133,42 @@ class Collection_model extends CI_Model
 		}
 	}
 
+    /*======== find collection data=========*/
+    public function find_collection_date_wise()
+    {
+        $date_from = $this->input->post('date_from');
+        $date_to = $this->input->post('date_to');
+
+        $this->db->select('collections.*,customers.cus_name,orders.ord_chassis_no,orders.order_no,orders.ord_engine_no');
+        $this->db->from('collections');
+        $this->db->join('customers','collections.cus_id = customers.id');
+        $this->db->join('orders','collections.order_no = orders.id');
+        $this->db->where('collections.date >=', $date_from)->where('collections.date <=', $date_to);
+        $result = $this->db->where('collections.status', 'a')->order_by('collections.id', 'desc')->get()->result();
+
+
+        if($result){
+            return $result;
+        }else{
+            return FALSE;
+        }
+    }
+
+    /*======= find Due Amount ==========*/
+    public function find_paid_amount($order_id=Null)
+    {
+        $order_info = $this->db->where('id', $order_id)->get('orders')->row();
+
+        if($order_info){
+            $paid_amount = $this->db->select_sum('amount')->where('order_no', $order_id)->where('status', 'a')->get('collections')->row();
+
+            $total_paid = $paid_amount->amount + $order_info->ord_advance;
+
+            return $total_paid;
+        }else{
+            return FALSE;
+        }
+    }
 
 	/*======== Customer Wise Total Collection =======*/
 	public function cus_wise_total_collection($cus_id=Null)

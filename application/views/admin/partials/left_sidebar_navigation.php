@@ -369,10 +369,10 @@
                             <b class="arrow"></b>
                         </li>
                     <?php } if($access->car_coll_report ==1){ ?>
-                        <li class="<?= ($this->uri->uri_string()== 'report/car_wise/collection')?'active': ' ' ?>">
-                            <a href="<?php echo base_url(); ?>report/car_wise/collection">
+                        <li class="<?= ($this->uri->uri_string()== 'report/order_wise/collection')?'active': ' ' ?>">
+                            <a href="<?php echo base_url(); ?>report/order_wise/collection">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Car Collection Report
+                                Order Collection Report
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -401,10 +401,10 @@
                             <b class="arrow"></b>
                         </li>
                     <?php } if($access->lc_order_report ==1){ ?>
-                        <li class="<?= ($this->uri->uri_string()== 'report/lc/order')?'active': ' ' ?>">
-                            <a href="<?php echo base_url(); ?>report/lc/order">
+                        <li class="<?= ($this->uri->uri_string()== 'report/lc/car')?'active': ' ' ?>">
+                            <a href="<?php echo base_url(); ?>report/lc/car">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                L/C Wise Order Report
+                                L/C Wise Car Report
                             </a>
                             <b class="arrow"></b>
                         </li>

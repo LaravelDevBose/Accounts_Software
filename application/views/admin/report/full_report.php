@@ -21,12 +21,12 @@
                       <div class="col-sm-1"></div>
                       <div class="col-sm-5">
                         <div class="form-group">
-                          <label class="col-sm-5 control-label no-padding-left" for="order_id">Chassis Number:<span class="text-bold text-danger">*</span></label>
+                          <label class="col-sm-5 control-label no-padding-left" for="pus_id">Chassis Number:<span class="text-bold text-danger">*</span></label>
                           <div class="col-sm-7">
-                            <select class="chosen-select form-control" id="order_id" required name="cus_id" style="height: 30px; border-radius: 5px;">
+                            <select class="chosen-select form-control" id="pus_id" required name="cus_id" style="height: 30px; border-radius: 5px;">
                               <option value=" ">Select a Chassis Number</option>
-                              <?php if($orders && isset($orders)):  foreach($orders as $order):?>
-                                <option value="<?= $order->id; ?>"><?= $order->ord_chassis_no; ?></option>
+                              <?php if($cars && isset($cars)):  foreach($cars as $car):?>
+                                <option value="<?= $car->id; ?>"><?= $car->pus_sl.'-'.$car->puc_chassis_no; ?></option>
                               <?php endforeach; endif; ?>
                             </select>
                           </div>
@@ -64,11 +64,11 @@
 
 <script>
   $('#report_search').on('click', function(){
-    var order_id = $('#order_id').val();
+    var pus_id = $('#pus_id').val();
 
-    if(order_id >= 1){
+    if(pus_id >= 1){
       $.ajax({
-        url:'<?= base_url(); ?>find/full_report/'+order_id,
+        url:'<?= base_url(); ?>find/full_report/'+pus_id,
         type:'POST',
         dataType:'html', 
         success:function(data){
@@ -87,7 +87,7 @@
         },error:function(error){
           console.log(error);
               swal({
-                      text: "Searching Unsuccessfull..! Some Error Found",
+                      text: "Searching Unsuccessful..! Some Error Found",
                       icon: "error",
                       buttons: true,
                       timer: 2500,
@@ -96,7 +96,7 @@
       });
     }else{
       swal({
-              text: "Pleass Select Chassis No First",
+              text: "Pleases Select Chassis No First",
               icon: "warning",
               buttons: false,
               timer: 1500,

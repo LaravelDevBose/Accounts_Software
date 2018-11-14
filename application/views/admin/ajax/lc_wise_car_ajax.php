@@ -1,21 +1,17 @@
 <script>
 	$('#lc_search').on('click', function(e){
 
-		var lc_no = $('#ord_lc_no').val();
+		var lc_id = $('#lc_id').val();
 		$('#tBody').empty();
-		if(lc_no != 0){
+		if(lc_id != 0){
 
 			$.ajax({
-				url:'<?= base_url();?>find/order/'+lc_no,
+				url:'<?= base_url();?>find/car/'+lc_id,
 				type:'POST',
 				dataType:'html',
 				success:function(data){
-
-					
 					if(data != 0){
-
 						$('#tBody').html(data);
-
 					}else{
 						swal({
 		                  text: "No Data Found",
@@ -44,6 +40,6 @@
                 });
 		}
 
-		console.log(lc_no);
+		console.log(lc_id);
 	});
 </script>

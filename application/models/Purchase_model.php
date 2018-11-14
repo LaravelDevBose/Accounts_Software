@@ -173,6 +173,17 @@ class Purchase_model extends CI_Model
 		}
 	}
 
+    public function get_all_car_info()
+    {
+        $result = $this->db->select('id, pus_sl, puc_chassis_no')->order_by('id', 'desc')->get('purchase')->result();
+
+        if($result){
+            return $result;
+        }else{
+            return FALSE;
+        }
+    }
+
 	public function undelivery_purchase_car()
 	{
 		$this->db->select('purchase.*, suppliers.sup_name,customers.cus_name');
@@ -321,6 +332,25 @@ class Purchase_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+    /*===== Date wise delivery order Report =========*/
+    public function lc_wise_car_detils($lc_id = Null)
+    {
+        $this->db->select('orders.*, customers.cus_name, suppliers.sup_name,purchase.pus_sl,purchase.total_price,tbl_lcs.lc_no ');
+        $this->db->from('orders');
+        $this->db->join('customers', 'orders.cus_id = customers.id' );
+        $this->db->join('purchase', 'orders.pus_id = purchase.id','left');
+        $this->db->join('suppliers', 'purchase.supplier_id = suppliers.id','left');
+        $this->db->join('tbl_lcs', 'purchase.puc_lc_id = tbl_lcs.id','left');
+        $this->db->where('tbl_lcs.id', $lc_id)->where('orders.status !=', 'd')->order_by('purchase.id', 'desc');
+        $result = $this->db->get()->result();
+
+        if($result){
+            return $result;
+        }else{
+            return FALSE;
+        }
+    }
 
 	/*=========== Order Wise Car Estimate Price ============*/
 	public function order_wise_estimate_price($pus_id = Null)

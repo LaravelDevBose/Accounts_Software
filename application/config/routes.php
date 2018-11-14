@@ -225,7 +225,7 @@ $route['report/car/stock']					= 'Report/view_car_stock_report';
 $route['report/full_report'] 				= 'Report/car_full_report';
 $route['find/full_report/(:any)'] 			= 'Report/find_full_deatils_report/$1';
 
-$route['report/car_wise/collection'] 		= 'Report/car_wise_collection_view';
+$route['report/order_wise/collection'] 		= 'Report/order_wise_collection_view';
 $route['find/collection/order_wise/(:any)'] = 'Report/find_collection_order_wise/$1';
 
 $route['report/due']						= 'Report/view_full_due_report';
@@ -237,8 +237,8 @@ $route['find/customer_order/(:any)']		= 'Report/customer_wise_order_report/$1';
 $route['report/delivery_order']				= 'Report/delivery_order_view';
 $route['find/delivery_order']				= 'Report/date_wise_delivery_order';
 
-$route['report/lc/order']					= 'Report/view_lc_wise_order_report';
-$route['find/order/(:any)']					= 'Report/find_order_by_lc/$1'; 
+$route['report/lc/car']					    = 'Report/view_lc_wise_car_report';
+$route['find/car/(:any)']					= 'Report/find_car_by_lc/$1';
 
 $route['report/collection']					= 'Report/view_collection_report';
 $route['find/collection/by_date'] 			= 'Report/find_date_wise_collection';

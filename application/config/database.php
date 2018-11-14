@@ -13,9 +13,9 @@ $db['default'] = array(
 	'password' => '',
 	'database' => 'accounts_soft',
 	
-	// 'username' => 'greentechin6ustr_Knight_coder',
+	// 'username' => 'mavena07osbd_KnightC0der',
 	// 'password' => 'KnightC0der',
-	// 'database' => 'greentechin6ustr_maven',
+	// 'database' => 'mavena07osbd_soft',
 
 
 	'dbdriver' => 'mysqli',

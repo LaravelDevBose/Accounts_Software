@@ -2,26 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5927f7d-2bb3-4282-a10a-b98daa972abe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/controllers/Car.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/Car_model.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/admin/accounts/collection_print.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/admin/accounts/collection_view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/admin/car_details/car_images_view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/admin/car_details/image_upload_page.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/admin/car_details/car_images_edit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/admin/report/car_details_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/config/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Collection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Car.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Car.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Car_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Car_model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/models/Collection_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Collection_model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/models/Order_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Order_model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/models/Purchase_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Purchase_model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/accounts/collection_entry.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/accounts/collection_entry.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/accounts/collection_tbl.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/accounts/collection_tbl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/accounts/edit_collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/accounts/edit_collection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/ajax/collection_ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/ajax/collection_ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/partials/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/partials/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/partials/header_css_js.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/partials/header_css_js.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/ajax/lc_wise_order_ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/ajax/lc_wise_car_ajax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/car_details/car_images_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/car_details/car_images_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/car_details/image_upload_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/car_details/image_upload_page.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/partials/print_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/partials/print_header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/car_stock_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/car_stock_report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/car_wise_collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/order_wise_collection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/collection_report_tbl.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/collection_report_tbl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/collection_report_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/collection_report_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/cus_wise_collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/cus_wise_collection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/customer_order_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/customer_order_report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/delivery_order_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/delivery_order_report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/delivery_order_tbl.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/delivery_order_tbl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/full_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/full_report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/lc_order_report_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/lc_car_report_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/lc_report_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/lc_report_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/order_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/order_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/report/report_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/report/report_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/upload_pic/car_image/14721785295beac568a2f59.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/upload_pic/car_image/788526025beac5688268b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/upload_pic/car_image/9527851355beac568bac67.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +48,8 @@
     <session id="1995332327">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="13" />
+          <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.43" value="1" />
@@ -49,32 +62,34 @@
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.98" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="1" />
+          <entry key="html" value="2" />
           <entry key="jpg" value="3" />
-          <entry key="php" value="254" />
+          <entry key="js" value="2" />
+          <entry key="php" value="308" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="1" />
+          <entry key="HTML" value="2" />
           <entry key="Image" value="3" />
-          <entry key="PHP" value="251" />
+          <entry key="JavaScript" value="2" />
+          <entry key="PHP" value="305" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="17437" />
+          <entry key="php" value="20211" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="17437" />
+          <entry key="PHP" value="20211" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -89,71 +104,56 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/config/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="101" column="67" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="67" />
+            <state relative-caret-position="334">
+              <caret line="265" column="68" selection-start-line="265" selection-start-column="54" selection-end-line="265" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/Report.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="436">
+              <caret line="424" column="59" selection-start-line="424" selection-start-column="44" selection-end-line="424" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/LC_model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="77" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/Collection_model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="107" column="61" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="61" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Car.php">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/report/lc_report_view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="74" column="23" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
+            <state relative-caret-position="470">
+              <caret line="58" column="77" selection-start-line="58" selection-start-column="77" selection-end-line="58" selection-end-column="77" />
+              <folding>
+                <element signature="n#style#0;n#th#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/car_details/car_images_view.php">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/report/collection_report_tbl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="17" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/partials/header_navigation.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="33" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/customer_info/create_customer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="169" column="61" lean-forward="true" selection-start-line="169" selection-start-column="61" selection-end-line="169" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/car_details/image_upload_page.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="124" column="97" selection-start-line="124" selection-start-column="97" selection-end-line="124" selection-end-column="97" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/Car_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="35" column="48" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/config/autoload.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="138" column="75" selection-start-line="138" selection-start-column="75" selection-end-line="138" selection-end-column="75" />
+            <state relative-caret-position="289">
+              <caret line="17" column="56" lean-forward="true" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -162,24 +162,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>F</find>
-      <find>order_purchase_car_marge</find>
-      <find>lc_car_submit</find>
-      <find>Selectmenu</find>
-      <find>find/chassis_no/</find>
-      <find>dynamic-table</find>
-      <find>month_insert_Page</find>
-      <find>ready_car_sale_page</find>
-      <find>check_payable_amount</find>
-      <find>order_purchase_info_update</find>
-      <find>store/paid_salary/check</find>
-      <find>view_car_stock_report</find>
-      <find>order_wise_estimate_price</find>
-      <find>car_full_report</find>
-      <find>find_due_amount</find>
-      <find>find_full_deatils_report</find>
-      <find>car_purchase_pricing</find>
-      <find>find_purchase_car_info</find>
       <find>undelivery_purchase_car</find>
       <find>find/purchase_car/info/</find>
       <find>unOrder_car_list</find>
@@ -189,6 +171,27 @@
       <find>find/customer/chassis_no/</find>
       <find>get_all_order_for_collection</find>
       <find>colorbox</find>
+      <find>responsive photo gallery using colorbox</find>
+      <find>get_active_order_info</find>
+      <find>t_active_order</find>
+      <find>find_full_deatils_report</find>
+      <find>car_wise_collection_view</find>
+      <find>get_order_chassis_number</find>
+      <find>get_order_info</find>
+      <find>collection_report_tbl</find>
+      <find>order_report_by_customer</find>
+      <find>cus_wise_total_est_price</find>
+      <find>view_customer_order_report</find>
+      <find>delivery_order_view</find>
+      <find>view_lc_wise_order_report</find>
+      <find>order_wise_collection</find>
+      <find>order_report_date_wise</find>
+      <find>find_date_wise_collection</find>
+      <find>find_collection_order_wise</find>
+      <find>collection_by_customer</find>
+      <find>customer_wise_collection</find>
+      <find>find_collection_date_wise</find>
+      <find>view_lc_report</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -200,26 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/admin/lc_info/lc_edit_page.php" />
-        <option value="$PROJECT_DIR$/application/controllers/LC_controller.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Report.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/report/report_view.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/createAdmin/adminAccess.php" />
-        <option value="$PROJECT_DIR$/application/controllers/AdminAccess.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/customer_info/create_customer.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/accounts/payment_entry.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/ajax/payment_ajax.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Payment.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Order.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/purchase/create_purchase.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/ajax/purchase_ajax.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/purchase/view_purchase.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/purchase/edit_purchase.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Purchase.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/pricing/pricing_entry.php" />
-        <option value="$PROJECT_DIR$/application/models/Pricing_model.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/pricing/view_pricing.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Purchase_pricing.php" />
         <option value="$PROJECT_DIR$/application/views/admin/ajax/purchase_pricing_ajax.php" />
         <option value="$PROJECT_DIR$/application/views/admin/purchase/purchase_list.php" />
         <option value="$PROJECT_DIR$/application/models/Transport_model.php" />
@@ -234,23 +217,43 @@
         <option value="$PROJECT_DIR$/application/views/admin/order_info/order_onprocess_list.php" />
         <option value="$PROJECT_DIR$/application/views/admin/ajax/collection_ajax.php" />
         <option value="$PROJECT_DIR$/application/views/admin/accounts/collection_print.php" />
-        <option value="$PROJECT_DIR$/application/models/Order_model.php" />
         <option value="$PROJECT_DIR$/application/views/admin/accounts/edit_collection.php" />
         <option value="$PROJECT_DIR$/application/controllers/Collection.php" />
         <option value="$PROJECT_DIR$/application/views/admin/accounts/collection_view.php" />
-        <option value="$PROJECT_DIR$/application/models/Collection_model.php" />
         <option value="$PROJECT_DIR$/application/views/admin/accounts/collection_entry.php" />
         <option value="$PROJECT_DIR$/application/views/admin/accounts/collection_tbl.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" />
-        <option value="$PROJECT_DIR$/application/models/Purchase_model.php" />
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
-        <option value="$PROJECT_DIR$/application/config/routes.php" />
-        <option value="$PROJECT_DIR$/application/models/Car_model.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/car_details/image_upload_page.php" />
         <option value="$PROJECT_DIR$/application/views/admin/partials/footer.php" />
         <option value="$PROJECT_DIR$/application/views/admin/partials/header_css_js.php" />
+        <option value="$PROJECT_DIR$/application/config/database.php" />
         <option value="$PROJECT_DIR$/application/views/admin/car_details/car_images_view.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/car_details/image_upload_page.php" />
+        <option value="$PROJECT_DIR$/application/models/Car_model.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/car_details/car_images_edit.php" />
         <option value="$PROJECT_DIR$/application/controllers/Car.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/car_stock_report.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/full_report.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/report_view.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/partials/print_header.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/collection_report_tbl.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/order_wise_collection.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/customer_order_report.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/order_table.php" />
+        <option value="$PROJECT_DIR$/application/models/Order_model.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/delivery_order_tbl.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/delivery_order_report.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/lc_order_report_view.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" />
+        <option value="$PROJECT_DIR$/application/config/routes.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/ajax/lc_wise_order_ajax.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/lc_car_report_view.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/car_details_table.php" />
+        <option value="$PROJECT_DIR$/application/models/Purchase_model.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/collection_report_view.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/cus_wise_collection.php" />
+        <option value="$PROJECT_DIR$/application/models/Collection_model.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Report.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/report/lc_report_view.php" />
       </list>
     </option>
   </component>
@@ -274,6 +277,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -323,13 +327,23 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
+              <item name="report" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+              <item name="upload_pic" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -388,27 +402,37 @@
       <workItem from="1541994742226" duration="2413000" />
       <workItem from="1542012623042" duration="9620000" />
       <workItem from="1542081165626" duration="8592000" />
-      <workItem from="1542092058052" duration="20153000" />
+      <workItem from="1542092058052" duration="20702000" />
+      <workItem from="1542167139679" duration="18097000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96655000" />
+    <option name="totallyTimeSpent" value="115301000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22012103" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4983871" visible="true" weight="0.23373677" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info x="535" y="214" width="295" height="310" id="Favorites" order="2" sideWeight="0.5016129" side_tool="true" weight="0.22314675" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32903227" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
@@ -428,207 +452,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/admin/pricing/pricing_entry.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="132" column="90" selection-start-line="132" selection-start-column="81" selection-end-line="132" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/purchase_pricing_ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Purchase_pricing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="89" column="79" selection-start-line="89" selection-start-column="79" selection-end-line="89" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/purchase/purchase_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="45" column="76" selection-start-line="45" selection-start-column="76" selection-end-line="45" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Transport.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="44" column="76" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Transport_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/transport/transport_car_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="62" column="41" lean-forward="true" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Supplier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="137" column="89" selection-start-line="137" selection-start-column="89" selection-end-line="137" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/supplier/supplier_page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="40" column="100" selection-start-line="40" selection-start-column="100" selection-end-line="40" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/order_info/create_order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="25" column="167" selection-start-line="25" selection-start-column="167" selection-end-line="25" selection-end-column="167" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/customer_info/cus_order_entry.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="300" column="24" lean-forward="true" selection-start-line="300" selection-start-column="24" selection-end-line="300" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Purchase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="251" column="18" lean-forward="true" selection-start-line="251" selection-start-column="18" selection-end-line="251" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/order_info/order_onprocess_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="96" column="10" lean-forward="true" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/order_info/order_pending_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="48" column="46" lean-forward="true" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="136" column="5" lean-forward="true" selection-start-line="109" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/accounts_ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-703" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/order_ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-737" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/lc_wise_order_ajax.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/lc_ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="245" column="12" selection-start-line="245" selection-start-column="12" selection-end-line="245" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/partials/print_header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="21" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/print_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Order_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="344" column="45" selection-start-line="344" selection-start-column="37" selection-end-line="344" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/edit_collection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="106" selection-start-line="19" selection-start-column="106" selection-end-line="19" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/order_info/order_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="73" column="96" selection-start-line="73" selection-start-column="68" selection-end-line="73" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/employee/view_employee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="46" selection-end-line="66" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/collection_print.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="109" column="348" lean-forward="true" selection-start-line="109" selection-start-column="102" selection-end-line="109" selection-end-column="348" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#7;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Collection_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="78" column="103" selection-start-line="78" selection-start-column="103" selection-end-line="78" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/collection_tbl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding>
-            <element signature="e#616#639#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Check.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="213" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -636,9 +463,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="174" column="25" selection-start-line="174" selection-start-column="15" selection-end-line="174" selection-end-column="25" />
-          <folding>
-            <element signature="n#collection_entry_update#0;n#Collection#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -646,9 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
           <caret line="54" column="60" selection-start-line="54" selection-start-column="60" selection-end-line="54" selection-end-column="60" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -656,20 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="38" lean-forward="true" selection-end-line="159" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="178" column="55" selection-start-line="178" selection-start-column="55" selection-end-line="178" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/collection_entry.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="182" column="36" lean-forward="true" selection-end-line="206" />
         </state>
       </provider>
     </entry>
@@ -694,13 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Purchase_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="98" column="41" selection-start-line="98" selection-start-column="41" selection-end-line="98" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/upload_pic/car_image/788526025beac5688268b.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -717,31 +517,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="101" column="67" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/car_details/image_upload_page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="124" column="97" selection-start-line="124" selection-start-column="97" selection-end-line="124" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/customer_info/create_customer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="169" column="61" lean-forward="true" selection-start-line="169" selection-start-column="61" selection-end-line="169" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Car_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="35" column="48" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="48" />
+          <caret line="169" column="61" selection-start-line="169" selection-start-column="61" selection-end-line="169" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -749,10 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="928" column="9" lean-forward="true" selection-start-line="928" selection-start-column="9" selection-end-line="928" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#129#135#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,21 +541,276 @@
     <entry file="file://$PROJECT_DIR$/application/views/admin/partials/header_navigation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="33" selection-end-column="16" />
+          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="33" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/BackEnd/assets/datatables.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="1204" column="20" selection-start-line="1204" selection-start-column="20" selection-end-line="1204" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/BackEnd/assets/js/bootstrap-colorpicker.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="143" column="8" selection-start-line="143" selection-start-column="8" selection-end-line="147" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/car_details/car_images_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="17" selection-end-column="34" />
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Template/admin Panel/ace-master/gallery.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="990" column="24" selection-start-line="990" selection-start-column="24" selection-end-line="1204" selection-end-column="44" />
+          <folding>
+            <element signature="n#div#2;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/car_details/image_upload_page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="136" column="176" selection-start-line="136" selection-start-column="131" selection-end-line="136" selection-end-column="176" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/check_ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="33" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/car_details/car_images_edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="123" column="50" lean-forward="true" selection-start-line="123" selection-start-column="50" selection-end-line="123" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Car_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="35" column="48" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Car.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="122" column="13" lean-forward="true" selection-start-line="122" selection-start-column="13" selection-end-line="122" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/car_stock_report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="53" column="32" lean-forward="true" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/partials/print_header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#3;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/collection_entry.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="78" column="68" selection-start-line="78" selection-start-column="62" selection-end-line="78" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Payment_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/customer_order_report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/full_report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="70" column="48" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/report_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/delivery_order_report.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
-          <caret line="74" column="23" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
+          <caret line="79" column="54" lean-forward="true" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/delivery_order_tbl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="56" lean-forward="true" selection-end-line="33" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="403" column="81" selection-start-line="403" selection-start-column="81" selection-end-line="403" selection-end-column="81" />
+          <caret line="404" column="75" selection-start-line="404" selection-start-column="75" selection-end-line="404" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/lc_wise_car_ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/order_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Purchase_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="344" column="109" selection-start-line="344" selection-start-column="109" selection-end-line="344" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/lc_car_report_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="71" column="44" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/car_details_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Order_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="350" column="4" selection-start-line="350" selection-start-column="4" selection-end-line="371" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/order_wise_collection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="58" column="32" selection-start-line="58" selection-start-column="32" selection-end-line="65" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/collection_report_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Collection_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="107" column="61" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/cus_wise_collection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="62" column="54" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="265" column="68" selection-start-line="265" selection-start-column="54" selection-end-line="265" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="424" column="59" selection-start-line="424" selection-start-column="44" selection-end-line="424" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/LC_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="77" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/collection_report_tbl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="56" lean-forward="true" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/report/lc_report_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="58" column="77" selection-start-line="58" selection-start-column="77" selection-end-line="58" selection-end-column="77" />
+          <folding>
+            <element signature="n#style#0;n#th#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

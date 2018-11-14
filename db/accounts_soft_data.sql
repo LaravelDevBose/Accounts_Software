@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2018 at 02:03 PM
+-- Generation Time: Nov 14, 2018 at 10:53 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -234,9 +234,10 @@ CREATE TABLE `car_images` (
 --
 
 INSERT INTO `car_images` (`id`, `pus_id`, `image_path`, `status`) VALUES
-(1, 6, 'libs/upload_pic/car_image/788526025beac5688268b.jpg', 'a'),
-(2, 6, 'libs/upload_pic/car_image/14721785295beac568a2f59.jpg', 'a'),
-(3, 6, 'libs/upload_pic/car_image/9527851355beac568bac67.jpg', 'a');
+(8, 5, 'libs/upload_pic/car_image/10115340235bebb2665b311.jpg', 'a'),
+(9, 5, 'libs/upload_pic/car_image/17356297725bebb2666d474.jpg', 'a'),
+(10, 5, 'libs/upload_pic/car_image/19532400035bebb2668d20e.jpg', 'a'),
+(11, 5, 'libs/upload_pic/car_image/15109410925bebb2669d701.jpg', 'a');
 
 -- --------------------------------------------------------
 
@@ -275,7 +276,7 @@ CREATE TABLE `collections` (
   `coll_sl` varchar(100) NOT NULL,
   `cus_id` int(20) UNSIGNED NOT NULL,
   `order_no` int(20) UNSIGNED DEFAULT NULL,
-  `collection_type` tinyint(4) NOT NULL,
+  `collection_type` tinyint(4) NOT NULL COMMENT '1=Advance, 2=Part, 3=Full Payment, 4=Cheque',
   `cheque_no` varchar(150) DEFAULT NULL,
   `bank_name` varchar(150) DEFAULT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1098,7 +1099,7 @@ ALTER TABLE `bank_trans`
 -- AUTO_INCREMENT for table `car_images`
 --
 ALTER TABLE `car_images`
-  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `checks`

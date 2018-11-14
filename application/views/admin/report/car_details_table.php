@@ -1,14 +1,12 @@
-<?php $total_esti_price = 0; $total_paid = 0; $i=1; if($orders && isset($orders)): foreach($orders as $order):?>
+<?php $i = 1; $total_esti_price = 0; $total_paid = 0; $i=1; if($orders && isset($orders)): foreach($orders as $order):?>
     <tr>
-        <td><?= ucfirst($order->cus_name) ?></td>
+        <td><?= $i++; ?></td>
+        <td><?= $order->pus_sl; ?></td>
         <td><?= $order->order_no; ?></td>
-        <td>
-            <?php
-            $date = new DateTime($order->created_at);
-            echo date_format($date, 'd M Y');
-            ?>
-        </td>
-        <td><?= $order->ord_chassis_no.' | '.$order->ord_engine_no?> </td>
+        <td><?= ucfirst($order->cus_name) ?></td>
+        <td><?= ucfirst($order->sup_name) ?></td>
+        <td><?= $order->lc_no ?></td>
+        <td><?= $order->ord_chassis_no.'||'.$order->ord_engine_no?> </td>
         <td>
             <?php if($order->order_status == 'c'): ?>
                 <span class="label " style="background: green;">Delevired</span>
@@ -30,7 +28,7 @@
 
 <?php endforeach; endif; ?>
 <tr style="background-color: #E7F2F8;">
-    <td colspan="4" style="border: 0;"></td>
+    <td colspan="7" style="border: 0;"></td>
     <th>Sub Total</th>
     <td><?= number_format($total_esti_price,2) ?></td>
     <td><?= number_format($total_paid,2) ?></td>

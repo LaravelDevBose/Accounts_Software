@@ -52,7 +52,7 @@ class Car extends MY_Controller
         if($filesCount >0){
             if($this->Car_model->store_images()){
 
-                $data['error']="Images Store Successfully!";
+                $data['success']="Images Store Successfully!";
                 $this->session->set_flashdata($data);
                 redirect('car/images_insert/page');
             }else{
@@ -80,5 +80,58 @@ class Car extends MY_Controller
         $this->load->view('admin/adminMaster', $data);
     }
 
+    public function car_images_edit_page($pus_id = Null){
+
+        if($this->admin_access('edit_access') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('purchase/dashboard');
+        }
+
+        $data['title'] = 'Car Images Edit';
+        $data['content'] = 'car_details/car_images_edit';
+        $data['purchase'] = $this->Purchase_model->purchase_info_by_id($pus_id);
+        $data['images'] = $this->Car_model->get_car_image_by_purchase_id($pus_id);
+        $this->load->view('admin/adminMaster', $data);
+
+    }
+
+    public function car_image_delete($id = Null){
+        if($this->admin_access('edit_access') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('purchase/dashboard');
+        }
+
+        if($this->Car_model->delete_car_image($id)){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+
+    public function car_images_delete($pus_id = Null){
+        if($this->admin_access('edit_access') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('purchase/dashboard');
+        }
+        if($images = $this->Car_model->get_car_image_by_purchase_id($pus_id)){
+
+            foreach($images as $image){
+                $this->Car_model->delete_car_image($image->id);
+            }
+
+            $data['success']="Car Images Delete Successfully!";
+            $this->session->set_flashdata($data);
+            redirect('car/images_insert/page');
+
+        }else{
+            $data['error']="Car Images Delete Un-Successfully!";
+            $this->session->set_flashdata($data);
+            redirect('car/images_insert/page');
+        }
+
+    }
 
 }

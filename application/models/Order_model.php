@@ -51,16 +51,7 @@ class Order_model extends CI_Model
 		}
 	}
 
-	public function get_active_order_info()
-	{	
-		$result = $this->db->where('orders.status !=', 'd')->where('orders.order_status !=', 'p')->order_by('id', 'desc')->get('orders')->result();
 
-		if($result){
-			return $result;
-		}else{
-			return FALSE;
-		}
-	}
 
 	public  function find_unperchase_order($cus_id = Null){
 	    $res = $this->db->select('id, order_no')->where('cus_id', $cus_id)->where('pus_id', '0')->where('order_status', 'p')->where('status', 'a')->get('orders')->result();
@@ -322,23 +313,6 @@ class Order_model extends CI_Model
 
 	}
 
-	/*======= find Due Amount ==========*/
-	public function find_paid_amount($order_id=Null)
-	{
-		$order_info = $this->db->where('id', $order_id)->get('orders')->row();
-
-		if($order_info){
-			$paid_amount = $this->db->select_sum('amount')->where('order_no', $order_id)->where('status', 'a')->get('collections')->row();
-			
-			$total_paid = $paid_amount->amount + $order_info->ord_advance;
-			
-			return $total_paid;
-		}else{
-			return FALSE;
-		}
-	}
-
-
 	/*======= collection page order id and chassis no ========*/
 	public function get_all_order_for_collection($cus_id=Null)
 	{
@@ -347,20 +321,21 @@ class Order_model extends CI_Model
 		if($res){return $res;}else{return FALSE; }
 	}
 
-	/*====== get all order number and chassis number =======*/
-	public function get_order_chassis_number()
-	{
-		$res = $this->db->select('id,ord_chassis_no')->where('ord_chassis_no !=', Null)->order_by('id','desc')->get('orders')->result();
-
-		if($res){return $res;}else{return FALSE; }
-	}
+//	/*====== get all order number and chassis number =======*/
+//	public function get_order_chassis_number()
+//	{
+//		$res = $this->db->select('id,ord_chassis_no')->where('ord_chassis_no !=', Null)->order_by('id','desc')->get('orders')->result();
+//
+//		if($res){return $res;}else{return FALSE; }
+//	}
 
 	/*======== Order report by customer  =========*/
 	public function order_report_by_customer($cus_id)
 	{	
-		$this->db->select('orders.*, customers.cus_name');
+		$this->db->select('orders.*, customers.cus_name,purchase.total_price');
 		$this->db->from('orders');
 		$this->db->join('customers', 'orders.cus_id = customers.id' );
+		$this->db->join('purchase', 'orders.pus_id = purchase.id','left');
 		$this->db->where('orders.status !=', 'd')->where('orders.cus_id', $cus_id);
 		$result = $this->db->order_by('id', 'desc')->get()->result();
 
@@ -370,9 +345,32 @@ class Order_model extends CI_Model
 			return FALSE;
 		}
 	}
-	
+
+
 
 	/*===== Date wise delivery order Report =========*/
+    public function order_delivery_report_date_wise()
+    {
+        $date_from = $this->input->post('date_from');
+        $date_to = $this->input->post('date_to');
+
+        $this->db->select('orders.*, customers.cus_name, suppliers.sup_name,purchase.pus_sl,purchase.total_price,tbl_lcs.lc_no ');
+        $this->db->from('orders');
+        $this->db->join('customers', 'orders.cus_id = customers.id' );
+        $this->db->join('purchase', 'orders.pus_id = purchase.id','left');
+        $this->db->join('suppliers', 'purchase.supplier_id = suppliers.id','left');
+        $this->db->join('tbl_lcs', 'purchase.puc_lc_id = tbl_lcs.id','left');
+        $this->db->where('orders.order_status','c')->where('orders.delivery_date >=', $date_from)->where('orders.delivery_date <=', $date_to);
+        $this->db->where('orders.status !=', 'd')->order_by('orders.delivery_date', 'desc');
+        $result = $this->db->get()->result();
+
+        if($result){
+            return $result;
+        }else{
+            return FALSE;
+        }
+    }
+
 
 	public function order_report_date_wise()
 	{	

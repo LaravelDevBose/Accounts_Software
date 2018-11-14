@@ -58,13 +58,14 @@ class Report extends MY_Controller
 
         $data['title'] = 'Car Full Report';
         $data['content'] = 'report/full_report';
-        $data['orders'] = $this->Order_model->get_active_order_info();
+        $data['cars'] = $this->Purchase_model->get_all_car_info();
         $this->load->view('admin/adminMaster', $data);
     }
 
     /*======= Order Wise Report View ========*/
-    public function find_full_deatils_report($order_id=Null)
+    public function find_full_deatils_report($pus_id=Null)
     {
+        $order_id = $this->db->where('id', $pus_id)->get('purchase')->row()->id;
 
         if($order_info = $this->Order_model->order_info_by_id($order_id)){
             $data['customer'] = $this->Customer_model->customer_by_id($order_info->cus_id);
@@ -76,6 +77,33 @@ class Report extends MY_Controller
             echo 0;
         }
     }
+
+    /*======= car Chassis Number wise Collection REport Page =======*/
+    public function order_wise_collection_view()
+    {
+        if($this->admin_access('car_coll_report') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('report/dashboard');
+        }
+
+        $data['title'] = 'Order Wise Collection Report';
+        $data['content'] = 'report/order_wise_collection';
+        $data['orders'] = $this->Order_model->get_order_info();
+        $this->load->view('admin/adminMaster', $data);
+    }
+
+    /*======= find colection order Wise ==========*/
+    public function find_collection_order_wise($order_id=Null)
+    {
+        if($res = $this->Collection_model->order_wise_collection($order_id)){
+            $data['collections'] = $res;
+            $this->load->view('admin/report/collection_report_tbl', $data);
+        }else{
+            echo 0;
+        }
+    }
+
 
 
 
@@ -117,192 +145,136 @@ class Report extends MY_Controller
 		$this->load->view('admin/adminMaster', $data);
 	}
 
+    /*====== Customer Order Report Page =======*/
+    public function view_customer_order_report()
+    {
+        if($this->admin_access('cus_order_report') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('report/dashboard');
+        }
 
-	/*========= View L/C Report Data ======*/
-	public function view_lc_report()
-	{	
-		if($this->admin_access('lc_list_report') != 1){
-			$data['warning_msg']="You Are Not able to Access this Module...!";
-			$this->session->set_flashdata($data);
-			redirect('report/dashboard');
-		}
+        $data['title'] = 'Customer Order Report';
+        $data['content'] = 'report/customer_order_report';
+        $data['customers'] = $this->Customer_model->find_all_customer_info();
+        $this->load->view('admin/adminMaster', $data);
+    }
 
-		$data['title'] = 'L/C Report';  
-		$data['content'] = 'report/lc_report_view'; 
-		$data['lc_data'] = $this->LC_model->get_all_lc_info();  
-		$this->load->view('admin/adminMaster', $data);
-	}
+    /*====== Find Customer Order Details =========*/
+    public function customer_wise_order_report($cus_id=Null)
+    {
+        if($res = $this->Order_model->order_report_by_customer($cus_id)){
+            $data['orders'] = $res;
+            $this->load->view('admin/report/order_table', $data);
+        }else{
+            echo 0;
+        }
+    }
 
-	/*=======  View Customer Report Data ========== */
-	public function view_customer_report()
-	{	
-		if($this->admin_access('cus_list_report') != 1){
-			$data['warning_msg']="You Are Not able to Access this Module...!";
-			$this->session->set_flashdata($data);
-			redirect('report/dashboard');
-		}
+    /*======= delivery order report page ========*/
+    public function delivery_order_view()
+    {
+        if($this->admin_access('deliv_order_report') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('report/dashboard');
+        }
 
-		$data['title'] = 'Customer Report';  
-		$data['content'] = 'report/customer_report_view';
-		$data['customers'] = $this->Customer_model->find_all_customer_info();
-		$this->load->view('admin/adminMaster', $data);
-	}
+        $data['title'] = 'Delivery Order Report';
+        $data['content'] = 'report/delivery_order_report';
+        $this->load->view('admin/adminMaster', $data);
+    }
 
-	/*======= View Lc Wise Order Report ========*/
-	public function view_lc_wise_order_report()
-	{	
-		if($this->admin_access('lc_order_report') != 1){
-			$data['warning_msg']="You Are Not able to Access this Module...!";
-			$this->session->set_flashdata($data);
-			redirect('report/dashboard');
-		}
+    /*======== date wise delivery order ========*/
+    public function date_wise_delivery_order()
+    {
+        if($res = $this->Order_model->order_delivery_report_date_wise()){
+            $data['orders'] = $res;
+            $this->load->view('admin/report/delivery_order_tbl', $data);
+        }else{
+            echo 0;
+        }
+    }
 
-		$data['title'] = 'Lc Wise Order Report';  
-		$data['content'] = 'report/lc_order_report_view';
-		$data['lc_data'] = $this->LC_model->get_all_lc_info();
-		$this->load->view('admin/adminMaster', $data);
-	}
+    /*======= View Lc Wise Order Report ========*/
+    public function view_lc_wise_car_report()
+    {
+        if($this->admin_access('lc_order_report') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('report/dashboard');
+        }
 
-	/*======= find order by L/C Number ========*/
-	public function find_order_by_lc($lc_num=Null)
-	{
-		if($result = $this->Order_model->lc_wise_order($lc_num)){
+        $data['title'] = 'Lc Wise Order Report';
+        $data['content'] = 'report/lc_car_report_view';
+        $data['lc_data'] = $this->LC_model->get_all_lc_info();
+        $this->load->view('admin/adminMaster', $data);
+    }
 
-			$data['orders'] = $result;
-			$this->load->view('admin/report/order_table',$data);
-		}else{
-			echo 0;
-		}
-	}
+    /*======= find order by L/C Number ========*/
+    public function find_car_by_lc($lc_id=Null)
+    {
+        if($result = $this->Purchase_model->lc_wise_car_detils($lc_id)){
 
-	/*======== View Collection Report Page ========*/
-	public function view_collection_report()
-	{	
-		if($this->admin_access('collection_report') != 1){
-			$data['warning_msg']="You Are Not able to Access this Module...!";
-			$this->session->set_flashdata($data);
-			redirect('report/dashboard');
-		}
-
-		$data['title'] = 'Collection Report';  
-		$data['content'] = 'report/collection_report_view';
-		$this->load->view('admin/adminMaster', $data);
-	}
-
-	public function find_date_wise_collection()
-	{
-		if($res = $this->Collection_model->find_collection_date_wise()){
-			$data['collections'] = $res;
-			$this->load->view('admin/report/collection_report_tbl', $data);
-		}else{
-			echo 0;
-		}
-	}
-
-	/*======== Customer wise Colletion Report ========*/
-	public function customer_wise_collection()
-	{	
-		if($this->admin_access('cus_coll_report') != 1){
-			$data['warning_msg']="You Are Not able to Access this Module...!";
-			$this->session->set_flashdata($data);
-			redirect('report/dashboard');
-		}
-
-		$data['title'] = 'Customer Collection Report';  
-		$data['content'] = 'report/cus_wise_collection';
-		$data['customers'] = $this->Customer_model->find_all_customer_info();
-		$this->load->view('admin/adminMaster', $data);
-	}
-
-	/*======= find collection by customer ========*/
-	public function find_collection_by_cus($cus_id=Null)
-	{
-		if($res = $this->Collection_model->collection_by_customer($cus_id)){
-			$data['collections'] = $res;
-			$this->load->view('admin/report/collection_report_tbl', $data);
-		}else{
-			echo 0;
-		}
-	}
+            $data['orders'] = $result;
+            $this->load->view('admin/report/car_details_table',$data);
+        }else{
+            echo 0;
+        }
+    }
 
 
-	/*======= car Chassis Number wise Collection REport Page =======*/
-	public function car_wise_collection_view()
-	{	
-		if($this->admin_access('car_coll_report') != 1){
-			$data['warning_msg']="You Are Not able to Access this Module...!";
-			$this->session->set_flashdata($data);
-			redirect('report/dashboard');
-		}
+    /*======== View Collection Report Page ========*/
+    public function view_collection_report()
+    {
+        if($this->admin_access('collection_report') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('report/dashboard');
+        }
 
-		$data['title'] = 'Car Wise Collection Report';  
-		$data['content'] = 'report/car_wise_collection';
-		$data['orders'] = $this->Order_model->get_order_chassis_number();
-		$this->load->view('admin/adminMaster', $data);
-	}
+        $data['title'] = 'Collection Report';
+        $data['content'] = 'report/collection_report_view';
+        $this->load->view('admin/adminMaster', $data);
+    }
 
-	/*======= find colection order Wise ==========*/
-	public function find_collection_order_wise($order_id=Null)
-	{
-		if($res = $this->Collection_model->order_wise_collection($order_id)){
-			$data['collections'] = $res;
-			$this->load->view('admin/report/collection_report_tbl', $data);
-		}else{
-			echo 0;
-		}
-	}
+    public function find_date_wise_collection()
+    {
+        if($res = $this->Collection_model->find_collection_date_wise()){
+            $data['collections'] = $res;
+            $this->load->view('admin/report/collection_report_tbl', $data);
+        }else{
+            echo 0;
+        }
+    }
 
-	/*====== Customer Order Report Page =======*/
-	public function view_customer_order_report()
-	{	
-		if($this->admin_access('cus_order_report') != 1){
-			$data['warning_msg']="You Are Not able to Access this Module...!";
-			$this->session->set_flashdata($data);
-			redirect('report/dashboard');
-		}
 
-		$data['title'] = 'Customer Order Report';  
-		$data['content'] = 'report/customer_order_report';
-		$data['customers'] = $this->Customer_model->find_all_customer_info();
-		$this->load->view('admin/adminMaster', $data);
-	}
+    /*======== Customer wise Colletion Report ========*/
+    public function customer_wise_collection()
+    {
+        if($this->admin_access('cus_coll_report') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('report/dashboard');
+        }
 
-	/*====== Find Customer Order Details =========*/
-	public function customer_wise_order_report($cus_id=Null)
-	{
-		if($res = $this->Order_model->order_report_by_customer($cus_id)){
-			$data['orders'] = $res;
-			$this->load->view('admin/report/order_table', $data);
-		}else{
-			echo 0;
-		}
-	}
+        $data['title'] = 'Customer Collection Report';
+        $data['content'] = 'report/cus_wise_collection';
+        $data['customers'] = $this->Customer_model->find_all_customer_info();
+        $this->load->view('admin/adminMaster', $data);
+    }
 
-	/*======= delivery order report page ========*/
-	public function delivery_order_view()
-	{	
-		if($this->admin_access('deliv_order_report') != 1){
-			$data['warning_msg']="You Are Not able to Access this Module...!";
-			$this->session->set_flashdata($data);
-			redirect('report/dashboard');
-		}
+    /*======= find collection by customer ========*/
+    public function find_collection_by_cus($cus_id=Null)
+    {
+        if($res = $this->Collection_model->collection_by_customer($cus_id)){
+            $data['collections'] = $res;
+            $this->load->view('admin/report/collection_report_tbl', $data);
+        }else{
+            echo 0;
+        }
+    }
 
-		$data['title'] = 'Customer Order Report';  
-		$data['content'] = 'report/delivery_order_report';
-		$this->load->view('admin/adminMaster', $data);
-	}
-
-	/*======== date wise delivery order ========*/
-	public function date_wise_delivery_order()
-	{	
-
-		if($res = $this->Order_model->order_report_date_wise()){
-			$data['orders'] = $res;
-			$this->load->view('admin/report/delivery_order_tbl', $data);
-		}else{
-			echo 0;
-		}
-	}
 
 	/*====== date to date Salary View ==========*/
 	public function salary_date_to_date_report()
@@ -437,4 +409,36 @@ class Report extends MY_Controller
 			echo 0;
 		}
 	}
+
+
+    /*========= View L/C Report Data ======*/
+    public function view_lc_report()
+    {
+        if($this->admin_access('lc_list_report') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('report/dashboard');
+        }
+
+        $data['title'] = 'L/C Report';
+        $data['content'] = 'report/lc_report_view';
+        $data['lc_data'] = $this->LC_model->get_all_lc_info();
+        $this->load->view('admin/adminMaster', $data);
+    }
+
+    /*=======  View Customer Report Data ========== */
+    public function view_customer_report()
+    {
+        if($this->admin_access('cus_list_report') != 1){
+            $data['warning_msg']="You Are Not able to Access this Module...!";
+            $this->session->set_flashdata($data);
+            redirect('report/dashboard');
+        }
+
+        $data['title'] = 'Customer Report';
+        $data['content'] = 'report/customer_report_view';
+        $data['customers'] = $this->Customer_model->find_all_customer_info();
+        $this->load->view('admin/adminMaster', $data);
+    }
+
 }

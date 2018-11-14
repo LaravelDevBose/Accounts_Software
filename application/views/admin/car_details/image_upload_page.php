@@ -131,10 +131,10 @@
                                         <a class="warning" href="<?= base_url();?>car/images/view/<?= $data->id;?>" >
                                             <i class="ace-icon fa fa-eye bigger-130"></i>
                                         </a>
-                                        <a class="info " href="<?= base_url();?>customer/edit/<?= $data->id;?>" >
+                                        <a class="info " href="<?= base_url();?>car/images/edit/<?= $data->id;?>" >
                                             <i class="ace-icon fa fa-pencil bigger-130"></i>
                                         </a>
-                                        <a class="red" href="<?= base_url(); ?>customer/delete/<?= $data->id ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
+                                        <a class="red" href="<?= base_url(); ?>car/images/delete/<?= $data->id ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
                                             <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                         </a>
 
