@@ -394,7 +394,7 @@ class Order_model extends CI_Model
 	/*========= Customer Wist Total Advance and c total order Count =========*/
 	public function customer_total_order_and_advance($cus_id=Null)
 	{
-		$this->db->select('COUNT("id") as total_order')->select_sum('ord_advance','total_advance' );
+		$this->db->select('COUNT("id") as total_order')->select_sum('ord_advance','total_advance' )->select_sum('ord_budget_range','total_budget' );
 		$res = $this->db->where('cus_id', $cus_id)->where('status', 'a')->get('orders')->row();
 
 		if($res){

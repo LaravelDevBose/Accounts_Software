@@ -234,17 +234,17 @@ class Customer extends MY_Controller
 
 					$data['success']="Save Successfully!";
 					$this->session->set_flashdata($data);
-					redirect('customer/insert');
+					redirect('order/list');
 				}
 
 				$data['warning']="Customer Info Store But Order Not Store Successfully!";
 				$this->session->set_flashdata($data);
-				redirect('customer/insert');
+				redirect('order/list');
 
 			}else{
 				$data['error']="Save Unsuccessfully!";
 				$this->session->set_flashdata($data);
-				redirect('customer/insert');
+				redirect('customer/order/insert');
 			}
 		}
 	}

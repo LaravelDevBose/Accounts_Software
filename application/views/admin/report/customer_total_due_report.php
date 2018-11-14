@@ -29,15 +29,16 @@
                   <th>Address</th>
                   <th>Total Order</th>
                   <th>Total Delivery</th>
-                  <th>Total Receive</th>
-                  <th>Total Payment</th>
+                  <th>Total Budget Price</th>
+                  <th>Total Collection Price</th>
+                  <th>Total Car Price</th>
                   <th>Summary</th>
                 </tr>
               </thead>
 
               <tbody id="tBody">
                   <?php  
-                    $i=1; $total_pay = 0; $total_rec= 0; $total_sub = 0; ;
+                    $i=1; $total_pay = 0; $total_rec= 0; $total_sub = 0; $total_budget=0;
                     if($reports && isset($reports)): foreach($reports as $report):
                       
                   ?>
@@ -48,6 +49,7 @@
                   <td><?= $report['cus_address']?> </td>
                   <td><?= $report['total_order'] ?></td>
                   <td><?= $report['total_deli'] ?></td>
+                  <td><span class="pull-right"><?= number_format($report['total_budget'], 2); ?></span></td>
                   <td><span class="pull-right"><?= number_format($report['total_rec'], 2); ?></span></td>
                   <td><span class="pull-right"><?= number_format($report['total_pay'], 2); ?></span></td>
                   
@@ -60,11 +62,12 @@
                   </td>
                 </tr>
                 <?php 
-                  $total_rec +=$report['total_rec']; $total_pay +=$report['total_pay']; $total_sub +=$report['sub_total'];
+                  $total_rec +=$report['total_rec']; $total_pay +=$report['total_pay']; $total_sub +=$report['sub_total']; $total_budget +=$report['total_budget'];
                   endforeach; endif;
                 ?>
                 <tr>
                 	<th colspan="6"><span class="pull-right" style="font-weight: bold;">Sub total: </span></th>
+                  <th><span class="pull-right" style="font-weight: bold;"><?= number_format($total_budget,2);?></span></th>
                   <th><span class="pull-right" style="font-weight: bold;"><?= number_format($total_rec,2);?></span></th>
                   <th><span class="pull-right" style="font-weight: bold;"><?= number_format($total_pay,2);?></span></th>
                 	<th><span class="pull-right" style="font-weight: bold;"><?= number_format($total_sub,2);?></span></th>

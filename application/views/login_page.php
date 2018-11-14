@@ -7,7 +7,7 @@
 
     <meta name="description" content="User login page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
+      <link rel="icon" href="<?= base_url();?>libs/favicon.ico" type="image/ico" sizes="16x16">
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>libs/BackEnd/assets/font-awesome/4.5.0/css/font-awesome.min.css" />

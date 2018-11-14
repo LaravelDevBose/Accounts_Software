@@ -130,10 +130,11 @@ class Report extends MY_Controller
 			$reports[$i]['cus_phone'] 	= $customer->cus_contact_no;
 			$reports[$i]['cus_address'] = $customer->cus_address;
 			$reports[$i]['total_order'] = $total_order_adv->total_order;
+			$reports[$i]['total_budget'] = $total_order_adv->total_budget;
 			$reports[$i]['total_deli'] 	= $total_deli->total_deli;
 			$reports[$i]['total_rec'] 	= $total_coll->amount+$total_order_adv->total_advance;
 			$reports[$i]['total_pay']	= $est_price->total_price;
-			$reports[$i]['sub_total']	= $est_price->total_price - ($total_coll->amount+$total_order_adv->total_advance);
+			$reports[$i]['sub_total']	= $total_order_adv->total_budget - ($total_coll->amount+$total_order_adv->total_advance);
 
 			$i++;
 		}

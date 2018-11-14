@@ -189,7 +189,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_other_tirm"> Other Term: </label>
                                     <div class="col-sm-8">
-                                        <textarea id="ord_other_tirm" name="ord_other_tirm" placeholder="Other Tirm" class="form-control" ></textarea>
+                                        <textarea id="ord_other_tirm" name="ord_other_tirm" placeholder="Other Term" class="form-control" ></textarea>
                                     </div>
                                 </div>
 

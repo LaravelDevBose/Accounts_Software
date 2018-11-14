@@ -59,7 +59,7 @@
 <!--        <div class="col-md-1"></div>-->
         <div class="col-md-12">
 
-            <div class="col-md-3 section3">
+            <div class="col-md-3 section3" style="display: none">
                 <div class="col-md-12 section12">
                     <div class="logo">
                         <i class="fa fa-usd"></i>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 section3">
+            <div class="col-md-3 section3" style="display: none">
                 <div class="col-md-12 section12">
 
                     <div class="logo">
@@ -83,7 +83,7 @@
 
                 </div>
             </div>
-            <div class="col-md-3 section3">
+            <div class="col-md-6 section3">
                 <div class="col-md-12 section12">
 
                     <div class="logo">
@@ -96,7 +96,7 @@
 
                 </div>
             </div>
-            <div class="col-md-3 section3">
+            <div class="col-md-6 section3">
                 <div class="col-md-12 section12">
 
                     <div class="logo">
@@ -118,7 +118,7 @@
                     </div>
                     <div class="textModule">
                         <span><?= number_format($hand_balance+$bank_balance, 2)?></span> <br>
-                        Total Income
+                        Liquid Cash
                     </div>
 
                 </div>
