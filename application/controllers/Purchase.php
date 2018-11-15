@@ -64,7 +64,7 @@ class Purchase extends MY_Controller
 				$data['order'] = $this->Order_model->order_info_by_id($order_id);
 			}
 			$data['pus_sl'] = $this->purchase_sl_create();
-
+            $data['purchases']	= $this->Purchase_model->get_purchase_info();
 			$this->load->view('admin/adminMaster', $data);
 		}	
 	}

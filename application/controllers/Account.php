@@ -162,7 +162,7 @@ class Account extends MY_Controller
         $total_pymt = $this->total_payment_count();
 
         #bank opening balance
-        $opening_balance = $this->Bank_model->bank_opening_balance();
+        $current_balance = $this->Bank_model->bank_current_balance();
 
         #bank deposit balance
         $deposit = $this->BankTransaction_model->bank_deposit_balance();
@@ -171,19 +171,13 @@ class Account extends MY_Controller
         $withdrawal = $this->BankTransaction_model->bank_withdrawal_balance();
 
 
-        $total_hand_balance  = ($total_coll-$total_pymt) - ($opening_balance->amount + $deposit->amount) +$withdrawal->amount;
-
-        $total_bank_balance = ($opening_balance->amount + $deposit->amount) - $withdrawal->amount;
-
-//        echo 'C-'.$total_coll.'<br> P-'.$total_pymt.'<br> O-'.
-//            $opening_balance->amount.'<br> D-'.$deposit->amount.
-//            '<br> W-'.$withdrawal->amount.'<br> TH-'.$total_hand_balance.'<br> TB-'.$total_bank_balance ; exit();
+        $total_hand_balance  = ($total_coll-$total_pymt) - ($deposit->amount) +$withdrawal->amount;
 
 
         $data['total_coll']= $total_coll ;
         $data['total_pymt'] = $total_pymt;
         $data['hand_balance'] = $total_hand_balance ;
-        $data['bank_balance'] = $total_bank_balance;
+        $data['bank_balance'] = $current_balance->amount;
 
         $this->load->view('admin/adminMaster', $data);
 

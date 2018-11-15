@@ -117,6 +117,9 @@ class Bank_transaction extends MY_Controller
 		}else{
 
 		 	if($this->BankTransaction_model->store_bank_trans_data()){
+
+		 	    $this->bank_trans_store_bank_current_balance_update();
+
                 $data['success']="Store SuccessFully";
                 $this->session->set_flashdata($data);
                 redirect('bank_trans/page');
@@ -128,6 +131,28 @@ class Bank_transaction extends MY_Controller
 		}
 	}
 
+	private function bank_trans_store_bank_current_balance_update(){
+	    $bank_id = $this->input->post('bank_id');
+        $trans_type = $this->input->post('trans_type');
+        $amount = $this->input->post('amount');
+
+        $bank = $this->Bank_model->bank_info_by_id($bank_id);
+
+        if($trans_type == 'D'){
+            $update_balance = $bank->current_balance + $amount;
+            $attr = array( 'current_balance' =>$update_balance );
+            $this->db->where('id', $bank->id);
+            $this->db->update('banks', $attr);
+
+        }else{
+            $update_balance = $bank->current_balance - $amount;
+            $attr = array( 'current_balance' =>$update_balance );
+            $this->db->where('id', $bank->id);
+            $this->db->update('banks', $attr);
+        }
+
+
+    }
 
 	/*======= Edit Collection page =======*/
 	public function bank_trans_edit($id=Null)
@@ -190,8 +215,12 @@ class Bank_transaction extends MY_Controller
             $data['trans'] = $this->BankTransaction_model->bank_trans_list();
             $this->load->view('admin/adminMaster', $data);
 		}else{
+            $result = $this->BankTransaction_model->get_bank_trans_by_id($id);
 
 		 	if($this->BankTransaction_model->update_bank_trans_data($id)){
+
+		 	    $this->bank_trans_update_bank_current_balance_update($result);
+
 		 		$data['success']="Update SuccessFully";
 				$this->session->set_flashdata($data);
 				redirect('bank_trans/page');
@@ -203,6 +232,45 @@ class Bank_transaction extends MY_Controller
 		}
 	}
 
+    private function bank_trans_update_bank_current_balance_update($result){
+        $bank_id = $this->input->post('bank_id');
+        $trans_type = $this->input->post('trans_type');
+        $amount = $this->input->post('amount');
+
+        $old_bank = $this->Bank_model->bank_info_by_id($bank_id);
+
+
+        if($result->trans_type == 'D'){
+            $update_balance = $old_bank->current_balance - $result->amount;
+            $attr = array( 'current_balance' =>$update_balance );
+            $this->db->where('id', $bank_id);
+            $this->db->update('banks', $attr);
+
+        }else{
+            $update_balance = $old_bank->current_balance + $result->amount;
+            $attr = array( 'current_balance' =>$update_balance );
+            $this->db->where('id', $bank_id);
+            $this->db->update('banks', $attr);
+        }
+
+        $bank = $this->Bank_model->bank_info_by_id($bank_id);
+
+        if($trans_type == 'D'){
+            $update_balance = $bank->current_balance + $amount;
+            $attr = array( 'current_balance' =>$update_balance );
+            $this->db->where('id', $bank->id);
+            $this->db->update('banks', $attr);
+
+        }else{
+            $update_balance = $bank->current_balance - $amount;
+            $attr = array( 'current_balance' =>$update_balance );
+            $this->db->where('id', $bank->id);
+            $this->db->update('banks', $attr);
+        }
+
+
+    }
+
 	/*======== delete _data=====*/
 	public function bank_trans_delete($id=Null)
 	{	
@@ -213,6 +281,9 @@ class Bank_transaction extends MY_Controller
 		}
 		
 		if($this->BankTransaction_model->delete_trans_type_data($id)){
+
+		    $this->bank_trans_delete_bank_current_balance_update($id);
+
 			$data['success']="Delete SuccessFully";
 			$this->session->set_flashdata($data);
 			redirect('bank_trans/page');
@@ -223,6 +294,26 @@ class Bank_transaction extends MY_Controller
 		}
 	}
 
+
+    private function bank_trans_delete_bank_current_balance_update($id){
+        $result = $this->BankTransaction_model->get_bank_trans_by_id($id);
+
+        $old_bank = $this->Bank_model->bank_info_by_id($result->bank_id);
+
+
+        if($result->trans_type == 'D'){
+            $update_balance = $old_bank->current_balance - $result->amount;
+            $attr = array( 'current_balance' =>$update_balance );
+            $this->db->where('id', $result->bank_id);
+            $this->db->update('banks', $attr);
+
+        }else{
+            $update_balance = $old_bank->current_balance + $result->amount;
+            $attr = array( 'current_balance' =>$update_balance );
+            $this->db->where('id', $result->bank_id);
+            $this->db->update('banks', $attr);
+        }
+    }
 
 
 }

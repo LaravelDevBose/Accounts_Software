@@ -70,7 +70,7 @@ class Payment extends MY_Controller
 
 		$data['payment_code'] = $pay_code;
 		$data['suppliers'] = $this->Supplier_model->find_all_supplier_info();
-		$data['orders'] = $this->Order_model->get_active_order_info();
+//		$data['orders'] = $this->Order_model->get_order_info();
 		$data['payments'] = $this->Payment_model->get_all_car_payment_data();
 		$data['heads'] = $this->IE_head_model->get_all_head_info('C');
 		$this->load->view('admin/adminMaster', $data); 
@@ -112,7 +112,7 @@ class Payment extends MY_Controller
 		if($result = $this->Payment_model->get_payment_by_id($id)){
 			$data['payment'] = $result;
 			$data['suppliers'] = $this->Supplier_model->find_all_supplier_info();
-			$data['orders'] = $this->Order_model->get_active_order_info();
+			$data['orders'] = $this->Order_model->get_order_info();
 			$data['heads'] = $this->IE_head_model->get_all_head_info('O');
 			$this->load->view('admin/accounts/edit_payment', $data);
 		}else{

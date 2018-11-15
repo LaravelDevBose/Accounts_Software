@@ -89,7 +89,7 @@ class Bank_model extends CI_Model
 
 
     /*========== Bank Total Opening balance ===========*/
-    public function bank_opening_balance(){
+    public function bank_current_balance(){
         $res = $this->db->where('status','a')->select_sum('current_balance','amount')->get('banks')->row();
 
         if($res){

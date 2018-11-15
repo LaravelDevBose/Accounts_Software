@@ -382,9 +382,37 @@
 		})
 	});
 
+    $('#month_id_search').click(function(){
+        var month_id = $('#month_id').val();
+        $('#tBody').empty();
 
+        $.ajax({
+            url:'<?= base_url();?>month_wise/salary/'+month_id,
+            type:'POST',
+            dataType:'html',
+            success:function(data){
+                if(data != 0){
+                    $('#tBody').html(data);
+                }else{
+                    swal({
+                        text: "No Data Found",
+                        icon: "error",
+                        buttons: false,
+                        timer: 1500,
+                    });
+                }
+            },error:function(error){
+                console.log(error);
+                swal({
+                    text: "Some Error Found",
+                    icon: "error",
+                    buttons: false,
+                    timer: 1500,
+                });
+            }
 
-
+        })
+    });
 
 
 

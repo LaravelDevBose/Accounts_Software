@@ -96,6 +96,7 @@ class Salary_model extends CI_Model
 		if($res){ return $res;}else{return FALSE;}
 	}
 
+
 	/*===== date to date salary report =========*/
 	public function salary_date_to_date($date_from = Null, $date_to = Null)
 	{
@@ -131,6 +132,24 @@ class Salary_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+    /*======= find employee salary Info =========*/
+    public function find_employee_salary_by_month($month_id=Null)
+    {
+        $this->db->select('salaries.*,sallay_months.year, months.month_name, employees.emp_name, employees.emp_sallary');
+        $this->db->from('employees');
+        $this->db->join('salaries', 'employees.id = salaries.emp_id', 'left');
+        $this->db->join('sallay_months', 'salaries.month_id = sallay_months.id' , 'left');
+        $this->db->join('months', 'sallay_months.month_id = months.id','left');
+        $this->db->where('salaries.month_id', $month_id);
+        $res = $this->db->where('salaries.status', 'a')->where('employees.status', 'a')->order_by('salaries.date', 'desc')->get()->result();
+
+        if($res){
+            return $res;
+        }else{
+            return FALSE;
+        }
+    }
 
 	/*========== Total Salary count ===========*/
     public function total_sallary(){

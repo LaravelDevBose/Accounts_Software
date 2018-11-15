@@ -67,6 +67,19 @@ class Bank extends MY_Controller
             $this->load->view('admin/adminMaster', $data);
         }
         else{
+            $bank_name = $this->input->post('bank_name');
+            $branch_name = $this->input->post('branch_name');
+            $account_no = $this->input->post('account_no');
+            $check = $this->db->where('bank_name', $bank_name)->where('branch_name',$branch_name)->where('account_no', $account_no)->where('status', 'a')->get('banks')->row();
+
+//            echo '<pre>'; print_r($check); die();
+
+            if($check){
+                $data['error']="This Bank Information Already Inserted";
+                $this->session->set_flashdata($data);
+                redirect('bank/insert');
+            }
+
             if($this->Bank_model->storeBankData()){
                 $data['success']="Update SuccessFully";
                 $this->session->set_flashdata($data);
@@ -99,6 +112,14 @@ class Bank extends MY_Controller
         }
     }
 
+    public function find_bank_current_balance($bank_id = Null){
+        if($res = $this->Bank_model->bank_info_by_id($bank_id)){
+
+           echo json_encode($res->current_balance);
+        }else{
+            echo 0;
+        }
+    }
     /*========== Bank Info Update =============*/
     public function update_bank_info($id = NUll){
         $this->form_validation->set_rules('bank_name', 'Bank Name', 'required|trim');

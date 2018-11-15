@@ -214,9 +214,11 @@ $route['salary/edit/(:any)']	= 'Salary/salary_payment_edit/$1';
 $route['salary/update/(:any)']	= 'Salary/salary_payment_update/$1';
 $route['salary/delete/(:any)']	= 'Salary/salary_payment_delete/$1';
 
+$route['employee/salary/statement/page'] = 'Salary/salary_statement_page';
+$route['month_wise/salary/(:any)'] = 'Salary/find_month_wise_salary/$1';
 
 /****************************************************************************************************/
-/************************************* Report Module Route List *******************************/
+/************************************* Report Module Route List ********************************/
 
 
 /*========== Report Route List ==========*/
@@ -298,7 +300,7 @@ $route['bank/store']       =   'Bank/store_bank_info';
 $route['bank/edit/(:any)']       =   'Bank/bank_info_edit/$1';
 $route['bank/update/(:any)']       =   'Bank/update_bank_info/$1';
 $route['bank/delete/(:any)']       =   'Bank/bank_info_delete/$1';
-
+$route['find/bank_current_balance/(:any)'] = 'Bank/find_bank_current_balance/$1';
 
 /*========== Agent Route List ============*/
 $route['agent/insert'] 			= 	"Agent/agent_page_view";

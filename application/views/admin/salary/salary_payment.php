@@ -28,7 +28,7 @@
                   
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="emp_id">Name:<span class="text-bold text-danger">*</span></label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-7">
                       <select class="chosen-select form-control emp_id" id="emp_id" name="emp_id" required  style="height: 30px; border-radius: 5px;">
                         <option value="0">Select a Employee</option>
                         <?php if($employees && isset($employees)):  foreach($employees as $employee):?>
@@ -37,6 +37,9 @@
                       </select>
                       <span id="msg1" style="color: red; display: none;">This Field Is Required</span>
                     </div>
+                      <div class="col-sm-1" style="padding: 0;">
+                          <a href="<?= base_url('employee/insert')?>" title="Add New Supplier" class="btn btn-xs btn-danger" style="height: 25px; border: 0; width: 27px; margin-left: -10px;" target="_blank" ><i class="fa fa-plus" aria-hidden="true" style="margin-top: 5px;"></i></a>
+                      </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="salary_range"> Salary Range:<span class="text-bold text-danger">*</span> </label>
@@ -46,7 +49,7 @@
                   </div>
                   <div class="form-group">
                     <label class="col-sm-4 control-label no-padding-left" for="month_id">Month:<span class="text-bold text-danger">*</span></label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-7">
                       <select class="chosen-select form-control" id="month_id" name="month_id" required  style="height: 30px; border-radius: 5px;">
                         <option value="0">Select a Month Name</option>
                         <?php if($months && isset($months)):  foreach($months as $month):?>
@@ -55,6 +58,9 @@
                       </select>
                       <span id="msg2" style="color: red; display: none;">This Field Is Required</span>
                     </div>
+                      <div class="col-sm-1" style="padding: 0;">
+                          <a href="<?= base_url('employee/month')?>" title="Add New Sallary Month" class="btn btn-xs btn-danger" style="height: 25px; border: 0; width: 27px; margin-left: -10px;" target="_blank" ><i class="fa fa-plus" aria-hidden="true" style="margin-top: 5px;"></i></a>
+                      </div>
                   </div>
 
                 </div>
@@ -74,7 +80,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" style="display: none">
                     <label class="col-sm-5 control-label no-padding-left" for="due_amount"> Due Amount: </label>
                     <div class="col-sm-7">
                       <input type="number" id="due_amount" value="0" name="due_amount" placeholder="Due Amount" class="form-control"  />
@@ -124,7 +130,7 @@
                 <th>Month</th>
                 <th>Date</th>
                 <th>Payment Amount</th>
-                <th>Due Amount</th>
+                <th style="display: none" >Due Amount</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -138,7 +144,7 @@
                 <td><?= $salary->month_name.' - '.$salary->year; ?></td>
                 <td><?php $date = new DateTime($salary->date); echo date_format($date, 'd M Y'); ?></td>
                 <td><?= number_format($salary->payment_amount, 2); ?></td>
-                <td><?= number_format($salary->due_amount, 2); ?></td>
+                <td style="display: none" ><?= number_format($salary->due_amount, 2); ?></td>
                 
                 <td>
                     <div class="hidden-sm hidden-xs action-buttons">

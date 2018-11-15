@@ -22,7 +22,7 @@
 
             <div class="form-group">
               <label class="col-sm-5 control-label no-padding-left" for="head_id">Expense Name:<span class="text-bold text-danger">*</span></label>
-              <div class="col-sm-7">
+              <div class="col-sm-6">
                 <select class="form-control chosen-select" id="head_id" name="head_id" style="height: 30px; border-radius: 5px;">
                   <option value=" ">Select a head</option>
                   <?php if($heads && isset($heads)):  foreach($heads as $head):?>
@@ -30,6 +30,9 @@
                   <?php endforeach; endif; ?>
                 </select>
               </div>
+                <div class="col-sm-1" style="padding: 0;">
+                    <a href="<?= base_url('ie_head/insert')?>" title="Add New Supplier" class="btn btn-xs btn-danger" style="height: 25px; border: 0; width: 27px; margin-left: -10px;" target="_blank" ><i class="fa fa-plus" aria-hidden="true" style="margin-top: 5px;"></i></a>
+                </div>
             </div>
             <div class="form-group">
               <label class="col-sm-5 control-label no-padding-left" for="payment_amount"> Amount:<span class="text-bold text-danger">*</span> </label>

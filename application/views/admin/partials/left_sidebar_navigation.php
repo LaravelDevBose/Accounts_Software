@@ -314,6 +314,13 @@
                 </a>
                 <b class="arrow"></b>
             </li>
+            <li class="<?= ($this->uri->uri_string()== 'employee/salary/statement/page')?'active': ' ' ?>">
+                <a href="<?php echo base_url(); ?>employee/salary/statement/page">
+                    <i class="menu-icon fa fa-usd"></i>
+                    <span class="menu-text">Salary Report </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
         <?php } if($access->employee_list ==1){ ?>
             <li class="<?= ($this->uri->uri_string()== 'employees')?'active': ' ' ?>">
                 <a href="<?php echo base_url(); ?>employees">

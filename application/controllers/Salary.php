@@ -96,7 +96,7 @@ class Salary extends MY_Controller
 			$this->session->set_flashdata($data);
 			redirect('employee/salary');
 		}else{
-			$data['error'] = 'Update Unsscessfull..!';
+			$data['error'] = 'Update Unsuccessful..!';
 			$this->session->set_flashdata($data);
 			redirect('employee/salary');
 		}
@@ -115,7 +115,7 @@ class Salary extends MY_Controller
 			$this->session->set_flashdata($data);
 			redirect('employee/salary');
 		}else{
-			$data['error'] = 'Delete Unsscessfull..!';
+			$data['error'] = 'Delete Unsuccessful..!';
 			$this->session->set_flashdata($data);
 			redirect('employee/salary');
 		}
@@ -139,5 +139,25 @@ class Salary extends MY_Controller
 		}
 	}
 
-	
+	public function salary_statement_page(){
+
+	    $data['title'] = 'Month wise Salary Report';
+	    $data['content'] = 'salary/salary_report_view';
+	    $data['months'] = $this->SallaryMonth_model->get_all_sallay_month();
+	    $this->load->view('admin/adminMaster', $data);
+    }
+
+
+    public function find_month_wise_salary($month_id = Null){
+
+	    if($res = $this->Employee_model->find_all_employee_info()){
+
+	        $data['employees'] = $res;
+	        $data['month_id'] = $month_id;
+	        $this->load->view('admin/salary/salary_report_tbl', $data);
+        }else{
+	        echo 0;
+        }
+
+    }
 }

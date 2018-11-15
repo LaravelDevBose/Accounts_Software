@@ -24,13 +24,16 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-left" for="ord_car_model">Select Customer: <span class="text-bold text-danger">*</span></label>
-                                <div class="col-sm-7">
+                                <div class="col-sm-6">
                                     <select class="chosen-select form-control" id="cus_info" style="height: 30px; border-radius: 5px;">
                                         <option value=" ">Select a Customer</option>
                                         <?php if($customers && isset($customers)):  foreach($customers as $customer):?>
                                             <option value="<?= $customer->id; ?>"><?= $customer->cus_code.'-'.ucfirst($customer->cus_name); ?></option>
                                         <?php endforeach; endif; ?>
                                     </select>
+                                </div>
+                                <div class="col-sm-1" style="padding: 0;">
+                                    <a href="<?= base_url('customer/insert')?>" class="btn btn-xs btn-danger" style="height: 25px; border: 0; width: 27px; margin-left: -10px;" target="_blank" title="Add New Customer"><i class="fa fa-plus" aria-hidden="true" style="margin-top: 5px;"></i></a>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -65,7 +68,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label no-padding-left" for="supaddress"> Address </label>
+                                <label class="col-sm-4 control-label no-padding-left" for="cus_address"> Address </label>
                                 <div class="col-sm-8">
                                     <textarea id="cus_address" readonly name="cus_address" placeholder="Address" class="form-control" ></textarea>
                                 </div>
