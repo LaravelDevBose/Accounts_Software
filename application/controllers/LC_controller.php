@@ -293,4 +293,24 @@ class LC_controller extends MY_Controller
 		}
 		
 	}
+
+
+	public function store_lc_document(){
+        if(isset($_FILES['document']) || $_FILES['document']['error'] == UPLOAD_ERR_NO_FILE)
+        {
+            if($this->LC_model->store_lc_documents()){
+                $data['success'] = 'Document Store Successfully';
+                $this->session->set_flashdata($data);
+                redirect($_SERVER['HTTP_REFERER']);
+            }else{
+                $data['error'] = 'Document Store Not Successfully';
+                $this->session->set_flashdata($data);
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        }
+
+        $data['error'] = 'No Document Selected. Select A Document First';
+        $this->session->set_flashdata($data);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }

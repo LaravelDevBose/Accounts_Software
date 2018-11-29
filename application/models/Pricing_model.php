@@ -59,6 +59,16 @@ class Pricing_model extends CI_Model
 		if($result){return $result; }else{ return FALSE;}
 	}
 
+	public function car_pricing_list($pus_id = Null){
+	    $res = $this->db->where('pus_id', $pus_id)->get('purchase_pricing')->row();
+
+	    if($res){
+	        return $res;
+        }else{
+	        return FALSE;
+        }
+    }
+
 	/*======= Update Employee data ==========*/
 	public function update_pricing_data($id=Null)
 	{

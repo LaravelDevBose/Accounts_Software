@@ -5,13 +5,7 @@
         <div class="widget-header">
           <h4 class="widget-title">L/C Information List</h4>
           <div class="widget-toolbar">
-            <a href="#" data-action="collapse">
-              <i class="ace-icon fa fa-chevron-up"></i>
-            </a>
-
-            <a href="#" data-action="close">
-              <i class="ace-icon fa fa-times"></i>
-            </a>
+              <a  href="<?= base_url()?>lc/insert" class="btn btn-md btn-primary"> L/C Entry</a>
           </div>
         </div>
 

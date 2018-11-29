@@ -120,9 +120,10 @@ class Order_model extends CI_Model
 	public function order_info_by_id($id = null)
 	{
 		if(!is_null($id)){
-			$this->db->select('orders.*, customers.cus_code,customers.cus_name,customers.cus_contact_no, customers.cus_address');
+			$this->db->select('orders.*, customers.*,customers.id as c_id,  tbl_lcs.lc_no');
 			$this->db->from('orders');
 			$this->db->join('customers', 'orders.cus_id = customers.id' );
+			$this->db->join('tbl_lcs', 'orders.ord_lc_no = tbl_lcs.id', 'left');
 			$this->db->where('orders.id', $id)->where('orders.status !=', 'd');
 			$result = $this->db->get()->row();
 

@@ -185,6 +185,9 @@
                                         <a style="color: #F89406;" class="linka fancybox fancybox.ajax"  href="<?= base_url();?>collection/view/<?= $data->id;?>" >
                                             <i class="ace-icon fa fa-eye bigger-130" ></i>
                                         </a>
+                                        <a class="green print_coll" id="<?= $data->id; ?>" >
+                                            <i class="ace-icon fa fa-print bigger-130"></i>
+                                        </a>
                                         <a class="green " href="<?= base_url();?>collection/edit/<?= $data->id; ?>" >
                                             <i class="ace-icon fa fa-pencil bigger-130"></i>
                                         </a>

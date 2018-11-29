@@ -30,7 +30,19 @@
 
     <?php endif; ?>
 
+    <?php
+    if($this->session->flashdata('info')) :
+        ?>
+        <script type="text/javascript">
+            swal({
+                text: "<?php echo $this->session->flashdata('info'); ?>",
+                icon: "info",
+                buttons: false,
+                timer: 1500,
+            });
+        </script>
 
+    <?php endif; ?>
 
     <!-- Success Message -->
     <?php

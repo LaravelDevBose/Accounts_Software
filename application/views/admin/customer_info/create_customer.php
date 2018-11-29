@@ -83,9 +83,12 @@
                 </div>
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="cus_fb"> Facebook Id:</label>
-                  <div class="col-sm-8">
-                    <input type="text" id="cus_fb" name="cus_fb" placeholder="Facebook Id Url" class="form-control" />
+                  <div class="col-sm-7">
+                    <input type="text" id="cus_fb" name="cus_fb" readonly placeholder="Facebook Id Url" class="form-control" />
                   </div>
+                    <div class="col-sm-1" style="padding: 0;">
+                        <a href="<?= base_url()?>get_fb_url" class="btn btn-xs btn-danger linka fancybox fancybox.ajax"  style="height: 25px; border: 0; width: 27px; margin-left: -10px;" ><i class="fa fa-pencil" aria-hidden="true" style="margin-top: 5px;"></i></a>
+                    </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="id-input-file-2"> Image:</label>

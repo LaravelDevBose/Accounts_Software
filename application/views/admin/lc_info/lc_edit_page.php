@@ -212,7 +212,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label no-padding-left" for="fright_value">Fright Value:<span class="text-bold text-danger">*</span> </label>
+                            <label class="col-sm-4 control-label no-padding-left" for="fright_value">Freight  Value:<span class="text-bold text-danger">*</span> </label>
                             <div class="col-sm-8">
                                 <input type="number" id="fright_value" name="fright_value" required  class="form-control" placeholder="0.00" />
                             </div>

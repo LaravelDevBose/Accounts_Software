@@ -951,6 +951,7 @@
             $('.multiselect').multiselect('destroy');
         });
 
+
     });
 </script>
 
@@ -1048,7 +1049,8 @@
         });
 
     });
-
+    $('[data-rel=tooltip]').tooltip();
+    $('[data-rel=popover]').popover({ html: true })
 </script>
 
 

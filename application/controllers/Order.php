@@ -107,6 +107,35 @@ class Order extends MY_Controller
 		}	
 	}
 
+    public function old_customer_order_insert($pus_id = Null)
+    {
+        if (!$this->Admin_model->is_admin_loged_in())
+        {
+            redirect('Adminlogin/?logged_in_first');
+        }else{
+            if($this->admin_access('order_entry') != 1){
+                $data['warning_msg']="You Are Not able to Access this Module...!";
+                $this->session->set_flashdata($data);
+                redirect('order/dashboard');
+            }
+
+
+            $order_no = $this->order_no_create();
+
+            $data['title'] = 'Order Information';
+            $data['content'] = 'order_info/create_order';
+            $data['customers'] = $this->Customer_model->find_all_customer_info();
+            $data['lc_data'] = $this->LC_model->get_all_lc_info();
+            $data['cars'] = $this->Purchase_model->unOrder_car_list();
+            $data['order_no'] = $order_no;
+
+            if($purchase = $this->Purchase_model->purchase_info_by_id($pus_id)){
+                $data['purchase'] = $purchase;
+            }
+            $this->load->view('admin/adminMaster', $data);
+        }
+    }
+
 	private function order_no_create(){
         $last_order = $this->db->order_by('id', 'desc')->limit(1)->get('orders')->row();
         if(is_null($last_order)|| !isset($last_order)){
@@ -231,8 +260,8 @@ class Order extends MY_Controller
 			$data['content'] = 'order_info/edit_order';
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
 			$data['lc_data'] = $this->LC_model->get_all_lc_info();
-			$data['customer_info'] = $this->Customer_model->customer_by_id($result->cus_id);
-			$data['order'] = $this->Order_model->order_info_by_id($id);
+            $data['order'] = $result = $this->Order_model->order_info_by_id($id);
+            $data['customer_info'] = $this->Customer_model->customer_by_id($result->cus_id);
 			$this->load->view('admin/adminMaster', $data);
 
 		}else{
@@ -345,6 +374,54 @@ class Order extends MY_Controller
 			$this->load->view('admin/adminMaster', $data);
 		}
 	}
+
+    public function ready_car_order_page($order_id = Null)
+    {
+        if (!$this->Admin_model->is_admin_loged_in())
+        {
+            redirect('Adminlogin/?logged_in_first');
+        }else{
+            if($this->admin_access('ready_car_sale') != 1){
+                $data['warning_msg']="You Are Not able to Access this Module...!";
+                $this->session->set_flashdata($data);
+                redirect('order/dashboard');
+            }
+            $data['title'] = 'Ready Car Sale';
+            $data['content'] = 'order_info/ready_car_sale';
+            $data['customers'] = $this->Customer_model->find_all_customer_info();
+            $data['purchases'] = $this->Purchase_model->unsales_purchase_car_list();
+
+            if($order = $this->Order_model->order_info_by_id($order_id)){
+
+                $data['order'] = $order;
+            }
+            $this->load->view('admin/adminMaster', $data);
+        }
+    }
+
+    public function ready_car_purchase_page($pus_id = Null)
+    {
+        if (!$this->Admin_model->is_admin_loged_in())
+        {
+            redirect('Adminlogin/?logged_in_first');
+        }else{
+            if($this->admin_access('ready_car_sale') != 1){
+                $data['warning_msg']="You Are Not able to Access this Module...!";
+                $this->session->set_flashdata($data);
+                redirect('order/dashboard');
+            }
+            $data['title'] = 'Ready Car Sale';
+            $data['content'] = 'order_info/ready_car_sale';
+            $data['customers'] = $this->Customer_model->unperchase_order_customer();
+            $data['purchases'] = $this->Purchase_model->get_purchase_info();
+
+            if($purchase = $this->Purchase_model->purchase_info_by_id($pus_id)){
+
+                $data['purchas'] = $purchase;
+            }
+            $this->load->view('admin/adminMaster', $data);
+        }
+    }
 
 	/*=========== marge order and sale info =========*/
     public function order_purchase_car_marge(){

@@ -1,4 +1,4 @@
-<div class="widget-box" style="width: 500px;">
+<div class="widget-box" style="width: 500px; height: 400px">
     <div class="widget-header">
       <h4 class="widget-title">Update Transport Location Information</h4>
     </div>

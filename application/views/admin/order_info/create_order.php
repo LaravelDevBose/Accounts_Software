@@ -117,51 +117,66 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_car_model"> Car Model:  </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_car_model"  name="ord_car_model" placeholder="Car Model" class="form-control" />
+                                        <input type="text" id="ord_car_model"  name="ord_car_model" value="<?= (isset($purchase) && $purchase)? $purchase->puc_car_model :'' ?>" placeholder="Car Model" class="form-control" />
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_color"> Color: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_color" name="ord_color" placeholder="Color" class="form-control" />
+                                        <input type="text" id="ord_color" name="ord_color" value="<?= (isset($purchase) && $purchase)? $purchase->puc_color :'' ?>" placeholder="Color" class="form-control" />
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label no-padding-left" for="pus_id"> Purchases No: </label>
-                                    <div class="col-sm-8">
-                                        <select class="chosen-select"  id="pus_id" name="pus_id" style="height: 30px; border-radius: 5px;">
-                                            <option value="0">Please Select a Purchases No</option>
-                                            <?php if($cars && isset($cars)): foreach($cars as $data):?>
-                                                <option value="<?= $data->id; ?>"><?= $data->pus_sl.'-'.$data->puc_chassis_no; ?></option>
-                                            <?php endforeach; endif;?>
-                                        </select>
+                                <?php if(isset($purchase) && $purchase):?>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label no-padding-left" for="pus_id"> Purchases No: </label>
+                                        <div class="col-sm-8">
+                                            <select class="chosen-select"  id="pus_id" name="pus_id" style="height: 30px; border-radius: 5px;">
+                                                <option value="0">Please Select a Purchases No</option>
+                                                <?php if($cars && isset($cars)): foreach($cars as $data):?>
+                                                    <?php if($purchase->id == $data->id):?>
+                                                        <option selected value="<?= $data->id; ?>"><?= $data->pus_sl.'-'.$data->puc_chassis_no; ?></option>
+                                                    <?php endif; endforeach; endif;?>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php else:?>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label no-padding-left" for="pus_id"> Purchases No: </label>
+                                        <div class="col-sm-8">
+                                            <select class="chosen-select"  id="pus_id" name="pus_id" style="height: 30px; border-radius: 5px;">
+                                                <option value="0">Please Select a Purchases No</option>
+                                                <?php if($cars && isset($cars)): foreach($cars as $data):?>
+                                                    <option value="<?= $data->id; ?>"><?= $data->pus_sl.'-'.$data->puc_chassis_no; ?></option>
+                                                <?php endforeach; endif;?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_chassis_no"> Chassis No: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_chassis_no" name="ord_chassis_no" readonly class="form-control" placeholder="Chassis No" />
+                                        <input type="text" id="ord_chassis_no" name="ord_chassis_no" value="<?= (isset($purchase) && $purchase)? $purchase->puc_chassis_no :'' ?>" readonly class="form-control" placeholder="Chassis No" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_engine_no"> Engine No: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_engine_no" readonly name="ord_engine_no" placeholder="Engine No" class="form-control" />
+                                        <input type="text" id="ord_engine_no" readonly name="ord_engine_no" value="<?= (isset($purchase) && $purchase)? $purchase->puc_engine_no :'' ?>" placeholder="Engine No" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_lc_no">L/C No: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_lc_no" readonly name="ord_lc_no" placeholder="L/C No" class="form-control" />
+                                        <input type="text" id="ord_lc_no" readonly name="ord_lc_no" value="<?= (isset($purchase) && $purchase)? $purchase->lc_no :'' ?>" placeholder="L/C No" class="form-control" />
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_other_tirm"> Other Term: </label>
                                     <div class="col-sm-8">
-                                        <textarea id="ord_other_tirm" name="ord_other_tirm" placeholder="Other Term" class="form-control" ></textarea>
+                                        <textarea id="ord_other_tirm" name="ord_other_tirm" value="<?= (isset($purchase) && $purchase)? $purchase->puc_other_tirm :'' ?>" placeholder="Other Term" class="form-control" ></textarea>
                                     </div>
                                 </div>
 
@@ -171,7 +186,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_make"> Make: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_make" name="ord_make_model" placeholder="Make" class="form-control" />
+                                        <input type="text" id="ord_make" name="ord_make_model" value="<?= (isset($purchase) && $purchase)? $purchase->puc_make :'' ?>" placeholder="Make" class="form-control" />
                                     </div>
                                 </div>
 
@@ -179,7 +194,7 @@
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_grade">
                                         Grade: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_grade" name="ord_grade" placeholder="Grade" class="form-control" />
+                                        <input type="text" id="ord_grade" name="ord_grade" value="<?= (isset($purchase) && $purchase)? $purchase->puc_grade :'' ?>" placeholder="Grade" class="form-control" />
                                     </div>
                                 </div>
 
@@ -187,7 +202,7 @@
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_type">
                                         Type: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_type" name="ord_type" placeholder="Type" class="form-control" />
+                                        <input type="text" id="ord_type" name="ord_type" value="<?= (isset($purchase) && $purchase)? $purchase->puc_type :'' ?>" placeholder="Type" class="form-control" />
                                     </div>
                                 </div>
 
@@ -195,14 +210,14 @@
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_year">
                                         Year: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_year" name="ord_year" placeholder="Year" class="form-control" />
+                                        <input type="text" id="ord_year" name="ord_year" value="<?= (isset($purchase) && $purchase)? $purchase->puc_year :'' ?>" placeholder="Year" class="form-control" />
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_mileage"> Mileage: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="ord_mileage" name="ord_mileage" placeholder="Mileage" class="form-control" />
+                                        <input type="text" id="ord_mileage" name="ord_mileage" value="<?= (isset($purchase) && $purchase)? $purchase->puc_mileage :'' ?>" placeholder="Mileage" class="form-control" />
                                     </div>
                                 </div>
 
@@ -212,10 +227,10 @@
                                         <input type="number" id="ord_budget_range" name="ord_budget_range" placeholder="Budget Range" class="form-control" />
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" style="display: none;">
                                     <label class="col-sm-4 control-label no-padding-left" for="ord_advance"> Advance:<span class="text-bold text-danger">*</span> </label>
                                     <div class="col-sm-8">
-                                        <input type="number" id="ord_advance" required name="ord_advance" placeholder="Order Advance" class="form-control" />
+                                        <input type="number" id="ord_advance"  name="ord_advance" placeholder="Order Advance" class="form-control" />
                                     </div>
                                 </div>
 

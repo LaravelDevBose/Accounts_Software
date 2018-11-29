@@ -91,12 +91,12 @@ class Purchase_model extends CI_Model
 	{
 		if(!is_null($id)){
 
-            $this->db->select('purchase.*, suppliers.sup_name, customers.cus_name,tbl_lcs.lc_no');
+            $this->db->select('purchase.*,suppliers.sup_code, suppliers.sup_name,suppliers.sup_phone,suppliers.sup_email,suppliers.sup_address,suppliers.sup_ent_date,  customers.cus_name,tbl_lcs.lc_no');
             $this->db->from('purchase');
             $this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
             $this->db->join('customers', 'purchase.customer_id = customers.id','left' );
             $this->db->join('tbl_lcs', 'purchase.puc_lc_id = tbl_lcs.id','left' );
-            $this->db->where('purchase.id',$id)->where('purchase.status', 'a')->order_by('id', 'desc');
+            $this->db->where('purchase.id',$id)->where('purchase.status', 'a');
             $result = $this->db->get()->row();
 			if($result){ return $result; }else{ return FALSE; }
 
@@ -107,7 +107,7 @@ class Purchase_model extends CI_Model
 
 	/*=========== Un sales car parchase List =========*/
     public function unsales_purchase_car_list(){
-        $res = $this->db->select('id, puc_chassis_no')->where('order_id', 0)->where('car_status', 0)->where('status', 'a')->get('purchase')->result();
+        $res = $this->db->select('id, puc_chassis_no, pus_sl')->where('order_id', 0)->where('car_status', 0)->where('status', 'a')->get('purchase')->result();
 
         if($res){return $res;}else{return false;}
 

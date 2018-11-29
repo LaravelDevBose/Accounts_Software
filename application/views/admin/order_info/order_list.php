@@ -61,11 +61,11 @@
                                         <td><?= $order->ord_chassis_no.'||'.$order->ord_engine_no?> </td>
                                         <td>
                                             <?php if($order->order_status == 'c'): ?>
-                                                <span class="label " style="background: green;">Delevired</span>
+                                                <span class="label " style="background: green;">Delivered</span>
                                             <?php elseif($order->order_status == 'a'): ?>
                                                 <span class="label " style="background: #36a2ec;">Active</span>
                                             <?php else: ?>
-                                                <span class="label " style="background: #ec880a;">Panding</span>
+                                                <span class="label " style="background: #ec880a;">Pending</span>
                                             <?php endif;?>
                                         </td>
                                         <td>

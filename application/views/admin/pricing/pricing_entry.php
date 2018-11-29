@@ -149,14 +149,14 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="insurance_charge">Incurance Charge:</label>
+                  <label class="col-sm-5 control-label no-padding-left" for="insurance_charge">Insurance Charge:</label>
                   <div class="col-sm-7">
                     <input type="number" id="insurance_charge"  name="insurance_charge" value="" oninput="amount_cal()" placeholder="Incurance Charge" class="form-control price" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="final_dosis">Final Dosis:</label>
+                  <label class="col-sm-5 control-label no-padding-left" for="final_dosis">Final Doc. Charge:</label>
                   <div class="col-sm-7">
                     <input type="number" id="final_dosis"  name="final_dosis" value="" oninput="amount_cal()" placeholder="Final Dosis-1000" class="form-control price" />
                   </div>

@@ -42,7 +42,7 @@ class Collection extends MY_Controller
 
 		$data['title'] = 'Collection Entry';
 		$data['content'] = 'accounts/collection_entry';
-		$data['coll_sl'] = $this->collection_sl_create();
+		$data['coll_sl'] = $this->Collection_model->collection_sl_create();
 		$data['customers'] = $this->Customer_model->find_all_customer_info();
 		$data['collections'] = $this->Collection_model->get_all_collection_data();
 		$this->load->view('admin/adminMaster', $data);
@@ -99,6 +99,17 @@ class Collection extends MY_Controller
         }
     }
 
+    public function collection_print($coll_id = Null){
+    	if($collection = $this->Collection_model->get_collection_by_id($coll_id)){
+			$data['collection'] = $collection;
+        	$this->load->view('admin/accounts/collection_print', $data);
+    	}else{
+    		echo 0;
+    	}
+    	
+    }
+
+
 	/*======= Edit Collection page =======*/
 	public function collection_entry_edit($id=Null)
 	{	
@@ -114,7 +125,7 @@ class Collection extends MY_Controller
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
 			$data['orders'] = $this->Order_model->get_all_order_for_collection($result->cus_id);
 
-            $ord_advance = $this->db->where('id', $result->order_no)->get('orders')->row()->ord_advance;
+            $ord_advance = $this->db->where('id', $result->order_id)->get('orders')->row()->ord_advance;
             $coll_amount = $this->Order_model->find_total_colection_amount($result->order_no);
 
 
@@ -196,34 +207,6 @@ class Collection extends MY_Controller
 		}
 	}
 
-    private function collection_sl_create(){
-        $last_coll = $this->db->where('type', 'receive')->order_by('id', 'desc')->limit(1)->get('collections')->row();
-        if(is_null($last_coll)|| !isset($last_coll)){
-            $coll_sl = 'MC-00001';
-        }else{
-
-            $num = substr($last_coll->coll_sl, 3, strlen($last_coll->coll_sl));
-
-            if($num < 9):
-                $num+=1;
-                $coll_sl = 'MC-0000'.$num;
-            elseif($num < 99):
-                $num+=1;
-                $coll_sl = 'MC-000'.$num;
-            elseif($num < 999):
-                $num+=1;
-                $coll_sl = 'MC-00'.$num;
-            elseif($num<9999):
-                $num+=1;
-                $coll_sl = 'MC-0'.$num;
-            else:
-                $num+=1;
-                $coll_sl = 'MC-'.$num;
-            endif;
-        }
-
-        return $coll_sl;
-    }
 
 	/*========== find order info and chassis info =======*/
 	public function find_order_info($cus_id=Null)

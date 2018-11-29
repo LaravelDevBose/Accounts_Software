@@ -68,11 +68,11 @@ class Transport extends MY_Controller
 			if($this->Purchase_model->car_transport_change($pus_id, $trans_id)){
 				$data['success']="Car Transport Status Change Successfuly";
 				$this->session->set_flashdata($data);
-				redirect('transport/status');
+                redirect($_SERVER['HTTP_REFERER']);
 			}
 			$data['warning']="Car Tranport Location Stor But Not Update Successfuly!";
 			$this->session->set_flashdata($data);
-			redirect('transport/status');
+            redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
 

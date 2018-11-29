@@ -261,7 +261,7 @@
                             <th>Color</th>
                             <th>Year</th>
                             <th>Car Value</th>
-                            <th>Firght Value</th>
+                            <th>Freight  Value</th>
                             <th>Sub Total</th>
                             <th>Action</th>
 

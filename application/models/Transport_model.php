@@ -36,5 +36,20 @@ class Transport_model extends CI_Model
 
 		if($result): return $trans_id; else: return FALSE; endif;
 	}
-	
+
+
+	public function get_car_all_shipping_statement($pus_id = Null){
+
+        $this->db->select('transports.*, trans_heads.head_name');
+		$this->db->from('transports');
+		$this->db->join('trans_heads', 'transports.trans_head_id = trans_heads.id' );
+		$this->db->where('transports.purchase_id', $pus_id);
+		$result = $this->db->order_by('transports.trans_date', 'desc')->get()->result();
+
+		if($result){
+            return $result;
+        }else{
+            return FALSE;
+        }
+    }
 }

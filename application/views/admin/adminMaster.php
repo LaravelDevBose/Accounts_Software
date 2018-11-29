@@ -40,8 +40,12 @@
                 <a href="#"><?php if(isset($title)): echo $title; endif; ?></a>
               </li>
 
-            </ul>
+                <li>
 
+                </li>
+
+            </ul>
+              <a  onclick="location.href= document.referrer" class="btn btn-sm btn-primary pull-right"> <i class="ace-icon fa fa-arrow-left home-icon"></i> Back</a>
           </div>
 
           <div class="page-content">

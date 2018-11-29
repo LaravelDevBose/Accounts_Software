@@ -1,7 +1,7 @@
 <body class="skin-2">
   <style>
     .sidebar.h-sidebar .nav-list>li>a{
-        line-height: 20px;
+        line-height: 40px;
         height: auto;
         padding: 5px 14px;
     }
@@ -23,7 +23,7 @@
         </button>
 
         <div class="navbar-header pull-left">
-          <a href="<?php echo base_url(); ?>" class="navbar-brand" style="padding-bottom: 5px; padding-top: 10px;">
+          <a href="<?php echo base_url(); ?>" class="navbar-brand" >
             <small>
               <?php 
                 $logo = $this->Setting_model->get_company_info('logo'); 
@@ -38,73 +38,83 @@
           </a>
           
         </div>
-        <?php if($this->uri->uri_string()!= 'Admindashboard'): ?>
+        
         <div class="navbar-buttons navbar-header pull-left" role="navigation">
           <div class="col-xs-12">
             <div id="sidebar2" class="sidebar h-sidebar navbar-collapse collapse ace-save-state" style="margin-top: 0; padding: 0 0;">
               <ul class="nav nav-list">
                 <li class="hover">
-                  <a href="<?php echo base_url(); ?>">
-                    <i class="menu-icon fa fa-tachometer"></i>
-                    <span class="menu-text"> Dashboard </span>
+                  <a href="<?php echo base_url(); ?>order/details/list" data-rel="tooltip" data-placement="bottom" title="" data-original-title="Car Details">
+                    <i class="menu-icon fa fa-car" style="font-size: 30px;"></i>
+<!--                    <span class="menu-text"> Car Details </span>-->
+                  </a>
+
+                  <b class="arrow"></b>
+                </li>
+                <?php if($this->uri->uri_string()!= 'Admindashboard'): ?>
+                <li class="hover">
+                  <a href="<?php echo base_url(); ?>" data-rel="tooltip" data-placement="bottom" title="" data-original-title="Dashboard">
+                    <i class="menu-icon fa fa-tachometer" style="font-size: 30px;"></i>
+<!--                    <span class="menu-text"> Dashboard </span>-->
                   </a>
 
                   <b class="arrow"></b>
                 </li>
                 <?php if($access->sale_module == 1){ ?>
                 <li class="hover">
-                  <a href="<?= base_url();?>order/dashboard">
-                    <i class="menu-icon fa fa-shopping-bag"></i>
-                    <span class="menu-text">Sale</span>
+                  <a href="<?= base_url();?>order/dashboard" data-rel="tooltip" data-placement="bottom" title="" data-original-title="Sale">
+                    <i class="menu-icon fa fa-shopping-bag" style="font-size: 30px;"></i>
+<!--                    <span class="menu-text">Sale</span>-->
                   </a>
                   <b class="arrow"></b>
                 </li>
                 <?php } if($access->purchase_module ==1){ ?>
                 <li class="hover">
-                  <a href="<?= base_url();?>purchase/dashboard">
-                    <i class="menu-icon fa fa-cart-arrow-down"></i>
-                    <span class="menu-text">Purchase</span>
+                  <a href="<?= base_url();?>purchase/dashboard" data-rel="tooltip" data-placement="bottom" title="" data-original-title="Purchase">
+                    <i class="menu-icon fa fa-cart-arrow-down" style="font-size: 30px;"></i>
+<!--                    <span class="menu-text">Purchase</span>-->
                   </a>
                   <b class="arrow"></b>
                 </li>
                 <?php } if($access->account_module ==1){ ?>
                 <li class="hover">
-                  <a href="<?= base_url();?>account/dashboard">
-                    <i class="menu-icon fa fa-clipboard"></i>
-                    <span class="menu-text">Account</span>
+                  <a href="<?= base_url();?>account/dashboard" data-rel="tooltip" data-placement="bottom" title="" data-original-title="Account">
+                    <i class="menu-icon fa fa-clipboard" style="font-size: 30px;"></i>
+<!--                    <span class="menu-text">Account</span>-->
                   </a>
                   <b class="arrow"></b>
                 </li>
                 <?php } if($access->hr_module ==1){ ?>
                 <li class="hover">
-                  <a href="<?= base_url();?>hr_payroll/dashboard">
-                    <i class="menu-icon fa fa-users"></i>
-                    <span class="menu-text">HR&Payroll</span>
+                  <a href="<?= base_url();?>hr_payroll/dashboard" data-rel="tooltip" data-placement="bottom" title="" data-original-title="HR&Payroll">
+                    <i class="menu-icon fa fa-users" style="font-size: 30px;"></i>
+<!--                    <span class="menu-text">HR&Payroll</span>-->
                   </a>
                   <b class="arrow"></b>
                 </li>
                 <?php } if($access->report_module ==1){ ?>
                 <li class="hover">
-                  <a href="<?= base_url();?>report/dashboard">
-                    <i class="menu-icon fa fa-print"></i>
-                    <span class="menu-text">Report</span>
+                  <a href="<?= base_url();?>report/dashboard" data-rel="tooltip" data-placement="bottom" title="" data-original-title="Report">
+                    <i class="menu-icon fa fa-print" style="font-size: 30px;"></i>
+<!--                    <span class="menu-text">Report</span>-->
                   </a>
                   <b class="arrow"></b>
                 </li>
                 <?php } if($access->administration ==1){ ?>
                 <li class="hover">
-                  <a href="<?= base_url();?>administration/dashboard">
-                    <i class="menu-icon fa fa-cogs"></i>
-                    <span class="menu-text">Administration</span>
+                  <a href="<?= base_url();?>administration/dashboard" data-rel="tooltip" data-placement="bottom" title="" data-original-title="Administration">
+                    <i class="menu-icon fa fa-cogs" style="font-size: 30px;"></i>
+<!--                    <span class="menu-text">Administration</span>-->
                   </a>
                   <b class="arrow"></b>
                 </li>
                 <?php } ?>
+                <?php endif; ?>
               </ul><!-- /.nav-list -->
             </div>
           </div>
         </div>
-        <?php endif; ?>
+        
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
           <ul class="nav ace-nav">
 

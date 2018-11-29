@@ -5,7 +5,37 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 */
 class Collection_model extends CI_Model
 {
-	/*======= get All Collection Entry Data =========*/
+
+    public function collection_sl_create(){
+        $last_coll = $this->db->where('type', 'receive')->order_by('id', 'desc')->limit(1)->get('collections')->row();
+        if(is_null($last_coll)|| !isset($last_coll)){
+            $coll_sl = 'MC-00001';
+        }else{
+
+            $num = substr($last_coll->coll_sl, 3, strlen($last_coll->coll_sl));
+
+            if($num < 9):
+                $num+=1;
+                $coll_sl = 'MC-0000'.$num;
+            elseif($num < 99):
+                $num+=1;
+                $coll_sl = 'MC-000'.$num;
+            elseif($num < 999):
+                $num+=1;
+                $coll_sl = 'MC-00'.$num;
+            elseif($num<9999):
+                $num+=1;
+                $coll_sl = 'MC-0'.$num;
+            else:
+                $num+=1;
+                $coll_sl = 'MC-'.$num;
+            endif;
+        }
+
+        return $coll_sl;
+    }
+
+    /*======= get All Collection Entry Data =========*/
 	public function get_all_collection_data() 
 	{
 		$this->db->select('collections.*, customers.cus_name, orders.order_no');
@@ -76,7 +106,7 @@ class Collection_model extends CI_Model
 	/*======= get Acounts data by id ======*/
 	public function get_collection_by_id($id=Null)
 	{	
-		$this->db->select('collections.*, customers.cus_name, customers.cus_contact_no,orders.order_no, customers.cus_address, orders.ord_engine_no, orders.ord_chassis_no')->from('collections');
+		$this->db->select('collections.*, collections.order_no as order_id,  customers.cus_name, customers.cus_contact_no,orders.order_no, customers.cus_address, orders.ord_engine_no, orders.ord_chassis_no')->from('collections');
 		$this->db->join('customers', 'collections.cus_id = customers.id');
 		$this->db->join('orders', 'collections.order_no = orders.id');
 		$res = $this->db->where('collections.id', $id)->get()->row();
@@ -118,7 +148,7 @@ class Collection_model extends CI_Model
 	/*========= order wise collection report Data  ==========*/
 	public function order_wise_collection($ord_id=Null)
 	{
-		$this->db->select('collections.*,customers.cus_name,orders.ord_chassis_no,orders.order_no,orders.ord_engine_no');
+		$this->db->select('collections.*,customers.cus_name,orders.ord_chassis_no,orders.order_no,orders.ord_engine_no, orders.ord_advance');
 		$this->db->from('collections');
 		$this->db->join('customers','collections.cus_id = customers.id');
 		$this->db->join('orders','collections.order_no = orders.id');

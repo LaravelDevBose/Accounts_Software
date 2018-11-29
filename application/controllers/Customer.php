@@ -198,6 +198,83 @@ class Customer extends MY_Controller
 		}	
 	}
 
+    public function new_customer_order_insert( $pus_id =Null)
+    {
+        if (!$this->Admin_model->is_admin_loged_in())
+        {
+            redirect('Adminlogin/?logged_in_first');
+        }else{
+            if($this->admin_access('customer_order') != 1){
+                $data['warning_msg']="You Are Not able to Access this Module...!";
+                $this->session->set_flashdata($data);
+                redirect('order/dashboard');
+            }
+
+            $data['title'] = 'Customer & Order Information';
+            $data['content'] = 'customer_info/cus_order_entry';
+
+
+            $cus_id = $this->db->order_by('id', 'desc')->limit(1)->get('customers')->row();
+            if(is_null($cus_id)|| !isset($cus_id)){
+                $cus_code = 'C00001';
+            }else{
+
+                $num = substr($cus_id->cus_code, 1, strlen($cus_id->cus_code));
+
+                if($num < 9):
+                    $num+=1;
+                    $cus_code = 'C0000'.$num;
+                elseif($num < 99):
+                    $num+=1;
+                    $cus_code = 'C000'.$num;
+                elseif($num < 999):
+                    $num+=1;
+                    $cus_code = 'C00'.$num;
+                elseif($num<9999):
+                    $num+=1;
+                    $cus_code = 'C0'.$num;
+                else:
+                    $num+=1;
+                    $cus_code = 'C'.$num;
+                endif;
+            }
+
+            $last_order = $this->db->order_by('id', 'desc')->limit(1)->get('orders')->row();
+            if(is_null($last_order)|| !isset($last_order)){
+                $order_no = 'M-00001';
+            }else{
+
+                $num = substr($last_order->order_no, 2, strlen($last_order->order_no));
+
+                if($num < 9):
+                    $num+=1;
+                    $order_no = 'M-0000'.$num;
+                elseif($num < 99):
+                    $num+=1;
+                    $order_no = 'M-000'.$num;
+                elseif($num < 999):
+                    $num+=1;
+                    $order_no = 'M-00'.$num;
+                elseif($num<9999):
+                    $num+=1;
+                    $order_no = 'M-0'.$num;
+                else:
+                    $num+=1;
+                    $order_no = 'M-'.$num;
+                endif;
+            }
+
+            $data['cus_code'] = $cus_code;
+            $data['order_no'] = $order_no;
+            $data['lc_data'] = $this->LC_model->get_all_lc_info();
+            $data['cars'] = $this->Purchase_model->unOrder_car_list();
+            if($purchase = $this->Purchase_model->purchase_info_by_id($pus_id)){
+                $data['purchase'] = $purchase;
+            }
+            $this->load->view('admin/adminMaster', $data);
+        }
+    }
+
 
 
 	/*=======================*/
@@ -211,7 +288,7 @@ class Customer extends MY_Controller
 		// $this->form_validation->set_rules('ord_lc_no', 'L/C No', 'required|trim');
 		// $this->form_validation->set_rules('ord_car_model', 'Car Model', 'required|trim');
 //		$this->form_validation->set_rules('ord_budget_range', 'Budget Range', 'required|trim');
-		$this->form_validation->set_rules('ord_advance', 'Advance', 'required|trim');
+//		$this->form_validation->set_rules('ord_advance', 'Advance', 'required|trim');
 		$this->form_validation->set_rules('order_no', 'Order No ', 'required|trim');
 
 
@@ -334,5 +411,10 @@ class Customer extends MY_Controller
 		}
 	}
 
+
+	public function fb_url_pop_up_page(){
+
+	    $this->load->view('admin/customer_info/fb_url');
+    }
 
 }

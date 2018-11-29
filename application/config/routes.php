@@ -23,6 +23,12 @@ $route['hr_payroll/dashboard'] 	= 'Admindashboard/hr_payroll_dashboard';
 $route['report/dashboard'] 	= 'Admindashboard/reports_dashboard';
 $route['administration/dashboard'] 	= 'Admindashboard/administration_dashboard';
 
+
+$route['order/details/list'] = 'Car/car_list_info';
+$route['order/details/profile/(:any)']  ='Car/order_car_profile_details/$1';
+$route['purchase/details/profile/(:any)']  ='Car/purchase_car_profile_details/$1';
+$route['car/search'] = 'Car/car_search_method';
+
 // =====================Admin Panel================
 // =====================Admin Panel================
 
@@ -36,7 +42,7 @@ $route['customer/store'] 			= 	"Customer/store_customer_info";
 $route['customer/edit/(:any)']		=	'Customer/edit_customer_info/$1';
 $route['customer/update/(:any)']	=	'Customer/update_customer_info/$1';
 $route['customer/delete/(:any)']	=	'Customer/delete_customer_info/$1';
-
+$route['get_fb_url']                =   'Customer/fb_url_pop_up_page';
 $route['customer/order/insert'] 	=	'Customer/customer_order_insert_page';
 $route['customer/order/store'] 		=	'Customer/customer_order_store';
 
@@ -55,7 +61,12 @@ $route['order/delivery/show/(:any)']	=	'Order/show_order_deliery_info/$1';
 $route['order/deliver/(:any)']	=	'Order/order_delivery/$1';
 $route['find/customer/(:any)']	=	'Customer/find_customer_info/$1';
 
+$route['new_customer/order/(:any)'] =   'Customer/new_customer_order_insert/$1';
+$route['old_customer/order/(:any)'] =   'Order/old_customer_order_insert/$1';
+
 $route['ready/car/sale']		=	'Order/ready_car_sale_page';
+$route['ready/car/order/(:any)']=	'Order/ready_car_order_page/$1';
+$route['ready/car/purchase/(:any)']=	'Order/ready_car_purchase_page/$1';
 $route['order/purchase/marge']	= 	'Order/order_purchase_car_marge';
 
 $route['find/unpurchase_order/(:any)']  =   'Order/find_unperchase_order/$1';
@@ -105,7 +116,7 @@ $route['car/images/update/(:any)']    =   'Car/car_images_update/$1';
 $route['car/images/delete/(:any)']    =   'Car/car_images_delete/$1';
 $route['car/image/delete/(:any)']     =   'Car/car_image_delete/$1';
 $route['find/car/purchase_info/(:any)']      =   'Car/find_car_purchase_info_for_image/$1';
-
+$route['cover/images/store']            =   'Car/cover_image_upload';
 
 /*======= Car Location Traking =======*/
 $route['transport/status'] 			= 'Transport/transport_car_status_view';
@@ -132,6 +143,7 @@ $route['collection/update/(:any)'] 	= 'Collection/collection_entry_update/$1';
 $route['collection/delete/(:any)'] 	= 'Collection/delete_collection_data/$1';
 $route['find/customer/chassis_no/(:any)']	= 'Collection/find_order_info/$1';
 $route['find/order/due_amount/(:any)'] = 'Collection/find_order_due_amount/$1';
+$route['collection/print/(:any)'] 	= 'Collection/collection_print/$1';
 
 //payment Route List
 $route['payment'] 					= 'Payment/payment_entry_page';
@@ -286,6 +298,8 @@ $route['find/purchase_info/(:any)'] = 'LC_controller/find_purchase_info/$1';
 $route['store/lc/car_info'] = 'LC_controller/store_car_info_in_cart';
 $route['cart/destroy']		= 'LC_controller/destroy_cart';
 $route['lc/details/delete/(:any)'] = 'LC_controller/delete_lc_details/$1';
+$route['car/lc_document']       = 'LC_controller/store_lc_document';
+
 
 /*========Income Expense Head CRUD Route list=========*/
 $route['ie_head/insert'] 		= 	"IE_head";

@@ -316,18 +316,24 @@
             return false;
         }
 
-        alert('save');
 	    $.ajax({
 	        url: '<?= base_url();?>collection/store',
 	        type: 'POST',
 	        dataType: 'html',
 	        data: $('#collection_entry').serialize(),
 	        success: function(data) {
-	        	$('#tBody').empty();
+
 
 	        	if(data != 0){
+                    $('#tBody').empty();
 	        		$('#tBody').html(data);
-	        		
+                    swal({
+                        text: "Store Successfully..!",
+                        icon: "error",
+                        buttons: false,
+                        timer: 1500,
+                    });
+                    location.reload();
 	        	}else{
 	        		swal({
                         text: "Store Unsuccessfully..!",
@@ -475,6 +481,50 @@
                 console.log(error);
                 swal({
                     text: "Store Unsuccessfully..! Some Error Found",
+                    icon: "error",
+                    buttons: true,
+                    timer: 2500,
+                });
+            }
+        });
+    });
+
+    $('.print_coll').click(function(){
+        var coll_id = $(this).attr('id');
+
+        $.ajax({
+            url: '<?= base_url();?>collection/print/'+coll_id,
+            type: 'POST',
+            dataType: 'html',
+            success: function(data) {
+
+                console.log(data);
+
+                if(data != 0){
+                    $('body').html(data);
+
+                    /*------- Print New Page -------*/
+                    window.print();
+
+                    /*------- After print bake the main page------*/
+                    location.reload();
+
+                }else{
+                    
+                    swal({
+                        text: "No Data Found",
+                        icon: "error",
+                        buttons: false,
+                        timer: 2000,
+                    });
+                    
+
+                }
+
+            },error:function(error){
+                console.log(error);
+                swal({
+                    text: "Some Error Found",
                     icon: "error",
                     buttons: true,
                     timer: 2500,

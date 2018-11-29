@@ -62,7 +62,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-5 control-label no-padding-left" for="amount"> Car Images:<span class="text-bold text-danger">*</span> </label>
                                     <div class="col-sm-7">
-                                        <input type="file" id="id-input-file-2" required name="images[]" multiple class="form-control" accept="image/*" />
+                                        <input type="file" id="id-input-file-2"  name="images[]" multiple class="form-control" accept="image/*" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label no-padding-left" for="amount"> Car Documents:<span class="text-bold text-danger">*</span> </label>
+                                    <div class="col-sm-7">
+                                        <input type="file" id="id-input-file-2"  name="documents[]" multiple class="form-control" accept="image/*" />
                                     </div>
                                 </div>
 
