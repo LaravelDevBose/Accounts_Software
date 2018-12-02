@@ -85,10 +85,11 @@ class Purchase_pricing extends MY_Controller
                 redirect('purchase/dashboard');
             }
 
+            
             $data['title'] = 'Add Pricing Information';
             $data['content'] = 'pricing/pricing_entry';
             $data['purchases'] = $this->Purchase_model->car_purchase_pricing();
-            $data['purchase'] = $this->Purchase_model->purchase_car_full_deatils($id);
+            $data['purchase'] = $this->Purchase_model->purchase_info_by_id($id);
             $this->load->view('admin/adminMaster', $data);
         }
     }
@@ -113,11 +114,11 @@ class Purchase_pricing extends MY_Controller
 
 				$data['success'] = 'Store Successfully!';
 				$this->session->set_flashdata($data);
-				redirect('pricing/entry');
+				redirect($this->input->post('redirect_url'));
 			}else{
 				$data['error'] = 'Store UnSuccessfully!';
 				$this->session->set_flashdata($data);
-				redirect('pricing/entry');
+				redirect($this->input->post('redirect_url'));
 			}
 		}
 	}
@@ -179,11 +180,11 @@ class Purchase_pricing extends MY_Controller
 				
 				$data['success'] = 'Update Successfully!';
 				$this->session->set_flashdata($data);
-				redirect('pricing/list');
+				redirect($this->input->post('redirect_url'));
 			}else{
 				$data['error'] = 'Update UnSuccessfully!';
 				$this->session->set_flashdata($data);
-				redirect('pricing/list');
+				redirect($this->input->post('redirect_url'));
 			}
 		}
 	}

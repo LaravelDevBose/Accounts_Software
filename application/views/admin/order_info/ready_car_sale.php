@@ -18,7 +18,9 @@
                 <div class="widget-main">
                     <form action="<?= base_url()?>order/purchase/marge" method="POST">
                         <div class="row">
-                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">
+                                <input type="hidden" name="redirect_url" value="<?= $_SERVER['HTTP_REFERER']?>">
+                            </div>
 
                             <div class="col-sm-4">
                                 <?php  if(isset($order) && $order): ?>

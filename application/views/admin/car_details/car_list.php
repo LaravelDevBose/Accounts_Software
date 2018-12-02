@@ -64,7 +64,7 @@
                                                             <option value="">Select Car Status</option>
                                                             <option value="a">Active Order</option>
                                                             <option value="p">Pending Order</option>
-                                                            <option value="c">Delivery Order</option>
+                                                            <option value="c">Sold Out Order</option>
                                                             <option value="u">Stock Car</option>
                                                         </select>
                                                     </div>

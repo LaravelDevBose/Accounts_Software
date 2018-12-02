@@ -104,6 +104,7 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <input type="hidden" name="cus_id">
+                                <input type="hidden" name="redirect_url" value="<?= $_SERVER['HTTP_REFERER']?>">
                             </div>
 
                             <div class="col-sm-4">

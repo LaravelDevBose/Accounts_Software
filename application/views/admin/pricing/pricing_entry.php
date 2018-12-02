@@ -135,6 +135,7 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <input type="hidden" name="pus_id" id="pus_id" value="<?= (isset($purchase) && $purchase)? $purchase->id : '' ?>" >
+                                <input type="hidden" name="redirect_url" value="<?= $_SERVER['HTTP_REFERER']?>">
                             </div>
                             <div class="col-sm-4">
 

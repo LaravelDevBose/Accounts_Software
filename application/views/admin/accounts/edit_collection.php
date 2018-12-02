@@ -13,14 +13,14 @@
                     </a>
                 </div>
             </div>
-
+ 
             <div class="widget-body">
                 <div class="widget-main">
 
                     <form action="<?= base_url();?>collection/update/<?= $collection->id; ?>" method="POST" >
                         <div class="row">
                             <div class="col-sm-1">
-
+                                <input type="hidden" name="redirect_url" value="<?= $_SERVER['HTTP_REFERER']?>">
                             </div>
 
                             <div class="col-sm-4">
@@ -56,7 +56,7 @@
                                         <select class="form-control chosen-select" id="order_no" required name="order_no" style="height: 30px; border-radius: 5px;">
                                             <option value=" ">Select a Order No</option>
                                             <?php if($orders && isset($orders)):  foreach($orders as $order):?>
-                                                <option value="<?= $order->id; ?>" <?= ($order->id == $collection->order_no)? 'selected': '' ?> ><?= $order->order_no.'-'.$order->ord_chassis_no; ?></option>
+                                                <option value="<?= $order->id; ?>" <?= ($order->id == $collection->order_id)? 'selected': '' ?> ><?= $order->order_no.'-'.$order->ord_chassis_no; ?></option>
                                             <?php endforeach; endif; ?>
                                         </select>
                                     </div>

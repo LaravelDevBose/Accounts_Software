@@ -99,15 +99,15 @@ class Purchase extends MY_Controller
 					if($this->Order_model->order_purchase_info_update($purchase_id)){
 						$data['success']=" Store Successfully!";
 						$this->session->set_flashdata($data);
-						redirect('purchase/list');
+						redirect($this->input->post('redirect_url'));
 					}
 					$data['success']=" Store Successfully!";
 					$this->session->set_flashdata($data);
-					redirect('purchase/list');
+					redirect($this->input->post('redirect_url'));
 				}
-				$data['warning']="Car Info Store Successfully! But Order Info Not Updated.";
+				$data['success']="Car Info Store Successfully!";
 				$this->session->set_flashdata($data);
-				redirect('purchase/list');
+				redirect($this->input->post('redirect_url'));
 			}else{
 
 				$data['error']="Save Unsuccessfully!";
@@ -141,7 +141,7 @@ class Purchase extends MY_Controller
 			}else{
 				$data['warning'] ='No data Found!';
 			    $this->session->set_flashdata($data); 
-			    redirect('purchase/list');
+			    redirect($_SERVER['HTTP_REFERER']);
 			}
 		}
 	}
@@ -186,20 +186,20 @@ class Purchase extends MY_Controller
                     if($this->Order_model->order_purchase_info_update($id)){
                         $data['success']=" Store Successfully!";
                         $this->session->set_flashdata($data);
-                        redirect('purchase/list');
+                       redirect($this->input->post('redirect_url'));
                     }
                     $data['success']=" Store Successfully!";
                     $this->session->set_flashdata($data);
-                    redirect('purchase/list');
+                    redirect($this->input->post('redirect_url'));
                 }
                 $data['warning']="Car Info Store Successfully! But Order Info Not Updated.";
                 $this->session->set_flashdata($data);
-                redirect('purchase/list');
+                redirect($this->input->post('redirect_url'));
 			}else{
 
 				$data['error']="Update Unsuccessfully!";
 				$this->session->set_flashdata($data);
-				redirect('purchase/list');
+				redirect($this->input->post('redirect_url'));
 			}
 		}
 	}

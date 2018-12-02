@@ -43,15 +43,15 @@
 					<div>
 						<ul class="list-unstyled spaced">
 							<li>
-								<i class="ace-icon fa fa-caret-right blue"></i>Name: <?= ucfirst($customer->cus_name); ?>
+								<i class="ace-icon fa fa-caret-right blue"></i>Name: <?= ucfirst($order->cus_name); ?>
 							</li>
 
 							<li>
-								<i class="ace-icon fa fa-caret-right blue"></i>Contact No: <?= $customer->cus_contact_no; ?>
+								<i class="ace-icon fa fa-caret-right blue"></i>Contact No: <?= $order->cus_contact_no; ?>
 							</li>
 
 							<li>
-								<i class="ace-icon fa fa-caret-right blue"></i>Address: <?= $customer->cus_address; ?>
+								<i class="ace-icon fa fa-caret-right blue"></i>Address: <?= $order->cus_address; ?>
 							</li>
 
 						</ul>
@@ -100,6 +100,7 @@
 						<div class="widget-body" style="background-color: #E7F2F8;">
 							<div class="widget-main">
 								<div class="row">
+									<input type="hidden" name="redirect_url" value="<?= $_SERVER['HTTP_REFERER']?>">
 									<div class="col-sm-9" >
 										<div class="form-group">
 											<label class="col-sm-6 control-label no-padding-left" for="delivery_date"> Delivery Date:<span class="text-bold text-danger">*</span> </label>
@@ -112,7 +113,7 @@
 									<div class="col-md-3" style="padding-left: 0;">
 										<div class="form-group" >
 											<div class="col-sm-12" style="padding: 0">
-												<button type="submit" style="height: 27px; padding-top: 0px; float: left; " class="btn btn-primary ">Deliver</button>
+												<button type="submit" style="height: 27px; padding-top: 0px; float: left; " class="btn btn-primary ">Save</button>
 											</div>
 										</div>
 									</div>
@@ -130,10 +131,6 @@
 									<tr class="info">
 										<th>Budget Amount: </th>
 										<td><?= number_format($order->ord_budget_range,2); ?></td>
-									</tr>
-									<tr class="success">
-										<th>Advance Amount: </th>
-										<td><?= number_format($order->ord_advance,2); ?></td>
 									</tr>
 									<tr class="success">
 										<th>Paid Amount: </th>

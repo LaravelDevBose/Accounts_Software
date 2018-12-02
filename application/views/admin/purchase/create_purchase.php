@@ -22,7 +22,9 @@
                 <div class="widget-main">
 
                     <div class="row">
-                        <div class="col-sm-2"></div>
+                        <div class="col-sm-2">
+                            
+                        </div>
 
                         <div class="col-sm-8">
                             <div class="form-group">
@@ -163,6 +165,7 @@
                                 <input type="hidden" name="customer_id" value="<?= (isset($order)&& $order)? $order->cus_id : '' ?>">
                                 <input type="hidden" name="supplier_id">
                                 <input type="hidden" name="order_id" value="<?= (isset($order)&& $order)? $order->id : '' ?>">
+                                <input type="hidden" name="redirect_url" value="<?= $_SERVER['HTTP_REFERER']?>">
                             </div>
 
                             <div class="col-sm-4">

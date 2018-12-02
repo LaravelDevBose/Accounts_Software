@@ -90,6 +90,7 @@
               <div class="col-sm-2">
                 <input type="hidden" name="supplier_id" value="<?= $supplier->id; ?>">
                 <input type="hidden" name="order_id" value="<?= $purchase->order_id; ?>">
+                <input type="hidden" name="redirect_url" value="<?= $_SERVER['HTTP_REFERER']?>">
               </div>
 
               <div class="col-sm-4">
@@ -184,7 +185,7 @@
                 </div>
               <div class="form-group" >
                   <div class="col-sm-12" style="margin-top: 10px;">
-                      <button type="Submit" class="btn btn-primary pull-right" id="pus_submit" style="width: 50%;">Purchase</button>
+                      <button type="Submit" class="btn btn-primary pull-right" id="pus_submit" style="width: 50%;">Update</button>
                   </div>
               </div>
               </div>

@@ -81,6 +81,7 @@ class Purchase_model extends CI_Model
 			'puc_chassis_no'=>$this->input->post('puc_chassis_no'),
 			'puc_make'		=>$this->input->post('puc_make'),
 			'puc_grade'		=>$this->input->post('puc_grade'),
+			'stock_no'		=>$this->input->post('stock_no'),
 			'puc_type'		=>$this->input->post('puc_type'),
 			'puc_year'		=>$this->input->post('puc_year'),
 			'puc_mileage'	=>$this->input->post('puc_mileage'),
@@ -120,7 +121,7 @@ class Purchase_model extends CI_Model
 	{
 		if(!is_null($id)){
 
-            $this->db->select('purchase.*,suppliers.sup_code, suppliers.sup_name,suppliers.sup_phone,suppliers.sup_email,suppliers.sup_address,suppliers.sup_ent_date,  customers.cus_name,tbl_lcs.lc_no');
+            $this->db->select('purchase.*,suppliers.sup_code, suppliers.sup_name,suppliers.sup_phone,suppliers.sup_email,suppliers.sup_address,suppliers.sup_ent_date,  customers.cus_name,customers.cus_contact_no ,tbl_lcs.lc_no');
             $this->db->from('purchase');
             $this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
             $this->db->join('customers', 'purchase.customer_id = customers.id','left' );
@@ -155,6 +156,7 @@ class Purchase_model extends CI_Model
 			'puc_chassis_no'=>$this->input->post('puc_chassis_no'),
 			'puc_make'		=>$this->input->post('puc_make'),
 			'puc_grade'		=>$this->input->post('puc_grade'),
+			'stock_no'		=>$this->input->post('stock_no'),
 			'puc_type'		=>$this->input->post('puc_type'),
 			'puc_year'		=>$this->input->post('puc_year'),
 			'puc_mileage'	=>$this->input->post('puc_mileage'),
@@ -242,21 +244,7 @@ class Purchase_model extends CI_Model
 		}
 	}
 
-	public function purchase_car_full_deatils($id = Null)
-	{
-		$this->db->select('purchase.*, suppliers.sup_name, suppliers.sup_phone, customers.cus_name, customers.cus_contact_no');
-		$this->db->from('purchase');
-		$this->db->join('customers', 'purchase.customer_id = customers.id','left');
-		$this->db->join('suppliers', 'purchase.supplier_id = suppliers.id' );
-		$this->db->where('purchase.id', $id)->where('car_status', '0');
-		$result = $this->db->where('purchase.status !=', 'd')->get()->row();
 
-		if($result){
-			return $result;
-		}else{
-			return FALSE;
-		}
-	}
 
 	public function car_transport_change($pus_id = Null, $trans_id=Null)
 	{

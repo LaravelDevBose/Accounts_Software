@@ -3,7 +3,6 @@
         width: 180px !important;
     }
 </style>
-
 <div class="row">
     <div class="col-xs-12">
         <div class="">
@@ -95,7 +94,7 @@
                                             <h4 class="widget-title smaller">
                                                 Customer Details
                                             </h4>
-                                            <a href="" class="btn btn-xs btn-info" style="width: 20px; float: right;"><i class="fa fa-pencil bigger-110"></i></a>
+                                            <a href="<?= base_url()?>customer/edit/<?= $order->cus_id; ?>" class="btn btn-info btn-xs" style="float: right;"><i class="fa fa-pencil-square-o bigger-110"></i></a>
                                         </div>
                                         <div class="widget-body">
                                             <div class="widget-main">
@@ -184,7 +183,7 @@
                                 </div>
                                 <?php if($order->order_status == 'a'):?>
                                 <div class="col-md-2">
-                                    <a href="#" class="btn btn-xs btn-block btn-warning">
+                                    <a href="<?= base_url();?>order/delivery/show/<?= $order->id;?>" class="btn btn-xs btn-block btn-warning linka fancybox fancybox.ajax">
                                         <i class="ace-icon fa fa-truck  bigger-110"></i>
                                         <span class="bigger-110">Order Deliver</span>
                                     </a>
@@ -200,6 +199,7 @@
                                             <h4 class="widget-title smaller">
                                                 Order Details
                                             </h4>
+                                            <a href="<?= base_url();?>order/edit/<?= $order->id; ?>" class="btn btn-info btn-xs" style="float: right;"><i class="fa fa-pencil-square-o bigger-110"></i></a>
                                         </div>
                                         <div class="widget-body">
                                             <div class="widget-main">
@@ -267,6 +267,7 @@
                                             <h4 class="widget-title smaller">
                                                 Order Other Details
                                             </h4>
+                                            <a href="<?= base_url();?>order/edit/<?= $order->id; ?>" class="btn btn-info btn-xs" style="float: right;"><i class="fa fa-pencil-square-o bigger-110"></i></a>
                                         </div>
                                         <div class="widget-body">
                                             <div class="widget-main">
@@ -349,13 +350,14 @@
                                     <div class="space space-4"></div>
 
                                 </div><!-- /.col -->
-
+    
                                 <div class="col-xs-12 col-sm-7 ">
                                     <div class="widget-box ">
                                         <div class="widget-header widget-header-small">
                                             <h4 class="widget-title smaller">
                                                 Supplier Details
                                             </h4>
+                                            <a href="<?= base_url() ?>supplier/edit/<?= $purchase->supplier_id ?>" class="btn btn-info btn-xs" style="float: right;"><i class="fa fa-pencil-square-o bigger-110"></i></a>
                                         </div>
                                         <div class="widget-body">
                                             <div class="widget-main">
@@ -445,12 +447,14 @@
                                         <span class="bigger-110">Change Cover Image</span>
                                     </a>
                                 </div>
+                                <?php if(empty($price)): ?>
                                 <div class="col-md-2">
-                                    <a href="<?= base_url()?>pricing/purchase/<?= $purchase->id?>" class="btn btn-xs btn-block btn-info">
+                                    <a href="<?= base_url()?>pricing/purchase/<?= $purchase->id ?>" class="btn btn-xs btn-block btn-info">
                                         <i class="ace-icon fa fa-money  bigger-110"></i>
-                                        <span class="bigger-110"> <?= (isset($price) && $price)?'Update':'Add' ?> Pricing</span>
+                                        <span class="bigger-110"> Add Pricing</span>
                                     </a>
                                 </div>
+                            <?php endif; ?>
                             </div>
                             <div class="space-4"></div>
 
@@ -461,6 +465,7 @@
                                             <h4 class="widget-title smaller">
                                                 Purchase Details
                                             </h4>
+                                            <a href="<?= base_url() ?>purchase/edit/<?= $purchase->id ?>" class="btn btn-info btn-xs" style="float: right;"><i class="fa fa-pencil-square-o bigger-110"></i></a>
                                         </div>
                                         <div class="widget-body">
                                             <div class="widget-main">
@@ -572,6 +577,9 @@
                                             <h4 class="widget-title smaller">
                                                 Purchase Price Details
                                             </h4>
+                                            <?php if(isset($price) && $price): ?>
+                                            <a href="<?= base_url() ?>pricing/edit/<?= $price->id ?>" class="btn btn-info btn-xs" style="float: right;"><i class="fa fa-pencil-square-o bigger-110"></i></a>
+                                            <?php endif;?>
                                         </div>
                                         <div class="widget-body">
                                             <div class="widget-main">

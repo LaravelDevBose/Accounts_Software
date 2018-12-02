@@ -8,7 +8,7 @@ $route['translate_uri_dashes'] 	= FALSE;
 
 
 
-
+ 
 
 /*===========Admin Login=============*/
 $route['admin/login'] 		= 	"Adminlogin";
@@ -57,7 +57,7 @@ $route['order/edit/(:any)']		=	'Order/edit_order_info/$1';
 $route['order/view/(:any)']		=	'Order/view_order_info/$1';
 $route['order/update/(:any)']	=	'Order/update_order_info/$1';
 $route['order/delete/(:any)']	=	'Order/delete_order_info/$1';
-$route['order/delivery/show/(:any)']	=	'Order/show_order_deliery_info/$1';
+$route['order/delivery/show/(:any)']='Order/show_order_deliery_info/$1';
 $route['order/deliver/(:any)']	=	'Order/order_delivery/$1';
 $route['find/customer/(:any)']	=	'Customer/find_customer_info/$1';
 

@@ -106,6 +106,7 @@
               <div class="col-sm-2">
                 <input type="hidden" name="cus_id" value="<?= $customer_info->id; ?>">
                 <input type="hidden" name="order_status" value="<?= $order->order_status; ?>">
+                <input type="hidden" name="redirect_url" value="<?= $_SERVER['HTTP_REFERER']?>">
               </div>
 
               <div class="col-sm-4">

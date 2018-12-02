@@ -48,33 +48,9 @@ class Supplier extends MY_Controller
 			$data['content'] = 'supplier/supplier_page';
 
 
-			$cus_id = $this->db->order_by('id', 'desc')->limit(1)->get('suppliers')->row();
-			if(is_null($cus_id)|| !isset($cus_id)){
-				$cus_code = 'S00001';
-			}else{
-
-				$num = substr($cus_id->sup_code, 1, strlen($cus_id->sup_code));
-
-				// var_dump($num); die();
-				if($num < 9):
-					$num+=1;
-					$cus_code = 'S0000'.$num;
-				elseif($num < 99):
-					$num+=1;
-					$cus_code = 'S000'.$num;
-				elseif($num < 999):
-					$num+=1;
-					$cus_code = 'S00'.$num;
-				elseif($num<9999):
-					$num+=1;
-					$cus_code = 'S0'.$num;
-				else:
-					$num+=1;
-					$cus_code = 'S'.$num;
-				endif;
-			}
 			
-			$data['sup_code'] = $cus_code; 
+			
+			$data['sup_code'] = $this->Supplier_model->create_sulliper_code(); 
 			$data['suppliers'] = $this->Supplier_model->find_all_supplier_info();
 			$this->load->view('admin/adminMaster', $data);
 		}	
@@ -118,7 +94,7 @@ class Supplier extends MY_Controller
 		if($this->admin_access('edit_access') != 1){
 			$data['warning_msg']="You Are Not able to Access this Module...!";
 			$this->session->set_flashdata($data);
-			redirect('hr_payroll/dashboard');
+			redirect('purchase/dashboard');
 		}
 		if (!$this->Admin_model->is_admin_loged_in()) 
 		{
@@ -152,12 +128,12 @@ class Supplier extends MY_Controller
 				
 				$data['success']="Supplier info Update Successfully!";
 				$this->session->set_flashdata($data);
-				redirect('supplier/insert');
+				redirect($this->input->post('redirect_url'));
 
 			}else{
 				$data['error']="Supplier  info Update Unsuccessfully!";
 				$this->session->set_flashdata($data);
-				redirect('supplier/insert');
+				redirect($this->input->post('redirect_url'));
 			}
 		}
 	}

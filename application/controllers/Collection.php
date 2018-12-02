@@ -121,20 +121,22 @@ class Collection extends MY_Controller
 		}
             $data['title'] = 'Collection Entry';
             $data['content'] = 'accounts/edit_collection';
-            $result = $this->Collection_model->get_collection_by_id($id);
-			$data['collection'] = $result;
+
+            $data['collection'] = $result = $this->Collection_model->get_collection_by_id($id);
+
+            $order_info = $this->db->where('id', $result->order_id)->get('orders')->row();
+
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
-			$data['orders'] = $this->Order_model->get_all_order_for_collection($result->cus_id);
+			$data['orders'] = $this->Order_model->get_all_order_for_collection($order_info->cus_id);
 
-            $ord_advance = $this->db->where('id', $result->order_id)->get('orders')->row()->ord_advance;
-            $coll_amount = $this->Order_model->find_total_colection_amount($result->order_no);
+            $coll_amount = $this->Order_model->find_total_colection_amount($order_info->id)->amount;
 
+            $perchas_price = 0;
+            if($order_info->pus_id != 0){
+                $perchas_price = $this->db->where('order_id', $order_info->id)->get('purchase')->row()->total_price;
+            }
 
-            $total_paid = $coll_amount->amount + $ord_advance;
-
-            $perchas_price = $this->db->where('order_id', $result->order_no)->get('purchase')->row()->total_price;
-
-            $data['due_amount'] = number_format($perchas_price- $total_paid,2);
+            $data['due_amount'] = number_format($perchas_price- $coll_amount,2);
 			$this->load->view('admin/adminMaster', $data);
 
 	}
@@ -150,33 +152,35 @@ class Collection extends MY_Controller
         $this->form_validation->set_rules('description', 'Description', 'trim');
 
 		if($this->form_validation->run() == FALSE){
-            $data['title'] = 'Collection Entry';
+             $data['title'] = 'Collection Entry';
             $data['content'] = 'accounts/edit_collection';
-            $result = $this->Collection_model->get_collection_by_id($id);
-            $data['collection'] = $result;
-            $data['customers'] = $this->Customer_model->find_all_customer_info();
-            $data['orders'] = $this->Order_model->get_all_order_for_collection($result->cus_id);
 
-            $ord_advance = $this->db->where('id', $result->order_no)->get('orders')->row()->ord_advance;
-            $coll_amount = $this->Order_model->find_total_colection_amount($result->order_no);
+            $data['collection'] = $result = $this->Collection_model->get_collection_by_id($id);
+           
+            $order_info = $this->db->where('id', $result->order_id)->get('orders')->row();
 
+			$data['customers'] = $this->Customer_model->find_all_customer_info();
+			$data['orders'] = $this->Order_model->get_all_order_for_collection($order_info->cus_id);
 
-            $total_paid = $coll_amount->amount + $ord_advance;
+            $coll_amount = $this->Order_model->find_total_colection_amount($order_info->id)->amount;
 
-            $perchas_price = $this->db->where('order_id', $result->order_no)->get('purchase')->row()->total_price;
+            $perchas_price = 0;
+            if($order_info->pus_id != 0){
+                $perchas_price = $this->db->where('order_id', $order_info->id)->get('purchase')->row()->total_price;
+            }
 
-            $data['due_amount'] = number_format($perchas_price- $total_paid,2);
-            $this->load->view('admin/adminMaster', $data);
+            $data['due_amount'] = number_format($perchas_price- $coll_amount,2);
+			$this->load->view('admin/adminMaster', $data);
 		}else{
 
 		 	if($this->Collection_model->update_collection_data($id)){
 		 		$data['success']="Update SuccessFully";
 				$this->session->set_flashdata($data);
-				redirect('collections');
+				redirect($this->input->post('redirect_url'));
 		 	}else{	
 		 		$data['error']="Update UnSuccessful";
 				$this->session->set_flashdata($data);
-				redirect('collections');
+				redirect($this->input->post('redirect_url'));
 		 	}
 		}
 	}
@@ -200,11 +204,11 @@ class Collection extends MY_Controller
 		if($this->Collection_model->delete_collection_data($id)){
 			$data['success']="Delete SuccessFully";
 			$this->session->set_flashdata($data);
-			redirect('collections');
+			redirect($_SERVER['HTTP_REFERER']);
 		}else{
 			$data['error']="Delete UnSuccessfull";
 			$this->session->set_flashdata($data);
-			redirect('account/collection');
+			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
 

@@ -336,7 +336,7 @@ class Order_model extends CI_Model
 	{
 	    $coll_amount = $this->db->select_sum('amount')->where('order_no', $order_id)->where('status', 'a')->get('collections')->row();
 	    if($coll_amount){
-            return $coll_amount;
+            return $coll_amount; 
         }else{
             return FALSE;
         }
@@ -346,7 +346,7 @@ class Order_model extends CI_Model
 	/*======= collection page order id and chassis no ========*/
 	public function get_all_order_for_collection($cus_id=Null)
 	{
-		$res = $this->db->select('id,order_no,ord_chassis_no')->where('cus_id', $cus_id)->get('orders')->result();
+		$res = $this->db->select('id, order_no, ord_chassis_no')->where('cus_id', $cus_id)->get('orders')->result();
 
 		if($res){return $res;}else{return FALSE; }
 	}

@@ -181,12 +181,12 @@ class Customer extends MY_Controller
 
 					$data['success']="Save Successfully!";
 					$this->session->set_flashdata($data);
-					redirect('order/list');
+					redirect($this->input->post('redirect_url'));
 				}
 
 				$data['warning']="Customer Info Store But Order Not Store Successfully!";
 				$this->session->set_flashdata($data);
-				redirect('order/list');
+				redirect($this->input->post('redirect_url'));
 
 			}else{
 				$data['error']="Save Unsuccessfully!";
@@ -252,12 +252,12 @@ class Customer extends MY_Controller
 				
 				$data['success']="Customer info Update Successfully!";
 				$this->session->set_flashdata($data);
-				redirect('customer');
-
+				redirect($this->input->post('redirect_url'));
+ 
 			}else{
 				$data['error']="Customer  info Update Unsuccessfully!";
 				$this->session->set_flashdata($data);
-				redirect('customer');
+				redirect($this->input->post('redirect_url'));
 			}
 		}
 	}

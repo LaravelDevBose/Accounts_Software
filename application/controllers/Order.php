@@ -154,13 +154,13 @@ class Order extends MY_Controller
 					
 				$data['success']="Save Successfully!";
 				$this->session->set_flashdata($data);
-				redirect('order/insert');
+				redirect($this->input->post('redirect_url'));
 
 			}else{
 
 				$data['error']="Save Unsuccessfully!";
 				$this->session->set_flashdata($data);
-				redirect('order/insert');
+				redirect($this->input->post('redirect_url'));
 			}
 		}
 	}
@@ -190,7 +190,7 @@ class Order extends MY_Controller
 			}else{
 				$data['warning'] ='No data Found!';
 			    $this->session->set_flashdata($data);
-			    redirect('order/list');
+			    redirect($_SERVER['HTTP_REFERER']);
 			}
 		}
 	}
@@ -209,7 +209,7 @@ class Order extends MY_Controller
 		}else{
 			$data['error']="No Data Find..!";
 			$this->session->set_flashdata($data);
-			redirect('order/list');
+			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
 	/*========= Order Data Update =======*/
@@ -244,13 +244,13 @@ class Order extends MY_Controller
 				}
 				$data['success']="Update Successfully!";
 				$this->session->set_flashdata($data);
-				redirect('order/list');
+				redirect($this->input->post('redirect_url'));
 
 			}else{
 
 				$data['error']="Update Unsuccessfully!";
 				$this->session->set_flashdata($data);
-				redirect('order/list');
+				redirect($this->input->post('redirect_url'));
 			}
 		}
 	}
@@ -287,7 +287,7 @@ class Order extends MY_Controller
 
 			$data['error']="Order Lc Number and Chassis Number not added add First..!";
 			$this->session->set_flashdata($data);
-			redirect('order/list');
+			redirect($this->input->post('redirect_url'));
 		}
 
 		if($this->Order_model->delivery_order($id)){
@@ -295,24 +295,24 @@ class Order extends MY_Controller
 			$this->Purchase_model->update_car_dliv_status($id);
 			$data['success']="Deliver Successfully!";
 			$this->session->set_flashdata($data);
-			redirect('order/list');
+			redirect($this->input->post('redirect_url'));
 
 		}else{
 
 			$data['error']="Deliver Unsuccessfully!";
 			$this->session->set_flashdata($data);
-			redirect('order/list');
+			redirect($this->input->post('redirect_url'));
 		}
 	}
 
 	/*==== Delivery Time order info Show ======*/
 	public function show_order_deliery_info($id=Null)
-	{
-		if($res = $this->Order_model->order_info_by_id($id)){
-			$data['customer'] = $this->Customer_model->customer_by_id($res->cus_id);
-			$data['paid_amount'] = $this->Order_model->find_paid_amount($id);
-			$data['order'] = $res;
+	{	
 
+		if($res = $this->Order_model->order_info_by_id($id)){
+			$data['paid_amount'] = $this->Order_model->find_total_colection_amount($id)->amount;
+			$data['order'] = $res;
+		
 			$this->load->view('admin/order_info/delivery_order', $data);
 		}else{
 			$data['error']="No Data Find..!";
@@ -424,7 +424,7 @@ class Order extends MY_Controller
 
         $data['success']="SuccessFully Marge";
         $this->session->set_flashdata($data);
-        redirect('ready/car/sale');
+        redirect($this->input->post('redirect_url'));
 
     }
 

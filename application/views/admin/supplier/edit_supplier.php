@@ -19,7 +19,9 @@
           <div class="widget-main">
 
             <div class="row">
-              <div class="col-sm-2"></div>
+              <div class="col-sm-2">
+                <input type="hidden" name="redirect_url" value="<?= $_SERVER['HTTP_REFERER']?>">
+              </div>
 
               <div class="col-sm-4">
                 <div class="form-group">
