@@ -5,6 +5,35 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 */
 class Customer_model extends CI_Model
 {
+
+    public  function create_customer_sl_no(){
+        $cus_id = $this->db->order_by('id', 'desc')->limit(1)->get('customers')->row();
+        if(is_null($cus_id)|| !isset($cus_id)){
+            $cus_code = 'C00001';
+        }else{
+
+            $num = substr($cus_id->cus_code, 1, strlen($cus_id->cus_code));
+
+            if($num < 9):
+                $num+=1;
+                $cus_code = 'C0000'.$num;
+            elseif($num < 99):
+                $num+=1;
+                $cus_code = 'C000'.$num;
+            elseif($num < 999):
+                $num+=1;
+                $cus_code = 'C00'.$num;
+            elseif($num<9999):
+                $num+=1;
+                $cus_code = 'C0'.$num;
+            else:
+                $num+=1;
+                $cus_code = 'C'.$num;
+            endif;
+        }
+
+        return $cus_code;
+    }
 	public function find_all_customer_info(){
 		
 		 $result = $this->db->where('cus_status', 'a')->order_by('id', 'desc')->get('customers')->result();
@@ -43,7 +72,7 @@ class Customer_model extends CI_Model
 		}
 
 		$attr = array(
-			'cus_code'	=>$this->input->post('cus_code'),
+			'cus_code'	=>$this->create_customer_sl_no(),
 			'cus_name'	=>$this->input->post('cus_name'),
 			'org_name'	=>$this->input->post('org_name'),
 			'cus_contact_no'	=>$this->input->post('cus_contact_no'),

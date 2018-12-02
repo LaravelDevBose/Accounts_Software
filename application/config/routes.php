@@ -100,6 +100,7 @@ $route['pricing/purchase/(:any)']	=	'Purchase_pricing/purchase_pricing_insert/$1
 
 $route['pricing/list']			=	'Purchase_pricing/pricing_list_view';
 $route['pricing/entry']			=	'Purchase_pricing/insert_pricing_info';
+$route['car/price/entry/(:any)']=	'Purchase_pricing/insert_car_pricing_info/$1';
 $route['pricing/store']			=	'Purchase_pricing/store_pricing_info';
 $route['pricing/view/(:any)']	=	'Purchase_pricing/view_pricing_details/$1';
 $route['pricing/edit/(:any)']	=	'Purchase_pricing/edit_pricing_info/$1';

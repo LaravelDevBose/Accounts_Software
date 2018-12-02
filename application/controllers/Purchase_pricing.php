@@ -54,8 +54,8 @@ class Purchase_pricing extends MY_Controller
 
 	/*====== show Employee insert page ===========*/
 	public function insert_pricing_info()
-	{	
-		if (!$this->Admin_model->is_admin_loged_in()) 
+	{
+		if (!$this->Admin_model->is_admin_loged_in())
 		{
 			redirect('Adminlogin/?logged_in_first');
 		}else{
@@ -65,7 +65,7 @@ class Purchase_pricing extends MY_Controller
 				redirect('purchase/dashboard');
 			}
 
-			$data['title'] = 'Add Pricing Information';  
+			$data['title'] = 'Add Pricing Information';
 			$data['content'] = 'pricing/pricing_entry';
 			$data['purchases'] = $this->Purchase_model->car_purchase_pricing();
 			$this->load->view('admin/adminMaster', $data);

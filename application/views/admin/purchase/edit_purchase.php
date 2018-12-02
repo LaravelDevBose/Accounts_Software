@@ -100,6 +100,12 @@
                           <input type="text" id="pus_sl" name="pus_sl" value="<?= $purchase->pus_sl ?>" placeholder="Purchase Code" class="form-control" readonly />
                       </div>
                   </div>
+                  <div class="form-group">
+                      <label class="col-sm-4 control-label no-padding-left" for="stock_no">Stock No: </label>
+                      <div class="col-sm-8">
+                          <input type="text" id="stock_no" name="stock_no" value="<?= $purchase->stock_no ?>" placeholder="Car Stock No"  class="form-control"  />
+                      </div>
+                  </div>
                 <div class="form-group">
                   <label class="col-sm-4 control-label no-padding-left" for="puc_car_model"> Car Model:  </label>
                   <div class="col-sm-8">

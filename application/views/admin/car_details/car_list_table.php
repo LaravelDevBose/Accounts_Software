@@ -4,12 +4,12 @@
         <tr>
             <td>
                 <?php
-                $cover_image = base_url(). 'libs/backEnd/assets/images/car_no_image_small.jpg';
+                $cover_image = base_url(). 'libs/BackEnd/assets/images/car_no_image_small.jpg';
                 $car_image = $this->Car_model->get_car_cover_image_by_purchase_id($car->p_id);
                 if($car_image){
                     $cover_image = base_url().$car_image->image_path;
                     if(!@getimagesize($cover_image)){
-                        $cover_image = base_url(). 'libs/backEnd/assets/images/car_no_image_small.jpg';
+                        $cover_image = base_url(). 'libs/BackEnd/assets/images/car_no_image_small.jpg';
                     }
                 }
 
@@ -21,8 +21,8 @@
             <td><?= $car->ord_chassis_no ?></td>
             <td>
                 <?php
-                $ord_date = new DateTime($car->created_at); $order_date = date_format($ord_date, 'd M Y');
-                $pus_date = new DateTime($car->pus_date); $purchase_date = date_format($pus_date, 'd M Y');
+                $ord_date = new DateTime($car->created_at); $order_date = date_format($ord_date, 'd/m/Y');
+                $pus_date = new DateTime($car->pus_date); $purchase_date = date_format($pus_date, 'd/m/Y');
                 echo $order_date.'<br>'.$purchase_date;
                 ?>
             </td>
@@ -32,11 +32,11 @@
             <td><?= ucwords($car->head_name)?></td>
             <td>
                 <?php if($car->order_status == 'c'): ?>
-                    <span class="label " style="background: green;">Delivered</span>
+                    <span class="label label-success" >Sold Out</span>
                 <?php elseif($car->order_status == 'a'): ?>
-                    <span class="label " style="background: #36a2ec;">Active</span>
+                    <span class="label label-info" >Active</span>
                 <?php else: ?>
-                    <span class="label " style="background: #ec880a;">Pending</span>
+                    <span class="label label-warning" >Pending</span>
                 <?php endif;?>
 
             </td>
@@ -47,14 +47,14 @@
     <?php elseif(isset($car->o_id) && !isset($car->p_id) && 0== $car->pus_id ):?>
         <tr>
             <td>
-                <img class="editable img-responsive"  alt="Car Image"  src="<?= base_url().'libs/backEnd/assets/images/car_no_image_small.jpg'; ?>" style="height: 60px; width: 80px;" />
+                <img class="editable img-responsive"  alt="Car Image"  src="<?= base_url().'libs/BackEnd/assets/images/car_no_image_small.jpg'; ?>" style="height: 60px; width: 80px;" />
             </td>
             <td><?= $car->order_no.'<br> ----------' ?></td>
             <td><?= $car->cus_name ?></td>
             <td>----------</td>
             <td>
                 <?php
-                $ord_date = new DateTime($car->created_at); $order_date = date_format($ord_date, 'd M Y');
+                $ord_date = new DateTime($car->created_at); $order_date = date_format($ord_date, 'd/m/Y');
                 echo $order_date.'<br> -----------';
                 ?>
             </td>
@@ -64,11 +64,11 @@
             <td>-----------</td>
             <td>
                 <?php if($car->order_status == 'c'): ?>
-                    <span class="label " style="background: green;">Delivered</span>
+                    <span class="label label-success ">Sold Out</span>
                 <?php elseif($car->order_status == 'a'): ?>
-                    <span class="label " style="background: #36a2ec;">Active</span>
+                    <span class="label label-info" >Active</span>
                 <?php else: ?>
-                    <span class="label " style="background: #ec880a;">Pending</span>
+                    <span class="label label-warning">Pending</span>
                 <?php endif;?>
 
             </td>
@@ -80,12 +80,12 @@
         <tr>
             <td>
                 <?php
-                $cover_image = base_url(). 'libs/backEnd/assets/images/car_no_image_small.jpg';
+                $cover_image = base_url(). 'libs/BackEnd/assets/images/car_no_image_small.jpg';
                 $car_image = $this->Car_model->get_car_cover_image_by_purchase_id($car->p_id);
                 if($car_image){
                     $cover_image = base_url().$car_image->image_path;
                     if(!@getimagesize($cover_image)){
-                        $cover_image = base_url(). 'libs/backEnd/assets/images/car_no_image_small.jpg';
+                        $cover_image = base_url(). 'libs/BackEnd/assets/images/car_no_image_small.jpg';
                     }
                 }
 
@@ -97,7 +97,12 @@
             <td><?= $car->puc_chassis_no ?></td>
             <td>
                 <?php
-                $pus_date = new DateTime($car->pus_date); $purchase_date = date_format($pus_date, 'd M Y');
+                if(isset($car->pus_date)){
+                    $pus_date = new DateTime($car->pus_date); $purchase_date = date_format($pus_date, 'd/m/Y');
+                }else{
+                    $pus_date = new DateTime($car->created_at); $purchase_date = date_format($pus_date, 'd/m/Y');
+                }
+
                 echo '--------<br>'.$purchase_date;
                 ?>
             </td>
@@ -106,7 +111,7 @@
             <td><?= '00.0<br>'.number_format($car->total_price,2)?></td>
             <td><?= ucwords($car->head_name)?></td>
             <td>
-                <span class="label " style="background: #ec880a;">Order Not define</span>
+                <span class="label label-primary">Stock</span>
             </td>
             <td>
                 <a href="<?= base_url()?>purchase/details/profile/<?= $car->p_id ?>" class="btn btn-xs btn-info"> <i class="ace-icon fa fa-info-circle bigger-130"></i> Details</a>

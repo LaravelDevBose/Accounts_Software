@@ -92,16 +92,12 @@ class Order extends MY_Controller
 				$this->session->set_flashdata($data);
 				redirect('order/dashboard');
 			}
-
-
-			$order_no = $this->order_no_create();
-
 			$data['title'] = 'Order Information';  
 			$data['content'] = 'order_info/create_order';
 			$data['customers'] = $this->Customer_model->find_all_customer_info();
 			$data['lc_data'] = $this->LC_model->get_all_lc_info();
 			$data['cars'] = $this->Purchase_model->unOrder_car_list();
-			$data['order_no'] = $order_no;
+			$data['order_no'] = $this->Order_model->create_order_no();
 
 			$this->load->view('admin/adminMaster', $data);
 		}	
@@ -120,14 +116,12 @@ class Order extends MY_Controller
             }
 
 
-            $order_no = $this->order_no_create();
-
             $data['title'] = 'Order Information';
             $data['content'] = 'order_info/create_order';
             $data['customers'] = $this->Customer_model->find_all_customer_info();
             $data['lc_data'] = $this->LC_model->get_all_lc_info();
             $data['cars'] = $this->Purchase_model->unOrder_car_list();
-            $data['order_no'] = $order_no;
+            $data['order_no'] = $this->Order_model->create_order_no();
 
             if($purchase = $this->Purchase_model->purchase_info_by_id($pus_id)){
                 $data['purchase'] = $purchase;
@@ -136,34 +130,7 @@ class Order extends MY_Controller
         }
     }
 
-	private function order_no_create(){
-        $last_order = $this->db->order_by('id', 'desc')->limit(1)->get('orders')->row();
-        if(is_null($last_order)|| !isset($last_order)){
-            $order_no = 'M-00001';
-        }else{
 
-            $num = substr($last_order->order_no, 2, strlen($last_order->order_no));
-
-            if($num < 9):
-                $num+=1;
-                $order_no = 'M-0000'.$num;
-            elseif($num < 99):
-                $num+=1;
-                $order_no = 'M-000'.$num;
-            elseif($num < 999):
-                $num+=1;
-                $order_no = 'M-00'.$num;
-            elseif($num<9999):
-                $num+=1;
-                $order_no = 'M-0'.$num;
-            else:
-                $num+=1;
-                $order_no = 'M-'.$num;
-            endif;
-        }
-
-        return $order_no;
-    }
 	/*========= Order Data Store =======*/
 	public function store_order_info()
 	{

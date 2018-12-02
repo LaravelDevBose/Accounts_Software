@@ -5,6 +5,35 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 */
 class Order_model extends CI_Model
 {
+
+    public function create_order_no(){
+        $last_order = $this->db->order_by('id', 'desc')->limit(1)->get('orders')->row();
+        if(is_null($last_order)|| !isset($last_order)){
+            $order_no = 'M-00001';
+        }else{
+
+            $num = substr($last_order->order_no, 2, strlen($last_order->order_no));
+
+            if($num < 9):
+                $num+=1;
+                $order_no = 'M-0000'.$num;
+            elseif($num < 99):
+                $num+=1;
+                $order_no = 'M-000'.$num;
+            elseif($num < 999):
+                $num+=1;
+                $order_no = 'M-00'.$num;
+            elseif($num<9999):
+                $num+=1;
+                $order_no = 'M-0'.$num;
+            else:
+                $num+=1;
+                $order_no = 'M-'.$num;
+            endif;
+        }
+
+        return $order_no;
+    }
 	/*======== get all order info =========*/
 	public function get_order_info()
 	{	
@@ -91,7 +120,7 @@ class Order_model extends CI_Model
 				'pus_id'	=>$this->input->post('pus_id'),
 				'ord_engine_no'	=>$this->input->post('ord_engine_no'),
 				'ord_chassis_no'	=>$this->input->post('ord_chassis_no'),
-				'order_no'	=>$this->input->post('order_no'),
+				'order_no'	=>$this->create_order_no(),
 				'ord_other_tirm'	=>$this->input->post('ord_other_tirm'),
 				'ord_make_model'	=>$this->input->post('ord_make_model'),
 				'ord_grade'	=>$this->input->post('ord_grade'),
@@ -120,7 +149,7 @@ class Order_model extends CI_Model
 	public function order_info_by_id($id = null)
 	{
 		if(!is_null($id)){
-			$this->db->select('orders.*, customers.*,customers.id as c_id,  tbl_lcs.lc_no');
+			$this->db->select('customers.*,customers.id as c_id,  tbl_lcs.lc_no ,orders.*,');
 			$this->db->from('orders');
 			$this->db->join('customers', 'orders.cus_id = customers.id' );
 			$this->db->join('tbl_lcs', 'orders.ord_lc_no = tbl_lcs.id', 'left');

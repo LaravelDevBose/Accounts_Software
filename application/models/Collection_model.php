@@ -40,10 +40,10 @@ class Collection_model extends CI_Model
 	{
 		$this->db->select('collections.*, customers.cus_name, orders.order_no');
 		$this->db->from('collections');
-		$this->db->join('customers','collections.cus_id = customers.id');
-        $this->db->join('orders','collections.order_no = orders.id');
+		$this->db->join('customers','collections.cus_id = customers.id', 'left');
+        $this->db->join('orders','collections.order_no = orders.id', 'left');
         $this->db->where('collections.status', 'a')->where('collections.type', 'receive');
-		$result = $this->db->order_by('id', 'desc')->get()->result();
+		$result = $this->db->order_by('collections.id', 'desc')->get()->result();
 
 		if($result){
 			return $result;
@@ -53,10 +53,10 @@ class Collection_model extends CI_Model
 	}
 
 	/*====== Store Account Entry Data =======*/
-	public function store_collection_data()
+	public function store_collection_data($sl_no)
 	{
 		$attr = array(
-			'coll_sl'		=>$this->input->post('coll_sl'),
+			'coll_sl'		=>$sl_no,
 			'cus_id'		=>$this->input->post('cus_id'),
 			'order_no'	    =>$this->input->post('order_no'),
 			'collection_type'	    =>$this->input->post('collection_type'),
@@ -107,9 +107,10 @@ class Collection_model extends CI_Model
 	public function get_collection_by_id($id=Null)
 	{	
 		$this->db->select('collections.*, collections.order_no as order_id,  customers.cus_name, customers.cus_contact_no,orders.order_no, customers.cus_address, orders.ord_engine_no, orders.ord_chassis_no')->from('collections');
-		$this->db->join('customers', 'collections.cus_id = customers.id');
-		$this->db->join('orders', 'collections.order_no = orders.id');
+		$this->db->join('customers', 'collections.cus_id = customers.id','left');
+		$this->db->join('orders', 'collections.order_no = orders.id','left');
 		$res = $this->db->where('collections.id', $id)->get()->row();
+
 		if($res){ return $res; }else{ return FALSE; }
 	}
 
@@ -150,12 +151,12 @@ class Collection_model extends CI_Model
 	{
 		$this->db->select('collections.*,customers.cus_name,orders.ord_chassis_no,orders.order_no,orders.ord_engine_no, orders.ord_advance');
 		$this->db->from('collections');
-		$this->db->join('customers','collections.cus_id = customers.id');
-		$this->db->join('orders','collections.order_no = orders.id');
+		$this->db->join('customers','collections.cus_id = customers.id','left');
+		$this->db->join('orders','collections.order_no = orders.id','left');
 		$this->db->where('collections.order_no', $ord_id)->where('collections.status', 'a')->where('collections.type', 'receive');
 		$result = $this->db->order_by('collections.id', 'desc')->get()->result();
 
-
+//        print_r($ord_id);die();
 		if($result){
 			return $result;
 		}else{

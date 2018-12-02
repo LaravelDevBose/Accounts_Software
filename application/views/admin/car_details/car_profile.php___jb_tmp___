@@ -95,7 +95,7 @@
                                             <h4 class="widget-title smaller">
                                                 Customer Details
                                             </h4>
-                                            <a href="" class="btn btn-xs btn-info" style="width: 20px; float: right;"><i class="fa fa-pencil bigger-110"></i></a>
+                                            <a href="" class="btn btn-xs btn-info" style=" float: right;"><i class="fa fa-pencil bigger-110"></i></a>
                                         </div>
                                         <div class="widget-body">
                                             <div class="widget-main">

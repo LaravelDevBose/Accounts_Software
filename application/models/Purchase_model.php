@@ -5,6 +5,35 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 */
 class Purchase_model extends CI_Model
 {
+
+    public function purchase_sl_create(){
+        $last_pus = $this->db->order_by('id', 'desc')->limit(1)->get('purchase')->row();
+        if(is_null($last_pus)|| !isset($last_pus)){
+            $pus_sl = 'P-00001';
+        }else{
+
+            $num = substr($last_pus->pus_sl, 2, strlen($last_pus->pus_sl));
+
+            if($num < 9):
+                $num+=1;
+                $pus_sl = 'P-0000'.$num;
+            elseif($num < 99):
+                $num+=1;
+                $pus_sl = 'P-000'.$num;
+            elseif($num < 999):
+                $num+=1;
+                $pus_sl = 'P-00'.$num;
+            elseif($num<9999):
+                $num+=1;
+                $pus_sl = 'P-0'.$num;
+            else:
+                $num+=1;
+                $pus_sl = 'P-'.$num;
+            endif;
+        }
+
+        return $pus_sl;
+    }
 	/*======== get all order info =========*/
 	public function get_purchase_info()
 	{	
@@ -42,7 +71,7 @@ class Purchase_model extends CI_Model
 
 		$attr = array(
 			'customer_id'	=>$this->input->post('customer_id'),
-			'pus_sl'	=>$this->input->post('pus_sl'),
+			'pus_sl'	    =>$this->purchase_sl_create(),
 			'supplier_id'	=>$this->input->post('supplier_id'),
 			'order_id'		=>$this->input->post('order_id'),
 			'puc_lc_id'		=>0,
@@ -119,6 +148,7 @@ class Purchase_model extends CI_Model
 		$attr = array(
 			'supplier_id'	=>$this->input->post('supplier_id'),
 			'puc_lc_id'		=>$this->input->post('puc_lc_id'),
+			'stock_no'      =>$this->input->post('stock_no'),
 			'puc_car_model'	=>$this->input->post('puc_car_model'),
 			'puc_color'		=>$this->input->post('puc_color'),
 			'puc_engine_no'	=>$this->input->post('puc_engine_no'),

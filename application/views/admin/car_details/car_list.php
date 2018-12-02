@@ -65,22 +65,13 @@
                                                             <option value="a">Active Order</option>
                                                             <option value="p">Pending Order</option>
                                                             <option value="c">Delivery Order</option>
-                                                            <option value="u">Un Order Car</option>
+                                                            <option value="u">Stock Car</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-<!--                                        <div class="col-sm-3" style="padding-left: 0px;">-->
-<!---->
-<!--                                            <div class="col-sm-4" style="padding-left: 0px;">-->
-<!--                                                <div class="form-group">-->
-<!--                                                    <button type="Submit" id="order_submit" class="btn btn-xs btn-block btn-primary">Filter</button>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
                                     </div>
-
                                 </form>
                             </div>
                         </div>
@@ -113,12 +104,12 @@
                                     <tr>
                                         <td>
                                             <?php
-                                            $cover_image = base_url(). 'libs/backEnd/assets/images/car_no_image_small.jpg';
+                                            $cover_image = base_url(). 'libs/BackEnd/assets/images/car_no_image_small.jpg';
                                             $car_image = $this->Car_model->get_car_cover_image_by_purchase_id($car->p_id);
                                             if($car_image){
                                                 $cover_image = base_url().$car_image->image_path;
                                                 if(!@getimagesize($cover_image)){
-                                                    $cover_image = base_url(). 'libs/backEnd/assets/images/car_no_image_small.jpg';
+                                                    $cover_image = base_url(). 'libs/BackEnd/assets/images/car_no_image_small.jpg';
                                                 }
                                             }
 
@@ -141,7 +132,7 @@
                                         <td><?= ucwords($car->head_name)?></td>
                                         <td>
                                             <?php if($car->order_status == 'c'): ?>
-                                                <span class="label " style="background: green;">Delivered</span>
+                                                <span class="label " style="background: green;">Sold Out</span>
                                             <?php elseif($car->order_status == 'a'): ?>
                                                 <span class="label " style="background: #36a2ec;">Active</span>
                                             <?php else: ?>
@@ -156,7 +147,7 @@
                                 <?php elseif(isset($car->o_id) && !isset($car->p_id) && 0== $car->pus_id ):?>
                                     <tr>
                                         <td>
-                                            <img class="editable img-responsive"  alt="Car Image"  src="<?= base_url().'libs/backEnd/assets/images/car_no_image_small.jpg'; ?>" style="height: 60px; width: 80px;" />
+                                            <img class="editable img-responsive"  alt="Car Image"  src="<?= base_url().'libs/BackEnd/assets/images/car_no_image_small.jpg'; ?>" style="height: 60px; width: 80px;" />
                                         </td>
                                         <td><?= $car->order_no.'<br> ----------' ?></td>
                                         <td><?= $car->cus_name ?></td>
@@ -173,7 +164,7 @@
                                         <td>------------</td>
                                         <td>
                                             <?php if($car->order_status == 'c'): ?>
-                                                <span class="label " style="background: green;">Delivered</span>
+                                                <span class="label " style="background: green;">Sold Out</span>
                                             <?php elseif($car->order_status == 'a'): ?>
                                                 <span class="label " style="background: #36a2ec;">Active</span>
                                             <?php else: ?>
@@ -189,12 +180,12 @@
                                     <tr>
                                         <td>
                                             <?php
-                                            $cover_image = base_url(). 'libs/backEnd/assets/images/car_no_image_small.jpg';
+                                            $cover_image = base_url(). 'libs/BackEnd/assets/images/car_no_image_small.jpg';
                                             $car_image = $this->Car_model->get_car_cover_image_by_purchase_id($car->p_id);
                                             if($car_image){
                                                 $cover_image = base_url().$car_image->image_path;
                                                 if(!@getimagesize($cover_image)){
-                                                    $cover_image = base_url(). 'libs/backEnd/assets/images/car_no_image_small.jpg';
+                                                    $cover_image = base_url(). 'libs/BackEnd/assets/images/car_no_image_small.jpg';
                                                 }
                                             }
 
@@ -215,7 +206,7 @@
                                         <td><?= '00.0<br>'.number_format($car->total_price,2)?></td>
                                         <td><?= ucwords($car->head_name)?></td>
                                         <td>
-                                            <span class="label " style="background: #ec880a;">Order Not define</span>
+                                            <span class="label label-primary " style="background: #ec880a;">Stock</span>
                                         </td>
                                         <td>
                                             <a href="<?= base_url()?>purchase/details/profile/<?= $car->p_id ?>" class="btn btn-xs btn-info"> <i class="ace-icon fa fa-info-circle bigger-130"></i> Details</a>

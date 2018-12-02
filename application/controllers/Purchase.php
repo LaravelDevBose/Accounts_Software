@@ -63,7 +63,7 @@ class Purchase extends MY_Controller
 			if(!is_null($order_id)){
 				$data['order'] = $this->Order_model->order_info_by_id($order_id);
 			}
-			$data['pus_sl'] = $this->purchase_sl_create();
+			$data['pus_sl'] = $this->Purchase_model->purchase_sl_create();
             $data['purchases']	= $this->Purchase_model->get_purchase_info();
 			$this->load->view('admin/adminMaster', $data);
 		}	
@@ -89,7 +89,7 @@ class Purchase extends MY_Controller
             if(!is_null($order_id)){
                 $data['order'] = $this->Order_model->order_info_by_id($order_id);
             }
-            $data['pus_sl'] = $this->purchase_sl_create();
+            $data['pus_sl'] = $this->Purchase_model->purchase_sl_create();
 			$this->load->view('admin/adminMaster', $data);
 		}else{
 			
@@ -225,35 +225,6 @@ class Purchase extends MY_Controller
 			redirect('purchase/list');
 		}
 	}
-
-    private function purchase_sl_create(){
-        $last_pus = $this->db->order_by('id', 'desc')->limit(1)->get('purchase')->row();
-        if(is_null($last_pus)|| !isset($last_pus)){
-            $pus_sl = 'P-00001';
-        }else{
-
-            $num = substr($last_pus->pus_sl, 2, strlen($last_pus->pus_sl));
-
-            if($num < 9):
-                $num+=1;
-                $pus_sl = 'P-0000'.$num;
-            elseif($num < 99):
-                $num+=1;
-                $pus_sl = 'P-000'.$num;
-            elseif($num < 999):
-                $num+=1;
-                $pus_sl = 'P-00'.$num;
-            elseif($num<9999):
-                $num+=1;
-                $pus_sl = 'P-0'.$num;
-            else:
-                $num+=1;
-                $pus_sl = 'P-'.$num;
-            endif;
-        }
-
-        return $pus_sl;
-    }
 
 	/*========== Find Car Info ========*/
 	public function find_car_info($pus_id=Null)

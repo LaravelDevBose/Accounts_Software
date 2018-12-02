@@ -52,7 +52,7 @@
             
             
             <div id="loader" hidden style="position: fixed; z-index: 1000; margin: auto; height: 100%; width: 100%; background:rgba(255, 255, 255, 0.72);;">
-            <img src="<?php echo base_url(); ?>libs/Backend/assets/loader.gif" style="top: 30%; left: 50%; opacity: 1; position: fixed;">
+            <img src="<?php echo base_url(); ?>libs/BackEnd/assets/loader.gif" style="top: 30%; left: 50%; opacity: 1; position: fixed;">
             </div>
             <?php $this->load->view('admin/error_success_msg');?>
               <?php 

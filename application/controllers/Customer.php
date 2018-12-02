@@ -56,35 +56,8 @@ class Customer extends MY_Controller
 
 			$data['title'] = 'Customer Entry Information';  
 			$data['content'] = 'customer_info/create_customer';
-
-
-			$cus_id = $this->db->order_by('id', 'desc')->limit(1)->get('customers')->row();
-			if(is_null($cus_id)|| !isset($cus_id)){
-				$cus_code = 'C00001';
-			}else{
-
-				$num = substr($cus_id->cus_code, 1, strlen($cus_id->cus_code));
-
-				if($num < 9):
-					$num+=1;
-					$cus_code = 'C0000'.$num;
-				elseif($num < 99):
-					$num+=1;
-					$cus_code = 'C000'.$num;
-				elseif($num < 999):
-					$num+=1;
-					$cus_code = 'C00'.$num;
-				elseif($num<9999):
-					$num+=1;
-					$cus_code = 'C0'.$num;
-				else:
-					$num+=1;
-					$cus_code = 'C'.$num;
-				endif;
-			}
-
 			$data['customers'] = $this->Customer_model->find_limit_customer_info();
-			$data['cus_code'] = $cus_code;
+            $data['cus_code'] = $this->Customer_model->create_customer_sl_no();
 			$this->load->view('admin/adminMaster', $data);
 		}	
 	}
@@ -138,60 +111,8 @@ class Customer extends MY_Controller
 
 			$data['title'] = 'Customer & Order Information';  
 			$data['content'] = 'customer_info/cus_order_entry';
-
-
-			$cus_id = $this->db->order_by('id', 'desc')->limit(1)->get('customers')->row();
-			if(is_null($cus_id)|| !isset($cus_id)){
-				$cus_code = 'C00001';
-			}else{
-
-				$num = substr($cus_id->cus_code, 1, strlen($cus_id->cus_code));
-
-				if($num < 9):
-					$num+=1;
-					$cus_code = 'C0000'.$num;
-				elseif($num < 99):
-					$num+=1;
-					$cus_code = 'C000'.$num;
-				elseif($num < 999):
-					$num+=1;
-					$cus_code = 'C00'.$num;
-				elseif($num<9999):
-					$num+=1;
-					$cus_code = 'C0'.$num;
-				else:
-					$num+=1;
-					$cus_code = 'C'.$num;
-				endif;
-			}
-
-			$last_order = $this->db->order_by('id', 'desc')->limit(1)->get('orders')->row();
-			if(is_null($last_order)|| !isset($last_order)){
-				$order_no = 'M-00001';
-			}else{
-
-				$num = substr($last_order->order_no, 2, strlen($last_order->order_no));
-
-				if($num < 9):
-					$num+=1;
-					$order_no = 'M-0000'.$num;
-				elseif($num < 99):
-					$num+=1;
-					$order_no = 'M-000'.$num;
-				elseif($num < 999):
-					$num+=1;
-					$order_no = 'M-00'.$num;
-				elseif($num<9999):
-					$num+=1;
-					$order_no = 'M-0'.$num;
-				else:
-					$num+=1;
-					$order_no = 'M-'.$num;
-				endif;
-			}
-			
-			$data['cus_code'] = $cus_code;
-			$data['order_no'] = $order_no;
+            $data['cus_code'] = $this->Customer_model->create_customer_sl_no();
+			$data['order_no'] = $this->Order_model->create_order_no();
 			$data['lc_data'] = $this->LC_model->get_all_lc_info();
 			$data['cars'] = $this->Purchase_model->unOrder_car_list();
 			$this->load->view('admin/adminMaster', $data);
@@ -213,59 +134,8 @@ class Customer extends MY_Controller
             $data['title'] = 'Customer & Order Information';
             $data['content'] = 'customer_info/cus_order_entry';
 
-
-            $cus_id = $this->db->order_by('id', 'desc')->limit(1)->get('customers')->row();
-            if(is_null($cus_id)|| !isset($cus_id)){
-                $cus_code = 'C00001';
-            }else{
-
-                $num = substr($cus_id->cus_code, 1, strlen($cus_id->cus_code));
-
-                if($num < 9):
-                    $num+=1;
-                    $cus_code = 'C0000'.$num;
-                elseif($num < 99):
-                    $num+=1;
-                    $cus_code = 'C000'.$num;
-                elseif($num < 999):
-                    $num+=1;
-                    $cus_code = 'C00'.$num;
-                elseif($num<9999):
-                    $num+=1;
-                    $cus_code = 'C0'.$num;
-                else:
-                    $num+=1;
-                    $cus_code = 'C'.$num;
-                endif;
-            }
-
-            $last_order = $this->db->order_by('id', 'desc')->limit(1)->get('orders')->row();
-            if(is_null($last_order)|| !isset($last_order)){
-                $order_no = 'M-00001';
-            }else{
-
-                $num = substr($last_order->order_no, 2, strlen($last_order->order_no));
-
-                if($num < 9):
-                    $num+=1;
-                    $order_no = 'M-0000'.$num;
-                elseif($num < 99):
-                    $num+=1;
-                    $order_no = 'M-000'.$num;
-                elseif($num < 999):
-                    $num+=1;
-                    $order_no = 'M-00'.$num;
-                elseif($num<9999):
-                    $num+=1;
-                    $order_no = 'M-0'.$num;
-                else:
-                    $num+=1;
-                    $order_no = 'M-'.$num;
-                endif;
-            }
-
-            $data['cus_code'] = $cus_code;
-            $data['order_no'] = $order_no;
+            $data['cus_code'] = $this->Customer_model->create_customer_sl_no();
+            $data['order_no'] = $this->Order_model->create_order_no();
             $data['lc_data'] = $this->LC_model->get_all_lc_info();
             $data['cars'] = $this->Purchase_model->unOrder_car_list();
             if($purchase = $this->Purchase_model->purchase_info_by_id($pus_id)){

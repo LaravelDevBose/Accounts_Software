@@ -66,8 +66,8 @@ class Collection extends MY_Controller
             $data['coll_sl'] = $this->collection_sl_create();
 			$this->load->view('admin/adminMaster', $data);
 		}else{
-
-		 	if($this->Collection_model->store_collection_data()){
+            $sl_no = $this->Collection_model->collection_sl_create();
+		 	if($this->Collection_model->store_collection_data($sl_no)){
 		 		$data['collections'] = $this->Collection_model->get_all_collection_data();
 		 		$this->load->view('admin/accounts/collection_tbl', $data);
 		 	}else{
@@ -89,9 +89,10 @@ class Collection extends MY_Controller
         if($this->form_validation->run() == FALSE){
             echo 1;
         }else{
+            $sl_no = $this->Collection_model->collection_sl_create();
+            if($coll_id = $this->Collection_model->store_collection_data($sl_no)){
+                $data['collection'] = $coll = $this->Collection_model->get_collection_by_id($coll_id);
 
-            if($coll_id = $this->Collection_model->store_collection_data()){
-                $data['collection'] = $this->Collection_model->get_collection_by_id($coll_id);
                 $this->load->view('admin/accounts/collection_print', $data);
             }else{
                 echo 0;

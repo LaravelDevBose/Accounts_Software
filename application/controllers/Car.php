@@ -45,7 +45,9 @@ class Car extends MY_Controller
         $data['title'] = 'Order Profile Details';
         $data['content'] = 'car_details/car_profile';
         $data['order'] = $order = $this->Order_model->order_info_by_id($order_id);
-        $data['collections'] = $this->Collection_model->order_wise_collection($order_id);
+        $data['collections'] =   $this->Collection_model->order_wise_collection($order_id);
+
+
         $data['coll_sl'] = $this->Collection_model->collection_sl_create();
 
         if($coll_amount = $this->Order_model->find_total_colection_amount($order_id)) {
@@ -101,8 +103,14 @@ class Car extends MY_Controller
 
         $search_value = $this->input->post('search_value');
         $search_type = $this->input->post('search_type');
-
-        if($search_type == 'order_no'){
+        if(empty($search_value) || $search_value == ''){
+            if($res = $this->Car_model->all_car_order_and_purchase_list()){
+                $data['cars'] = $res;
+                $this->load->view('admin/car_details/car_list_table', $data);
+            }else{
+                echo 0;
+            }
+        }else if($search_type == 'order_no'){
             if($res = $this->Car_model->order_wise_car_search($search_value)){
                 $data['cars'] = $res;
                 $this->load->view('admin/car_details/car_list_table', $data);

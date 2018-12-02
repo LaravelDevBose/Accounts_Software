@@ -237,6 +237,7 @@
 
 	/*======== collection entry store ===========*/
 	$('#collection_save').click(function(e){
+
         $('#cus_id_chosen .chosen-single').css('border', '1px solid #aaaaaa');
         $('#order_no_chosen .chosen-single').css('border', '1px solid #aaaaaa');
         $('#collection_type_chosen .chosen-single').css('border', '1px solid #aaaaaa');
@@ -329,7 +330,7 @@
 	        		$('#tBody').html(data);
                     swal({
                         text: "Store Successfully..!",
-                        icon: "error",
+                        icon: "success",
                         buttons: false,
                         timer: 1500,
                     });
@@ -448,6 +449,7 @@
             success: function(data) {
 
                 console.log(data);
+                alert('okk');
 
                 if(data != 0 && data != 1){
                     $('body').html(data);
@@ -498,7 +500,7 @@
             dataType: 'html',
             success: function(data) {
 
-                console.log(data);
+
 
                 if(data != 0){
                     $('body').html(data);

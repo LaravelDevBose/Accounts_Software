@@ -78,7 +78,8 @@ class Car_model extends CI_Model
 
         $result = array_merge($all, $un_pus_order,$un_order_pus );
 
-        array_multisort( array_column($result, "created_at"), SORT_DESC, $result );
+        @array_multisort( array_column($result, "created_at"), SORT_DESC, $result );
+
 
         if($result){
             return $result;

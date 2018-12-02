@@ -173,6 +173,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-sm-4 control-label no-padding-left" for="stock_no">Stock No: </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="stock_no" name="stock_no" value="" placeholder="Car Stock No" class="form-control"  />
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="puc_car_model"> Car Model:</label>
                                     <div class="col-sm-8">
                                         <input type="text" id="puc_car_model"  name="puc_car_model" value="<?= (isset($order)&& $order)? $order->ord_car_model : '' ?>" placeholder="Car Model" class="form-control" />
