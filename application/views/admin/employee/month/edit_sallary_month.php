@@ -1,6 +1,6 @@
 <div class="widget-box" style="width: 500px;">
     <div class="widget-header">
-      <h4 class="widget-title">Update Sallary Month Information</h4>
+      <h4 class="widget-title">Update Salary Month Information</h4>
     </div>
 
     <div class="widget-body">

@@ -29,7 +29,7 @@
                       <th>Contact No.</th>
                       <th>Email Address</th>
                       <th>joining Date</th>
-                      <th>Sallary</th>
+                      <th>Salary</th>
                       <th>Address</th>
                       <th>Action</th>
                       

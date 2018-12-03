@@ -51,19 +51,19 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="col-sm-5 control-label no-padding-left" for="check_no">Check No:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-5 control-label no-padding-left" for="check_no">Cheque No:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-7">
-                      <input type="text" id="check_no"  name="check_no" required placeholder="Check No" class="form-control"  />
+                      <input type="text" id="check_no"  name="check_no" required placeholder="Cheque No" class="form-control"  />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-5 control-label no-padding-left" for="check_amount">Check Amount:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-5 control-label no-padding-left" for="check_amount">Cheque Amount:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-7">
-                      <input type="text" id="check_amount"  name="check_amount" required placeholder="Check Amount" class="form-control"  />
+                      <input type="text" id="check_amount"  name="check_amount" required placeholder="Cheque Amount" class="form-control"  />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-5 control-label no-padding-left" for="check_status">Check Status:<span class="text-bold text-danger">*</span></label>
+                    <label class="col-sm-5 control-label no-padding-left" for="check_status">Cheque Status:<span class="text-bold text-danger">*</span></label>
                     <div class="col-sm-7">
                       <select class="chosen-select form-control" id="check_status" required name="check_status" style="height: 30px; border-radius: 5px;">
                         <option value="Pe" >Pending</option>
@@ -82,7 +82,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-5 control-label no-padding-left" for="check_date">Check Date:<span class="text-bold text-danger">*</span> </label>
+                    <label class="col-sm-5 control-label no-padding-left" for="check_date">Cheque Date:<span class="text-bold text-danger">*</span> </label>
                     <div class="col-sm-7">
                        <input class="form-control date-picker" required id="check_date" name="check_date" type="text" value="<?php echo date('Y-m-d'); ?>"  data-date-format="yyyy-mm-dd" />
                     </div>
@@ -100,9 +100,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-5 control-label no-padding-left" for="note">Despription: </label>
+                    <label class="col-sm-5 control-label no-padding-left" for="note">Description: </label>
                     <div class="col-sm-7">
-                       <input type="text" id="note" name="note" class="form-control"  placeholder="Despription" />
+                       <input type="text" id="note" name="note" class="form-control"  placeholder="Description" />
                     </div>
                   </div>
                   
@@ -128,7 +128,7 @@
   <div class="col-xs-12">
     <div class="widget-box">
       <div class="widget-header">
-        <h4 class="widget-title">Check Information List</h4>
+        <h4 class="widget-title">Cheque Information List</h4>
         <div class="widget-toolbar">
           <a href="#" data-action="collapse">
             <i class="ace-icon fa fa-chevron-up"></i>
@@ -145,12 +145,12 @@
           <table id="dynamic-table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
-                <th>Check Date</th>
-                <th>Chack No</th>
+                <th>Cheque Date</th>
+                <th>Cheque No</th>
                 <th>Bank Name - Branch Name</th>
                 <th>Customer Name</th>
-                <th>Check Status</th>
-                <th>Check Amount</th>
+                <th>Cheque Status</th>
+                <th>Cheque Amount</th>
                 <th>Action</th>
               </tr>
             </thead>

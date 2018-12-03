@@ -65,9 +65,9 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-5 control-label no-padding-left" for="emp_sallary"> Sallary:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-5 control-label no-padding-left" for="emp_sallary"> Salary:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-7">
-                    <input type="number" id="emp_sallary" required name="emp_sallary" placeholder="Sallary" class="form-control" />
+                    <input type="number" id="emp_sallary" required name="emp_sallary" placeholder="Salary" class="form-control" />
                   </div>
                 </div>
               </div>
@@ -83,9 +83,9 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="par_address"> Parmanet Address:<span class="text-bold text-danger">*</span> </label>
+                  <label class="col-sm-4 control-label no-padding-left" for="par_address"> Permanent Address:<span class="text-bold text-danger">*</span> </label>
                   <div class="col-sm-8">
-                    <textarea id="par_address"  name="par_address" placeholder="Parmanent Address" class="form-control" ></textarea>
+                    <textarea id="par_address"  name="par_address" placeholder="Permanent Address" class="form-control" ></textarea>
                   </div>
                 </div>
 

@@ -65,9 +65,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-4 control-label no-padding-left" for="sup_ref"> Referance:</label>
+                  <label class="col-sm-4 control-label no-padding-left" for="sup_ref"> Reference:</label>
                   <div class="col-sm-8">
-                    <input type="text" id="sup_ref" name="sup_ref" placeholder="Referance" class="form-control" />
+                    <input type="text" id="sup_ref" name="sup_ref" placeholder="Reference" class="form-control" />
                   </div>
                 </div>
                 

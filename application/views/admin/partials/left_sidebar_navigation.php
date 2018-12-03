@@ -261,7 +261,7 @@
             <li class="<?= (strpos($this->uri->uri_string(), 'check') !== false)? 'active open': '' ?>">
                 <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
                     <i class="menu-icon fa fa-credit-card"></i>
-                    <span class="menu-text"> Check</span>
+                    <span class="menu-text"> Cheque</span>
 
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
@@ -273,7 +273,7 @@
                         <li class="<?= ($this->uri->uri_string()== 'check/entry')?'active': ' ' ?>">
                             <a href="<?php echo base_url(); ?>check/entry">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Check Entry
+                                Cheque Entry
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -281,7 +281,7 @@
                         <li class="<?= ($this->uri->uri_string()== 'check/pending/list')?'active': ' ' ?>">
                             <a href="<?php echo base_url();?>check/pending/list">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Pending Check List
+                                Pending Cheque List
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -289,7 +289,7 @@
                         <li class="<?= ($this->uri->uri_string()== 'check/reminder/list')?'active': ' ' ?>">
                             <a href="<?php echo base_url();?>check/reminder/list">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Check Reminder List
+                                Cheque Reminder List
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -297,7 +297,7 @@
                         <li class="<?= ($this->uri->uri_string()== 'check/paid/list')?'active': ' ' ?>">
                             <a href="<?php echo base_url();?>check/paid/list">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Paid Check List
+                                Paid Cheque List
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -429,7 +429,7 @@
                         <li class="<?= ($this->uri->uri_string()== 'report/customer_wise/collection')?'active': ' ' ?>">
                             <a href="<?php echo base_url(); ?>report/customer_wise/collection">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Customer Collection Report
+                                Customer Wise Collection Report
                             </a>
                             <b class="arrow"></b>
                         </li>

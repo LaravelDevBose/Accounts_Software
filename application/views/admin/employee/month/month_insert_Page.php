@@ -6,7 +6,7 @@
       <!--============Customer Information============ -->
       <div class="widget-box">
         <div class="widget-header">
-          <h4 class="widget-title">Add Sallary Month Information</h4>
+          <h4 class="widget-title">Add Salary Month Information</h4>
           <div class="widget-toolbar">
             <a href="#" data-action="collapse">
               <i class="ace-icon fa fa-chevron-up"></i>
@@ -79,7 +79,7 @@
   <div class="col-xs-12">
     <div class="widget-box">
       <div class="widget-header">
-        <h4 class="widget-title">Sallary Month Information List</h4>
+        <h4 class="widget-title">Salary Month Information List</h4>
         <div class="widget-toolbar">
           <a href="#" data-action="collapse">
             <i class="ace-icon fa fa-chevron-up"></i>
@@ -98,7 +98,7 @@
               <tr>
                 <th class="center" style="display:none;"> </th>
                 <th>SL No</th>
-                <th>Sallay Month Title</th>
+                <th>Salary Month Title</th>
                 <th>Year</th>
                 <th>Month Name</th>
                 <th>Note</th>

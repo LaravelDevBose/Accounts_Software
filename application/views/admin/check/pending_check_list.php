@@ -2,7 +2,7 @@
   <div class="col-xs-12">
     <div class="widget-box">
       <div class="widget-header">
-        <h4 class="widget-title">Pending Check Information List</h4>
+        <h4 class="widget-title">Pending Cheque Information List</h4>
         <div class="widget-toolbar">
           <a href="#" data-action="collapse">
             <i class="ace-icon fa fa-chevron-up"></i>
@@ -19,12 +19,12 @@
           <table id="dynamic-table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
-                <th>Check Date</th>
-                <th>Chack No</th>
+                <th>Cheque Date</th>
+                <th>Cheque No</th>
                 <th>Bank Name - Branch Name</th>
                 <th>Customer Name</th>
                 <th>Reminder Date</th>
-                <th>Check Amount</th>
+                <th>Cheque Amount</th>
                 <th>Action</th>
               </tr>
             </thead>

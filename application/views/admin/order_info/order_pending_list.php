@@ -3,7 +3,7 @@
     <div class="col-xs-12">
         <div class="widget-box">
             <div class="widget-header">
-                <h4 class="widget-title">Order Information List</h4>
+                <h4 class="widget-title">Order Pending Information List</h4>
                 <div class="widget-toolbar">
                     <a href="#" data-action="collapse">
                         <i class="ace-icon fa fa-chevron-up"></i>
@@ -60,7 +60,7 @@
                                         </td>
                                         <td><?= $order->ord_chassis_no.'||'.$order->ord_engine_no?> </td>
                                         <td>
-                                            <span class="label " style="background: #ec880a;">Panding</span>
+                                            <span class="label " style="background: #ec880a;">Pending</span>
                                         </td>
                                         <td>
                                             <div class="hidden-sm hidden-xs action-buttons">

@@ -112,7 +112,7 @@
                     <?php if($ie_head->head_type == 'C'):?>
                       <label class="label label-success">Car Payment</label>
                       <?php else: ?>
-                      <label class="label label-danger">Ofice Payment</label>
+                      <label class="label label-danger">Office Payment</label>
                     <?php endif; ?>
                 </td>
                 <td>

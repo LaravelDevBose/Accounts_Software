@@ -1,6 +1,6 @@
 <div class="widget-box" style="width: 500px;">
     <div class="widget-header">
-      <h4 class="widget-title">View Check Information</h4>
+      <h4 class="widget-title">View Cheque Information</h4>
     </div>
 
     <div class="widget-body">
@@ -10,12 +10,12 @@
           <div class="col-md-8">
             <div class="row" style="">
                 <div class="col-xs-12 label label-lg label-info arrowed-in arrowed-right">
-                    <b>Check Details</b>
+                    <b>Cheque Details</b>
                 </div>
             </div>
             <div class="profile-user-info profile-user-info-striped">
                 <div class="profile-info-row">
-                    <div class="profile-info-name"> Check No: </div>
+                    <div class="profile-info-name"> Cheque No: </div>
 
                     <div class="profile-info-value">
                         <span class="editable" id="username"><?= $check->check_no; ?></span>
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="profile-info-row">
-                    <div class="profile-info-name"> Custsomer Name: </div>
+                    <div class="profile-info-name"> Customer Name: </div>
 
                     <div class="profile-info-value">
                         <span class="editable" id="signup"><?= $check->cus_name ?></span>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="profile-info-row">
-                    <div class="profile-info-name"> Check Date: </div>
+                    <div class="profile-info-name"> Cheque Date: </div>
                     <?php 
                       $date = new DateTime($check->check_date);
                       $c_date = date_format($date, 'd M Y'); 
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="profile-info-row">
-                    <div class="profile-info-name"> Submited Date: </div>
+                    <div class="profile-info-name"> Submitted Date: </div>
                     <?php 
                       $date = new DateTime($check->sub_date);
                       $s_date = date_format($date, 'd M Y'); 
@@ -93,7 +93,7 @@
                 </div>
                 
                 <div class="profile-info-row">
-                    <div class="profile-info-name"> Check Status: </div>
+                    <div class="profile-info-name"> Cheque Status: </div>
 
                     <div class="profile-info-value">
                         <span class="editable" id="about">
