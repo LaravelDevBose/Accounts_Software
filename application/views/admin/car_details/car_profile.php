@@ -181,7 +181,15 @@
                                         <span class="bigger-110">Download Images</span>
                                     </a>
                                 </div>
-                                <?php if($order->order_status == 'a'):?>
+                                <?php if($order->pus_id != '0'):?>
+                                <div class="col-md-2">
+                                    <a href="#" class="btn btn-xs btn-block btn-primary avatar2" >
+                                        <i class="ace-icon fa fa-image  bigger-110"></i>
+                                        <span class="bigger-110">Change Cover Image</span>
+                                    </a>
+                                </div>
+                                    
+                                <?php endif; if($order->order_status == 'a'):?>
                                 <div class="col-md-2">
                                     <a href="<?= base_url();?>order/delivery/show/<?= $order->id;?>" class="btn btn-xs btn-block btn-warning linka fancybox fancybox.ajax">
                                         <i class="ace-icon fa fa-truck  bigger-110"></i>
@@ -785,16 +793,18 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label class="col-sm-5 control-label no-padding-left" for="cheque_no"> Cheque No:</label>
-                                                                <div class="col-sm-7">
-                                                                    <input type="text" id="cheque_no" required name="cheque_no" readonly class="form-control" placeholder="Enter Cheque No" />
+                                                            <div id="check_view" style="display: none;">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-5 control-label no-padding-left" for="cheque_no"> Cheque No:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <input type="text" id="cheque_no" required name="cheque_no" class="form-control" placeholder="Enter Cheque No" />
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="col-sm-5 control-label no-padding-left" for="bank_name"> Bank Name: </label>
-                                                                <div class="col-sm-7">
-                                                                    <input type="text" id="bank_name" required name="bank_name" readonly class="form-control" placeholder="Enter Bank Name" />
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-5 control-label no-padding-left" for="bank_name"> Bank Name: </label>
+                                                                    <div class="col-sm-7">
+                                                                        <input type="text" id="bank_name" required name="bank_name" class="form-control" placeholder="Enter Bank Name" />
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -975,7 +985,7 @@
                                         </a>
                                         <div class="tools tools-bottom">
                                             <a class="image_delete" id="<?= $image->id;?>" >
-                                                <i class="ace-icon fa fa-times red"></i>
+                                                <i class="ace-icon fa fa-trash red"></i>
                                             </a>
                                         </div>
                                     </li>
@@ -1049,7 +1059,7 @@
                                             </a>
                                             <div class="tools tools-bottom">
                                                 <a class="image_delete" id="<?= $doc->id;?>" >
-                                                    <i class="ace-icon fa fa-times red"></i>
+                                                    <i class="ace-icon fa fa-trash red"></i>
                                                 </a>
                                             </div>
                                         </li>
@@ -1275,22 +1285,31 @@
                                             <div class="widget-main">
                                                 <form action="<?= base_url();?>car/lc_document" method="POST" enctype="multipart/form-data">
                                                     <div class="row">
-                                                        <div class="col-sm-1">
+                                                        <div>
                                                             <input type="hidden" id="pus_id" name="pus_id" value="<?= $purchase->id; ?>">
                                                             <input type="hidden" id="lc_id" name="lc_id" value="<?= $lc_info->id; ?>">
                                                             <input type="hidden" id="location" name="location" value="profile">
 
                                                         </div>
-                                                        <div class="col-sm-8">
+                                                        <div class="col-sm-5">
                                                             <div class="form-group">
-                                                                <label class="col-sm-3 control-label no-padding-left" for="id-input-file-2"> Car L/C Documents:<span class="text-bold text-danger">*</span> </label>
-                                                                <div class="col-sm-5">
+                                                                <label class="col-sm-5 control-label no-padding-left" for="id-input-file-2">Image Documents:<span class="text-bold text-danger">*</span> </label>
+                                                                <div class="col-sm-7">
                                                                     <input type="file" id="id-input-file-2"  name="document[]" multiple class="form-control" accept="image/*" />
                                                                 </div>
-                                                                <div class="col-sm-4">
-                                                                    <button type="submit" style="height: 29px; padding-top: 0px; float: right; " class="btn btn-primary btn-block">Upload</button>
+                                                            
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <div class="form-group">
+                                                                <label class="col-sm-5 control-label no-padding-left" for="id-input-file-2">Pdf Documents:<span class="text-bold text-danger">*</span> </label>
+                                                                <div class="col-sm-7">
+                                                                    <input type="file" id="id-input-file-2"  name="pdf[]" multiple class="form-control" accept="application/pdf" />
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <button type="submit" style="height: 29px; padding-top: 0px; float: right; " class="btn btn-primary btn-block">Upload</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -1300,28 +1319,84 @@
                                 </div>
                             </div>
                             <div class="hr hr12 dotted"></div>
-                            <?php if(isset($lc_documents) && $lc_documents){?>
-                                <ul class="ace-thumbnails">
-                                    <?php foreach($lc_documents as $doc):?>
-                                        <li id="image_<?= $doc->id; ?>">
-                                            <?php
-                                            $image = base_url().$doc->image_path;
-                                            if(!file_exists($image) && !getimagesize($image) ){
-                                                $image =base_url().'libs/upload_pic/no.png';
-                                            }
-                                            ?>
-                                            <a href="<?= $image ?>" data-rel="colorbox">
-                                                <img width="150" height="150" alt="150x150" src="<?= $image ?>" />
-                                            </a>
-                                            <div class="tools tools-bottom">
-                                                <a class="image_delete" id="<?= $doc->id;?>" >
-                                                    <i class="ace-icon fa fa-times red"></i>
-                                                </a>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <?php if(isset($lc_image_documents) && $lc_image_documents){?>
+                                        <ul class="ace-thumbnails">
+                                            <?php foreach($lc_image_documents as $doc_image):?>
+                                                <li id="lc_doc_<?= $doc_image->id; ?>">
+                                                    <?php
+                                                    $image = base_url().$doc_image->image_path;
+                                                    if(!file_exists($image) && !getimagesize($image) ){
+                                                        $image =base_url().'libs/upload_pic/no.png';
+                                                    }
+                                                    ?>
+                                                    <a href="<?= $image ?>" data-rel="colorbox">
+                                                        <img width="150" height="150" alt="150x150" src="<?= $image ?>" />
+                                                    </a>
+                                                    <div class="tools tools-bottom">
+                                                        <a class="lc_doc_delete" id="<?= $doc_image->id;?>" >
+                                                            <i class="ace-icon fa fa-trash red"></i>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php } ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="widget-box widget-color-blue" id="widget-box-2">
+                                        <div class="widget-header">
+                                            <h5 class="widget-title bigger lighter">
+                                                <i class="ace-icon fa fa-table"></i>
+                                                L/C Pdf Document
+                                            </h5>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main no-padding">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead class="thin-border-bottom">
+                                                        <tr>
+                                                            <th>
+                                                                #
+                                                            </th>
+
+                                                            <th>
+                                                                URL
+                                                            </th>
+                                                            <th class="hidden-480">Download</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        <?php $i=1;
+                                                            if(isset($lc_pdf_documents) && $lc_pdf_documents): 
+                                                                foreach($lc_pdf_documents as $pdf):
+                                                                    if(file_exists($pdf->image_path) || @getimagesize($pdf->image_path)):
+                                                                    ?>
+                                                        <tr id="lc_doc_<?= $pdf->id; ?>">
+                                                            <td class=""><?= $i++ ?></td>
+
+                                                            <td>
+                                                                <a href="<?= base_url().$pdf->image_path; ?>" target="__blank"><?php $exp = explode('/',$pdf->image_path);  echo $exp[count($exp) -1]; ?></a>
+                                                            </td>
+
+                                                            <td class="hidden-480">
+                                                                <a href="<?= base_url().$pdf->image_path; ?>" target="__blank"><i class="ace-icon fa fa-download green"></i></a>
+                                                                <a class="lc_doc_delete" id="<?= $pdf->id;?>"><i class="ace-icon fa fa-trash red"></i></a>
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    <?php endif; endforeach; endif; ?>
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div><!-- /#lc_document -->
                         <?php }?>
                         <div id="shipping" class="tab-pane">
@@ -1333,46 +1408,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="row" id="car_doc_form" style="display: none;">
-                                <div class="col-xs-12">
-                                    <div class="widget-box">
-                                        <div class="widget-header">
-                                            <h4 class="widget-title">Add Car Documents</h4>
-                                            <div class="widget-toolbar">
-                                                <a href="#" data-action="collapse">
-                                                    <i class="ace-icon fa fa-chevron-up"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="widget-body">
-                                            <div class="widget-main">
-
-                                                <form id="car_images" action="<?= base_url();?>car/images/store" method="POST" enctype="multipart/form-data">
-                                                    <div class="row">
-                                                        <div class="col-sm-1">
-                                                            <input type="hidden" id="pus_id" name="pus_id" value="<?= $purchase->id; ?>">
-                                                            <input type="hidden" id="pus_id" name="location" value="profile">
-
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 control-label no-padding-left" for="id-input-file-2"> Car Documents:<span class="text-bold text-danger">*</span> </label>
-                                                                <div class="col-sm-5">
-                                                                    <input type="file" id="id-input-file-2"  name="documents[]" multiple class="form-control" accept="image/*" />
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <button type="submit" style="height: 29px; padding-top: 0px; float: right; " class="btn btn-primary btn-block">Image Upload</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="hr hr12 dotted"></div>
                             <div class="col-xs-12 col-sm-12 ">
                                 <div class="widget-box ">

@@ -84,7 +84,8 @@ class LC_controller extends MY_Controller
 
 		$this->form_validation->set_rules('lc_no', 'L/C Number', 'required|trim');
 		$this->form_validation->set_rules('lc_date', 'L/C Date', 'required|trim');
-		$this->form_validation->set_rules('lc_amount', 'L/C Amount', 'required|trim');
+		$this->form_validation->set_rules('lc_amount', 'L/C BDT Amount', 'required|trim');
+		$this->form_validation->set_rules('dollar_amount', 'L/C Dollar Amount', 'required|trim');
 		$this->form_validation->set_rules('car_qty', 'Car Quantity', 'required|trim');
 		$this->form_validation->set_rules('bank_name', 'Bank Name', 'required|trim');
 		$this->form_validation->set_rules('comp_id', 'Company Name', 'required|trim');
@@ -120,9 +121,18 @@ class LC_controller extends MY_Controller
 		}
 	}
 
+	public function viewt_lc_info($id=Null)
+	{
+		$data['title'] = 'View L/C Information';  
+		$data['content'] = 'lc_info/view_lc';
+		$data['lc_info'] = $this->LC_model->lc_data_by_id($id);
+        $data['lc_details'] = $this->LC_model->get_lc_details_by_lc_id($id);
+        $this->load->view('admin/adminMaster', $data);
+	}
+
 	/*====== lc edit page view======*/
 	public function edit_lc_info($id=Null)
-	{	
+	{	 
 		if($this->admin_access('edit_access') != 1){
 			$data['warning_msg']="You Are Not able to Access this Module...!";
 			$this->session->set_flashdata($data);
@@ -151,6 +161,7 @@ class LC_controller extends MY_Controller
 		$this->form_validation->set_rules('lc_no', 'L/C Number', 'required|trim');
 		$this->form_validation->set_rules('lc_date', 'L/C Date', 'required|trim');
 		$this->form_validation->set_rules('lc_amount', 'L/C Amount', 'required|trim');
+		$this->form_validation->set_rules('dollar_amount', 'L/C Dollar Amount', 'required|trim');
 		$this->form_validation->set_rules('car_qty', 'Car Quantity', 'required|trim');
 		$this->form_validation->set_rules('bank_name', 'Bank Name', 'required|trim');
 		$this->form_validation->set_rules('comp_id', 'Company Name', 'required|trim');
@@ -225,7 +236,9 @@ class LC_controller extends MY_Controller
 			'car_color' => $this->input->post('car_color'),
 			'car_year' => $this->input->post('car_year'),
 			'car_value' => $this->input->post('car_value'),
+			'dollar_car_v' => $this->input->post('dollar_car_v'),
 			'fright_value' => $this->input->post('fright_value'),
+			'dollar_frt_val' => $this->input->post('dollar_frt_val'),
 			'price' => $this->input->post('car_value')+$this->input->post('fright_value'),
 			'qty' => '1',
 		);
@@ -296,21 +309,44 @@ class LC_controller extends MY_Controller
 
 
 	public function store_lc_document(){
+
         if(isset($_FILES['document']) || $_FILES['document']['error'] == UPLOAD_ERR_NO_FILE)
         {
             if($this->LC_model->store_lc_documents()){
-                $data['success'] = 'Document Store Successfully';
-                $this->session->set_flashdata($data);
-                redirect($_SERVER['HTTP_REFERER']);
+                $message1 = 'Image Store Successfully';
             }else{
-                $data['error'] = 'Document Store Not Successfully';
-                $this->session->set_flashdata($data);
-                redirect($_SERVER['HTTP_REFERER']);
+               $message1 = 'Image Store Not Successfully';
             }
         }
 
-        $data['error'] = 'No Document Selected. Select A Document First';
-        $this->session->set_flashdata($data);
-        redirect($_SERVER['HTTP_REFERER']);
+        if(isset($_FILES['pdf']) || $_FILES['pdf']['error'] == UPLOAD_ERR_NO_FILE)
+        {
+            if($this->LC_model->store_lc_pdf_documents()){
+                $message2 = 'Documents Store Successfully';
+            }else{
+                $message2 = 'Documents Store Not Successfully';
+            }
+        }
+
+        if(!empty($message1) || !empty($message2) ){
+
+            $data['info']=$message1.' '.$message2;
+            $this->session->set_flashdata($data);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        else{
+            $data['error'] = 'No Document Selected. Select A Document First';
+	        $this->session->set_flashdata($data);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function lc_doc_delete($id = Null){
+      
+        if($this->LC_model->delete_lc_document($id)){
+            echo 1;
+        }else{
+            echo 0;
+        }
     }
 }

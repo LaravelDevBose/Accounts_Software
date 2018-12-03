@@ -53,6 +53,46 @@
                 });
             }
         });
+
+        $('.lc_doc_delete').click(function(){
+            var con = confirm('Are You Sure Went to Delete This! ');
+
+            if(con){
+                var id = $(this).attr('id');
+                $.ajax({
+                    url:'<?= base_url();?>car/doc/delete/'+id,
+                    type:'POST',
+                    dataType:'json',
+                    success:function(data){
+                        if(data == 1){
+                            $('#lc_doc_'+id).fadeOut();
+                            swal({
+                                text: "L/C Document Delete Successfully",
+                                icon: "success",
+                                buttons: false,
+                                timer: 1500,
+                            });
+                        }else{
+                            swal({
+                                text: "L/C Document Not Delete Successfully",
+                                icon: "success",
+                                buttons: false,
+                                timer: 1500,
+                            });
+                        }
+                    },error:function(error){
+                        console.log(error);
+                        swal({
+                            text: "Some Thing Find Wrong..!",
+                            icon: "success",
+                            buttons: false,
+                            timer: 1500,
+                        });
+                    }
+
+                });
+            }
+        });
     });
 
 

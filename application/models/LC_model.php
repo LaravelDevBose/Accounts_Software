@@ -38,7 +38,8 @@ class LC_model extends CI_Model
 		$attr = array(
 			'lc_no' =>$this->input->post('lc_no'),
 			'lc_date' =>$this->input->post('lc_date'),
-			'lc_amount' =>$this->input->post('lc_amount'),
+            'lc_amount' =>$this->input->post('lc_amount'),
+			'dollar_amount' =>$this->input->post('dollar_amount'),
 			'car_qty' =>$this->input->post('car_qty'),
 			'bank_name' =>$this->input->post('bank_name'),
 			'branch_name' =>$this->input->post('branch_name'),
@@ -70,8 +71,10 @@ class LC_model extends CI_Model
 			'pus_id' =>$cart['id'],
 			'cus_id' =>$cart['cus_id'],
 			'order_id' =>$cart['order_id'],
-			'car_value' =>$cart['car_value'],
-			'fright_value' =>$cart['fright_value'],
+            'car_value' =>$cart['car_value'],
+			'dollar_car_v' =>$cart['dollar_car_v'],
+            'fright_value' =>$cart['fright_value'],
+			'dollar_frt_val' =>$cart['dollar_frt_val'],
 			'total' =>$cart['price']
 		);
 
@@ -124,7 +127,8 @@ class LC_model extends CI_Model
 		$attr = array(
 			'lc_no' =>$this->input->post('lc_no'),
 			'lc_date' =>$this->input->post('lc_date'),
-			'lc_amount' =>$this->input->post('lc_amount'),
+            'lc_amount' =>$this->input->post('lc_amount'),
+			'dollar_amount' =>$this->input->post('dollar_amount'),
 			'car_qty' =>$this->input->post('car_qty'),
 			'bank_name' =>$this->input->post('bank_name'),
 			'branch_name' =>$this->input->post('branch_name'),
@@ -206,9 +210,20 @@ class LC_model extends CI_Model
 
     }
 
-    public  function  get_lc_documents($lc_id = Null, $pus_id = Null){
+    public  function  get_lc_image_documents($lc_id = Null, $pus_id = Null){
 
-         $this->db->where('lc_id', $lc_id)->where('pus_id', $pus_id)->where('type', 'D')->where('status', 'a');
+         $this->db->where('lc_id', $lc_id)->where('pus_id', $pus_id)->where('type', 'I')->where('status', 'a');
+          $res =$this->db->order_by('id', 'desc')->get('lc_documents')->result();
+
+        if ( $res) {
+            return $res;
+        }else {
+            return FALSE;
+        }
+    }
+    public  function  get_lc_pdf_documents($lc_id = Null, $pus_id = Null){
+
+         $this->db->where('lc_id', $lc_id)->where('pus_id', $pus_id)->where('type', 'P')->where('status', 'a');
           $res =$this->db->order_by('id', 'desc')->get('lc_documents')->result();
 
         if ( $res) {
@@ -218,7 +233,7 @@ class LC_model extends CI_Model
         }
     }
     public function store_lc_documents(){
-        $type = 'D';
+        $type = 'I';
         $pus_id = $this->input->post('pus_id');
         $lc_id = $this->input->post('lc_id');
 
@@ -233,8 +248,44 @@ class LC_model extends CI_Model
                 $_FILES['image']['size']     = $_FILES['document']['size'][$i];
                 $file_name = $this->image_upload($_FILES['image']['name'], $_FILES['image']['tmp_name']);
 
-                $this->image_resize($file_name);
-                $this->insert_image_in_database($file_name, $pus_id, $lc_id, $type);
+                
+                if($file_name == ''){
+                	return false;
+                }else{
+                	$this->image_resize($file_name);
+                	$this->insert_image_in_database($file_name, $pus_id, $lc_id, $type);
+                }
+                
+            }
+            return TRUE;
+        }else{
+            return TRUE;
+        }
+    }
+
+    public function store_lc_pdf_documents(){
+        $type = 'P';
+        $pus_id = $this->input->post('pus_id');
+        $lc_id = $this->input->post('lc_id');
+
+        $filesCount = count($_FILES['pdf']['name']);
+        if($filesCount > 0){
+
+            for($i = 0; $i < $filesCount; $i++){
+                $_FILES['image']['name']     = $_FILES['pdf']['name'][$i];
+                $_FILES['image']['type']     = $_FILES['pdf']['type'][$i];
+                $_FILES['image']['tmp_name'] = $_FILES['pdf']['tmp_name'][$i];
+                $_FILES['image']['error']     = $_FILES['pdf']['error'][$i];
+                $_FILES['image']['size']     = $_FILES['pdf']['size'][$i];
+                $file_name = $this->pdf_upload($_FILES['image']['name'], $_FILES['image']['tmp_name']);
+                // print_r($file_name); die();
+               
+                if($file_name == ''){
+                	return false;
+                }else{
+                	
+                	$this->insert_image_in_database($file_name, $pus_id, $lc_id, $type);
+                }
             }
             return TRUE;
         }else{
@@ -283,12 +334,12 @@ class LC_model extends CI_Model
 
 
     /*==========Image Upload In Folder===========*/
-    public function image_upload($imageName = null, $temp_name){
-        $type = explode('.', $imageName);
-        $type = $type[count($type)-1];
-        $file_name= uniqid(rand()).'.'.$type;
+    public function pdf_upload($imageName = null, $temp_name){
+        $file_exp = explode('.', $imageName);
+        $type = $file_exp[count($file_exp)-1];
+        $file_name= $file_exp[0].rand(1,2).'.'.$type;
 
-        if( in_array($type, array('jpg', 'png', 'jpeg', 'gif', 'JPG', 'PNG', 'JPEG', 'GIF' )) ){
+        if( in_array($type, array('jpg', 'png', 'jpeg', 'gif', 'JPG', 'PNG', 'JPEG', 'GIF','pdf','PDF' )) ){
 
             if( is_uploaded_file( $temp_name ) ){
 
@@ -296,10 +347,47 @@ class LC_model extends CI_Model
                 return 'libs/upload_pic/lc_document/'.$file_name;
 
             }else{
-                return false;
+                return '';
             }
         }else{
-            return false;
+            return '';
+        }
+    }
+
+    public function image_upload($imageName = null, $temp_name){
+        $type = explode('.', $imageName);
+        $type = $type[count($type)-1];
+        $file_name= uniqid(rand()).'.'.$type;
+
+        if( in_array($type, array('jpg', 'png', 'jpeg', 'gif', 'JPG', 'PNG', 'JPEG', 'GIF','pdf','PDF' )) ){
+
+            if( is_uploaded_file( $temp_name ) ){
+
+                move_uploaded_file( $temp_name, 'libs/upload_pic/lc_document/'.$file_name );
+                return 'libs/upload_pic/lc_document/'.$file_name;
+
+            }else{
+                return '';
+            }
+        }else{
+            return '';
+        }
+    }
+
+     public function delete_lc_document($id = Null){
+
+        $image = $this->db->where('id', $id)->get('lc_documents')->row();
+
+        if(file_exists($image->image_path)){
+            unlink($image->image_path);
+        }
+        $this->db->where('id', $id);
+        $this->db->delete('lc_documents');
+
+        if ($this->db->affected_rows()) {
+            return TRUE;
+        }else {
+            return FALSE;
         }
     }
 

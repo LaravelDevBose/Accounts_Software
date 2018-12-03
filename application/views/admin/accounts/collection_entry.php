@@ -81,16 +81,18 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-5 control-label no-padding-left" for="cheque_no"> Cheque No:</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" id="cheque_no" required name="cheque_no" readonly class="form-control" placeholder="Enter Cheque No" />
+                                <div id="check_view" style="display: none;">
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label no-padding-left" for="cheque_no"> Cheque No:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" id="cheque_no" required name="cheque_no" class="form-control" placeholder="Enter Cheque No" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-5 control-label no-padding-left" for="bank_name"> Bank Name: </label>
-                                    <div class="col-sm-7">
-                                        <input type="text" id="bank_name" required name="bank_name" readonly class="form-control" placeholder="Enter Bank Name" />
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label no-padding-left" for="bank_name"> Bank Name: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" id="bank_name" required name="bank_name" class="form-control" placeholder="Enter Bank Name" />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">

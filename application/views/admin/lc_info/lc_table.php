@@ -14,8 +14,8 @@
   <td><?= $data->puc_car_model; ?></td>
   <td><?= $data->puc_color; ?></td>
   <td><?= $data->puc_year; ?></td>
-  <td><span class="pull-right"><?= number_format($data->car_value, 2); ?></span></td>
-  <td><span class="pull-right"><?= number_format($data->fright_value, 2); ?></span></td>
+  <td><span class="pull-right"><?= number_format($data->car_value, 2); ?> / <?= number_format($data->dollar_car_v, 2); ?></span></td>
+  <td><span class="pull-right"><?= number_format($data->fright_value, 2); ?> / <?= number_format($data->dollar_frt_val, 2); ?></span></td>
   <td><span class="pull-right"><?= number_format($data->total,2); ?></span></td>
   <td>
       <div class="hidden-sm hidden-xs action-buttons">
@@ -44,8 +44,8 @@
   <td><?= $data['name']; ?></td>
   <td><?= $data['car_color']; ?></td>
   <td><?= $data['car_year']; ?></td>
-  <td><span class="pull-right"><?= number_format($data['car_value'], 2); ?></span></td>
-  <td><span class="pull-right"><?= number_format($data['fright_value'], 2); ?></span></td>
+  <td><span class="pull-right"><?= number_format($data['car_value'], 2); ?> / <?= number_format($data['dollar_car_v'], 2); ?></span></td>
+  <td><span class="pull-right"><?= number_format($data['fright_value'], 2); ?> / <?= number_format($data['dollar_frt_val'], 2); ?></span></td>
   <td><span class="pull-right"><?= number_format($data['price'],2); ?></span></td>
   <td>
       <div class="hidden-sm hidden-xs action-buttons">

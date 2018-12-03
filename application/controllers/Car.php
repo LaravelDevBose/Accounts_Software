@@ -70,7 +70,8 @@ class Car extends MY_Controller
 
         $data['lc_info'] = $this->LC_model->lc_data_by_id($order->ord_lc_no);
         $data['lc_details'] = $this->LC_model->get_lc_details_by_lc_id($order->ord_lc_no);
-        $data['lc_documents'] = $this->LC_model->get_lc_documents($order->ord_lc_no, $order->pus_id);
+        $data['lc_image_documents'] = $this->LC_model->get_lc_image_documents($order->ord_lc_no, $order->pus_id);
+        $data['lc_pdf_documents'] = $this->LC_model->get_lc_pdf_documents($order->ord_lc_no, $order->pus_id);
 
         $data['shipping'] = $this->Transport_model->get_car_all_shipping_statement($order->pus_id);
         $data['trans_head'] = $this->Transport_head_model->transport_head_list();

@@ -17,6 +17,12 @@
         <div class="widget-box widget-color-dark">
             <div class="widget-header">
                 <h4 class="widget-title">Car Summary List</h4>
+                <div class="pull-right">   
+                <a href="<?= base_url()?>customer/order/insert" class="btn btn-sm btn-success">Customer entry & Order</a>
+                <a href="<?= base_url()?>order/insert" class="btn btn-sm btn-info">Order Entry</a>
+                <a href="<?= base_url()?>purchase/insert" class="btn btn-sm btn-warning">Purchase Entryr</a>
+                </div>
+                
             </div>
 
             <div class="widget-body">
@@ -89,7 +95,7 @@
                                     <th>Order Date /<br> Purchase Date</th>
                                     <th>Car Model /<br> <small>Car Color</small></th>
                                     <th>Car Year <br> <small>Mileage</small></th>
-                                    <th>Budget Price / <br>Purchase Price</th>
+                                    <th>Budget Price / <br>Collention Amount</th>
                                     <th>Car Location</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -128,7 +134,7 @@
                                         </td>
                                         <td><?= $car->ord_car_model.'<br>'.$car->ord_color ?></td>
                                         <td><?= $car->ord_year.'<br>'.$car->ord_mileage?></td>
-                                        <td><?= number_format($car->ord_budget_range,2).'<br>'.number_format($car->total_price,2)?></td>
+                                        <td><?= number_format($car->ord_budget_range,2).'<br>'.number_format($this->Order_model->find_total_colection_amount($car->o_id)->amount,2)?></td>
                                         <td><?= ucwords($car->head_name)?></td>
                                         <td>
                                             <?php if($car->order_status == 'c'): ?>
@@ -160,7 +166,8 @@
                                         </td>
                                         <td><?= $car->ord_car_model.'<br>'.$car->ord_color ?></td>
                                         <td><?= $car->ord_year.'<br>'.$car->ord_mileage?></td>
-                                        <td><?= number_format($car->ord_budget_range,2).'<br> -----------'?></td>
+
+                                        <td> <?= number_format($car->ord_budget_range,2).'<br>'.number_format($this->Order_model->find_total_colection_amount($car->o_id)->amount,2) ?></td>
                                         <td>------------</td>
                                         <td>
                                             <?php if($car->order_status == 'c'): ?>

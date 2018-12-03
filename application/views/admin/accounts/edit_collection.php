@@ -85,18 +85,21 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-5 control-label no-padding-left" for="cheque_no"> Cheque No:</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" id="cheque_no"  name="cheque_no"  <?= (!$collection->cheque_no)? 'readonly': '' ?> value="<?= $collection->cheque_no ?>" class="form-control" placeholder="Enter Cheque No" />
+                                <div id="check_view" style="<?= (!$collection->cheque_no)? 'display: none': '' ?>">
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label no-padding-left" for="cheque_no"> Cheque No:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" id="cheque_no" name="cheque_no" value="<?= $collection->cheque_no ?>" class="form-control" placeholder="Enter Cheque No" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label no-padding-left" for="bank_name"> Bank Name: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" id="bank_name" name="bank_name" value="<?= $collection->bank_name ?>" class="form-control" placeholder="Enter Bank Name" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-5 control-label no-padding-left" for="bank_name"> Bank Name: </label>
-                                    <div class="col-sm-7">
-                                        <input type="text" id="bank_name"  name="bank_name" <?= (!$collection->bank_name)? 'readonly': '' ?> value="<?= $collection->bank_name ?>"  class="form-control" placeholder="Enter Bank Name" />
-                                    </div>
-                                </div>
+                            
                                 <div class="form-group">
                                     <label class="col-sm-5 control-label no-padding-left" for="amount"> Amount:<span class="text-bold text-danger">*</span> </label>
                                     <div class="col-sm-7">

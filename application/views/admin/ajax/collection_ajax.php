@@ -113,12 +113,13 @@
 
         if(coll_type != 0 || coll_type != ''){
             if(coll_type == 4){
-                $('#cheque_no').removeAttr('readonly');
-                $('#bank_name').removeAttr('readonly');
+                $('#check_view').css('display','block');
             }else{
-                $('#cheque_no').attr('readonly','readonly');
-                $('#bank_name').attr('readonly','readonly');
+                $('#check_view').css('display','none');
+                $('#cheque_no').val('');
+                $('#bank_name').val('');
             }
+            
         }else{
             $('#collection_type_chosen .chosen-single').css('border', '1px solid red');
 

@@ -291,6 +291,7 @@ $route['lc/list'] 			= 	"LC_controller/lc_list_view";
 $route['lc/insert'] 		= 	"LC_controller/lc_insert_page";
 $route['lc/store'] 			= 	"LC_controller/store_lc_info";
 $route['lc/edit/(:any)']	=	'LC_controller/edit_lc_info/$1';
+$route['lc/view/(:any)']	=	'LC_controller/viewt_lc_info/$1';
 $route['lc/update/(:any)']	=	'LC_controller/update_lc_info/$1';
 $route['lc/delete/(:any)']	=	'LC_controller/delete_lc_info/$1';
 
@@ -300,6 +301,7 @@ $route['store/lc/car_info'] = 'LC_controller/store_car_info_in_cart';
 $route['cart/destroy']		= 'LC_controller/destroy_cart';
 $route['lc/details/delete/(:any)'] = 'LC_controller/delete_lc_details/$1';
 $route['car/lc_document']       = 'LC_controller/store_lc_document';
+$route['car/doc/delete/(:any)']       = 'LC_controller/lc_doc_delete/$1';
 
 
 /*========Income Expense Head CRUD Route list=========*/

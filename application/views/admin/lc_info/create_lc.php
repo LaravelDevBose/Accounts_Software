@@ -38,10 +38,18 @@
                                         <input class="form-control date-picker"  id="lc_date" name="lc_date" type="text" value="<?php echo date('Y-m-d'); ?>"  data-date-format="yyyy-mm-dd" />
                                     </div>
                                 </div>
+                     
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label no-padding-left" for="lc_amount">L/C Amount:<span class="text-bold text-danger">*</span> </label>
+                                    <label class="col-sm-4 control-label no-padding-left" for="lc_amount" style="font-size: 13px; padding-right: 0px;">BDT. Amount: (&#2547;)<span class="text-bold text-danger">*</span> </label>
                                     <div class="col-sm-8">
-                                        <input type="number" id="lc_amount"  name="lc_amount"  placeholder="L/C Amount" class="form-control"  />
+                                        <input type="number" id="lc_amount"  name="lc_amount"  placeholder="BDT. Amount: (&#2547;)" class="form-control"  />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label no-padding-left" for="dollar_amount" style="font-size: 13px; padding-right: 0px;">Dollar Amount:(&#36;)<span class="text-bold text-danger">*</span> </label>
+                                    
+                                    <div class="col-sm-8">
+                                        <input type="number" id="dollar_amount"  name="dollar_amount"  placeholder="Dollar Amount:(&#36;)" class="form-control"  />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -188,10 +196,6 @@
                                         <input type="text" id="car_model"  name="car_model" readonly placeholder="Car Model" class="form-control"  />
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-sm-4">
-
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="car_color">Color: </label>
                                     <div class="col-sm-8">
@@ -199,7 +203,9 @@
 
                                     </div>
                                 </div>
+                            </div>
 
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label no-padding-left" for="car_year">Year:</label>
                                     <div class="col-sm-8">
@@ -207,15 +213,27 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label no-padding-left" for="car_value">Car Value:<span class="text-bold text-danger">*</span> </label>
+                                    <label class="col-sm-4 control-label no-padding-left" for="car_value" style="font-size: 13px; padding-right: 0px;">Car Value: (&#2547;)<span class="text-bold text-danger">*</span> </label>
                                     <div class="col-sm-8">
-                                        <input type="number" id="car_value" name="car_value" required  class="form-control" placeholder="0.00" />
+                                        <input type="number" id="car_value" name="car_value" required  class="form-control" placeholder="BDT. Car Value" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label no-padding-left" for="fright_value">Fright Value:<span class="text-bold text-danger">*</span> </label>
+                                    <label class="col-sm-4 control-label no-padding-left" for="dollar_car_v" style="font-size: 13px; padding-right: 0px;">Car Value:(&#36;)<span class="text-bold text-danger">*</span> </label>
                                     <div class="col-sm-8">
-                                        <input type="number" id="fright_value" name="fright_value" required  class="form-control" placeholder="0.00" />
+                                        <input type="number" id="dollar_car_v" name="dollar_car_v" required  class="form-control" placeholder="Dollar Car Value" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label no-padding-left" for="fright_value" style="font-size: 13px; padding-right: 0px;">Fright Value:(&#2547;)<span class="text-bold text-danger">*</span> </label>
+                                    <div class="col-sm-8">
+                                        <input type="number" id="fright_value" name="fright_value" required  class="form-control" placeholder="BDT. Fright Value" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label no-padding-left" for="dollar_frt_val" style="font-size: 13px; padding-right: 0px;">Fright Value:(&#36;)<span class="text-bold text-danger">*</span> </label>
+                                    <div class="col-sm-8">
+                                        <input type="number" id="dollar_frt_val" name="dollar_frt_val" required  class="form-control" placeholder="Dollar Fright Value" />
                                     </div>
                                 </div>
 
@@ -229,8 +247,8 @@
 
                             </div>
                             <div class="col-md-2">
-                                <p style="text-align: center; font-size: 15px; font-weight: 600"> Available L/C Amount: <br>
-                                    <strong id="avi_lc_amt" >00.0</strong></p>
+                                <p style="text-align: center; font-size: 14px; font-weight: 600"> Available L/C Amount: <br>
+                                    <strong id="avi_lc_amt" >00.0</strong>(&#2547;) </p>
                             </div>
 
                         </div>
@@ -260,8 +278,8 @@
                             <th>Car Model</th>
                             <th>Color</th>
                             <th>Year</th>
-                            <th>Car Value</th>
-                            <th>Freight  Value</th>
+                            <th>Car Value (&#2547;) / (&#36;)</th>
+                            <th>Freight Value (&#2547;) / (&#36;)</th>
                             <th>Sub Total</th>
                             <th>Action</th>
 

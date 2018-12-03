@@ -28,7 +28,7 @@
             </td>
             <td><?= $car->ord_car_model.'<br>'.$car->ord_color ?></td>
             <td><?= $car->ord_year.'<br>'.$car->ord_mileage?></td>
-            <td><?= number_format($car->ord_budget_range,2).'<br>'.number_format($car->total_price,2)?></td>
+            <td><?= number_format($car->ord_budget_range,2).'<br>'.number_format($this->Order_model->find_total_colection_amount($car->o_id)->amount,2)?></td>
             <td><?= ucwords($car->head_name)?></td>
             <td>
                 <?php if($car->order_status == 'c'): ?>
@@ -60,7 +60,7 @@
             </td>
             <td><?= $car->ord_car_model.'<br>'.$car->ord_color ?></td>
             <td><?= $car->ord_year.'<br>'.$car->ord_mileage?></td>
-            <td><?= number_format($car->ord_budget_range,2).'<br> -----------'?></td>
+            <td><?= number_format($car->ord_budget_range,2).'<br>'.number_format($this->Order_model->find_total_colection_amount($car->o_id)->amount,2)?></td>
             <td>-----------</td>
             <td>
                 <?php if($car->order_status == 'c'): ?>
