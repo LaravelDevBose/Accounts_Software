@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2018 at 10:04 AM
+-- Generation Time: Dec 06, 2018 at 08:47 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -234,7 +234,39 @@ INSERT INTO `car_images` (`id`, `pus_id`, `image_path`, `type`, `status`) VALUES
 (3, 3, 'libs/upload_pic/car_image/8205113945c03a08fb3654.jpg', 'C', 'a'),
 (4, 1, 'libs/upload_pic/car_image/20769350975c03c8c35c55d.jpg', 'I', 'a'),
 (5, 1, 'libs/upload_pic/car_image/4628539415c03c8d28fd5d.jpg', 'D', 'a'),
-(6, 2, 'libs/upload_pic/car_image/5023605685c04cccae0fbe.jpg', 'C', 'a');
+(6, 2, 'libs/upload_pic/car_image/5023605685c04cccae0fbe.jpg', 'C', 'a'),
+(7, 2, 'libs/upload_pic/car_image/10260315265c08cbd144f02.jpg', 'I', 'a'),
+(8, 2, 'libs/upload_pic/car_image/16933623455c08cbd17a50b.jpg', 'I', 'a'),
+(9, 2, 'libs/upload_pic/car_image/9003431535c08cbd1ba32d.jpg', 'I', 'a'),
+(10, 5, 'libs/upload_pic/car_image/12588052685c08d2488dd06.jpg', 'C', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `car_registration`
+--
+
+CREATE TABLE `car_registration` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `pus_id` int(20) UNSIGNED NOT NULL,
+  `reg_no` varchar(250) NOT NULL,
+  `owner_name` varchar(250) DEFAULT NULL,
+  `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `reg_area` varchar(250) DEFAULT NULL,
+  `status` char(5) DEFAULT 'a',
+  `created_by` varchar(250) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_by` varchar(250) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `car_registration`
+--
+
+INSERT INTO `car_registration` (`id`, `pus_id`, `reg_no`, `owner_name`, `reg_date`, `reg_area`, `status`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
+(1, 2, 'Ka-1005', 'Arup', '2018-12-03 18:00:00', 'Dhaka', 'a', 'admin', '2018-12-05 18:00:00', 'admin', '2018-12-06 07:37:46'),
+(2, 5, 'G-54845', 'No name', '2018-11-28 18:00:00', 'Dhaka', 'a', 'admin', '2018-12-06 07:40:37', 'admin', '2018-12-06 07:41:05');
 
 -- --------------------------------------------------------
 
@@ -507,7 +539,6 @@ CREATE TABLE `lc_documents` (
 
 INSERT INTO `lc_documents` (`id`, `lc_id`, `pus_id`, `image_path`, `type`, `status`) VALUES
 (2, 1, 2, '0', 'P', 'a'),
-(3, 1, 2, '0', 'I', 'a'),
 (5, 1, 2, '0', 'I', 'a'),
 (8, 1, 2, 'libs/upload_pic/lc_document/17969751845c04b8de0729a.pdf', 'P', 'a'),
 (9, 1, 2, 'libs/upload_pic/lc_document/15425979415c04bc885af6b.pdf', 'P', 'a'),
@@ -714,6 +745,40 @@ CREATE TABLE `purchase_pricing` (
 INSERT INTO `purchase_pricing` (`id`, `pus_id`, `lc_value`, `obc_value`, `insurance_charge`, `final_dosis`, `custom_value`, `cf_agent`, `cuharf_value`, `s_charge`, `regi_charge`, `first_party_insu`, `third_party_insu`, `workshop_bill`, `decuration_bill`, `other_exp`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 2, 4545, 90000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'a', 'admin', 'admin', '2018-12-02 06:41:00', '2018-12-02 11:48:57'),
 (2, 1, 343434, 0, 343434, 0, 3434, 0, 0, 0, 0, 3434, 0, 0, 3434, 0, 'a', 'admin', 'admin', '2018-12-02 11:57:41', '2018-12-02 11:57:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reg_document`
+--
+
+CREATE TABLE `reg_document` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `reg_id` int(20) UNSIGNED NOT NULL,
+  `path` text,
+  `type` char(5) DEFAULT NULL,
+  `status` char(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `reg_document`
+--
+
+INSERT INTO `reg_document` (`id`, `reg_id`, `path`, `type`, `status`) VALUES
+(1, 1, 'libs/upload_pic/reg_doc/11076268745c08d05150537.jpg', 'I', 'a'),
+(2, 1, 'libs/upload_pic/reg_doc/13350228025c08d05176c3c.jpg', 'I', 'a'),
+(3, 1, 'libs/upload_pic/reg_doc/12238598585c08d061b7c70.jpg', 'I', 'a'),
+(4, 1, 'libs/upload_pic/reg_doc/17190368545c08d061ce08a.jpg', 'I', 'd'),
+(5, 1, 'libs/upload_pic/reg_doc/demoform11.pdf', 'P', 'a'),
+(6, 1, 'libs/upload_pic/reg_doc/demoform121.pdf', 'P', 'd'),
+(7, 1, 'libs/upload_pic/reg_doc/demoform12.pdf', 'P', 'a'),
+(8, 2, 'libs/upload_pic/reg_doc/12654292495c08d276043f0.jpg', 'I', 'a'),
+(9, 2, 'libs/upload_pic/reg_doc/demoform12.pdf', 'P', 'a'),
+(10, 2, 'libs/upload_pic/reg_doc/demoform121.pdf', 'P', 'a'),
+(11, 2, 'libs/upload_pic/reg_doc/663884785c08d28275f0f.jpg', 'I', 'a'),
+(12, 2, 'libs/upload_pic/reg_doc/2765004205c08d29132b59.jpg', 'I', 'a'),
+(13, 2, 'libs/upload_pic/reg_doc/6087634055c08d2914f613.jpg', 'I', 'a'),
+(14, 2, 'libs/upload_pic/reg_doc/17806120165c08d29161886.jpg', 'I', 'a');
 
 -- --------------------------------------------------------
 
@@ -957,6 +1022,12 @@ ALTER TABLE `car_images`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `car_registration`
+--
+ALTER TABLE `car_registration`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `checks`
 --
 ALTER TABLE `checks`
@@ -1042,6 +1113,12 @@ ALTER TABLE `purchase_pricing`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `reg_document`
+--
+ALTER TABLE `reg_document`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `salaries`
 --
 ALTER TABLE `salaries`
@@ -1121,7 +1198,13 @@ ALTER TABLE `bank_trans`
 -- AUTO_INCREMENT for table `car_images`
 --
 ALTER TABLE `car_images`
-  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `car_registration`
+--
+ALTER TABLE `car_registration`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `checks`
@@ -1206,6 +1289,12 @@ ALTER TABLE `purchase`
 --
 ALTER TABLE `purchase_pricing`
   MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `reg_document`
+--
+ALTER TABLE `reg_document`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `salaries`
