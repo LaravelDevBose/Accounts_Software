@@ -63,6 +63,12 @@
                                 Shipping Info
                             </a>
                         </li>
+                        <li>
+                            <a data-toggle="tab" href="#reg">
+                                <i class="blue ace-icon fa fa-registered bigger-120"></i>
+                                Registration
+                            </a>
+                        </li>
                          <?php }?>
                     </ul>
 
@@ -1297,7 +1303,7 @@
                                                                 <div class="col-sm-7">
                                                                     <input type="file" id="id-input-file-2"  name="document[]" multiple class="form-control" accept="image/*" />
                                                                 </div>
-                                                            
+
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-5">
@@ -1446,6 +1452,169 @@
                             </div>
 
                         </div><!-- /#shipping -->
+                        <div id="reg" class="tab-pane">
+
+                            <div class="row"  >
+                                <div class="col-xs-12">
+                                    <div class="widget-box">
+                                        <div class="widget-header">
+                                            <h4 class="widget-title">Car Registration</h4>
+                                            <div class="widget-toolbar">
+                                                <a href="#" data-action="collapse">
+                                                    <i class="ace-icon fa fa-chevron-up"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+
+                                                <form id="reg_from" action="<?= base_url();?>car/reg/submit" method="POST" enctype="multipart/form-data">
+                                                    <div class="row">
+                                                        <div class="col-sm-1">
+                                                            <input type="hidden" name="pus_id" value="<?= $purchase->id; ?>">
+
+                                                        </div>
+
+                                                        <div class="col-sm-5">
+                                                            <div class="form-group">
+                                                                <label class="col-sm-4 control-label no-padding-left" for="reg_no">Reg. No:<span class="text-bold text-danger">*</span> </label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" id="reg_no" name="reg_no" value="<?= (isset($reg_info) && $reg_info)? $reg_info->reg_no: ''?>" required placeholder="Registration No" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-4 control-label no-padding-left" for="reg_date"> Reg. Date:</label>
+                                                                <div class="col-sm-8">
+                                                                    <?php $reg_date=date('Y-m-d');  if(isset($reg_info) && $reg_info){ $date = new DateTime($reg_info->reg_date); $reg_date = date_format($date, 'Y-m-d');} ?>
+                                                                    <input type="text" id="reg_date" name="reg_date" class="form-control date-picker" value="<?php echo $reg_date ?>"  data-date-format="yyyy-mm-dd" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-sm-4 control-label no-padding-left" for="reg_area"> Reg. Area:<span class="text-bold text-danger">*</span> </label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" id="reg_area"  name="reg_area" value="<?= (isset($reg_info) && $reg_info)? $reg_info->reg_area: ''?>" required placeholder="Reg. Area" class="form-control"/>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="col-sm-5">
+
+                                                            <div class="form-group">
+                                                                <label class="col-sm-5 control-label no-padding-left" for="owner_name"> Owner Name: <span class="text-bold text-danger">*</span> </label>
+                                                                <div class="col-sm-7">
+                                                                    <input type="text" id="owner_name" name="owner_name" value="<?= (isset($reg_info) && $reg_info)? $reg_info->owner_name: ''?>" required placeholder="Owner Name" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-5 control-label no-padding-left" for="id-input-file-2">Image Documents: </label>
+                                                                <div class="col-sm-7">
+                                                                    <input type="file" id="id-input-file-2"  name="images[]" multiple class="form-control" accept="image/*" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-5 control-label no-padding-left" for="id-input-file-2">Pdf Documents: </label>
+                                                                <div class="col-sm-7">
+                                                                    <input type="file" id="id-input-file-2"  name="pdfs[]" multiple class="form-control" accept="application/pdf" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group" style="margin-top: 10px;">
+                                                                <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> </label>
+                                                                <div class="col-sm-8">
+                                                                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr hr12 dotted"></div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <?php if(isset($reg_documents) && $reg_documents){?>
+                                        <ul class="ace-thumbnails">
+                                            <?php foreach($reg_documents as $doc_image): if($doc_image->type == 'I'):?>
+                                                <li id="reg_doc_<?= $doc_image->id; ?>">
+                                                    <?php
+                                                    $image = base_url().$doc_image->path;
+                                                    if(!file_exists($image) && !getimagesize($image) ){
+                                                        $image =base_url().'libs/upload_pic/no.png';
+                                                    }
+                                                    ?>
+                                                    <a href="<?= $image ?>" data-rel="colorbox">
+                                                        <img width="150" height="150" alt="150x150" src="<?= $image ?>" />
+                                                    </a>
+                                                    <div class="tools tools-bottom">
+                                                        <a class="reg_doc_delete" id="<?= $doc_image->id;?>" >
+                                                            <i class="ace-icon fa fa-trash red"></i>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            <?php endif; endforeach; ?>
+                                        </ul>
+                                    <?php } ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="widget-box widget-color-blue" id="widget-box-2">
+                                        <div class="widget-header">
+                                            <h5 class="widget-title bigger lighter">
+                                                <i class="ace-icon fa fa-table"></i>
+                                                Reg. Pdf Document
+                                            </h5>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main no-padding">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead class="thin-border-bottom">
+                                                    <tr>
+                                                        <th>
+                                                            #
+                                                        </th>
+
+                                                        <th>
+                                                            URL
+                                                        </th>
+                                                        <th class="hidden-480">Download</th>
+                                                    </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                    <?php $i=1;
+                                                    if(isset($reg_documents) && $reg_documents):
+                                                        foreach($reg_documents as $doc_pdf): if($doc_pdf->type == 'P'):
+                                                            if(file_exists($doc_pdf->path) || @getimagesize($doc_pdf->path)):
+                                                                ?>
+                                                                <tr id="reg_doc_<?= $doc_pdf->id; ?>">
+                                                                    <td class=""><?= $i++ ?></td>
+
+                                                                    <td>
+                                                                        <a href="<?= base_url().$doc_pdf->path; ?>" target="__blank"><?php $exp = explode('/',$doc_pdf->path);  echo $exp[count($exp) -1]; ?></a>
+                                                                    </td>
+
+                                                                    <td class="hidden-480">
+                                                                        <a href="<?= base_url().$doc_pdf->path; ?>" target="__blank"><i class="ace-icon fa fa-download green"></i></a>
+                                                                        <a class="reg_doc_delete" id="<?= $doc_pdf->id;?>"><i class="ace-icon fa fa-trash red"></i></a>
+
+                                                                    </td>
+                                                                </tr>
+                                                            <?php endif; endif; endforeach; endif; ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /#document -->
                         <?php }?>
                     </div>
                 </div>

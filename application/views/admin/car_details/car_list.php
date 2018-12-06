@@ -20,7 +20,7 @@
                 <div class="pull-right">   
                 <a href="<?= base_url()?>customer/order/insert" class="btn btn-sm btn-success">Customer entry & Order</a>
                 <a href="<?= base_url()?>order/insert" class="btn btn-sm btn-info">Order Entry</a>
-                <a href="<?= base_url()?>purchase/insert" class="btn btn-sm btn-warning">Purchase Entryr</a>
+                <a href="<?= base_url()?>purchase/insert" class="btn btn-sm btn-warning">Purchase Entry</a>
                 </div>
                 
             </div>

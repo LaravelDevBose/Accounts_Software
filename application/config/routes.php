@@ -28,6 +28,8 @@ $route['order/details/list'] = 'Car/car_list_info';
 $route['order/details/profile/(:any)']  ='Car/order_car_profile_details/$1';
 $route['purchase/details/profile/(:any)']  ='Car/purchase_car_profile_details/$1';
 $route['car/search'] = 'Car/car_search_method';
+$route['car/reg/submit'] = 'Registration/car_reg_store';
+$route['reg/doc/delete/(:any)'] = 'Registration/car_reg_doc_delete/$1';
 
 // =====================Admin Panel================
 // =====================Admin Panel================

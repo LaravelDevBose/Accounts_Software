@@ -13,6 +13,37 @@
             $('#lc_doc_form').toggle();
         });
 
+        $('#reg_from').submit(function(){
+            var reg_no = $('#reg_no').val();
+
+            if(reg_no == ''){
+                alert('Insert Registration no');
+                return false;
+            }
+
+            var reg_date = $('#reg_date').val();
+
+            if(reg_date == ''){
+                alert('select Registration Date');
+                return false;
+            }
+
+            var reg_area = $('#reg_area').val();
+
+            if(reg_area == ''){
+                alert('Insert Registration Area');
+                return false;
+            }
+
+            var owner_name = $('#owner_name').val();
+
+            if(owner_name == ''){
+                alert('Insert Owner Name');
+                return false;
+            }
+
+            return true;
+        });
 
         $('.image_delete').click(function(){
             var con = confirm('Are You Sure Went to Delete This! ');
@@ -93,6 +124,46 @@
                 });
             }
         });
+
+        $('.reg_doc_delete').click(function(){
+            var con = confirm('Are You Sure Went to Delete This! ');
+
+            if(con){
+                var id = $(this).attr('id');
+                $.ajax({
+                    url:'<?= base_url();?>reg/doc/delete/'+id,
+                    type:'POST',
+                    dataType:'json',
+                    success:function(data){
+                        if(data == 1){
+                            $('#reg_doc_'+id).fadeOut();
+                            swal({
+                                text: "Registration Document Delete Successfully",
+                                icon: "success",
+                                buttons: false,
+                                timer: 1500,
+                            });
+                        }else{
+                            swal({
+                                text: "Registration Document Not Delete Successfully",
+                                icon: "success",
+                                buttons: false,
+                                timer: 1500,
+                            });
+                        }
+                    },error:function(error){
+                        console.log(error);
+                        swal({
+                            text: "Some Thing Find Wrong..!",
+                            icon: "success",
+                            buttons: false,
+                            timer: 1500,
+                        });
+                    }
+
+                });
+            }
+        });
     });
 
 
@@ -134,5 +205,7 @@
 
         });
     }
+
+
 
 </script>

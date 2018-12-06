@@ -73,6 +73,12 @@ class Car extends MY_Controller
         $data['lc_image_documents'] = $this->LC_model->get_lc_image_documents($order->ord_lc_no, $order->pus_id);
         $data['lc_pdf_documents'] = $this->LC_model->get_lc_pdf_documents($order->ord_lc_no, $order->pus_id);
 
+        $data['reg_info'] = $reg =  $this->Registration_model->get_car_reg_info($order->pus_id);
+        if($reg){
+            $data['reg_documents'] = $this->Registration_model->get_reg_documents($reg->id);
+        }
+
+
         $data['shipping'] = $this->Transport_model->get_car_all_shipping_statement($order->pus_id);
         $data['trans_head'] = $this->Transport_head_model->transport_head_list();
 
@@ -93,6 +99,9 @@ class Car extends MY_Controller
         $data['lc_info'] = $this->LC_model->lc_data_by_id($purchase->puc_lc_id);
         $data['lc_details'] = $this->LC_model->get_lc_details_by_lc_id($purchase->puc_lc_id);
         $data['lc_documents'] = $this->LC_model->get_lc_documents($purchase->puc_lc_id, $pus_id);
+
+        $data['reg_info'] = $reg =  $this->Registration_model->get_car_reg_info($pus_id);
+        $data['reg_documents'] = $this->Registration_model->get_reg_documents($reg->id);
 
         $data['shipping'] = $this->Transport_model->get_car_all_shipping_statement($pus_id);
         $data['trans_head'] = $this->Transport_head_model->transport_head_list();
