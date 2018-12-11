@@ -133,8 +133,8 @@ class Order_model extends CI_Model
 				'status'	=>'a',
 				'created_by' =>$this->session->userdata('name'),
 				'updated_by'  =>$this->session->userdata('name'),
-				'created_at' =>date('Y-m-d'),
-				'updated_at' =>date('Y-m-d')
+				'created_at' =>date('Y-m-d H:i:s'),
+				'updated_at' =>date('Y-m-d H:i:s')
 			);
 
 			$result = $this->db->insert('orders', $attr);

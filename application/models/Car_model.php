@@ -8,9 +8,9 @@ class Car_model extends CI_Model
 
 
     /*====== Store Cars Images ==========*/
-    public function store_images(){
+    public function store_images($pus_id=Null){
         $type = 'I';
-        $pus_id = $this->input->post('pus_id');
+        $pus_id = (is_null($pus_id))? $this->input->post('pus_id'):$pus_id;
         $filesCount = count($_FILES['images']['name']);
         if($filesCount > 0){
 
@@ -125,6 +125,26 @@ class Car_model extends CI_Model
         }
     }
 
+    public function stock_wise_car_search($search_value = Null){
+        $this->db->select('orders.id as o_id, orders.order_no, orders.created_at, orders.ord_chassis_no,  orders.ord_car_model,orders.ord_color,
+                           orders.ord_year,orders.ord_mileage,orders.ord_budget_range,orders.order_status,orders.pus_id, purchase.id as p_id,
+                            purchase.pus_sl, purchase.order_id ,purchase.created_at as pus_date, purchase.puc_car_model,purchase.puc_color,
+                           purchase.puc_year,purchase.puc_mileage,purchase.puc_chassis_no,purchase.total_price, customers.cus_name, trans_heads.head_name ')->from('purchase');
+
+
+        $this->db->join('orders', 'purchase.order_id = orders.id','left');
+        $this->db->join('customers', 'customers.id = orders.cus_id', 'left');
+        $this->db->join('transports', 'transports.id = purchase.transport_id', 'left');
+        $this->db->join('trans_heads', 'trans_heads.id = transports.trans_head_id', 'left');
+        $this->db->like('purchase.stock_no', $search_value)->where('purchase.status', 'a')->order_by('purchase.created_at', 'desc')->group_by('purchase.id');
+        $all = $this->db->get()->result();
+        if($all){
+            return $all;
+        }else{
+            return false;
+        }
+    }
+
     public function chassis_no_wise_car_search($search_value = Null){
         $this->db->select('orders.id as o_id, orders.order_no, orders.created_at, orders.ord_chassis_no,  orders.ord_car_model,orders.ord_color,
                            orders.ord_year,orders.ord_mileage,orders.ord_budget_range,orders.order_status,orders.pus_id, purchase.id as p_id,
@@ -217,9 +237,9 @@ class Car_model extends CI_Model
     }
 
     /*====== Store Cars Images ==========*/
-    public function store_documents(){
+    public function store_documents($pus_id = Null){
         $type = 'D';
-        $pus_id = $this->input->post('pus_id');
+        $pus_id = (is_null($pus_id))?$this->input->post('pus_id'):$pus_id;
         $filesCount = count($_FILES['documents']['name']);
         if($filesCount > 0){
 

@@ -36,7 +36,7 @@ class Car extends MY_Controller
 
         $data['title'] = 'Car List Details';
         $data['content']= 'car_details/car_list';
-        $data['cars']	= $this->Car_model->all_car_order_and_purchase_list();
+        $data['cars']   = $this->Car_model->all_car_order_and_purchase_list();
         $data['locations'] = $this->Transport_head_model->transport_head_list();
         $this->load->view('admin/adminMaster', $data);
     }
@@ -98,10 +98,14 @@ class Car extends MY_Controller
 
         $data['lc_info'] = $this->LC_model->lc_data_by_id($purchase->puc_lc_id);
         $data['lc_details'] = $this->LC_model->get_lc_details_by_lc_id($purchase->puc_lc_id);
-        $data['lc_documents'] = $this->LC_model->get_lc_documents($purchase->puc_lc_id, $pus_id);
+        $data['lc_image_documents'] = $this->LC_model->get_lc_image_documents($purchase->puc_lc_id, $pus_id);
+        $data['lc_pdf_documents'] = $this->LC_model->get_lc_pdf_documents($purchase->puc_lc_id, $pus_id);
 
         $data['reg_info'] = $reg =  $this->Registration_model->get_car_reg_info($pus_id);
-        $data['reg_documents'] = $this->Registration_model->get_reg_documents($reg->id);
+        if($reg){
+            $data['reg_documents'] = $this->Registration_model->get_reg_documents($reg->id);
+        }
+        
 
         $data['shipping'] = $this->Transport_model->get_car_all_shipping_statement($pus_id);
         $data['trans_head'] = $this->Transport_head_model->transport_head_list();
@@ -122,6 +126,13 @@ class Car extends MY_Controller
             }
         }else if($search_type == 'order_no'){
             if($res = $this->Car_model->order_wise_car_search($search_value)){
+                $data['cars'] = $res;
+                $this->load->view('admin/car_details/car_list_table', $data);
+            }else{
+                echo 0;
+            }
+        }else if($search_type == 'stock_no'){
+            if($res = $this->Car_model->stock_wise_car_search($search_value)){
                 $data['cars'] = $res;
                 $this->load->view('admin/car_details/car_list_table', $data);
             }else{
@@ -317,6 +328,28 @@ class Car extends MY_Controller
             $this->session->set_flashdata($data);
             redirect('car/images_insert/page');
         }
+
+    }
+
+    public function download_car_all_image($pus_id = Null){
+
+        $images = $this->Car_model->get_car_image_by_purchase_id($pus_id);
+
+        $zip = new ZipArchive;
+        $zip_name = time().'.zip';
+
+        if($zip->open($zip_name, ZipArchive::CREATE) === true){
+
+            foreach($images as $image){
+                $zip->addFile($image->image_path);
+            }
+
+            $zip->close();
+            header('content-type: application/octet-stream');
+            header('content-disposition: attachment; filename='.$zip_name);
+            readfile($zip_name);
+        }
+
 
     }
 

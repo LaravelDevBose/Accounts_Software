@@ -142,7 +142,7 @@
         </div>
     <?php endif; ?>
     <div class="col-xs-12">
-        <form id="OrderForm" method="post" action="<?= base_url(); ?>purchase/store">
+        <form id="OrderForm" method="post" action="<?= base_url(); ?>purchase/store" enctype="multipart/form-data">
             <div class="widget-box">
                 <div class="widget-header">
                     <h4 class="widget-title">Car Information</h4>
@@ -255,6 +255,18 @@
                                     <label class="col-sm-4 control-label no-padding-left" for="puc_mileage"> Mileage: </label>
                                     <div class="col-sm-8">
                                         <input type="text" id="puc_mileage" name="puc_mileage" value="<?= (isset($order)&& $order)? $order->ord_mileage : '' ?>" placeholder="Mileage" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label no-padding-left" for="puc_mileage"> Images: </label>
+                                    <div class="col-sm-8">
+                                        <input type="file" id="id-input-file-2"  name="images[]" multiple class="form-control" accept="image/*" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label no-padding-left" for="puc_mileage"> Documents: </label>
+                                    <div class="col-sm-8">
+                                        <input type="file" id="id-input-file-2"  name="documents[]" multiple class="form-control" accept="image/*" />
                                     </div>
                                 </div>
                                 <div class="form-group" >

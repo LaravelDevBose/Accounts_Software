@@ -181,13 +181,13 @@
                                         <span class="bigger-110">Take Collection</span>
                                     </a>
                                 </div>
+                                <?php if($order->pus_id != '0'):?>
                                 <div class="col-md-2">
-                                    <a href="#" class="btn btn-xs btn-block btn-info">
+                                    <a href="<?= base_url() ?>download_images/<?= $purchase->id; ?>" class="btn btn-xs btn-block btn-info">
                                         <i class="ace-icon fa fa-image  bigger-110"></i>
                                         <span class="bigger-110">Download Images</span>
                                     </a>
                                 </div>
-                                <?php if($order->pus_id != '0'):?>
                                 <div class="col-md-2">
                                     <a href="#" class="btn btn-xs btn-block btn-primary avatar2" >
                                         <i class="ace-icon fa fa-image  bigger-110"></i>
@@ -323,10 +323,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="profile-info-row">
-                                                        <div class="profile-info-name">Advance: </div>
+                                                        <div class="profile-info-name">Total Collection: </div>
 
                                                         <div class="profile-info-value">
-                                                            <span class="editable" id="country"><?= number_format($order->ord_advance, 2) ?></span>
+                                                            <span class="editable" id="country"><?= number_format($this->Order_model->find_total_colection_amount($order->id)->amount,2) ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="profile-info-row">
@@ -489,6 +489,13 @@
 
                                                         <div class="profile-info-value">
                                                             <span class="editable" id="username"><?= $purchase->pus_sl ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="profile-info-row">
+                                                        <div class="profile-info-name">Stock No: </div>
+
+                                                        <div class="profile-info-value">
+                                                            <span class="editable" id="username"><?= $purchase->stock_no ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="profile-info-row">

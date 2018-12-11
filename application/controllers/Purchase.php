@@ -98,13 +98,22 @@ class Purchase extends MY_Controller
 
 					if($this->Order_model->order_purchase_info_update($purchase_id)){
 						$data['success']=" Store Successfully!";
-						$this->session->set_flashdata($data);
-						redirect($this->input->post('redirect_url'));
 					}
-					$data['success']=" Store Successfully!";
-					$this->session->set_flashdata($data);
-					redirect($this->input->post('redirect_url'));
 				}
+
+                $imagesCount = count($_FILES['images']['name']);
+                $documentsCount = count($_FILES['documents']['name']);
+
+                // print_r(); die();
+                if($imagesCount >0 && $_FILES['images']['name'][0] != ''){
+                    $this->Car_model->store_images($purchase_id);
+                }
+
+                if($documentsCount > 0 && $_FILES['documents']['name'][0] != ''){
+                    $this->Car_model->store_documents($purchase_id);
+
+                }
+
 				$data['success']="Car Info Store Successfully!";
 				$this->session->set_flashdata($data);
 				redirect($this->input->post('redirect_url'));

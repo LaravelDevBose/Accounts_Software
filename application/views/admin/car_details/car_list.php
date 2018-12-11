@@ -34,23 +34,20 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="search_row">
-                                                <div class="col-sm-2">
-                                                    <div class="form-group">
+                                                <div class="col-sm-8">
+                                                    <div class="form-group" style="width: 20%;  display: inline-block;">
                                                         <input type="text" id="order_no" name="order_no" onblur="car_search($(this).val(), 'order_no')" placeholder="Order No" class="form-control" />
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <div class="form-group">
+                                                    <div class="form-group" style="width: 20%;  display: inline-block;">
+                                                        <input type="text" id="stock_no" name="stock_no" onblur="car_search($(this).val(), 'stock_no')" placeholder="Stock No" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group" style="width: 20%;  display: inline-block;">
                                                         <input type="text" id="purchase_no" name="purchase_no" onblur="car_search($(this).val(), 'purchase_no')" placeholder="Purchase No" class="form-control" />
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <div class="form-group">
+                                                    <div class="form-group" style="width: 20%;  display: inline-block;">
                                                         <input type="text" id="chassis_no" name="chassis_no" onblur="car_search($(this).val(), 'chassis_no')" placeholder="Chassis No" class="form-control" />
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <div class="form-group">
+                                                    <div class="form-group" style="width: 18%;  display: inline-block;">
                                                         <input type="text" id="order_date" name="order_date" onchange="car_search($(this).val(), 'order_date')"  placeholder="Order date" class="form-control date-picker"   data-date-format="yyyy-mm-dd" />
                                                     </div>
                                                 </div>

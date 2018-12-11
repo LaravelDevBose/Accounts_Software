@@ -30,6 +30,8 @@ $route['purchase/details/profile/(:any)']  ='Car/purchase_car_profile_details/$1
 $route['car/search'] = 'Car/car_search_method';
 $route['car/reg/submit'] = 'Registration/car_reg_store';
 $route['reg/doc/delete/(:any)'] = 'Registration/car_reg_doc_delete/$1';
+$route['download_images/(:any)'] = 'Car/download_car_all_image/$1';
+
 
 // =====================Admin Panel================
 // =====================Admin Panel================
