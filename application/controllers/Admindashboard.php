@@ -98,5 +98,17 @@ class Admindashboard extends MY_Controller
 			$data['content'] = 'dashboard/administration_home';
 			$this->load->view('admin/adminMaster', $data);
 		}
-	}	
+	}
+
+	public function titu_dashboard(){
+        if (!$this->Admin_model->is_admin_loged_in())
+        {
+            redirect('Adminlogin/?logged_in_first');
+        }else{
+            $data['title'] = 'Account Home';
+            $data['content'] = 'dashboard/titu_home';
+            $this->load->view('admin/adminMaster', $data);
+        }
+    }
+
 }

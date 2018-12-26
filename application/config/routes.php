@@ -22,7 +22,7 @@ $route['account/dashboard'] 	= 'Admindashboard/accounts_dashboard';
 $route['hr_payroll/dashboard'] 	= 'Admindashboard/hr_payroll_dashboard';
 $route['report/dashboard'] 	= 'Admindashboard/reports_dashboard';
 $route['administration/dashboard'] 	= 'Admindashboard/administration_dashboard';
-
+$route['titu/dashboard']            =   'Admindashboard/titu_dashboard';
 
 $route['order/details/list'] = 'Car/car_list_info';
 $route['order/details/profile/(:any)']  ='Car/order_car_profile_details/$1';
@@ -353,3 +353,37 @@ $route['access_page/(:any)'] 		= 	"AdminAccess/show_access_page/$1";
 $route['define_access'] 			= 	"AdminAccess/define_access";
 
 
+/************************ titu account route list ***************************/
+
+$route['titu/voucher_list']         =   'Voucher/voucher_list_page';
+$route['titu/voucher_pending_list'] =   'Voucher/voucher_pending_list';
+$route['titu/voucher_entry']        =   'Voucher/voucher_entry_page';
+$route['titu/voucher_store']        =   'Voucher/voucher_store';
+$route['titu/voucher_store_print']  =   'Voucher/voucher_store_print';
+$route['titu/voucher_edit/(:any)']  =   'Voucher/voucher_edit_page/$1';
+$route['titu/voucher_update/(:any)']=   'Voucher/voucher_update/$1';
+$route['titu/voucher_delete/(:any)']=   'Voucher/voucher_delete/$1';
+$route['titu/voucher_approve/(:any)']=  'Voucher/voucher_approve/$1';
+$route['titu/voucher_print/(:any)'] =   'Voucher/voucher_print/$1';
+
+$route['titu/transaction_list']     =   'TituController/transaction_list_page';
+
+$route['titu/ac_head_entry']         =   'AccountHeader/account_head_page';
+$route['titu/ac_head_store']         =   'AccountHeader/account_head_store';
+$route['titu/ac_head_edit/(:any)']   =   'AccountHeader/account_head_store';
+$route['titu/ac_head_update/(:any)'] =   'AccountHeader/account_head_store';
+$route['titu/ac_head_delete/(:any)'] =   'AccountHeader/account_head_store';
+
+$route['titu/trial_balance']        =   'TituController/trial_balance_page';
+
+$route['titu/insurance_entry']          =   'TituController/insurance_entry_page';
+$route['titu/insurance_store']          =   'TituController/insurance_store';
+$route['titu/insurance_edit/(:any)']    =   'TituController/insurance_edit_page/$1';
+$route['titu/insurance_update/(:any)']  =   'TituController/insurance_update/$1';
+$route['titu/insurance_delete/(:amy)']  =   'TituController/insurance_delete/$1';
+
+$route['titu/cf_agent_entry']           =   'TituController/cf_agent_entry_page';
+$route['titu/cf_agent_store']           =   'TituController/cf_agent_store';
+$route['titu/cf_agent_edit/(:any)']     =   'TituController/cf_agent_edit_page/$1';
+$route['titu/cf_agent_update/(:any)']   =   'TituController/cf_agent_update/$1';
+$route['titu/cf_agent_delete/(:any)']   =   'TituController/cf_agent_delete/$1';

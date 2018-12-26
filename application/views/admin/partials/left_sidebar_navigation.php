@@ -66,6 +66,15 @@
                 </a>
                 <b class="arrow"></b>
             </li>
+        <?php } if($access->account_module ==1){ ?>
+            <li class="<?= ($this->uri->uri_string()== 'titu/dashboard')?'active': ' ' ?>">
+                <!-- module/dashboard -->
+                <a href="<?php echo base_url(); ?>titu/dashboard">
+                    <i class="menu-icon fa fa-usd"></i>
+                    <span class="menu-text"> Titu Account </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
         <?php } ?>
     <?php } elseif($this->router->class == 'Order' || ucfirst($this->router->class) == 'Customer' || $this->router->method == 'sale_dashboard'){ ?>
         <?php  if($access->customer_order ==1){ ?>
@@ -496,7 +505,51 @@
 
                 </ul>
             </li>
-        <?php } }else{ ?>
+        <?php } } elseif($this->router->class == 'Voucher' || $this->router->method == 'titu_dashboard' ){?>
+        <li class="">
+            <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+                <i class="menu-icon fa fa-cc"></i>
+                <span class="menu-text">Voucher</span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="<?= ($this->uri->uri_string()== 'titu/voucher_entry')?'active': ' ' ?>">
+                    <a href="<?php echo base_url(); ?>titu/voucher_entry">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Voucher Entry
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="<?= ($this->uri->uri_string()== 'titu/voucher_list')?'active': ' ' ?>">
+                    <a href="<?php echo base_url(); ?>titu/voucher_list">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Voucher List
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="<?= ($this->uri->uri_string()== 'titu/voucher_pending_list')?'active': ' ' ?>">
+                    <a href="<?php echo base_url(); ?>titu/voucher_pending_list">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Voucher Pending List
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+        <li class="<?= ($this->uri->uri_string()== 'titu/ac_head_entry')?'active': ' ' ?>">
+            <a href="<?php echo base_url(); ?>titu/ac_head_entry">
+                <i class="menu-icon fa fa-money"></i>
+                <span class="menu-text">Account Head </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <?php  }else{ ?>
         <?php if($access->lc_info ==1){ ?>
             <li class="">
                 <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
@@ -598,6 +651,9 @@
             </li>
         <?php } ?>
     <?php } ?>
+
+
+
     <li class="">
         <a href="<?php echo base_url(); ?>Adminlogin/logout">
             <i class="menu-icon fa fa-sign-out"></i>
