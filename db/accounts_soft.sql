@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2018 at 08:47 AM
+-- Generation Time: Dec 27, 2018 at 08:35 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -42,6 +42,29 @@ CREATE TABLE `accounts` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account_heads`
+--
+
+CREATE TABLE `account_heads` (
+  `ah_id` int(20) UNSIGNED NOT NULL,
+  `ah_name` varchar(200) NOT NULL,
+  `ah_code` varchar(100) NOT NULL,
+  `ah_status` char(10) DEFAULT 'A',
+  `created_by` varchar(100) DEFAULT NULL,
+  `updated_by` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `account_heads`
+--
+
+INSERT INTO `account_heads` (`ah_id`, `ah_name`, `ah_code`, `ah_status`, `created_by`, `updated_by`, `created_at`) VALUES
+(1, 'bank', 'AH-00001', 'A', 'admin', NULL, '2018-12-26 06:40:12');
 
 -- --------------------------------------------------------
 
@@ -238,7 +261,18 @@ INSERT INTO `car_images` (`id`, `pus_id`, `image_path`, `type`, `status`) VALUES
 (7, 2, 'libs/upload_pic/car_image/10260315265c08cbd144f02.jpg', 'I', 'a'),
 (8, 2, 'libs/upload_pic/car_image/16933623455c08cbd17a50b.jpg', 'I', 'a'),
 (9, 2, 'libs/upload_pic/car_image/9003431535c08cbd1ba32d.jpg', 'I', 'a'),
-(10, 5, 'libs/upload_pic/car_image/12588052685c08d2488dd06.jpg', 'C', 'a');
+(10, 5, 'libs/upload_pic/car_image/12588052685c08d2488dd06.jpg', 'C', 'a'),
+(12, 11, 'libs/upload_pic/car_image/7652020185c0deb0ca5eb2.jpg', 'C', 'a'),
+(13, 14, 'libs/upload_pic/car_image/10956310645c0e1058f206a.jpg', 'I', 'a'),
+(14, 14, 'libs/upload_pic/car_image/17865849065c0e10592a830.jpg', 'I', 'a'),
+(15, 14, 'libs/upload_pic/car_image/17246424735c0e1059405e6.png', 'I', 'a'),
+(16, 14, 'libs/upload_pic/car_image/11579733675c0e10597147f.jpg', 'D', 'a'),
+(17, 14, 'libs/upload_pic/car_image/19408460255c0e1059b867f.jpg', 'D', 'a'),
+(18, 15, 'libs/upload_pic/car_image/18867915115c0e106f90492.jpg', 'I', 'a'),
+(19, 15, 'libs/upload_pic/car_image/9929007115c0e106fbed56.jpg', 'I', 'a'),
+(20, 15, 'libs/upload_pic/car_image/11045652905c0e106fcf3c3.png', 'I', 'a'),
+(21, 15, 'libs/upload_pic/car_image/171777445c0e106ff1458.jpg', 'D', 'a'),
+(22, 15, 'libs/upload_pic/car_image/3341785285c0e107046f5f.jpg', 'D', 'a');
 
 -- --------------------------------------------------------
 
@@ -327,7 +361,8 @@ INSERT INTO `collections` (`id`, `coll_sl`, `cus_id`, `order_no`, `collection_ty
 (9, 'MC-00009', 2, 1, 2, '', '', '2018-12-01 18:00:00', 1000, '', 'receive', 'a', 'admin', 'admin', '2018-12-02 05:47:07', '2018-12-02 05:47:07'),
 (10, 'MC-00010', 2, 1, 4, '54545', 'dfdf', '2018-12-01 18:00:00', 33333, 'fffff', 'receive', 'a', 'admin', 'admin', '2018-12-02 05:48:30', '2018-12-02 05:48:30'),
 (11, 'MC-00011', 2, 1, 2, '', '', '2018-12-01 18:00:00', 30000, 'cash', 'receive', 'a', 'admin', 'admin', '2018-12-02 05:50:02', '2018-12-02 11:58:58'),
-(12, 'MC-00012', 2, 1, 4, 'eeee3433', 'ereer', '2018-12-02 18:00:00', 5000, '', 'receive', 'a', 'admin', 'admin', '2018-12-03 06:46:46', '2018-12-03 06:46:46');
+(12, 'MC-00012', 2, 1, 4, 'eeee3433', 'ereer', '2018-12-02 18:00:00', 5000, '', 'receive', 'a', 'admin', 'admin', '2018-12-03 06:46:46', '2018-12-03 06:46:46'),
+(13, 'MC-00013', 10, 13, 1, '', '', '2018-12-09 18:00:00', 50000, '', 'receive', 'a', 'admin', 'admin', '2018-12-10 06:08:58', '2018-12-10 06:08:58');
 
 -- --------------------------------------------------------
 
@@ -424,7 +459,8 @@ INSERT INTO `customers` (`id`, `cus_code`, `cus_name`, `org_name`, `cus_contact_
 (6, 'C00006', 'dfsdf', 'sdfdsf', '3434', '3434', '2018-12-01 18:00:00', 'sdsd@dfdf.fgf', 'dfdsfdf', '', NULL, NULL, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
 (7, 'C00007', 'demo', 'dddd', '11111', '11111', '2018-12-01 18:00:00', 'afhd@hjaf.coj', 'dfdfdf', '', NULL, NULL, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
 (8, 'C00008', 'ne Customer 3', 'dfsdf', '3434343', '343434', '2018-12-01 18:00:00', '', 'sdfsdfdsf', '', NULL, NULL, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
-(9, 'C00009', 'Arup New', 'dsfsdf', '334', '3434', '2018-12-02 18:00:00', '', 'dfdfss', '', NULL, NULL, 'a', 'admin', 'admin', '2018-12-02 18:00:00', '2018-12-02 18:00:00');
+(9, 'C00009', 'Arup New', 'dsfsdf', '334', '3434', '2018-12-02 18:00:00', '', 'dfdfss', '', NULL, NULL, 'a', 'admin', 'admin', '2018-12-02 18:00:00', '2018-12-02 18:00:00'),
+(10, 'C00010', 'siam', 'Link Up', '000000', '111235454', '2018-12-09 18:00:00', 'siam@gmail.com', 'mirpur', '', NULL, NULL, 'a', 'admin', 'admin', '2018-12-09 18:00:00', '2018-12-09 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -614,7 +650,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `cus_id`, `ord_lc_no`, `pus_id`, `ord_car_model`, `ord_color`, `ord_engine_no`, `ord_chassis_no`, `order_no`, `ord_other_tirm`, `ord_make_model`, `ord_grade`, `ord_type`, `ord_year`, `ord_mileage`, `ord_budget_range`, `ord_advance`, `order_status`, `delivery_date`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 2, 0, 1, 'Demo', 'red', 'E-67465842', 'C-4569745', 'M-00001', '', 'demo', 'demo', 'demo', 'demo', '100000', 1000000, 0, 'c', '2018-12-03 18:00:00', 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-02 10:40:48'),
+(1, 2, 0, 0, 'Demo', 'red', '', '', 'M-00001', '', 'demo', 'demo', 'demo', 'demo', '100000', 1000000, 0, 'p', '2018-12-03 18:00:00', 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-10 05:40:39'),
 (2, 4, 1, 2, 'okkk', 'done', 'f343434sd', 'fff343434f', 'M-00002', 'na', 'rer', 'erer', 'erer', 'rere', '34334', 343343434, 0, 'a', '2018-12-02 05:58:09', 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-02 11:36:49'),
 (3, 3, NULL, 5, 'sdfdsf', 'sadfsdf', 'ee433434', '4343ddd', 'M-00003', 'sadfsdf', 'dsfsdf', 'dsafsdf', 'sdfsadf', 'sdafsd', '43434', 334343434, 0, 'a', '2018-12-02 06:06:56', 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-02 10:21:04'),
 (4, 1, 0, 4, 'dsfsf', 'sdafsdf', '232wew2323', 'sds2323sds', 'M-00004', 'sdafsadf', 'asdfdsf', 'sdfsd', 'fsdaf', 'dsfsdf34', '34343', 43434343, 0, 'a', '2018-12-02 06:07:18', 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-02 10:25:45'),
@@ -624,7 +660,9 @@ INSERT INTO `orders` (`id`, `cus_id`, `ord_lc_no`, `pus_id`, `ord_car_model`, `o
 (8, 5, 3, 7, 'dsgsdfg', 'sdfgsdfg', 'dsfgdfg', 'sdfgdsfg', 'M-00008', 'dsfsdf', 'fsdgdfsg', 'sdfgdsf', 'gsdfgdfsg', 'sdfgdfg', 'sdfgdsfgdfg', 223300000, 0, 'a', '2018-12-02 10:33:56', 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
 (9, 8, 0, 6, 'gfdgd', 'gdfgfdg', 'sdafsadf', 'asdfdsaf', 'M-00009', 'fdgfdg', 'fdgdfg', 'fdgdf', 'gfgfdg', 'fdgfdg', '43333333', 2147483647, 0, 'a', '2018-12-02 10:35:30', 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-02 10:35:42'),
 (10, 7, 0, 0, 'fdsdf', 'sdfdsf', '', '', 'M-00010', 'dsfdsf', 'sdfds', 'fdsf', 'dsfdsf', 'dsfdsf', '50000', 2147483647, 0, 'p', '2018-12-03 06:28:03', 'a', 'admin', 'admin', '2018-12-02 18:00:00', '2018-12-02 18:00:00'),
-(11, 9, 0, 0, 'sdfsdf', 'dsfdsf', '', '', 'M-00011', 'dsfdsf', 'dsfsdf', 'dsf', 'dsf', 'dsf', 'd54425', 44564545, 0, 'p', '2018-12-03 08:57:36', 'a', 'admin', 'admin', '2018-12-02 18:00:00', '2018-12-02 18:00:00');
+(11, 9, 0, 0, 'sdfsdf', 'dsfdsf', '', '', 'M-00011', 'dsfdsf', 'dsfsdf', 'dsf', 'dsf', 'dsf', 'd54425', 44564545, 0, 'p', '2018-12-03 08:57:36', 'a', 'admin', 'admin', '2018-12-02 18:00:00', '2018-12-02 18:00:00'),
+(12, 10, 0, 0, 'hayues', 'black', '', '', 'M-00012', 'na', 'hmm', 'hmm', 'hhh', '1234', '1050000', 50000000, 0, 'p', '2018-12-10 04:17:27', 'a', 'admin', 'admin', '2018-12-10 04:17:27', '2018-12-10 04:17:27'),
+(13, 10, 0, 0, 'wwer', 'ddfd', '', '', 'M-00013', 'dfdf', 'dfdf', 'fd', 'df', 'dfdf', '500000', 8000000, 0, 'p', '2018-12-10 04:18:24', 'a', 'admin', 'admin', '2018-12-10 04:18:24', '2018-12-10 04:18:24');
 
 -- --------------------------------------------------------
 
@@ -698,7 +736,7 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`id`, `pus_sl`, `supplier_id`, `customer_id`, `order_id`, `puc_lc_id`, `stock_no`, `puc_car_model`, `puc_color`, `puc_engine_no`, `puc_chassis_no`, `puc_make`, `puc_grade`, `puc_type`, `puc_year`, `puc_mileage`, `puc_other_tirm`, `total_price`, `transport_id`, `car_status`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'P-00001', 2, 2, 1, 0, NULL, 'demo', 'red', 'E-67465842', 'C-4569745', 'ok', 'A', 'A', '1254', '1254000', 'na', 697170, 1, 1, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
+(1, 'P-00001', 2, 0, 0, 0, NULL, 'demo', 'red', 'E-67465842', 'C-4569745', 'ok', 'A', 'A', '1254', '1254000', 'na', 697170, 1, 0, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
 (2, 'P-00002', 2, 4, 2, 1, 'S-777323', 'Nova', 'sdfsd', 'f343434sd', 'fff343434f', 'sdfdsf', 'dsfds', 'dsfdsf', '2323', '3434343', 'sdfdsf', 94545, NULL, 0, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-02 11:36:48'),
 (3, 'P-00003', 1, 7, 5, 0, NULL, 'gdfgdfg', 'ghgh', 'fg77565', 'cg5656', 'dfsdf', 'dsfd', 'dfdf', '3443', '5642454', 'sdfsdsd', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
 (4, 'P-00004', 1, 1, 4, 0, NULL, 'ewewe', 'wewe', '232wew2323', 'sds2323sds', 'ss', 'ssd', 'sd', 'sdsd', '23232323', 'sdsds', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
@@ -706,7 +744,13 @@ INSERT INTO `purchase` (`id`, `pus_sl`, `supplier_id`, `customer_id`, `order_id`
 (6, 'P-00006', 2, 8, 9, 0, NULL, 'dfdf', 'dsaf', 'sdafsadf', 'asdfdsaf', 'asdfsadf', 'sfsdaf', 'asdf', 'sadfasd', '34343434', 'asdfasdf', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
 (7, 'P-00007', 1, 5, 8, 3, NULL, 'dsgsdfg', 'sdfgsdfg', 'dsfgdfg', 'sdfgdsfg', 'fsdgdfsg', 'sdfgdsf', 'gsdfgdfsg', 'sdfgdfg', 'sdfgdsfgdfg', 'sfdgdfg', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
 (8, 'P-00008', 1, 8, 7, 4, NULL, 'dsfsdf', 'sdfsd', 'dsfsd', 'fsdf', 'sadfsdfsdf', 'fasdfsadfd', 'sdfdsfsda', 'sddfsdf', '34234234', 'sdfsdfdsfds', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
-(9, 'P-00009', 1, 5, 6, 0, NULL, 'dfsdf', 'sadfsdf', 'sdafsdf343434', 'df34343dsfsf', 'dsaf', 'dasfasdf', 'asf', 'dasfsdf', '3434', 'sdfsdf', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00');
+(9, 'P-00009', 1, 5, 6, 0, NULL, 'dfsdf', 'sadfsdf', 'sdafsdf343434', 'df34343dsfsf', 'dsaf', 'dasfasdf', 'asf', 'dasfsdf', '3434', 'sdfsdf', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-01 18:00:00', '2018-12-01 18:00:00'),
+(10, 'P-00010', 1, 0, 0, 0, 'S-iiippp', 'fdgdfg', 'dsfgdfg', '2323vreer', 'xcx343', 'sdfsdf', 'sdfsdf', 'sdfsdf', '3434', '10024174', 'dsfdsfsd', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-10 04:21:03', '2018-12-09 18:00:00'),
+(11, 'P-00011', 2, 0, 0, 0, 'S-uuuu', 'dsfdsfd', 'dfdf', '89768745256', 'dd55487', 'hsdfhdh', 'hjhfjsh dhfj', 'hkjfhds', '2010', '10024174', 'dfdsfsdf', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-10 04:22:43', '2018-12-10 04:22:43'),
+(12, 'P-00012', 2, 0, 0, 0, 'new stock', 'new', 'red', 'E-12121332323', 'C-234343434', 'make', 'Grade', 'type', '2018', '1050000', 'na', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-10 06:52:51', '2018-12-10 06:52:51'),
+(13, 'P-00013', 2, 0, 0, 0, 'new stock2', 'new2', 'red2', 'E-89898989', 'C-56565656', 'ok', 'A', 'Hibrid', '2017', '2000000', 'NA', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-10 06:57:20', '2018-12-10 06:57:20'),
+(14, 'P-00014', 2, 0, 0, 0, 'dfsdf', 'sdfsd', 'dfsdf', '34343434', '343434', 'sdfdf', 'sdfsdf', 'sdsdfsf', '334', '343434', 'dsfsf', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-10 07:06:00', '2018-12-10 07:06:00'),
+(15, 'P-00015', 2, 0, 0, 0, 'dfsdf', 'sdfsd', 'dfsdf', '34343434', '343434', 'sdfdf', 'sdfsdf', 'sdsdfsf', '334', '343434', 'dsfsf', 0, NULL, 0, 'a', 'admin', 'admin', '2018-12-10 07:06:23', '2018-12-10 07:06:23');
 
 -- --------------------------------------------------------
 
@@ -981,6 +1025,85 @@ INSERT INTO `trans_heads` (`id`, `head_name`, `status`) VALUES
 (5, 'Mongla Port', 'a'),
 (6, 'Dhaka', 'a');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vouchers`
+--
+
+CREATE TABLE `vouchers` (
+  `v_id` int(20) UNSIGNED NOT NULL,
+  `v_code` varchar(100) NOT NULL,
+  `value_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dr_ah_id` int(20) UNSIGNED NOT NULL,
+  `dr_amount` int(10) UNSIGNED NOT NULL,
+  `dr_note` text,
+  `cr_ah_id` int(20) UNSIGNED NOT NULL,
+  `cr_amount` int(10) UNSIGNED NOT NULL,
+  `cr_note` text,
+  `approve_status` char(10) DEFAULT 'P' COMMENT 'P=pending A=Approved',
+  `v_status` char(10) DEFAULT 'A' COMMENT 'A=active D=delete',
+  `approved_by` varchar(100) DEFAULT NULL,
+  `created_by` varchar(100) DEFAULT NULL,
+  `updated_by` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vouchers`
+--
+
+INSERT INTO `vouchers` (`v_id`, `v_code`, `value_date`, `dr_ah_id`, `dr_amount`, `dr_note`, `cr_ah_id`, `cr_amount`, `cr_note`, `approve_status`, `v_status`, `approved_by`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'V-00001', '2018-12-25 18:00:00', 1, 100, 'fgfdg', 1, 100, 'fdgdfgdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 10:58:55', NULL),
+(2, 'V-00002', '2018-12-25 18:00:00', 1, 100, 'fgfdg', 1, 100, 'fdgdfgdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:03:09', NULL),
+(3, 'V-00003', '2018-12-25 18:00:00', 1, 100, 'fgfdg', 1, 100, 'fdgdfgdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:04:47', NULL),
+(4, 'V-00004', '2018-12-25 18:00:00', 1, 10, 'kljkl', 1, 10, 'kjljkl', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:06:03', NULL),
+(5, 'V-00005', '2018-12-25 18:00:00', 1, 10, '5454', 1, 10, '4545', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:08:09', NULL),
+(6, 'V-00006', '2018-12-25 18:00:00', 1, 45, '45', 1, 45, '45', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:10:01', NULL),
+(7, 'V-00007', '2018-12-25 18:00:00', 1, 23, 'dfdf', 1, 43, 'fdfdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:12:15', NULL),
+(8, 'V-00008', '2018-12-25 18:00:00', 1, 34, 'fsdf', 1, 343, 'fdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:12:53', NULL),
+(9, 'V-00009', '2018-12-25 18:00:00', 1, 50000, 'dfgf', 1, 50000, 'fdfsd afadf fgsdfds dsfsadf ', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:14:44', NULL),
+(10, 'V-00010', '2018-12-25 18:00:00', 1, 50000, 'fghdfgdfgfdgdfgfdgfdgdfg', 1, 50000, 'fddfgdfgfdgdfgdfgdfgfdgfdgdfg', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:15:58', NULL),
+(11, 'V-00011', '2018-12-25 18:00:00', 1, 434234234, 'dffsdfsdf', 1, 234324324, 'fsdfsdfsdf rewr  werwe r', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:17:30', NULL),
+(12, 'V-00012', '2018-12-25 18:00:00', 1, 4343434, 'dfsdfsdf', 1, 343434, 'dfsfsdfsdf sfsf  sfs f', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:18:41', NULL),
+(13, 'V-00013', '2018-12-25 18:00:00', 1, 3424234, 'fsdfsf', 1, 434343, 'dfsdf sfsdf sfdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:19:47', NULL),
+(14, 'V-00014', '2018-12-25 18:00:00', 1, 4234324234, 'fsfsdf', 1, 2334324, 'fdsdfsfsdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:20:18', NULL),
+(15, 'V-00015', '2018-12-25 18:00:00', 1, 424234, 'dsdfdsf', 1, 43434, 'dxfdfdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:22:05', NULL),
+(16, 'V-00016', '2018-12-25 18:00:00', 1, 500, 'dfsdf', 1, 200, 'fdgdfg', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:23:23', NULL),
+(17, 'V-00017', '2018-12-25 18:00:00', 1, 4534, 'ffs', 1, 34343, 'dfsfd', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:24:09', NULL),
+(18, 'V-00018', '2018-12-25 18:00:00', 1, 3434, 'dfsdf', 1, 34343, 'dfsfsf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:25:44', NULL),
+(19, 'V-00019', '2018-12-25 18:00:00', 1, 44, 'fsfs', 1, 3434, 'dfsfdsf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:26:09', NULL),
+(20, 'V-00020', '2018-12-25 18:00:00', 1, 57657, '5hhgjghjg', 1, 7856867, 'jggjghj', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:27:14', NULL),
+(21, 'V-00021', '2018-12-25 18:00:00', 1, 6546456, 'hfgh', 1, 657567, 'fghfg', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:27:52', NULL),
+(22, 'V-00022', '2018-12-25 18:00:00', 1, 765756, 'bghjg', 1, 7567567, 'jghjg', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:28:44', NULL),
+(23, 'V-00023', '2018-12-25 18:00:00', 1, 4294967295, 'fghfgh', 1, 567567, 'ghfgh', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:30:01', NULL),
+(24, 'V-00024', '2018-12-25 18:00:00', 1, 6456456, 'hfghfg', 1, 456456, 'hfghfg', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:30:47', NULL),
+(25, 'V-00025', '2018-12-25 18:00:00', 1, 6567567, 'ghjgh', 1, 56756, 'jhgj', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:31:26', NULL),
+(26, 'V-00026', '2018-12-25 18:00:00', 1, 567567, 'gfgh', 1, 567567, 'gfhf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:34:15', NULL),
+(27, 'V-00027', '2018-12-25 18:00:00', 1, 546456, 'fghfgh', 1, 565, 'fghfg', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:35:13', NULL),
+(28, 'V-00028', '2018-12-25 18:00:00', 1, 5675, 'jghj', 1, 65756, 'ghjgh', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:35:45', NULL),
+(29, 'V-00029', '2018-12-25 18:00:00', 1, 657567, 'jgh', 1, 768678, 'jghj', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:36:16', NULL),
+(30, 'V-00030', '2018-12-25 18:00:00', 1, 546456, 'fhgf', 1, 756756, 'fghfg', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:36:38', NULL),
+(31, 'V-00031', '2018-12-25 18:00:00', 1, 75657, 'hgjgh', 1, 678678, 'ghjg', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:37:06', NULL),
+(32, 'V-00032', '2018-12-25 18:00:00', 1, 54645645, 'gfhfgh', 1, 75675675, 'fghfgh', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:38:58', NULL),
+(33, 'V-00033', '2018-12-25 18:00:00', 1, 56756567, 'hfghfgh', 1, 568768678, 'fghfgh', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:40:44', NULL),
+(34, 'V-00034', '2018-12-25 18:00:00', 1, 6545, 'hfgh', 1, 57567, 'fghfgh', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:41:06', NULL),
+(35, 'V-00035', '2018-12-25 18:00:00', 1, 7657567, 'fghfghf', 1, 7567567, 'fghf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:41:28', NULL),
+(36, 'V-00036', '2018-12-25 18:00:00', 1, 567567, 'hgjgh', 1, 567567, 'jghj', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:42:23', NULL),
+(37, 'V-00037', '2018-12-25 18:00:00', 1, 64564, 'hfhfg', 1, 567567, 'fghfgh', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:43:15', NULL),
+(38, 'V-00038', '2018-12-25 18:00:00', 1, 675, 'hfhfg', 1, 5675, 'fghf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:43:45', NULL),
+(39, 'V-00039', '2018-12-25 18:00:00', 1, 65756756, 'jhgjgh', 1, 677567567, 'jghjghj', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:44:34', NULL),
+(40, 'V-00040', '2018-12-25 18:00:00', 1, 547567567, 'fghfg', 1, 767567, 'hfghfg', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:45:02', NULL),
+(41, 'V-00041', '2018-12-25 18:00:00', 1, 3434, 'dsdfsdf', 1, 3443, 'fsdsdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:46:25', NULL),
+(42, 'V-00042', '2018-12-25 18:00:00', 1, 3432, 'dfsdf', 1, 45345, 'fdsfd', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:47:03', NULL),
+(43, 'V-00043', '2018-12-25 18:00:00', 1, 324234, 'sdfdsf', 1, 34234, 'dfsfds', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:47:38', NULL),
+(44, 'V-00044', '2018-12-25 18:00:00', 1, 334, 'dsfsfd', 1, 324234, 'dfdfsdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:48:37', NULL),
+(45, 'V-00045', '2018-12-25 18:00:00', 1, 334, 'sdfdsf', 1, 34343, 'dsfsdf', 'P', 'A', NULL, 'admin', NULL, '2018-12-26 11:49:23', NULL),
+(46, 'V-00046', '2018-12-25 18:00:00', 1, 3434, 'sdfsdf', 1, 3434, 'dfsdfsdf', 'P', 'D', NULL, 'admin', 'admin', '2018-12-26 11:50:53', '2018-12-27 07:24:47'),
+(47, 'V-00047', '2018-12-25 18:00:00', 1, 454, 'dfdsf', 1, 3434, 'dfsdfdsf', 'A', 'A', 'admin', 'admin', 'admin', '2018-12-26 11:51:34', '2018-12-27 07:19:23'),
+(48, 'V-00048', '2018-12-25 18:00:00', 1, 3434, 'dsdfdf', 1, 334, 'dsfsdfdsf', 'A', 'A', 'admin', 'admin', 'admin', '2018-12-26 11:51:55', '2018-12-27 06:30:59');
+
 --
 -- Indexes for dumped tables
 --
@@ -990,6 +1113,12 @@ INSERT INTO `trans_heads` (`id`, `head_name`, `status`) VALUES
 --
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `account_heads`
+--
+ALTER TABLE `account_heads`
+  ADD PRIMARY KEY (`ah_id`);
 
 --
 -- Indexes for table `admin_access`
@@ -1161,6 +1290,12 @@ ALTER TABLE `trans_heads`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vouchers`
+--
+ALTER TABLE `vouchers`
+  ADD PRIMARY KEY (`v_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1169,6 +1304,12 @@ ALTER TABLE `trans_heads`
 --
 ALTER TABLE `accounts`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `account_heads`
+--
+ALTER TABLE `account_heads`
+  MODIFY `ah_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `admin_access`
@@ -1198,7 +1339,7 @@ ALTER TABLE `bank_trans`
 -- AUTO_INCREMENT for table `car_images`
 --
 ALTER TABLE `car_images`
-  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `car_registration`
@@ -1216,7 +1357,7 @@ ALTER TABLE `checks`
 -- AUTO_INCREMENT for table `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `companies`
@@ -1234,7 +1375,7 @@ ALTER TABLE `create_admin`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -1270,7 +1411,7 @@ ALTER TABLE `months`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -1282,7 +1423,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `purchase_pricing`
@@ -1337,6 +1478,12 @@ ALTER TABLE `transports`
 --
 ALTER TABLE `trans_heads`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `vouchers`
+--
+ALTER TABLE `vouchers`
+  MODIFY `v_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

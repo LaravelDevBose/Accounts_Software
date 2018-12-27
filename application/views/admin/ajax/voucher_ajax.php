@@ -22,6 +22,10 @@
             alert('Insert Cr. Amount');
             return false;
         }
+        if(cr_amount !== dr_amount){
+            alert('Dr. Amount and Cr. Amount not Equal');
+            return false;
+        }
 
         $.ajax({
             url:'<?= base_url('titu/voucher_store')?>',
@@ -74,6 +78,11 @@
             return false;
         }
 
+        if(cr_amount !== dr_amount){
+            alert('Dr. Amount and Cr. Amount not Equal');
+            return false;
+        }
+
         $.ajax({
             url:'<?= base_url()?>titu/voucher_store_print',
             type:'POST',
@@ -103,4 +112,37 @@
             }
         });
     });
+
+    function print_voucher(voucher_id) {
+
+        if(voucher_id != ''){
+            $.ajax({
+                url:'<?= base_url()?>titu/voucher_print/'+voucher_id,
+                type:'GET',
+                dataType:'html',
+                success:function(data){
+                    if(data != 0){
+                        $('body').html(data);
+
+                        /*------- Print New Page -------*/
+                        window.print();
+
+                        /*------- After print bake the main page------*/
+                        location.reload();
+                    }else{
+                        swal({
+                            text: "No Voucher Information Found..!",
+                            icon: "error",
+                            buttons: false,
+                            timer: 1500,
+                        });
+                    }
+
+                },error:function(error){
+                    console.log(error);
+                    alert('error');
+                }
+            });
+        }
+    }
 </script>

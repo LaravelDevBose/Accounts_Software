@@ -538,6 +538,13 @@
                     </a>
                     <b class="arrow"></b>
                 </li>
+                <li class="<?= ($this->uri->uri_string()== 'titu/voucher_active_list')?'active': ' ' ?>">
+                    <a href="<?php echo base_url(); ?>titu/voucher_active_list">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Voucher Approved List
+                    </a>
+                    <b class="arrow"></b>
+                </li>
             </ul>
         </li>
 

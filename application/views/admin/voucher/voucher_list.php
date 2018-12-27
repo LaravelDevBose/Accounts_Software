@@ -1,4 +1,30 @@
-
+<style>
+    #tBody tr td p{
+        margin-bottom: 0px;
+    }
+    #tBody tr td{
+        padding: 3px 0;
+    }
+    #tBody tr td p span:nth-child(1) {
+        display: inline-block;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+    }
+    #tBody tr td p span:nth-child(2) {
+        display: inline-block;
+    }
+    .approve{
+        padding: 8px 3px!important;
+    }
+    .btn-xs{
+        padding: 1px 2px;
+        font-size: 10px;
+        line-height: 1;
+    }
+    .action-buttons a{
+        margin: 7px 1px 0px 0px;
+    }
+</style>
 <div class="row">
     <div class="col-xs-12">
         <div class="widget-box">
@@ -17,18 +43,17 @@
 
             <div class="widget-body">
                 <div class="widget-main">
-
-
                     <div class="row">
                         <div class="col-xs-12">
-                            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                            <table id="dynamic-table" class="table table-striped table-bordered table-hover" >
                                 <thead>
                                     <tr>
-                                        <th>Voucher No</th>
-                                        <th>Date</th>
-                                        <th>Account Head</th>
-                                        <th>L/C No</th>
-                                        <th>Amount</th>
+                                        <th style="width: 80px">Invoice ID</th>
+                                        <th style="width: 90px">Value Date</th>
+                                        <th style="width: 200px">Particulars</th>
+                                        <th style="width: 120px">Debit</th>
+                                        <th style="width: 120px">Credit</th>
+                                        <th style="width: 200px;">Reference</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -36,52 +61,62 @@
 
                                 <tbody id="tBody">
                                 <?php  $i=1; if(isset($vouchers) && $vouchers): foreach($vouchers as $voucher):?>
-                                    <tr>
-                                        <td><?= $voucher->order_no; ?></td>
-                                        <td><?= $order->cus_name ?></td>
-
-                                        <td>
-                                            <?php
-                                            $pus_sl = ''; if($order->pus_id != 0 && $order->pus_id !=  ''){
-                                                $pus_sl = $this->db->where('id', $order->pus_id)->get('purchase')->row()->pus_sl;
-                                            }
-                                            ?>
-                                            <?= $pus_sl ?>
+                                    <tr >
+                                        <td ><?= $voucher->v_code ?></td>
+                                        <td ><?php $date = new DateTime($voucher->value_date); echo date_format($date,'d M Y'); ?></td>
+                                        <td >
+                                            <p>
+                                                <?php $dr_head = $this->AccountHead_model->data_by_id($voucher->dr_ah_id); ?>
+                                                <?php $cr_head = $this->AccountHead_model->data_by_id($voucher->cr_ah_id); ?>
+                                                <span><?= $dr_head->ah_code.'- '.ucfirst($dr_head->ah_name);?></span>
+                                                <span><?= $cr_head->ah_code.'- '.ucfirst($cr_head->ah_name);?></span>
+                                            </p>
                                         </td>
                                         <td>
-                                            <?php
-                                            $lc_no = ''; if($order->ord_lc_no != 0 && $order->ord_lc_no !=  ''){
-                                                $lc_info = $this->LC_model->lc_data_by_id($order->ord_lc_no);
-                                                $lc_no = $lc_info->lc_no;
-                                            }
-                                            ?>
-                                            <?= $lc_no ?>
+                                            <p>
+                                                <span><?= number_format($voucher->dr_amount, 2)?></span>
+                                                <span>-</span>
+                                            </p>
                                         </td>
-                                        <td><?= $order->ord_chassis_no.'||'.$order->ord_engine_no?> </td>
                                         <td>
-                                            <?php if($order->order_status == 'c'): ?>
-                                                <span class="label " style="background: green;">Delivered</span>
-                                            <?php elseif($order->order_status == 'a'): ?>
-                                                <span class="label " style="background: #36a2ec;">Active</span>
-                                            <?php else: ?>
-                                                <span class="label " style="background: #ec880a;">Pending</span>
-                                            <?php endif;?>
+                                            <p>
+                                                <span>-</span>
+                                                <span><?= number_format($voucher->cr_amount, 2)?></span>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p>
+                                                <span><?= $voucher->dr_note; ?></span>
+                                                <span><?= $voucher->cr_note; ?></span>
+                                            </p>
+                                        </td>
+                                        <td class="approve">
+                                            <?php if($voucher->approve_status == 'A'):?>
+                                            <label class="label label-success">Approved</label>
+                                            <?php else:?>
+                                            <label class="label label-warning">Pending</label>
+                                            <?php endif; ?>
                                         </td>
                                         <td>
                                             <div class="hidden-sm hidden-xs action-buttons">
-                                                <a style="color: #7e35de;" title="Purchase" href="<?= base_url();?>purchase/insert/<?= $order->id;?>" >
-                                                    <i class="ace-icon fa fa-cart-arrow-down bigger-130" ></i>
+                                                <a class="btn btn-xs btn-purple" title="Print" onclick="print_voucher('<?= $voucher->v_id; ?>')" >
+                                                    <i class="ace-icon fa fa-print bigger-130" ></i>
                                                 </a>
-                                                <a style="color: #F89406;" title="View" href="<?= base_url();?>order/view/<?= $order->id;?>" >
+                                                <a class="btn btn-xs btn-info2 linka fancybox fancybox.ajax"  href="<?= base_url();?>titu/voucher_view/<?= $voucher->v_id;?>" >
                                                     <i class="ace-icon fa fa-eye bigger-130" ></i>
                                                 </a>
+                                                <?php if($voucher->approve_status != 'A'):?>
+                                                <a class=" btn btn-xs btn-success" title="Approved" href="<?= base_url(); ?>titu/voucher_approve/<?= $voucher->v_id ?>" onclick="return confirm('Are You Sure Went to Approve This! ')" >
+                                                    <i class="ace-icon fa fa-check bigger-130" ></i>
+                                                </a>
 
-                                                <a class="info" title="Edit" href="<?= base_url();?>order/edit/<?= $order->id;?>" >
+                                                <a class="btn btn-xs btn-primary" title="Edit" href="<?= base_url();?>titu/voucher_edit/<?= $voucher->v_id;?>" >
                                                     <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                 </a>
-                                                <a class="red" title="Delete" href="<?= base_url(); ?>order/delete/<?= $order->id ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
+                                                <a class="btn btn-xs btn-danger" title="Delete" href="<?= base_url(); ?>titu/voucher_delete/<?= $voucher->v_id ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
                                                     <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                 </a>
+                                                <?php endif; ?>
                                             </div>
                                         </td>
                                     </tr>
@@ -97,7 +132,7 @@
     </div>
 </div>
 
-
+<?php $this->load->view('admin/ajax/voucher_ajax');?>
 
 
 

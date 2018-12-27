@@ -357,9 +357,11 @@ $route['define_access'] 			= 	"AdminAccess/define_access";
 
 $route['titu/voucher_list']         =   'Voucher/voucher_list_page';
 $route['titu/voucher_pending_list'] =   'Voucher/voucher_pending_list';
+$route['titu/voucher_active_list'] =   'Voucher/voucher_active_list';
 $route['titu/voucher_entry']        =   'Voucher/voucher_entry_page';
 $route['titu/voucher_store']        =   'Voucher/voucher_store';
 $route['titu/voucher_store_print']  =   'Voucher/voucher_store_print';
+$route['titu/voucher_view/(:any)']  =   'Voucher/voucher_view_page/$1';
 $route['titu/voucher_edit/(:any)']  =   'Voucher/voucher_edit_page/$1';
 $route['titu/voucher_update/(:any)']=   'Voucher/voucher_update/$1';
 $route['titu/voucher_delete/(:any)']=   'Voucher/voucher_delete/$1';

@@ -38,7 +38,33 @@ class Voucher_model extends CI_Model
     }
 
     public function get_all_voucher_list(){
+        $res = $this->db->where('v_status', 'A')->order_by('v_id', 'desc')->get('vouchers')->result();
 
+        if($res){
+            return $res;
+        }
+
+        return FALSE;
+    }
+
+    public function get_all_pending_list(){
+        $res = $this->db->where('v_status', 'A')->where('approve_status','P')->order_by('v_id', 'desc')->get('vouchers')->result();
+
+        if($res){
+            return $res;
+        }
+
+        return FALSE;
+    }
+
+    public function get_all_active_list(){
+        $res = $this->db->where('v_status', 'A')->where('approve_status','A')->order_by('v_id', 'desc')->get('vouchers')->result();
+
+        if($res){
+            return $res;
+        }
+
+        return FALSE;
     }
 
     public function store_voucher_data(){
@@ -76,5 +102,27 @@ class Voucher_model extends CI_Model
             return $res;
         }
         return FALSE;
+    }
+
+    public function approve_voucher($id = Null){
+
+        $attr = array(
+            'approve_status'=>'A',
+            'approved_by'=>$this->session->userData('name'),
+            'updated_by'=>$this->session->userData('name'),
+            'updated_at'=>date('Y-m-d H:i:s'));
+        $this->db->where('v_id', $id);
+        $this->db->update('vouchers', $attr);
+
+        if($this->db->affected_rows()){return TRUE;}return FALSE;
+    }
+
+    public function delete_voucher($id = Null){
+
+        $attr = array('v_status'=>'D','updated_by'=>$this->session->userData('name'), 'updated_at'=>date('Y-m-d H:i:s'));
+        $this->db->where('v_id', $id);
+        $this->db->update('vouchers', $attr);
+
+        if($this->db->affected_rows()){return TRUE;}return FALSE;
     }
 }
