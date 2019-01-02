@@ -29,9 +29,21 @@ class TituController extends MY_Controller
         }
     }
 
-    public function voucher_entry_page(){
-        $data['title'] = 'Voucher Entry';
-        $data['content'] = 'titu/voucher_page';
+    public function trial_balance_page(){
+        $data['title'] = 'Trial Balance';
+        $data['content'] = 'accounts/trial_balance_page';
         $this->load->view('admin/adminMaster', $data);
+    }
+
+    public function trial_balance_report(){
+//        print_r($this->input->post('date_from')); die();
+        $data['date_from'] = $this->input->post('date_from');
+        $data['date_to'] = $this->input->post('date_to');
+
+        $this->session->set_userdata($data);
+
+        $data['account_heads'] = $this->AccountHead_model->all_account_head_list();
+        $this->load->view('admin/accounts/trial_balance_tbl', $data);
+
     }
 }

@@ -180,4 +180,6 @@ class Agent extends MY_Controller
 			redirect('agent/insert');
 		}
 	}
+
+
 }

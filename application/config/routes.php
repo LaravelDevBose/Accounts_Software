@@ -377,6 +377,7 @@ $route['titu/ac_head_update/(:any)'] =   'AccountHeader/account_head_store';
 $route['titu/ac_head_delete/(:any)'] =   'AccountHeader/account_head_store';
 
 $route['titu/trial_balance']        =   'TituController/trial_balance_page';
+$route['titu/trial_balance/report'] =   'TituController/trial_balance_report';
 
 $route['titu/insurance_entry']          =   'TituController/insurance_entry_page';
 $route['titu/insurance_store']          =   'TituController/insurance_store';
@@ -384,8 +385,11 @@ $route['titu/insurance_edit/(:any)']    =   'TituController/insurance_edit_page/
 $route['titu/insurance_update/(:any)']  =   'TituController/insurance_update/$1';
 $route['titu/insurance_delete/(:amy)']  =   'TituController/insurance_delete/$1';
 
-$route['titu/cf_agent_entry']           =   'TituController/cf_agent_entry_page';
-$route['titu/cf_agent_store']           =   'TituController/cf_agent_store';
-$route['titu/cf_agent_edit/(:any)']     =   'TituController/cf_agent_edit_page/$1';
-$route['titu/cf_agent_update/(:any)']   =   'TituController/cf_agent_update/$1';
-$route['titu/cf_agent_delete/(:any)']   =   'TituController/cf_agent_delete/$1';
+$route['titu/agent_bill_entry']           =   'AgentBillPayment/agent_bill_entry_page';
+$route['titu/agent_bill_payment']         =   'AgentBillPayment/agent_payment_entry_page';
+$route['titu/agent_bill_payment_store']   =   'AgentBillPayment/agent_bill_payment_store';
+$route['titu/agent_bill_edit/(:any)']     =   'AgentBillPayment/agent_bill_edit_page/$1';
+$route['titu/agent_bill_update/(:any)']   =   'AgentBillPayment/agent_bill_update/$1';
+$route['titu/agent_bill_delete/(:any)']   =   'AgentBillPayment/agent_bill_delete/$1';
+
+$route['agent_due_amount/(:any)']      =   'AgentBillPayment/calculate_agent_due/$1';

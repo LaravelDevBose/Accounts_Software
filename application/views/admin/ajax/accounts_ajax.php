@@ -16,7 +16,7 @@
 	        		$('#tBody').html(data)
 	        	}else{
 	        		swal({
-                        text: "Store Unsuccessfull..!",
+                        text: "Store Unsuccessful..!",
                         icon: "error",
                         buttons: false,
                         timer: 1500,
@@ -26,7 +26,7 @@
          	},error:function(error){
          		console.log(error);
          		swal({
-                    text: "Store Unsuccessfull..! Some Error Found",
+                    text: "Store Unsuccessful..! Some Error Found",
                     icon: "error",
                     buttons: false,
                     timer: 1500,

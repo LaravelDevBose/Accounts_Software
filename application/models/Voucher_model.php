@@ -125,4 +125,36 @@ class Voucher_model extends CI_Model
 
         if($this->db->affected_rows()){return TRUE;}return FALSE;
     }
+
+    public function account_head_wise_dr_sum($acc_id = Null){
+        $form = $this->session->userdata('date_from');
+        $to = $this->session->userdata('date_to');
+
+        $res = $this->db->select_sum('dr_amount')->where('dr_ah_id', $acc_id)->where('v_status', 'A')
+            ->where("DATE_FORMAT(value_date,'%Y-%m-%d') >=",$form)->where("DATE_FORMAT(value_date,'%Y-%m-%d') <=",$to)
+            ->get('vouchers')->row();
+
+        if($res->dr_amount == ''){
+            return 0;
+        }else{
+            return $res->dr_amount;
+        }
+    }
+
+    public function account_head_wise_cr_sum($acc_id = Null){
+        $form = $this->session->userdata('date_from');
+        $to = $this->session->userdata('date_to');
+
+        $res = $this->db->select_sum('cr_amount')->where('cr_ah_id', $acc_id)->where('v_status', 'A')
+            ->where("DATE_FORMAT(value_date,'%Y-%m-%d') >=",$form)->where("DATE_FORMAT(value_date,'%Y-%m-%d') <=",$to)
+            ->get('vouchers')->row();
+
+
+        if($res->cr_amount == ''){
+            return 0;
+        }else{
+            return $res->cr_amount;
+        }
+    }
+
 }

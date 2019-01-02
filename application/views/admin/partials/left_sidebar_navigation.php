@@ -505,7 +505,7 @@
 
                 </ul>
             </li>
-        <?php } } elseif($this->router->class == 'Voucher' || $this->router->method == 'titu_dashboard' ){?>
+        <?php } } elseif($this->router->class == 'Voucher' || strpos($this->uri->uri_string(), 'titu/') !== false || $this->router->method == 'titu_dashboard' ){?>
         <li class="">
             <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
                 <i class="menu-icon fa fa-cc"></i>
@@ -547,11 +547,46 @@
                 </li>
             </ul>
         </li>
+        <li class="">
+            <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+                <i class="menu-icon fa fa-user-secret"></i>
+                <span class="menu-text">Agent Bill</span>
 
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="<?= ($this->uri->uri_string()== 'titu/agent_bill_entry')?'active': ' ' ?>">
+                    <a href="<?php echo base_url(); ?>titu/agent_bill_entry">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Agent Bill Entry
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="<?= ($this->uri->uri_string()== 'titu/agent_bill_payment')?'active': ' ' ?>">
+                    <a href="<?php echo base_url(); ?>titu/agent_bill_payment">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Agent Bill Payment
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+            </ul>
+        </li>
         <li class="<?= ($this->uri->uri_string()== 'titu/ac_head_entry')?'active': ' ' ?>">
             <a href="<?php echo base_url(); ?>titu/ac_head_entry">
                 <i class="menu-icon fa fa-money"></i>
                 <span class="menu-text">Account Head </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li class="<?= ($this->uri->uri_string()== 'titu/trial_balance')?'active': ' ' ?>">
+            <a href="<?php echo base_url(); ?>titu/trial_balance">
+                <i class="menu-icon fa fa-money"></i>
+                <span class="menu-text">Trial Balance</span>
             </a>
             <b class="arrow"></b>
         </li>
