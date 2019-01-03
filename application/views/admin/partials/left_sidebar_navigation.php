@@ -575,6 +575,34 @@
 
             </ul>
         </li>
+        <li class="">
+            <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+                <i class="menu-icon fa fa-user-secret"></i>
+                <span class="menu-text">Agent Bill</span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="<?= ($this->uri->uri_string()== 'titu/agent_bill_entry')?'active': ' ' ?>">
+                    <a href="<?php echo base_url(); ?>titu/agent_bill_entry">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Agent Bill Entry
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="<?= ($this->uri->uri_string()== 'titu/agent_bill_payment')?'active': ' ' ?>">
+                    <a href="<?php echo base_url(); ?>titu/agent_bill_payment">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Agent Bill Payment
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+            </ul>
+        </li>
         <li class="<?= ($this->uri->uri_string()== 'titu/ac_head_entry')?'active': ' ' ?>">
             <a href="<?php echo base_url(); ?>titu/ac_head_entry">
                 <i class="menu-icon fa fa-money"></i>
@@ -642,6 +670,13 @@
                 <a href="<?php echo base_url(); ?>agent/insert">
                     <i class="menu-icon fa fa-users"></i>
                     <span class="menu-text">C & F Agent </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="<?= ($this->uri->uri_string()== 'insurance_entry')?'active': ' ' ?>">
+                <a href="<?php echo base_url(); ?>insurance_entry">
+                    <i class="menu-icon fa fa-users"></i>
+                    <span class="menu-text">Insurance Company</span>
                 </a>
                 <b class="arrow"></b>
             </li>

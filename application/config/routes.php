@@ -330,6 +330,13 @@ $route['agent/edit/(:any)']		=	'Agent/edit_agent_info/$1';
 $route['agent/update/(:any)']	=	'Agent/update_agent_info/$1';
 $route['agent/delete/(:any)']	=	'Agent/delete_agent_info/$1';
 
+$route['insurance_entry']          =   'Insurance/insurance_entry_page';
+$route['insurance_store']          =   'Insurance/insurance_store';
+$route['insurance_edit/(:any)']    =   'Insurance/insurance_edit_page/$1';
+$route['insurance_update/(:any)']  =   'Insurance/insurance_update/$1';
+$route['insurance_delete/(:any)']  =   'Insurance/insurance_delete/$1';
+
+
 $route['company/insert'] 		= 	"Company/company_page_view";
 $route['company/store'] 		= 	"Company/store_company_info";
 $route['company/edit/(:any)']	=	'Company/edit_company_info/$1';
@@ -379,11 +386,7 @@ $route['titu/ac_head_delete/(:any)'] =   'AccountHeader/account_head_store';
 $route['titu/trial_balance']        =   'TituController/trial_balance_page';
 $route['titu/trial_balance/report'] =   'TituController/trial_balance_report';
 
-$route['titu/insurance_entry']          =   'TituController/insurance_entry_page';
-$route['titu/insurance_store']          =   'TituController/insurance_store';
-$route['titu/insurance_edit/(:any)']    =   'TituController/insurance_edit_page/$1';
-$route['titu/insurance_update/(:any)']  =   'TituController/insurance_update/$1';
-$route['titu/insurance_delete/(:amy)']  =   'TituController/insurance_delete/$1';
+
 
 $route['titu/agent_bill_entry']           =   'AgentBillPayment/agent_bill_entry_page';
 $route['titu/agent_bill_payment']         =   'AgentBillPayment/agent_payment_entry_page';
