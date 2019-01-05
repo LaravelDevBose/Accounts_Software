@@ -111,6 +111,17 @@ class LC_model extends CI_Model
 		}
 	}
 
+    public function lc_info_by_id($id=Null)
+    {
+        if(!is_null($id)){
+            $result = $this->db->where('id', $id)->get('tbl_lcs')->row();
+
+            if($result){ return $result; }else{ return FALSE; }
+        }else{
+            return FALSE;
+        }
+    }
+
 	/**====== Find Lc Details_ info ===================**/
 	public function find_lc_details_info($lc_id=Null)
 	{

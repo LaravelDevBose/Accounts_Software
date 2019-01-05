@@ -362,37 +362,50 @@ $route['define_access'] 			= 	"AdminAccess/define_access";
 
 /************************ titu account route list ***************************/
 
-$route['titu/voucher_list']         =   'Voucher/voucher_list_page';
-$route['titu/voucher_pending_list'] =   'Voucher/voucher_pending_list';
-$route['titu/voucher_active_list'] =   'Voucher/voucher_active_list';
-$route['titu/voucher_entry']        =   'Voucher/voucher_entry_page';
-$route['titu/voucher_store']        =   'Voucher/voucher_store';
-$route['titu/voucher_store_print']  =   'Voucher/voucher_store_print';
-$route['titu/voucher_view/(:any)']  =   'Voucher/voucher_view_page/$1';
-$route['titu/voucher_edit/(:any)']  =   'Voucher/voucher_edit_page/$1';
-$route['titu/voucher_update/(:any)']=   'Voucher/voucher_update/$1';
-$route['titu/voucher_delete/(:any)']=   'Voucher/voucher_delete/$1';
-$route['titu/voucher_approve/(:any)']=  'Voucher/voucher_approve/$1';
-$route['titu/voucher_print/(:any)'] =   'Voucher/voucher_print/$1';
+$route['titu/voucher_list']             =   'Voucher/voucher_list_page';
+$route['titu/voucher_pending_list']     =   'Voucher/voucher_pending_list';
+$route['titu/voucher_active_list']      =   'Voucher/voucher_active_list';
+$route['titu/voucher_entry']            =   'Voucher/voucher_entry_page';
+$route['titu/voucher_store']            =   'Voucher/voucher_store';
+$route['titu/voucher_store_print']      =   'Voucher/voucher_store_print';
+$route['titu/voucher_view/(:any)']      =   'Voucher/voucher_view_page/$1';
+$route['titu/voucher_edit/(:any)']      =   'Voucher/voucher_edit_page/$1';
+$route['titu/voucher_update/(:any)']    =   'Voucher/voucher_update/$1';
+$route['titu/voucher_delete/(:any)']    =   'Voucher/voucher_delete/$1';
+$route['titu/voucher_approve/(:any)']   =  'Voucher/voucher_approve/$1';
+$route['titu/voucher_print/(:any)']     =   'Voucher/voucher_print/$1';
 
-$route['titu/transaction_list']     =   'TituController/transaction_list_page';
+$route['titu/transaction_list']         =   'TituController/transaction_list_page';
 
-$route['titu/ac_head_entry']         =   'AccountHeader/account_head_page';
-$route['titu/ac_head_store']         =   'AccountHeader/account_head_store';
-$route['titu/ac_head_edit/(:any)']   =   'AccountHeader/account_head_store';
-$route['titu/ac_head_update/(:any)'] =   'AccountHeader/account_head_store';
-$route['titu/ac_head_delete/(:any)'] =   'AccountHeader/account_head_store';
+$route['titu/ac_head_entry']            =   'AccountHeader/account_head_page';
+$route['titu/ac_head_store']            =   'AccountHeader/account_head_store';
+$route['titu/ac_head_edit/(:any)']      =   'AccountHeader/account_head_store';
+$route['titu/ac_head_update/(:any)']    =   'AccountHeader/account_head_store';
+$route['titu/ac_head_delete/(:any)']    =   'AccountHeader/account_head_store';
 
-$route['titu/trial_balance']        =   'TituController/trial_balance_page';
-$route['titu/trial_balance/report'] =   'TituController/trial_balance_report';
+$route['titu/trial_balance']            =   'TituController/trial_balance_page';
+$route['titu/trial_balance/report']     =   'TituController/trial_balance_report';
 
 
 
-$route['titu/agent_bill_entry']           =   'AgentBillPayment/agent_bill_entry_page';
-$route['titu/agent_bill_payment']         =   'AgentBillPayment/agent_payment_entry_page';
-$route['titu/agent_bill_payment_store']   =   'AgentBillPayment/agent_bill_payment_store';
-$route['titu/agent_bill_edit/(:any)']     =   'AgentBillPayment/agent_bill_edit_page/$1';
-$route['titu/agent_bill_update/(:any)']   =   'AgentBillPayment/agent_bill_update/$1';
-$route['titu/agent_bill_delete/(:any)']   =   'AgentBillPayment/agent_bill_delete/$1';
+$route['titu/agent_bill_entry']             =   'AgentBillPayment/agent_bill_entry_page';
+$route['titu/agent_bill_payment']           =   'AgentBillPayment/agent_payment_entry_page';
+$route['titu/agent_bill_payment_store']     =   'AgentBillPayment/agent_bill_payment_store';
+$route['titu/agent_bill_edit/(:any)']       =   'AgentBillPayment/agent_bill_edit_page/$1';
+$route['titu/agent_bill_update/(:any)']     =   'AgentBillPayment/agent_bill_update/$1';
+$route['titu/agent_bill_delete/(:any)']     =   'AgentBillPayment/agent_bill_delete/$1';
 
-$route['agent_due_amount/(:any)']      =   'AgentBillPayment/calculate_agent_due/$1';
+$route['agent_due_amount/(:any)']           =   'AgentBillPayment/calculate_agent_due/$1';
+
+$route['titu/insurance_bill_page']          =   'Insurance/insurance_bill_entry';
+$route['titu/insurance_payment_page']       =   'Insurance/insurance_payment_entry';
+$route['insurance_bill_payment_store']      =   'Insurance/insurance_bill_payment_insert';
+$route['titu/insurance_bill_edit/(:any)']   =   'Insurance/insurance_bill_payment_edit/$1';
+$route['titu/insurance_bill_update/(:any)'] =   'Insurance/insurance_bill_payment_update/$1';
+$route['titu/insurance_bill_delete/(:any)'] =   'Insurance/insurance_bill_payment_delete/$1';
+$route['titu/insurance_report_page']        =   'Insurance/insurance_report_page';
+$route['company_due/(:any)']                =   'Insurance/calculate_insurance_due/$1';
+$route['insurance_search_report']           =   'Insurance/insurance_search_report';
+
+
+

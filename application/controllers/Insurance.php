@@ -136,7 +136,7 @@ class Insurance extends MY_Controller
     public function insurance_payment_entry(){
         $data['title'] = 'Insurance Bill Entry';
         $data['content'] = 'insurance/insurance_payment_page';
-        $data['bill_code'] = $this->InsuranceBill_model->insurance_payment_code();
+        $data['pay_code'] = $this->InsuranceBill_model->insurance_payment_code();
         $data['companies'] = $this->Insurance_model->get_all_company_info();
         $data['customers'] = $this->Customer_model->find_all_customer_info();
         $data['bills'] = $this->InsuranceBill_model->get_all_insurance_payment_data();
@@ -145,21 +145,43 @@ class Insurance extends MY_Controller
 
     public function insurance_bill_payment_insert(){
 
+        if($this->InsuranceBill_model->insurance_bill_payment_store()){
+
+            if($this->input->post('in_bill_type') == 'Bill'){
+                $data['bills'] = $this->InsuranceBill_model->get_all_insurance_bill_data();
+                $this->load->view('admin/insurance/insurance_bill_tbl', $data);
+            }else{
+                $data['bills'] = $this->InsuranceBill_model->get_all_insurance_payment_data();
+                $this->load->view('admin/insurance/insurance_pay_tbl', $data);
+            }
+
+        }else{
+            return 0;
+        }
     }
 
     public function insurance_bill_payment_edit($id = Null){
 
         if($bill = $this->InsuranceBill_model->get_insurance_bill_data_by_id($id)){
-
             $data['bill'] = $bill;
             $data['companies'] = $this->Insurance_model->get_all_company_info();
             $data['customers'] = $this->Customer_model->find_all_customer_info();
+            $data['orders'] = $this->Order_model->find_order_by_customer($bill->cus_id);
+            $data['lc_info'] = $this->LC_model->lc_info_by_id($bill->lc_id);
             $this->load->view('admin/insurance/insurance_bill_edit', $data);
         }
     }
 
     public function insurance_bill_payment_update($id = Null){
-
+        if($this->InsuranceBill_model->insurance_bill_payment_update($id)){
+            $data['success']="Update Successfully!";
+            $this->session->set_flashdata($data);
+            redirect($_SERVER['HTTP_REFERER']);
+        }else{
+            $data['error']="Update Unsuccessfully!";
+            $this->session->set_flashdata($data);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 
     public function insurance_bill_payment_delete($id=Null){
@@ -172,6 +194,45 @@ class Insurance extends MY_Controller
             $data['error']="Delete Unsuccessfully!";
             $this->session->set_flashdata($data);
             redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function calculate_insurance_due($id = Null){
+
+        if($bill = $this->InsuranceBill_model->calculate_insurance_bill_amount($id)){
+            if($bill == 1){
+                $bill = 0;
+            }
+            $pay = $this->InsuranceBill_model->calculate_insurance_payment_amount($id);
+            echo $due = $bill-$pay ;
+        }else{
+            echo 'F';
+        }
+    }
+
+    public function insurance_report_page(){
+        $data['title'] = 'Insurance Bill Payment Report';
+        $data['content'] = 'insurance/insurance_report_page';
+        $data['companies'] = $this->Insurance_model->get_all_company_info();
+        $this->load->view('admin/adminMaster', $data);
+    }
+
+    public function insurance_search_report(){
+        $search_type = $this->input->post('search_type');
+        $comp_id = $this->input->post('comp_id');
+        $date_from = $this->input->post('date_from');
+        $date_to = $this->input->post('date_to');
+
+        if($search_type == 'comp'){
+            $data['bills'] = $this->InsuranceBill_model->company_wise_search($comp_id);
+        }elseif($search_type == 'date'){
+            $data['bills'] = $this->InsuranceBill_model->date_to_date_search($date_from, $date_to);
+        }
+
+        if($data['bills']){
+            $this->load->view('admin/insurance/search_tbl', $data);
+        }else{
+            echo 0;
         }
     }
 }

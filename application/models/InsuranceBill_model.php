@@ -77,7 +77,7 @@ class InsuranceBill_model extends CI_Model
         $this->db->join('orders','orders.id = insurance_bills.order_id','left');
         $this->db->join('tbl_lcs','tbl_lcs.id = insurance_bills.lc_id','left');
         $this->db->where('insurance_bills.in_bill_type','Bill')->where('insurance_bills.in_bill_status', 'A');
-        $res = $this->db->get()->result();
+        $res = $this->db->order_by('insurance_bills.in_bill_id', 'desc')->get()->result();
 
         if($res){
             return $res;
@@ -90,7 +90,7 @@ class InsuranceBill_model extends CI_Model
         $this->db->from('insurance_bills');
         $this->db->join('insurance_companies','insurance_companies.in_comp_id = insurance_bills.in_comp_id');
         $this->db->where('insurance_bills.in_bill_type','Pay')->where('insurance_bills.in_bill_status', 'A');
-        $res = $this->db->get()->result();
+        $res = $this->db->order_by('insurance_bills.in_bill_id', 'desc')->get()->result();
 
         if($res){
             return $res;
@@ -99,27 +99,31 @@ class InsuranceBill_model extends CI_Model
     }
 
     public function insurance_bill_payment_store(){
+        $data = array();
+
         if($this->input->post('in_bill_type') == 'Bill'){
             $code = $this->insurance_bill_code();
+
         }else{
             $code = $this->insurance_payment_code();
         }
-
+        $data = $this->payable_calculation($this->input->post('net_premium'));
         $attr = array(
             'in_bill_code'=>$code,
             'in_bill_type'=>$this->input->post('in_bill_type'),
             'in_bill_date'=>$this->input->post('in_bill_date'),
+            'mc_crt_no'=>$this->input->post('mc_crt_no'),
             'in_comp_id'=>$this->input->post('in_comp_id'),
             'cus_id'=>$this->input->post('cus_id'),
             'lc_id'=>$this->input->post('lc_id'),
             'order_id'=>$this->input->post('order_id'),
-            'gross_premium'=>$this->input->post('gross_premium'),
+            'gross_premium'=>$data['gross'],
             'net_premium'=>$this->input->post('net_premium'),
-            'in_bill_15'=>$this->input->post('in_bill_15'),
-            'in_bill_30'=>$this->input->post('in_bill_30'),
-            'in_bill_70'=>$this->input->post('in_bill_70'),
+            'in_bill_vat'=>$data['vat'],
+            'in_bill_30'=>$data['pay_30'],
+            'in_bill_70'=>$data['pay_70'],
             'stamp'=>$this->input->post('stamp'),
-            'bill_amount'=>$this->input->post('bill_amount'),
+            'bill_amount'=>$data['payable']+(int)$this->input->post('stamp'),
             'payment_amount'=>$this->input->post('payment_amount'),
             'remarks'=>$this->input->post('remarks'),
             'in_bill_status'=>'A',
@@ -141,7 +145,7 @@ class InsuranceBill_model extends CI_Model
         $this->db->join('customers','customers.id = insurance_bills.cus_id','left');
         $this->db->join('orders','orders.id = insurance_bills.order_id','left');
         $this->db->join('tbl_lcs','tbl_lcs.id = insurance_bills.lc_id','left');
-        $res = $this->db->where('insurance_bills.in_bill_id',$id)->get()->result();
+        $res = $this->db->where('insurance_bills.in_bill_id',$id)->get()->row();
 
         if($res){
             return $res;
@@ -150,21 +154,25 @@ class InsuranceBill_model extends CI_Model
     }
 
     public function insurance_bill_payment_update($id=Null, $type=Null){
+        $data = $this->payable_calculation($this->input->post('net_premium'));
+
         $attr = array(
             'in_bill_date'=>$this->input->post('in_bill_date'),
+            'mc_crt_no'=>$this->input->post('mc_crt_no'),
             'in_comp_id'=>$this->input->post('in_comp_id'),
             'cus_id'=>$this->input->post('cus_id'),
             'lc_id'=>$this->input->post('lc_id'),
             'order_id'=>$this->input->post('order_id'),
-            'gross_premium'=>$this->input->post('gross_premium'),
+            'gross_premium'=>$data['gross'],
             'net_premium'=>$this->input->post('net_premium'),
-            'in_bill_15'=>$this->input->post('in_bill_15'),
-            'in_bill_30'=>$this->input->post('in_bill_30'),
-            'in_bill_70'=>$this->input->post('in_bill_70'),
+            'in_bill_vat'=>$data['vat'],
+            'in_bill_30'=>$data['pay_30'],
+            'in_bill_70'=>$data['pay_70'],
             'stamp'=>$this->input->post('stamp'),
-            'bill_amount'=>$this->input->post('bill_amount'),
+            'bill_amount'=>$data['payable']+(int)$this->input->post('stamp'),
             'payment_amount'=>$this->input->post('payment_amount'),
             'remarks'=>$this->input->post('remarks'),
+
             'updated_by'=>$this->session->userdata('name'),
             'updated_at'=>date('Y-m-d H:i:s'),
         );
@@ -197,9 +205,11 @@ class InsuranceBill_model extends CI_Model
         $res = $this->db->select_sum('bill_amount')->where('in_comp_id', $comp_id)->where('in_bill_status', 'A')
             ->where('in_bill_type', 'Bill')->get('insurance_bills')->row();
 
+//        print_r($res);
+//        die();
 
         if($res){
-            if($res->bill_amount){
+            if($res->bill_amount != ''){
                 return $res->bill_amount;
             }
             return 1;
@@ -213,7 +223,51 @@ class InsuranceBill_model extends CI_Model
 
 
         if($res){
-            return $res->bill_amount;
+            return $res->payment_amount;
+        }
+        return FALSE;
+    }
+
+    private function payable_calculation($net_premium = Null){
+        $vat = ($net_premium*15)/100;
+        $pay_30 = ($net_premium*30)/100;
+        $pay_70 = ($net_premium*70)/100;
+
+        $data['gross'] = $vat+$net_premium;
+        $data['payable'] = $vat+$pay_30;
+        $data['vat'] = $vat;
+        $data['pay_30'] = $pay_30;
+        $data['pay_70'] = $pay_70;
+
+        return $data;
+    }
+
+    public function company_wise_search($comp_id = Null){
+        $this->db->select('insurance_bills.*,insurance_companies.in_comp_name, customers.cus_name');
+        $this->db->from('insurance_bills');
+        $this->db->join('insurance_companies','insurance_companies.in_comp_id = insurance_bills.in_comp_id');
+        $this->db->join('customers','customers.id = insurance_bills.cus_id','left');
+        $this->db->where('insurance_bills.in_comp_id',$comp_id)->where('insurance_bills.in_bill_status', 'A');
+        $res = $this->db->order_by('insurance_bills.in_bill_id', 'desc')->get()->result();
+
+        if($res){
+            return $res;
+        }
+        return FALSE;
+    }
+
+    public function date_to_date_search($date_from= Null, $date_to = Null){
+        $this->db->select('insurance_bills.*,insurance_companies.in_comp_name, customers.cus_name');
+        $this->db->from('insurance_bills');
+        $this->db->join('insurance_companies','insurance_companies.in_comp_id = insurance_bills.in_comp_id');
+        $this->db->join('customers','customers.id = insurance_bills.cus_id','left');
+        $this->db->where('insurance_bills.in_bill_status', 'A');
+        $this->db->where("DATE_FORMAT(insurance_bills.in_bill_date,'%Y-%m-%d') >=",$date_from);
+        $this->db->where("DATE_FORMAT(insurance_bills.in_bill_date,'%Y-%m-%d') >=",$date_to);
+        $res = $this->db->order_by('insurance_bills.in_bill_id', 'desc')->get()->result();
+
+        if($res){
+            return $res;
         }
         return FALSE;
     }

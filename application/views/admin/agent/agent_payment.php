@@ -34,7 +34,7 @@
                                     <div class="col-sm-7">
                                         <select class="form-control chosen-select " id="agent_id" required name="agent_id" style="height: 30px; border-radius: 5px;">
                                             <option value="">Select a Agent</option>
-                                            <?php if($agents && isset($agents)):  foreach($agents as $agent):?>
+                                            <?php if(isset($agents) && $agents):  foreach($agents as $agent):?>
                                                 <option value="<?= $agent->id; ?>"><?= ucfirst($agent->agent_name).'-'.$agent->agent_code; ?></option>
                                             <?php endforeach; endif; ?>
                                         </select>
