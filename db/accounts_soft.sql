@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2018 at 08:35 AM
+-- Generation Time: Jan 05, 2019 at 12:07 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -180,7 +180,39 @@ CREATE TABLE `agents` (
 INSERT INTO `agents` (`id`, `agent_code`, `agent_name`, `agent_phone`, `agent_email`, `agent_address`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'A00001', 'Japan Express', '985468751', 'japanexpress@gmail.com', 'japan', 'a', 'admin', 'admin', '2018-11-10 18:00:00', '2018-11-10 18:00:00'),
 (2, 'A00002', 'chu huwang', '9876541587', 'chuhuwang@yehoo.com', 'japan', 'a', 'admin', 'admin', '2018-11-10 18:00:00', '2018-11-10 18:00:00'),
-(3, 'A00003', 'Marto Fande', '336548744', 'fande@gmail.com', 'China', 'a', 'admin', 'admin', '2018-11-10 18:00:00', '2018-11-10 18:00:00');
+(3, 'A00003', 'Marto Fande', '336548744', 'fande@gmail.com', 'China ok', 'a', 'admin', 'admin', '2018-11-10 18:00:00', '2019-01-02 04:35:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agent_bill_payments`
+--
+
+CREATE TABLE `agent_bill_payments` (
+  `bill_id` int(20) UNSIGNED NOT NULL,
+  `agent_id` int(20) NOT NULL,
+  `entry_code` varchar(100) NOT NULL,
+  `bp_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `bill_no` varchar(100) DEFAULT NULL,
+  `particulars` varchar(250) NOT NULL,
+  `remarks` varchar(250) DEFAULT NULL,
+  `bill_amount` int(10) UNSIGNED DEFAULT NULL,
+  `paid_amount` int(10) UNSIGNED DEFAULT NULL,
+  `entry_type` char(10) DEFAULT NULL COMMENT 'Bill , Pay',
+  `bp_status` char(10) DEFAULT 'A',
+  `created_by` varchar(100) DEFAULT NULL,
+  `updated_by` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `agent_bill_payments`
+--
+
+INSERT INTO `agent_bill_payments` (`bill_id`, `agent_id`, `entry_code`, `bp_date`, `bill_no`, `particulars`, `remarks`, `bill_amount`, `paid_amount`, `entry_type`, `bp_status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 3, 'AB00001', '2019-01-01 18:00:00', '5487', 'dsfdf', 'fdsf', 300, NULL, 'Bill', 'A', 'admin', 'admin', '2019-01-02 11:23:12', '2019-01-02 11:24:05'),
+(2, 3, 'AP00001', '2019-01-01 18:00:00', NULL, 'full', 'dfdf', NULL, 200, 'Pay', 'D', 'admin', 'admin', '2019-01-02 11:23:31', '2019-01-02 11:24:42');
 
 -- --------------------------------------------------------
 
@@ -524,6 +556,84 @@ INSERT INTO `ie_heads` (`id`, `head_title`, `head_type`, `status`, `created_by`,
 (5, 'Goduan Rent', 'C', 'a', 'admin', 'admin', '2018-11-10 18:00:00', '2018-11-10 18:00:00'),
 (6, 'Current Bill', 'O', 'a', 'admin', 'admin', '2018-11-10 18:00:00', '2018-11-10 18:00:00'),
 (7, 'Tea bill', 'O', 'a', 'admin', 'admin', '2018-11-10 18:00:00', '2018-11-10 18:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `insurance_bills`
+--
+
+CREATE TABLE `insurance_bills` (
+  `in_bill_id` int(20) UNSIGNED NOT NULL,
+  `in_bill_code` varchar(100) DEFAULT NULL,
+  `in_bill_type` char(10) DEFAULT NULL COMMENT 'Bill,Pay',
+  `in_bill_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `in_comp_id` int(20) UNSIGNED NOT NULL,
+  `mc_crt_no` varchar(200) DEFAULT NULL,
+  `cus_id` int(20) UNSIGNED DEFAULT NULL,
+  `lc_id` int(20) UNSIGNED DEFAULT NULL,
+  `order_id` int(20) UNSIGNED DEFAULT NULL,
+  `gross_premium` int(10) UNSIGNED DEFAULT NULL,
+  `net_premium` int(10) UNSIGNED DEFAULT NULL,
+  `in_bill_vat` int(10) UNSIGNED DEFAULT NULL COMMENT '15%',
+  `in_bill_30` int(10) UNSIGNED DEFAULT NULL COMMENT '30%',
+  `in_bill_70` int(10) UNSIGNED DEFAULT NULL COMMENT '70%',
+  `stamp` int(10) UNSIGNED DEFAULT NULL,
+  `bill_amount` int(10) UNSIGNED DEFAULT NULL,
+  `payment_amount` int(10) UNSIGNED DEFAULT NULL,
+  `remarks` varchar(250) DEFAULT NULL,
+  `in_bill_status` char(10) DEFAULT 'A',
+  `created_by` varchar(150) DEFAULT NULL,
+  `updated_by` varchar(150) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `insurance_bills`
+--
+
+INSERT INTO `insurance_bills` (`in_bill_id`, `in_bill_code`, `in_bill_type`, `in_bill_date`, `in_comp_id`, `mc_crt_no`, `cus_id`, `lc_id`, `order_id`, `gross_premium`, `net_premium`, `in_bill_vat`, `in_bill_30`, `in_bill_70`, `stamp`, `bill_amount`, `payment_amount`, `remarks`, `in_bill_status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'IB00001', 'Bill', '2019-01-04 18:00:00', 2, NULL, 10, 0, 13, 829442, 721254, 108188, 216376, 504878, 500, 325064, NULL, '', 'D', 'admin', 'admin', '2019-01-05 08:30:45', '2019-01-05 10:05:24'),
+(2, 'IB00002', 'Bill', '2019-01-04 18:00:00', 2, NULL, 8, 0, 9, 57500, 50000, 7500, 15000, 35000, 0, 22500, NULL, '', 'A', 'admin', NULL, '2019-01-05 08:33:32', NULL),
+(3, 'IB00003', 'Bill', '2019-01-04 18:00:00', 2, 'dsafsdfsdf', 5, 0, 6, 82953, 72133, 10820, 21640, 50493, 0, 32460, NULL, '', 'A', 'admin', NULL, '2019-01-05 08:35:58', NULL),
+(4, 'IB00004', 'Bill', '2019-01-04 18:00:00', 2, 'crt-0145', 4, 1, 2, 52529, 45677, 6852, 13703, 31974, 50, 20605, NULL, '', 'A', 'admin', NULL, '2019-01-05 08:37:44', NULL),
+(5, 'IB00005', 'Bill', '2019-01-04 18:00:00', 2, 'fgfg', 2, 0, 1, 57500, 50000, 7500, 15000, 35000, 0, 22500, NULL, '', 'A', 'admin', NULL, '2019-01-05 08:49:33', NULL),
+(6, 'IB00006', 'Bill', '2019-01-04 18:00:00', 2, 'hghdf', 1, 0, 4, 57500, 50000, 7500, 15000, 35000, 500, 23000, NULL, 'update', 'A', 'admin', 'admin', '2019-01-05 08:50:44', '2019-01-05 10:04:11'),
+(7, 'IP00001', 'Pay', '2019-01-05 09:05:21', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 10000, '', 'D', 'admin', 'admin', '2019-01-05 09:05:21', '2019-01-05 10:05:02'),
+(8, 'IP00002', 'Pay', '2019-01-05 09:08:48', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 500000, '', 'A', 'admin', NULL, '2019-01-05 09:08:48', NULL),
+(9, 'IP00003', 'Pay', '2019-01-05 09:10:00', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 8129, '', 'A', 'admin', NULL, '2019-01-05 09:10:00', NULL),
+(10, 'IP00004', 'Pay', '2019-01-05 09:10:45', 2, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, NULL, 0, 3000, '', 'A', 'admin', NULL, '2019-01-05 09:10:45', NULL),
+(11, 'IP00005', 'Pay', '2018-12-31 18:00:00', 2, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, NULL, 0, 5000, 'update', 'D', 'admin', 'admin', '2019-01-05 09:41:30', '2019-01-05 10:04:54');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `insurance_companies`
+--
+
+CREATE TABLE `insurance_companies` (
+  `in_comp_id` int(20) UNSIGNED NOT NULL,
+  `in_comp_code` varchar(100) DEFAULT NULL,
+  `in_comp_name` varchar(150) NOT NULL,
+  `owner_name` varchar(150) DEFAULT NULL,
+  `in_comp_phone` varchar(100) DEFAULT NULL,
+  `in_comp_email` varchar(100) DEFAULT NULL,
+  `in_comp_address` varchar(250) DEFAULT NULL,
+  `in_comp_status` char(10) DEFAULT 'A',
+  `created_by` varchar(100) DEFAULT NULL,
+  `updated_by` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `insurance_companies`
+--
+
+INSERT INTO `insurance_companies` (`in_comp_id`, `in_comp_code`, `in_comp_name`, `owner_name`, `in_comp_phone`, `in_comp_email`, `in_comp_address`, `in_comp_status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Momen LTD', 'Md Momen', '013715469875', 'momen@co.com', 'mirpur', 'D', 'admin', 'admin', '2019-01-03 05:36:07', '2019-01-03 05:59:21'),
+(2, NULL, 'Islam Commercial Insurance Co', 'Islam', '', '', 'Islam', 'A', 'admin', NULL, '2019-01-05 05:30:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -1133,6 +1243,12 @@ ALTER TABLE `agents`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `agent_bill_payments`
+--
+ALTER TABLE `agent_bill_payments`
+  ADD PRIMARY KEY (`bill_id`);
+
+--
 -- Indexes for table `banks`
 --
 ALTER TABLE `banks`
@@ -1197,6 +1313,18 @@ ALTER TABLE `employees`
 --
 ALTER TABLE `ie_heads`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `insurance_bills`
+--
+ALTER TABLE `insurance_bills`
+  ADD PRIMARY KEY (`in_bill_id`);
+
+--
+-- Indexes for table `insurance_companies`
+--
+ALTER TABLE `insurance_companies`
+  ADD PRIMARY KEY (`in_comp_id`);
 
 --
 -- Indexes for table `lc_details`
@@ -1324,6 +1452,12 @@ ALTER TABLE `agents`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `agent_bill_payments`
+--
+ALTER TABLE `agent_bill_payments`
+  MODIFY `bill_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `banks`
 --
 ALTER TABLE `banks`
@@ -1388,6 +1522,18 @@ ALTER TABLE `employees`
 --
 ALTER TABLE `ie_heads`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `insurance_bills`
+--
+ALTER TABLE `insurance_bills`
+  MODIFY `in_bill_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `insurance_companies`
+--
+ALTER TABLE `insurance_companies`
+  MODIFY `in_comp_id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lc_details`

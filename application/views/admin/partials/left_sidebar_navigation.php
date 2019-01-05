@@ -505,7 +505,7 @@
 
                 </ul>
             </li>
-        <?php } } elseif($this->router->class == 'Voucher' || strpos($this->uri->uri_string(), 'titu/') !== false || $this->router->method == 'titu_dashboard' ){?>
+        <?php } } elseif($this->router->class == 'Insurance' || $this->router->class == 'Voucher' || strpos($this->uri->uri_string(), 'titu/') !== false || $this->router->method == 'titu_dashboard' ){?>
         <li class="">
             <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
                 <i class="menu-icon fa fa-cc"></i>

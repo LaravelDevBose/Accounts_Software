@@ -2,21 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5927f7d-2bb3-4282-a10a-b98daa972abe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/views/admin/ajax/insurance_bill_ajax.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/admin/insurance/insurance_bill_tbl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/admin/insurance/insurance_pay_tbl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/admin/insurance/insurance_report_page.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/admin/insurance/search_tbl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Insurance.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Insurance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/InsuranceBill_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/InsuranceBill_model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/LC_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/LC_model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/agent/agent_bill.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/agent/agent_bill.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/agent/agent_payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/agent/agent_payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/insurance/insurance_bill_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/insurance/insurance_bill_edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/insurance/insurance_bill_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/insurance/insurance_bill_page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/insurance/insurance_payment_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/insurance/insurance_payment_page.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,7 +55,7 @@
           <entry key="jpeg" value="1" />
           <entry key="jpg" value="31" />
           <entry key="js" value="6" />
-          <entry key="php" value="785" />
+          <entry key="php" value="786" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -79,7 +64,7 @@
           <entry key="HTML" value="7" />
           <entry key="Image" value="32" />
           <entry key="JavaScript" value="6" />
-          <entry key="PHP" value="782" />
+          <entry key="PHP" value="783" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
@@ -88,14 +73,14 @@
           <entry key="css" value="2" />
           <entry key="dummy" value="7" />
           <entry key="js" value="2" />
-          <entry key="php" value="61615" />
+          <entry key="php" value="61616" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
           <entry key="JavaScript" value="2" />
-          <entry key="PHP" value="61519" />
+          <entry key="PHP" value="61520" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="SQL" value="96" />
         </counts>
@@ -121,41 +106,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Insurance.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="228" column="57" selection-start-line="228" selection-start-column="57" selection-end-line="228" selection-end-column="98" />
+            <state relative-caret-position="85">
+              <caret line="10" column="15" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/insurance_bill_ajax.php">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="251" column="52" selection-start-line="251" selection-start-column="52" selection-end-line="251" selection-end-column="52" />
-              <folding>
-                <element signature="e#87#828#0#HTML" />
-                <element signature="e#877#2767#0#HTML" />
-                <element signature="e#2882#4382#0#HTML" />
-                <element signature="e#4426#6839#0#HTML" />
-                <element signature="e#6882#8819#0#HTML" />
-                <element signature="e#7344#8807#0#HTML" />
-                <element signature="e#8875#10056#0#HTML" />
-                <element signature="e#10091#11266#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/InsuranceBill_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="261" column="56" selection-start-line="261" selection-start-column="56" selection-end-line="261" selection-end-column="56" />
-              <folding>
-                <element signature="n#delete_insurance_data#0;n#InsuranceBill_model#0;n#!!top" />
-                <element signature="n#calculate_insurance_bill_amount#0;n#InsuranceBill_model#0;n#!!top" />
-                <element signature="n#calculate_insurance_payment_amount#0;n#InsuranceBill_model#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="289">
+              <caret line="507" column="59" selection-start-line="507" selection-start-column="59" selection-end-line="507" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -269,13 +230,13 @@
         <option value="$PROJECT_DIR$/application/models/LC_model.php" />
         <option value="$PROJECT_DIR$/application/views/admin/insurance/insurance_payment_page.php" />
         <option value="$PROJECT_DIR$/application/views/admin/insurance/insurance_bill_edit.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" />
         <option value="$PROJECT_DIR$/application/views/admin/insurance/insurance_report_page.php" />
         <option value="$PROJECT_DIR$/application/config/routes.php" />
         <option value="$PROJECT_DIR$/application/controllers/Insurance.php" />
         <option value="$PROJECT_DIR$/application/models/InsuranceBill_model.php" />
         <option value="$PROJECT_DIR$/application/views/admin/insurance/search_tbl.php" />
         <option value="$PROJECT_DIR$/application/views/admin/ajax/insurance_bill_ajax.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" />
       </list>
     </option>
   </component>
@@ -359,15 +320,7 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="insurance" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -465,12 +418,12 @@
       <workItem from="1545883499027" duration="12081000" />
       <workItem from="1546400585289" duration="27268000" />
       <workItem from="1546486454420" duration="14160000" />
-      <workItem from="1546658602894" duration="23366000" />
+      <workItem from="1546658602894" duration="23676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376943000" />
+    <option name="totallyTimeSpent" value="377253000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -799,13 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="603" column="80" selection-start-line="603" selection-start-column="80" selection-end-line="603" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/insurance/insurance_payment_page.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="717">
@@ -860,13 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Insurance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="228" column="57" selection-start-line="228" selection-start-column="57" selection-end-line="228" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/insurance/search_tbl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
@@ -885,6 +824,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/insurance_bill_ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="263" lean-forward="true" selection-start-line="263" selection-end-line="263" />
+          <folding>
+            <element signature="e#87#828#0#HTML" />
+            <element signature="e#877#2767#0#HTML" />
+            <element signature="e#2882#4382#0#HTML" />
+            <element signature="e#4426#6839#0#HTML" />
+            <element signature="e#6882#8819#0#HTML" />
+            <element signature="e#7344#8807#0#HTML" />
+            <element signature="e#8875#10056#0#HTML" />
+            <element signature="e#10091#11266#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/InsuranceBill_model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
@@ -897,20 +853,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/insurance_bill_ajax.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/Insurance.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="251" column="52" selection-start-line="251" selection-start-column="52" selection-end-line="251" selection-end-column="52" />
-          <folding>
-            <element signature="e#87#828#0#HTML" />
-            <element signature="e#877#2767#0#HTML" />
-            <element signature="e#2882#4382#0#HTML" />
-            <element signature="e#4426#6839#0#HTML" />
-            <element signature="e#6882#8819#0#HTML" />
-            <element signature="e#7344#8807#0#HTML" />
-            <element signature="e#8875#10056#0#HTML" />
-            <element signature="e#10091#11266#0#HTML" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="507" column="59" selection-start-line="507" selection-start-column="59" selection-end-line="507" selection-end-column="59" />
         </state>
       </provider>
     </entry>
