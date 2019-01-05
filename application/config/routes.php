@@ -381,7 +381,7 @@ $route['titu/ac_head_entry']            =   'AccountHeader/account_head_page';
 $route['titu/ac_head_store']            =   'AccountHeader/account_head_store';
 $route['titu/ac_head_edit/(:any)']      =   'AccountHeader/account_head_store';
 $route['titu/ac_head_update/(:any)']    =   'AccountHeader/account_head_store';
-$route['titu/ac_head_delete/(:any)']    =   'AccountHeader/account_head_store';
+$route['titu/ac_head_delete/(:any)']    =   'AccountHeader/account_head_delete/$1';
 
 $route['titu/trial_balance']            =   'TituController/trial_balance_page';
 $route['titu/trial_balance/report']     =   'TituController/trial_balance_report';

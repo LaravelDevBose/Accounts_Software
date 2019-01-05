@@ -46,4 +46,19 @@ class AccountHeader extends MY_Controller
         }
     }
 
+    public function account_head_delete($id){
+        if($this->AccountHead_model->delete_account_head($id)){
+            $data['success']="Delete Successfully!";
+            $this->session->set_flashdata($data);
+            redirect('titu/ac_head_entry');
+
+        }else{
+            $data['error']="Delete Unsuccessfully!";
+            $this->session->set_flashdata($data);
+            redirect('titu/ac_head_entry');
+        }
+    }
+
+
+
 }

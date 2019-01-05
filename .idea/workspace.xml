@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5927f7d-2bb3-4282-a10a-b98daa972abe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/AccountHeader.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/AccountHeader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/account_head/account_head_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/account_head/account_head_page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/account_head/account_head_tbl.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/account_head/account_head_tbl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/ajax/account_head_ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/ajax/account_head_ajax.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +60,7 @@
           <entry key="jpeg" value="1" />
           <entry key="jpg" value="31" />
           <entry key="js" value="6" />
-          <entry key="php" value="786" />
+          <entry key="php" value="792" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -64,7 +69,7 @@
           <entry key="HTML" value="7" />
           <entry key="Image" value="32" />
           <entry key="JavaScript" value="6" />
-          <entry key="PHP" value="783" />
+          <entry key="PHP" value="789" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
@@ -73,14 +78,14 @@
           <entry key="css" value="2" />
           <entry key="dummy" value="7" />
           <entry key="js" value="2" />
-          <entry key="php" value="61616" />
+          <entry key="php" value="61753" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
           <entry key="JavaScript" value="2" />
-          <entry key="PHP" value="61520" />
+          <entry key="PHP" value="61657" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="SQL" value="96" />
         </counts>
@@ -97,46 +102,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/config/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="407" column="82" selection-start-line="407" selection-start-column="59" selection-end-line="407" selection-end-column="82" />
+            <state relative-caret-position="385">
+              <caret line="383" column="12" selection-start-line="383" selection-start-column="8" selection-end-line="383" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Insurance.php">
+        <entry file="file://$PROJECT_DIR$/application/controllers/AccountHeader.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="10" column="15" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="15" />
+            <state relative-caret-position="419">
+              <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/account_head/account_head_page.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="83" column="84" selection-start-line="83" selection-start-column="84" selection-end-line="83" selection-end-column="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/account_head_ajax.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/account_head/account_head_tbl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="507" column="59" selection-start-line="507" selection-start-column="59" selection-end-line="507" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/insurance/search_tbl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="46" column="65" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
-              <folding>
-                <element signature="n#style#0;n#b#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#td#2;n#tr#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#td#3;n#tr#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#td#4;n#tr#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#td#5;n#tr#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#td#6;n#tr#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#td#7;n#tr#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#td#8;n#tr#1;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -190,10 +193,6 @@
         <option value="$PROJECT_DIR$/application/controllers/Admindashboard.php" />
         <option value="$PROJECT_DIR$/application/views/admin/dashboard/titu_home.php" />
         <option value="$PROJECT_DIR$/application/models/AccountHead_model.php" />
-        <option value="$PROJECT_DIR$/application/controllers/AccountHeader.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/account_head/account_head_tbl.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/account_head/account_head_page.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/ajax/account_head_ajax.php" />
         <option value="$PROJECT_DIR$/application/views/admin/voucher/voucher_entry.php" />
         <option value="$PROJECT_DIR$/application/views/admin/voucher/print_voucher.php" />
         <option value="$PROJECT_DIR$/libs/BackEnd/assets/js/jquery.dataTables.min.js" />
@@ -231,12 +230,16 @@
         <option value="$PROJECT_DIR$/application/views/admin/insurance/insurance_payment_page.php" />
         <option value="$PROJECT_DIR$/application/views/admin/insurance/insurance_bill_edit.php" />
         <option value="$PROJECT_DIR$/application/views/admin/insurance/insurance_report_page.php" />
-        <option value="$PROJECT_DIR$/application/config/routes.php" />
         <option value="$PROJECT_DIR$/application/controllers/Insurance.php" />
         <option value="$PROJECT_DIR$/application/models/InsuranceBill_model.php" />
         <option value="$PROJECT_DIR$/application/views/admin/insurance/search_tbl.php" />
         <option value="$PROJECT_DIR$/application/views/admin/ajax/insurance_bill_ajax.php" />
         <option value="$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/ajax/account_head_ajax.php" />
+        <option value="$PROJECT_DIR$/application/config/routes.php" />
+        <option value="$PROJECT_DIR$/application/controllers/AccountHeader.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/account_head/account_head_page.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/account_head/account_head_tbl.php" />
       </list>
     </option>
   </component>
@@ -304,23 +307,7 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="ajax" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Accounts_Software" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Accounts_Software" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
+              <item name="account_head" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -418,12 +405,12 @@
       <workItem from="1545883499027" duration="12081000" />
       <workItem from="1546400585289" duration="27268000" />
       <workItem from="1546486454420" duration="14160000" />
-      <workItem from="1546658602894" duration="23676000" />
+      <workItem from="1546658602894" duration="24984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="377253000" />
+    <option name="totallyTimeSpent" value="378561000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -467,34 +454,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/models/Bank_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="68" column="37" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/accounts_ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/accounts/edit_collection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="35" column="123" selection-start-line="35" selection-start-column="123" selection-end-line="38" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Agent_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/agent/bill_payments_tbl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -520,13 +479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="32" column="54" lean-forward="true" selection-start-line="22" selection-start-column="48" selection-end-line="32" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/AccountHead_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="42" column="41" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -624,13 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="80" column="53" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Agent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="88" column="8" selection-start-line="88" selection-start-column="8" selection-end-line="111" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -780,13 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="407" column="82" selection-start-line="407" selection-start-column="59" selection-end-line="407" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/insurance/insurance_report_page.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
@@ -853,6 +791,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="514" column="16" lean-forward="true" selection-start-line="514" selection-start-column="16" selection-end-line="514" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Insurance.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -860,10 +805,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/partials/left_sidebar_navigation.php">
+    <entry file="file://$PROJECT_DIR$/application/views/admin/ajax/account_head_ajax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="507" column="59" selection-start-line="507" selection-start-column="59" selection-end-line="507" selection-end-column="59" />
+        <state relative-caret-position="306">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/AccountHead_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="87" column="39" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/AccountHeader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="383" column="12" selection-start-line="383" selection-start-column="8" selection-end-line="383" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/account_head/account_head_page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="83" column="84" selection-start-line="83" selection-start-column="84" selection-end-line="83" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/account_head/account_head_tbl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
         </state>
       </provider>
     </entry>
