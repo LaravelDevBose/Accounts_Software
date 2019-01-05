@@ -15,7 +15,7 @@
                         $('#tBody').empty();
                         $('#tBody').html(data);
                         $('#ah_name').val('');
-                        // location.reload();
+                        location.reload();
                     }else{
                         swal({
                             text: "No Data Found",

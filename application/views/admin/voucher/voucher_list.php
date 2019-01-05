@@ -110,7 +110,7 @@
                                                     <i class="ace-icon fa fa-check bigger-130" ></i>
                                                 </a>
 
-                                                <a class="btn btn-xs btn-primary" title="Edit" href="<?= base_url();?>titu/voucher_edit/<?= $voucher->v_id;?>" >
+                                                <a style="display: none;"  class="btn btn-xs btn-primary" title="Edit" href="<?= base_url();?>titu/voucher_edit/<?= $voucher->v_id;?>" >
                                                     <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                 </a>
                                                 <a class="btn btn-xs btn-danger" title="Delete" href="<?= base_url(); ?>titu/voucher_delete/<?= $voucher->v_id ?>" onclick="return confirm('Are You Sure Went to Delete This! ')">
