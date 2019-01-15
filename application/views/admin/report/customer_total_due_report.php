@@ -34,7 +34,7 @@
                   <th>Total Car Price</th>
                   <th>Summary</th>
                 </tr>
-              </thead>
+              </thead> 
 
               <tbody id="tBody">
                   <?php  
@@ -55,9 +55,9 @@
                   
                   <td>
                     <?php if($report['sub_total'] > 0):?>
-                    <span class="pull-right red"><?= number_format($report['sub_total']*(-1),2); ?></span>
+                    <span class="pull-right red"><?= number_format($report['sub_total'],2); ?></span>
                     <?php else: ?>
-                    <span class="pull-right green"><?= number_format($report['sub_total']*(-1),2); ?></span>
+                    <span class="pull-right green"><?= number_format($report['sub_total'],2); ?></span>
                     <?php endif;?>
                   </td>
                 </tr>

@@ -134,7 +134,8 @@ class LC_model extends CI_Model
 
 	/*====================Update Lc Data ============================*/	
 	public function update_lc_data($id= null)
-	{
+	{  
+       
 		$attr = array(
 			'lc_no' =>$this->input->post('lc_no'),
 			'lc_date' =>$this->input->post('lc_date'),

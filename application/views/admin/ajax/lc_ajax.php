@@ -19,7 +19,7 @@
             $('#car_model').val('');
             $('#car_color').val('');
             $('#car_year').val('');
-            $('#order_id').val('');
+            $('#order_id').val(''); 
             $('#customer_id').val('');
             $('#cus_info').val('');
 
@@ -370,6 +370,7 @@
         });
 
         $('#lc_update').click(function(){
+
             var lc_no = $('#lc_no').val();
             var lc_date = $('#lc_date').val();
             var lc_amount = $('#lc_amount').val();
@@ -468,15 +469,16 @@
                 });
                 return false;
             }
-
+debugger;
             $.ajax({
                 url:'<?= base_url(); ?>lc/update/<?= (isset($lc) && $lc)? $lc->id:'' ?>',
                 type:'POST',
                 dataType:'json',
                 data:$('#lc_form').serialize(),
                 success:function(data){
+                    debugger;
                     console.log(data);
-
+                    
                     if(data != 0){
                         swal({
                             text: "L/C Information Updated SuccessFully..",

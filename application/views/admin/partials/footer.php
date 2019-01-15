@@ -326,23 +326,7 @@
             $(this).closest('tr').next().toggleClass('open');
             $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
         });
-        /***************/
 
-
-
-
-
-        /**
-         //add horizontal scrollbars to a simple table
-         $('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
-         {
-          horizontal: true,
-          styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
-          size: 2000,
-          mouseWheelLock: true
-          }
-         ).css('padding-top', '12px');
-         */
 
 
     })

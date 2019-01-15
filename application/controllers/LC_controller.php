@@ -155,17 +155,18 @@ class LC_controller extends MY_Controller
 
 	/*======== update lc information ========*/
 	public function update_lc_info($id=Null)
-	{	
-		if(!$this->input->is_ajax_request()) exit("Invalid Request");
+	{		
+		
+		// if(!$this->input->is_ajax_request()) exit("Invalid Request");
 
 		$this->form_validation->set_rules('lc_no', 'L/C Number', 'required|trim');
-		$this->form_validation->set_rules('lc_date', 'L/C Date', 'required|trim');
-		$this->form_validation->set_rules('lc_amount', 'L/C Amount', 'required|trim');
-		$this->form_validation->set_rules('dollar_amount', 'L/C Dollar Amount', 'required|trim');
-		$this->form_validation->set_rules('car_qty', 'Car Quantity', 'required|trim');
-		$this->form_validation->set_rules('bank_name', 'Bank Name', 'required|trim');
-		$this->form_validation->set_rules('comp_id', 'Company Name', 'required|trim');
-		$this->form_validation->set_rules('supplier_id', 'Supplier Name', 'required|trim');
+		// $this->form_validation->set_rules('lc_date', 'L/C Date', 'required|trim');
+		// $this->form_validation->set_rules('lc_amount', 'L/C Amount', 'required|trim');
+		// $this->form_validation->set_rules('dollar_amount', 'L/C Dollar Amount', 'required|trim');
+		// $this->form_validation->set_rules('car_qty', 'Car Quantity', 'required|trim');
+		// $this->form_validation->set_rules('bank_name', 'Bank Name', 'required|trim');
+		// $this->form_validation->set_rules('comp_id', 'Company Name', 'required|trim');
+		// $this->form_validation->set_rules('supplier_id', 'Supplier Name', 'required|trim');
 
 		if($this->form_validation->run() == FALSE){
 			echo 0;

@@ -26,7 +26,7 @@ class Registration_model extends CI_Model
         return false;
     }
 
-    public function insert_car_reg_info(){
+    public function insert_car_reg_info(){ 
         $attr = array(
             'pus_id' => $this->input->post('pus_id'),
             'reg_no' => $this->input->post('reg_no'),

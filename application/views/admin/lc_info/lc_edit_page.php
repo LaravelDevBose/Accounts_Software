@@ -287,5 +287,5 @@
   </div>
 </div>
       
-
+ 
 <?php $this->load->view('admin/ajax/lc_ajax');?>

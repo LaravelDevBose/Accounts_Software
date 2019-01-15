@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5927f7d-2bb3-4282-a10a-b98daa972abe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/application/views/admin/ajax/account_head_ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/ajax/account_head_ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/voucher/voucher_active_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/voucher/voucher_active_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/voucher/voucher_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/voucher/voucher_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/voucher/voucher_pending_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/voucher/voucher_pending_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +17,7 @@
     <session id="1995332327">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="39" />
+          <entry key="project.closed" value="41" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
@@ -34,7 +31,7 @@
           <entry key="project.open.time.43" value="2" />
           <entry key="project.open.time.44" value="2" />
           <entry key="project.open.time.45" value="2" />
-          <entry key="project.open.time.46" value="1" />
+          <entry key="project.open.time.46" value="2" />
           <entry key="project.open.time.47" value="2" />
           <entry key="project.open.time.48" value="3" />
           <entry key="project.open.time.49" value="1" />
@@ -48,7 +45,7 @@
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.98" value="1" />
-          <entry key="project.opened" value="41" />
+          <entry key="project.opened" value="42" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -96,65 +93,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/config/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="383" column="12" selection-start-line="383" selection-start-column="8" selection-end-line="383" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/voucher/voucher_active_list.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="104" column="55" selection-start-line="104" selection-start-column="55" selection-end-line="104" selection-end-column="78" />
-              <folding>
-                <element signature="n#style#0;n#a#3;n#div#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/voucher/voucher_edit.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/voucher/voucher_entry.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1839" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/voucher/voucher_list.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="112" column="74" selection-start-line="112" selection-start-column="74" selection-end-line="112" selection-end-column="74" />
-              <folding>
-                <element signature="n#style#0;n#a#3;n#div#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/voucher/voucher_pending_list.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="104" column="78" selection-start-line="104" selection-start-column="78" selection-end-line="104" selection-end-column="78" />
-              <folding>
-                <element signature="n#style#0;n#a#3;n#div#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -273,7 +212,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -339,6 +277,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -349,7 +288,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/esty_design" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hospital_management" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -431,12 +370,13 @@
       <workItem from="1545883499027" duration="12081000" />
       <workItem from="1546400585289" duration="27268000" />
       <workItem from="1546486454420" duration="14160000" />
-      <workItem from="1546658602894" duration="25511000" />
+      <workItem from="1546658602894" duration="26126000" />
+      <workItem from="1546745409039" duration="633000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="379088000" />
+    <option name="totallyTimeSpent" value="380336000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -449,9 +389,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4983871" visible="true" weight="0.23676248" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4983871" visible="true" weight="0.24054463" />
       <window_info id="Structure" order="1" sideWeight="0.5016129" side_tool="true" weight="0.22919819" />
       <window_info x="535" y="214" width="295" height="310" id="Favorites" order="2" sideWeight="0.5016129" side_tool="true" weight="0.22314675" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -538,9 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="42" column="160" selection-start-line="42" selection-start-column="160" selection-end-line="42" selection-end-column="160" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -636,13 +572,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/agent/agent_edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Order_model.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -662,10 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -715,18 +641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
           <caret line="23" column="75" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="75" />
-          <folding>
-            <element signature="e#713#747#0#HTML" expanded="true" />
-            <element signature="e#1423#1464#0#HTML" expanded="true" />
-            <element signature="e#5032#5057#0#HTML" expanded="true" />
-            <element signature="e#5117#5142#0#HTML" expanded="true" />
-            <element signature="e#5200#5225#0#HTML" expanded="true" />
-            <element signature="e#5275#5300#0#HTML" expanded="true" />
-            <element signature="e#5350#5375#0#HTML" expanded="true" />
-            <element signature="e#5425#5450#0#HTML" expanded="true" />
-            <element signature="e#5502#5527#0#HTML" expanded="true" />
-            <element signature="e#5585#5610#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -734,17 +648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
           <caret line="46" column="65" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
-          <folding>
-            <element signature="n#style#0;n#b#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#td#2;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#td#3;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#td#4;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#td#5;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#td#6;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#td#7;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#td#8;n#tr#1;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -752,16 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="263" lean-forward="true" selection-start-line="263" selection-end-line="263" />
-          <folding>
-            <element signature="e#87#828#0#HTML" />
-            <element signature="e#877#2767#0#HTML" />
-            <element signature="e#2882#4382#0#HTML" />
-            <element signature="e#4426#6839#0#HTML" />
-            <element signature="e#6882#8819#0#HTML" />
-            <element signature="e#7344#8807#0#HTML" />
-            <element signature="e#8875#10056#0#HTML" />
-            <element signature="e#10091#11266#0#HTML" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -769,11 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
           <caret line="261" column="56" selection-start-line="261" selection-start-column="56" selection-end-line="261" selection-end-column="56" />
-          <folding>
-            <element signature="n#delete_insurance_data#0;n#InsuranceBill_model#0;n#!!top" />
-            <element signature="n#calculate_insurance_bill_amount#0;n#InsuranceBill_model#0;n#!!top" />
-            <element signature="n#calculate_insurance_payment_amount#0;n#InsuranceBill_model#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -842,18 +730,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/config/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
+        <state relative-caret-position="6511">
           <caret line="383" column="12" selection-start-line="383" selection-start-column="8" selection-end-line="383" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/voucher/voucher_active_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="1768">
           <caret line="104" column="55" selection-start-line="104" selection-start-column="55" selection-end-line="104" selection-end-column="78" />
-          <folding>
-            <element signature="n#style#0;n#a#3;n#div#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -861,27 +746,19 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/voucher/voucher_entry.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1839" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/voucher/voucher_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
+        <state relative-caret-position="1904">
           <caret line="112" column="74" selection-start-line="112" selection-start-column="74" selection-end-line="112" selection-end-column="74" />
-          <folding>
-            <element signature="n#style#0;n#a#3;n#div#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/voucher/voucher_pending_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="104" column="78" selection-start-line="104" selection-start-column="78" selection-end-line="104" selection-end-column="78" />
-          <folding>
-            <element signature="n#style#0;n#a#3;n#div#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="439">
+          <caret line="108" column="33" selection-start-line="108" selection-start-column="33" selection-end-line="108" selection-end-column="33" />
         </state>
       </provider>
     </entry>

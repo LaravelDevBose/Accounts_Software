@@ -1,4 +1,4 @@
-<style>
+  <style>
     @media print {
         .header,.footer{
             background-color: #89e3ec4f !important;
@@ -107,7 +107,7 @@
                             <label style="margin-right: 7px; font-style: italic; font-size: 13px;"> Engine No: </label><span class="engine" style="display: inline-block;  border-bottom: 1px dotted;"><?= $collection->ord_engine_no; ?></span>
                         </div>
                         <div style="width: 100%; padding: 7px 0;">
-                            <label style="margin-right: 10px; font-style: italic; font-size: 13px;">as <?php if($collection->collection_type ==1 ): echo 'Advance'; elseif($collection->collection_type ==2): echo 'Part'; elseif($collection->collection_type ==3): echo 'Full Payment'; elseif($collection->collection_type ==4): echo 'Cheque'; endif; ?>  Taka: </label>
+                            <label style="margin-right: 10px; font-style: italic; font-size: 13px;">as <?php if($collection->collection_type ==1 ): echo 'Advance'; elseif($collection->collection_type ==2): echo 'Part'; elseif($collection->collection_type ==3): echo 'Full Payment'; elseif($collection->collection_type ==4): echo 'Cheque'; elseif($collection->collection_type ==5): echo 'Cash'; endif; ?>  Taka: </label>
                             <span style="display: inline-block; width: 70%; border-bottom: 1px dotted;"><?= number_format($collection->amount, 2)?></span>
                         </div>
                         <div style="width: 100%; padding: 7px 0;">

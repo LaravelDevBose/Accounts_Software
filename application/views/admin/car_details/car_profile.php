@@ -798,9 +798,10 @@
                                                                 <div class="col-sm-7">
                                                                     <select class="form-control chosen-select " id="collection_type" required name="collection_type" style="height: 30px; border-radius: 5px;">
                                                                         <option value="">Select a Collection Type</option>
-                                                                        <option value="1">Advance</option>
-                                                                        <option value="2">Part</option>
-                                                                        <option value="3">Full Payment</option>
+                                                                        <!-- <option value="1">Advance</option> -->
+                                                                        <!-- <option value="2">Part</option> -->
+                                                                        <!-- <option value="3">Full Payment</option> -->
+                                                                        <option value="5">Cash</option>
                                                                         <option value="4">Cheque</option>
 
                                                                     </select>
@@ -897,7 +898,7 @@
                                                         <tr>
                                                             <td class="center"><?= $data->coll_sl ?></td>
                                                             <td>
-                                                                <?php
+                                                                <?php  
                                                                 $date = new DateTime($data->date);
                                                                 echo date_format($date, 'd M Y');
                                                                 ?>
@@ -1476,7 +1477,7 @@
                                         <div class="widget-body">
                                             <div class="widget-main">
 
-                                                <form id="reg_from" action="<?= base_url();?>car/reg/submit" method="POST" enctype="multipart/form-data">
+                                                
                                                     <div class="row">
                                                         <div class="col-sm-1">
                                                             <input type="hidden" name="pus_id" value="<?= $purchase->id; ?>">
@@ -1528,6 +1529,8 @@
                                                                     <input type="file" id="id-input-file-2"  name="pdfs[]" multiple class="form-control" accept="application/pdf" />
                                                                 </div>
                                                             </div>
+                                                            <form id="reg_from" action="<?= base_url();?>car/reg/submit" method="POST" enctype="multipart/form-data">
+                                                                <input type="text" name="yoo" value="kkk">
                                                             <div class="form-group" style="margin-top: 10px;">
                                                                 <label class="col-sm-4 control-label no-padding-left" for="ord_budget_range"> </label>
                                                                 <div class="col-sm-8">
