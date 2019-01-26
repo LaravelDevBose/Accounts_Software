@@ -37,13 +37,28 @@ class TituController extends MY_Controller
 
     public function trial_balance_report(){
 //        print_r($this->input->post('date_from')); die();
-        $data['date_from'] = $this->input->post('date_from');
-        $data['date_to'] = $this->input->post('date_to');
+        $data['date_from'] = '2018-01-01';
+        $data['date_to'] = date('Y-m-d');
 
         $this->session->set_userdata($data);
 
         $data['account_heads'] = $this->AccountHead_model->all_account_head_list();
         $this->load->view('admin/accounts/trial_balance_tbl', $data);
 
+    }
+
+    public function ledger_page(){
+        $data['title'] = 'ledger Page';
+        $data['content'] = 'accounts/ledger_page';
+        $data['account_heads'] = $this->AccountHead_model->all_account_head_list();
+        $this->load->view('admin/adminMaster', $data);
+    }
+
+    public function ledger_search_result()
+    {   
+        $data['head'] = $this->AccountHead_model->data_by_id($this->input->post('ah_id'));
+        $data['ledgers'] = $ledgers = $this->Voucher_model->account_wise_voucher();
+        // print_r($ledgers); die();
+;        $this->load->view('admin/accounts/ledger_list', $data);
     }
 }

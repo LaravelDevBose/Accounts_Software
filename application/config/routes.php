@@ -407,5 +407,6 @@ $route['titu/insurance_report_page']        =   'Insurance/insurance_report_page
 $route['company_due/(:any)']                =   'Insurance/calculate_insurance_due/$1';
 $route['insurance_search_report']           =   'Insurance/insurance_search_report';
 
-
+$route['titu/ledger']		= 	'TituController/ledger_page';
+$route['titu/ledger_result']= 	'TituController/ledger_search_result';
 

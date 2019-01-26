@@ -34,7 +34,7 @@ class Voucher_model extends CI_Model
             endif;
         }
 
-        return $coll_sl;
+        return $coll_sl; 
     }
 
     public function get_all_voucher_list(){
@@ -131,7 +131,7 @@ class Voucher_model extends CI_Model
         $to = $this->session->userdata('date_to');
 
         $res = $this->db->select_sum('dr_amount')->where('dr_ah_id', $acc_id)->where('v_status', 'A')
-            ->where("DATE_FORMAT(value_date,'%Y-%m-%d') >=",$form)->where("DATE_FORMAT(value_date,'%Y-%m-%d') <=",$to)
+            ->where('approve_status','A')->where("DATE_FORMAT(value_date,'%Y-%m-%d') >=",$form)->where("DATE_FORMAT(value_date,'%Y-%m-%d') <=",$to)
             ->get('vouchers')->row();
 
         if($res->dr_amount == ''){
@@ -146,7 +146,7 @@ class Voucher_model extends CI_Model
         $to = $this->session->userdata('date_to');
 
         $res = $this->db->select_sum('cr_amount')->where('cr_ah_id', $acc_id)->where('v_status', 'A')
-            ->where("DATE_FORMAT(value_date,'%Y-%m-%d') >=",$form)->where("DATE_FORMAT(value_date,'%Y-%m-%d') <=",$to)
+            ->where('approve_status','A')->where("DATE_FORMAT(value_date,'%Y-%m-%d') >=",$form)->where("DATE_FORMAT(value_date,'%Y-%m-%d') <=",$to)
             ->get('vouchers')->row();
 
 
@@ -155,6 +155,22 @@ class Voucher_model extends CI_Model
         }else{
             return $res->cr_amount;
         }
+    }
+
+    public function account_wise_voucher()
+    {
+        $form = $this->input->post('date_from');
+        $to = $this->input->post('date_to');
+        $ah_id = $this->input->post('ah_id');
+
+        $res = $this->db->where('cr_ah_id', $ah_id)->or_where('dr_ah_id', $ah_id)->where('v_status', 'A')
+            ->where('approve_status','A')->where("DATE_FORMAT(value_date,'%Y-%m-%d') >=",$form)->where("DATE_FORMAT(value_date,'%Y-%m-%d') <=",$to)
+            ->get('vouchers')->result();
+
+        if($res){
+            return $res;
+        }
+        return false;
     }
 
 }

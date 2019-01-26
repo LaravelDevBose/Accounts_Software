@@ -617,6 +617,13 @@
             </a>
             <b class="arrow"></b>
         </li>
+        <li class="<?= ($this->uri->uri_string()== 'titu/ledger')?'active': ' ' ?>">
+            <a href="<?php echo base_url(); ?>titu/ledger">
+                <i class="menu-icon fa fa-money"></i>
+                <span class="menu-text">Ledger</span>
+            </a>
+            <b class="arrow"></b>
+        </li>
 
         <li class="<?= ($this->uri->uri_string()== 'titu/trial_balance')?'active': ' ' ?>">
             <a href="<?php echo base_url(); ?>titu/trial_balance">

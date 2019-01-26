@@ -2,7 +2,7 @@
     <div class="col-xs-12">
         <div class="widget-box">
             <div class="widget-header">
-                <h4 class="widget-title">Trial Balance Report List</h4>
+                <h4 class="widget-title">Ledger Balance Report List</h4>
                 <div class="widget-toolbar">
 
                     <button type="button" onclick="print_data()" class="btn btn-sm btn-info pull-right"><i class="ace-icon fa fa-print"  ></i> Print</button>
@@ -11,13 +11,26 @@
 
             <div class="widget-body">
                 <div class="widget-main">
-                    <div class="row" style="display: none;">
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="widget-box " >
                                 <div class="widget-body" style="background-color: #E7F2F8;">
                                     <div class="widget-main">
                                         <div class="row">
                                             <div class="col-sm-1">
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label class="col-sm-5 control-label no-padding-left" for="ah_id">Account Head:<span class="text-bold text-danger">*</span></label>
+                                                    <div class="col-sm-7">
+                                                        <select class="form-control chosen-select " id="ah_id" required name="ah_id" style="height: 30px; border-radius: 5px;">
+                                                            <option value=" ">Select a Account head</option>
+                                                            <?php if($account_heads && isset($account_heads)):  foreach($account_heads as $head):?>
+                                                                <option value="<?= $head->ah_id; ?>"><?= $head->ah_code.'-'.ucfirst($head->ah_name); ?></option>
+                                                            <?php endforeach; endif; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="form-group">
@@ -40,7 +53,7 @@
                                             <div class="col-md-1">
                                                 <div class="form-group" >
                                                     <div class="col-sm-8">
-                                                        <button type="button" id="trial_balance_search" style="height: 27px; padding-top: 0px; float: left; " class="btn btn-primary pull-left">Search</button>
+                                                        <button type="button" id="ledger_search" style="height: 27px; padding-top: 0px; float: left; " class="btn btn-primary pull-left">Search</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -56,16 +69,18 @@
                             <?php $this->load->view('admin/partials/print_header');?>
                         </div>
                         <div id="table-header" class="table-header">
-                            Collection Report List
+                            Leader Report List
                         </div>
                         <table  class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Date</th>
                                 <th>Head Id</th>
                                 <th>Head Name</th>
                                 <th style="text-align: right;" >Debit Amount</th>
                                 <th style="text-align: right;" >Credit Amount</th>
+                                <th style="text-align: right;" >Balance</th>
                             </tr>
                             </thead>
 
@@ -83,21 +98,28 @@
 
 <script>
     $(document).ready(function(){
-        trial_balance();
-        $('#trial_balance_search').click(function() {
-            trial_balance();
+        
+        $('#ledger_search').click(function() {
+            ledger_search();
         });
 
-        function trial_balance() {
+        function ledger_search() {
             var date_from = $('#date_from').val();
             var date_to = $('#date_to').val();
+            var ah_id = $('#ah_id').val();
+
+            if(ah_id == 0 || ah_id == ''){
+                alert('Select A Account Head');
+                return false;
+            }
 
             $.ajax({
-                url:'<?= base_url()?>titu/trial_balance/report',
+                url:'<?= base_url()?>titu/ledger_result',
                 type:'POST',
                 dataType:'html',
-                data:{date_from:date_from, date_to:date_to},
+                data:{ah_id:ah_id,date_from:date_from, date_to:date_to},
                 success:function(data){
+                    console.log(data);
                     $('#tBody').empty();
                     $('#tBody').html(data);
                 },error:function(error){
